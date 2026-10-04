@@ -4,7 +4,7 @@ Checked locally on 2026-10-04 with the locked dependencies, for the current thre
 
 | Check                                         | Observed result                                                                                                                       |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Unit/integration                              | 82 passed across 6 checked-in files                                                                                                   |
+| Unit/integration                              | 83 passed across 6 checked-in files                                                                                                   |
 | TypeScript, ESLint and production compilation | Passed                                                                                                                                |
 | Root-path Chromium behavior                   | Earlier flow: 23 distinct cases verified; latest audio/review follow-up: all 6 targeted cases passed in 17.2 seconds                                 |
 | Final `/lexigrove/` Chromium suite            | All 23 passed in 34.2 seconds; no skipped or flaky cases                                                                              |
@@ -35,3 +35,5 @@ Fresh-profile public checks also observed that first-download network delays can
 
 
 The follow-up caching change removes the full audio set from service-worker installation, uses the official Workbox cached-media recipe with CORS and range support, and warms complete audio responses with at most two background downloads. Unit checks verify bounded concurrency, reuse of completed clips, foreground cancellation/pause and subsequent retry. This fixes the install/playback coupling without changing the learning engine, card history, audio bytes or voices. Public first-load timings remain connection-dependent.
+
+The final import-compatibility guard applies anonymous CORS only to bundled audio; attributed external URLs keep the prior browser media policy, avoiding a new cross-origin-server requirement. An additional unit case verifies that distinction.

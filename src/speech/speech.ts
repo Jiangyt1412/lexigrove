@@ -163,7 +163,8 @@ export async function pronounce(
     ) {
       await new Promise<void>((resolve, reject) => {
         const audio = new Audio(url);
-        audio.crossOrigin = "anonymous"; // # Cached media uses Workbox's supported CORS/Range-request path, including same-origin files.
+        if (variant.audioURL.startsWith("assets/audio/"))
+          audio.crossOrigin = "anonymous"; // # Bundled cached media uses CORS/Range; external attributed audio keeps its provider's normal playback policy.
         audio.playbackRate = settings.speed;
         const finish = (error?: Error) => {
           clearTimeout(timer);

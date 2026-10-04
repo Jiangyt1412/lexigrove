@@ -22,6 +22,7 @@ class FakeAudio {
   onended: (() => void) | null = null;
   onerror: (() => void) | null = null;
   playbackRate = 1;
+  crossOrigin: string | null = null;
   paused = false;
   constructor(public url: string) {
     FakeAudio.instances.push(this);
@@ -54,11 +55,24 @@ describe("bundled pronunciation", () => {
     expect(speechAvailable(word, defaultSettings)).toBe(true);
     const played = pronounce(word, defaultSettings);
     expect(FakeAudio.instances[0].url).toContain("/assets/audio/uk/adapt.wav");
+    expect(FakeAudio.instances[0].crossOrigin).toBe("anonymous");
     FakeAudio.instances[0].onended!();
     expect(await played).toEqual({
       pronunciationId: `${word.id}:entry:1:pron:UK`,
       source: "recording",
     });
+  });
+  it("preserves external attributed audio playback without imposing a new CORS requirement", async () => {
+    device();
+    vi.stubGlobal("navigator", { onLine: true });
+    const imported = structuredClone(word);
+    imported.entries[0].pronunciations.find((p) => p.locale === "UK")!.audioURL =
+      "https://audio.example.test/adapt.mp3";
+    const played = pronounce(imported, defaultSettings);
+    expect(FakeAudio.instances[0].url).toBe("https://audio.example.test/adapt.mp3");
+    expect(FakeAudio.instances[0].crossOrigin).toBeNull();
+    FakeAudio.instances[0].onended!();
+    expect((await played).source).toBe("recording");
   });
   it("stops a previous pronunciation instead of mixing two words or crediting cancelled audio", async () => {
     device();
