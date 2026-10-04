@@ -34,6 +34,7 @@ import World from "./world/World";
 import { LivingScene } from "./world/LivingScene"; // # Original marine scenery connects the home screen to the study view.
 import { resolveSeason } from "./world/environment";
 import { registerVocabularyTool } from "./utils/webmcp";
+import { warmStarterAudio } from "./speech/audio-cache";
 type Page =
   | "Today"
   | "Vocabulary"
@@ -140,6 +141,15 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [toast]);
   useEffect(registerVocabularyTool, []);
+  useEffect(() => {
+    const warm = () => {
+      if ("serviceWorker" in navigator)
+        void navigator.serviceWorker.ready.then(() => warmStarterAudio());
+    };
+    warm();
+    window.addEventListener("online", warm);
+    return () => window.removeEventListener("online", warm);
+  }, []); // # Install the small app shell first; audio warming is bounded and yields to real playback.
   useEffect(() => {
     const route = () => {
       setPage(currentPage());

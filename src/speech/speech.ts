@@ -1,6 +1,7 @@
 import { defaultSettings, type Lexical, type Settings } from "../types/model"; // # Speech support varies by browser and installed voices.
 import { hydrateWord } from "../vocabulary/lexicon";
 import { assetUrl } from "../utils/assets";
+import { holdAudioDownloads } from "./audio-cache";
 type Voice = Pick<
   SpeechSynthesisVoice,
   "name" | "lang" | "voiceURI" | "localService" | "default"
@@ -147,6 +148,7 @@ export async function pronounce(
   if (options.signal?.aborted)
     throw new DOMException("Playback cancelled", "AbortError");
   const controller = new AbortController();
+  const releaseDownloads = holdAudioDownloads();
   const cancel = () => controller.abort();
   activeStop = cancel;
   options.signal?.addEventListener("abort", cancel, { once: true });
@@ -161,6 +163,7 @@ export async function pronounce(
     ) {
       await new Promise<void>((resolve, reject) => {
         const audio = new Audio(url);
+        audio.crossOrigin = "anonymous"; // # Cached media uses Workbox's supported CORS/Range-request path, including same-origin files.
         audio.playbackRate = settings.speed;
         const finish = (error?: Error) => {
           clearTimeout(timer);
@@ -258,6 +261,7 @@ export async function pronounce(
       source: "system",
     };
   } finally {
+    releaseDownloads();
     options.signal?.removeEventListener("abort", cancel);
     if (activeStop === cancel) activeStop = null;
   }

@@ -1,6 +1,7 @@
 import { defineConfig } from "vite"; // # Build configuration for the independent static PWA.
 import react from "@vitejs/plugin-react"; // # React JSX and fast refresh.
 import { VitePWA } from "vite-plugin-pwa"; // # Generate a bounded, local-only offline cache.
+import { AUDIO_CACHE } from "./src/speech/audio-cache";
 const base = process.env.VITE_BASE_PATH || "/"; // # GitHub project Pages lives under /repository-name/.
 export default defineConfig({
   base,
@@ -33,7 +34,20 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,svg,png,json,woff2,txt,m4a,wav}"], // # The finite starter audio set is cached with the app for offline recall.
+        globPatterns: ["**/*.{js,css,html,svg,png,json,woff2,txt}"], // # Audio warming must not delay installing the app shell.
+        runtimeCaching: [
+          {
+            urlPattern: ({ url, sameOrigin }) =>
+              sameOrigin &&
+              /\/assets\/audio\/(?:uk|us)\/[a-z]+\.wav$/.test(url.pathname),
+            handler: "CacheFirst",
+            options: {
+              cacheName: AUDIO_CACHE,
+              cacheableResponse: { statuses: [200] },
+              rangeRequests: true,
+            },
+          },
+        ], // # Full-body background copies serve media byte ranges; partial streamed responses are never cached as complete clips.
         dontCacheBustURLsMatching: /-[A-Za-z0-9_-]{8,}\.(?:js|css)$/,
         navigateFallback: `${base}index.html`,
         clientsClaim: true,

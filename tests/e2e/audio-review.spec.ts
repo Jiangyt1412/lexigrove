@@ -350,8 +350,15 @@ test("all 120 clips cache and British and American word audio actually finish of
     page.evaluate(
       () => (window as unknown as { __endedClips: string[] }).__endedClips,
     );
+  const cachedResponse = page.waitForResponse((response) =>
+    response.url().endsWith(`/assets/audio/uk/${word}.wav`),
+  ); // # Verify that offline media really uses the service worker's byte-range route.
   await page.getByRole("button", { name: "Play UK pronunciation" }).click();
   await expect.poll(completed).toHaveLength(1);
+  const response = await cachedResponse;
+  expect(response.fromServiceWorker()).toBe(true);
+  expect(response.status()).toBe(206);
+  expect(response.headers()["content-range"]).toMatch(/^bytes /);
   expect((await completed())[0]).toContain(`/assets/audio/uk/${word}.wav`);
   await page.getByRole("button", { name: "Play US pronunciation" }).click();
   await expect.poll(completed).toHaveLength(2);
