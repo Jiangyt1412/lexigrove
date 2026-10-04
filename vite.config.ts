@@ -34,7 +34,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,svg,png,json,woff2,txt}"], // # Audio warming must not delay installing the app shell.
+        globPatterns: ["**/*.{js,css,html,svg,png,webp,json,woff2,txt}"], // # Original compact environment images are available offline; audio warms separately.
         runtimeCaching: [
           {
             urlPattern: ({ url, sameOrigin }) =>

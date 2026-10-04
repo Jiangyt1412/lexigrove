@@ -1,10 +1,10 @@
-import { LivingScene } from "./LivingScene"; // # Functional controls remain distinct from pixel scenes.
+import { useState } from "react"; // # Inspect real earned environments without changing progress or scheduling.
+import { CoastalWorld } from "./CoastalWorld";
 import type { World as WorldState, Settings, Progress } from "../types/model";
-import { milestone, WORLD_CONFIG } from "./progression";
+import { gardenStages } from "./environment";
 export default function World({
   world,
   settings,
-  notify,
   progress,
 }: {
   progress: Progress[];
@@ -12,55 +12,54 @@ export default function World({
   settings: Settings;
   notify: (s: string) => void;
 }) {
-  return (
-    <>
-      <div className="page-heading">
-        <div>
-          <h1>Your growing world</h1>
-        </div>
-        <span className="subtle">Earned progress stays. Always.</span>
-      </div>
-      {(["garden", "aquarium"] as const).map((kind) => {
-        const count = world[kind];
-        const m = milestone(kind, count);
-        return (
-          <section className="world-section" key={kind}>
-            {settings.world !== "off" && (
-              <LivingScene
-                kind={kind}
-                count={count}
-                settings={settings}
-                progress={progress}
-                onInspect={() =>
-                  notify(
-                    `${count} ${kind === "garden" ? "words acquired" : "words have reached maturity"}. ${m.next ? `Next: ${m.next.name} at ${m.next.at}.` : "All milestones reached."}`,
-                  )
-                }
-              />
-            )}
-            <div className="world-caption">
-              <h2>{kind === "garden" ? "Study Garden" : "Memory Aquarium"}</h2>
-              <span>
-                {count} · {m.current.name}
-              </span>
-            </div>
-            <div className="milestone-track">
-              {WORLD_CONFIG[kind].map(({ at: n }) => (
-                <div key={n} className={count >= n ? "reached" : ""}>
-                  <span>{count >= n ? "✓" : "◇"}</span>
-                  <b>{n}</b>
-                </div>
-              ))}
-            </div>
-            <p className="subtle">
-              {kind === "garden"
-                ? "Grows from completed acquisition."
-                : "Maturity: at least 21 days of FSRS stability and 3 successful scheduled reviews. Earned residents remain after lapses."}
-              {m.next ? ` Next milestone: ${m.next.at - count} more.` : ""}
-            </p>
-          </section>
-        );
-      })}
-    </>
+  const [focus, setFocus] = useState<"garden" | "aquarium">(
+    settings.world === "farm" ? "garden" : "aquarium",
   );
-}
+  const stages = gardenStages(progress);
+  return (
+    <CoastalWorld
+      settings={settings}
+      world={world}
+      progress={progress}
+      aquariumFocus={focus === "aquarium"}
+    >
+      <div className="village-title">
+        <span>YOUR LITTLE WORLD</span>
+        <h1>Every word leaves something growing.</h1>
+      </div>
+      <section className="world-journal" aria-label="World journal">
+        <h2>Field journal</h2>
+        <button
+          aria-pressed={focus === "garden"}
+          onClick={() => setFocus("garden")}
+        >
+          Study Garden
+        </button>
+        <button
+          aria-pressed={focus === "aquarium"}
+          onClick={() => setFocus("aquarium")}
+        >
+          Memory Aquarium
+        </button>
+        <b className="world-count">{world[focus]}</b>
+        <p>
+          {focus === "garden"
+            ? "Words cultivated through completed learning."
+            : "Words that have earned a lasting memory."}
+        </p>
+        <p>
+          {focus === "garden"
+            ? `${stages.seeds} seeds · ${stages.sprouts} sprouts · ${stages.young + stages.growing} growing · ${stages.mature} flowering`
+            : "A resident arrives after 21 days of FSRS stability and 3 successful scheduled reviews."}
+        </p>
+        <p>
+          {world[focus]
+            ? "Earned plants and residents stay after a difficult review."
+            : focus === "garden"
+              ? "Your first plot is waiting for a word."
+              : "Quiet water. Your first resident will arrive with a mature memory."}
+        </p>
+      </section>
+    </CoastalWorld>
+  );
+} // # Bounded plants and fish represent canonical-word progress; they are not one sprite per dictionary sense.

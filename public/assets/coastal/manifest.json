@@ -1,0 +1,43 @@
+{
+  "created": "2026-10-05",
+  "method": "OpenAI built-in image generation tool; WebP encoding with Pillow",
+  "provenance": "Original AI-generated environment art commissioned for Lexigrove. User concept images were direction references only. No commercial game assets were copied or included.",
+  "usage": "Opaque scene base; controls, word content, crops, memory fish and independent residents are live DOM/SVG layers.",
+  "assets": [
+    {
+      "file": "coast-summer.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 660356,
+      "sha256": "241f7035f3cc809e279c102454f20e11e81e5e74765ef8b24198351405ddf878"
+    },
+    {
+      "file": "coast-spring.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 691258,
+      "sha256": "d0d074d078115d4cb54f4507f437596699f267001587222b7b8475098d885956"
+    },
+    {
+      "file": "coast-autumn.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 653394,
+      "sha256": "b86766c23f38454a51831e9039b79b67c7a96c10413858e6546e63748c247853"
+    },
+    {
+      "file": "coast-winter.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 638078,
+      "sha256": "e88462179b3cf68d3f0b868a260abf974a28c86f33b093535bf28be43b461cc1"
+    },
+    {
+      "file": "study-room.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 487474,
+      "sha256": "0899fbe30d7325fb7c91649f2bce6798ded6c7fdf194905bba02d8900e6558c2"
+    }
+  ]
+}

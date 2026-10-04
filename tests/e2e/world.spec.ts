@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { createEmptyCard, fsrs, Rating } from "ts-fsrs";
 const shot = (name: string) => path.resolve(`../lexigrove-${name}.png`);
-test("four seasons change scene geometry and motion preferences persist", async ({
+test("four seasons change coastal artwork and details while motion preferences persist", async ({
   page,
 }) => {
   await page.goto("./");
@@ -24,8 +24,20 @@ test("four seasons change scene geometry and motion preferences persist", async 
       page.getByRole("combobox", { name: "Season", exact: true }),
     ).toHaveValue(season);
     await page.getByRole("button", { name: "Today", exact: true }).click();
-    const scene = page.locator(".living-garden");
+    const scene = page.locator(".coastal-world");
+    await expect(scene).toHaveCount(1);
     await expect(scene).toHaveAttribute("data-season", season);
+    await expect(scene.locator(".coast-backdrop")).toHaveAttribute(
+      "src",
+      new RegExp(`coast-${season}\\.webp$`),
+    ); // # Each season changes its underlying scenery as well as foreground decorations.
+    await expect
+      .poll(() =>
+        scene
+          .locator(".coast-backdrop")
+          .evaluate((image) => (image as HTMLImageElement).naturalWidth > 0),
+      )
+      .toBe(true);
     if (fixtures[season])
       await expect(
         scene.locator(`[data-detail="${fixtures[season]}"]`).first(),
@@ -38,12 +50,12 @@ test("four seasons change scene geometry and motion preferences persist", async 
   await page
     .getByRole("button", { name: "Toggle day and night theme" })
     .click();
-  await expect(page.locator(".living-garden")).toHaveAttribute(
+  await expect(page.locator(".coastal-world")).toHaveAttribute(
     "data-night",
     "true",
   );
   const contrasts = await page
-    .locator(".today-strip .metric")
+    .locator(".coastal-status > span")
     .evaluateAll((tiles) =>
       tiles.map((tile) => {
         const luminance = (color: string) => {
@@ -60,16 +72,19 @@ test("four seasons change scene geometry and motion preferences persist", async 
           );
         }; // # Inspect actual rendered foreground/background after every stylesheet has applied.
         const foreground = luminance(
-          getComputedStyle(tile.querySelector("strong")!).color,
+          getComputedStyle(tile.querySelector("b")!).color,
         );
-        const background = luminance(getComputedStyle(tile).backgroundColor);
+        const background = luminance(
+          getComputedStyle(tile.parentElement!).backgroundColor,
+        );
         return (
           (Math.max(foreground, background) + 0.05) /
           (Math.min(foreground, background) + 0.05)
         );
       }),
     );
-  expect(contrasts.every((ratio) => ratio >= 4.5)).toBe(true); // # A day-palette override must not make night statistics unreadable.
+  expect(contrasts).toHaveLength(4);
+  expect(contrasts.every((ratio) => ratio >= 4.5)).toBe(true); // # Small world status values retain text contrast in night mode.
   await page.screenshot({ path: shot("home-seasonal-night"), fullPage: true });
   await page
     .getByRole("button", { name: "Settings & data", exact: true })
@@ -94,6 +109,21 @@ test("four seasons change scene geometry and motion preferences persist", async 
       .first()
       .evaluate((el) => getComputedStyle(el).animationDuration),
   ).toBe("18s");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  expect(
+    await page
+      .locator(".coastal-world .world-motion")
+      .evaluateAll((els) =>
+        els.every((el) => getComputedStyle(el).animationName === "none"),
+      ),
+  ).toBe(true); // # The operating-system request also stops subdued water when the app is already set to reduced motion.
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  expect(
+    await page
+      .locator(".motion-ripple")
+      .first()
+      .evaluate((el) => getComputedStyle(el).animationDuration),
+  ).toBe("18s"); // # Returning to no system preference restores the saved restrained app preference.
   await page
     .getByRole("button", { name: "Settings & data", exact: true })
     .click();
@@ -112,7 +142,7 @@ test("four seasons change scene geometry and motion preferences persist", async 
       ),
   ).toBe(true);
   await page.reload();
-  await expect(page.locator(".living-garden")).toHaveAttribute(
+  await expect(page.locator(".coastal-world")).toHaveAttribute(
     "data-animation",
     "static",
   );
@@ -164,13 +194,8 @@ test("earned residents move independently while plant stages read saved learning
     let at = new Date("2025-01-01T00:00:00Z"),
       card = createEmptyCard(at);
     const events = [];
-    for (const [i, modality] of [
-      "copy",
-      "definition",
-      "audio",
-      "cloze",
-    ].entries()) {
-      const after = i === 3 ? scheduler.next(card, at, Rating.Good).card : null;
+    for (const [i, modality] of ["copy", "definition", "audio"].entries()) {
+      const after = i === 2 ? scheduler.next(card, at, Rating.Good).card : null;
       events.push({
         id: `test-${word.id}-${i}`,
         wordId: word.id,
@@ -180,11 +205,11 @@ test("earned residents move independently while plant stages read saved learning
           modality === "audio" ? group.pronunciationIds[0] : null,
         expectedAnswer: word.lemma,
         answer: word.lemma,
-        at: at.getTime() - (3 - i) * 60000,
+        at: at.getTime() - (2 - i) * 60000,
         mode: i === 0 ? "intro" : "acquisition",
         modality,
         correct: true,
-        rating: i === 3 ? Rating.Good : null,
+        rating: i === 2 ? Rating.Good : null,
         before: null,
         after,
       });
@@ -215,20 +240,20 @@ test("earned residents move independently while plant stages read saved learning
       introduced: true,
       stage: 3,
       streak: 3,
-      attempts: 7,
-      correct: 7,
+      attempts: 6,
+      correct: 6,
       reviewSuccesses: 3,
       card,
       everAcquired: true,
       everMature: true,
       acquiredAt: Date.parse("2025-01-01T00:00:00Z"),
       lastReviewedAt: at.getTime(),
-      revision: 7,
+      revision: 6,
       accuracy: {
         copy: { total: 1, correct: 1 },
         definition: { total: 4, correct: 4 },
         audio: { total: 1, correct: 1 },
-        cloze: { total: 1, correct: 1 },
+        cloze: { total: 0, correct: 0 },
       },
     });
     backup.attempts.push(...events);
@@ -246,12 +271,20 @@ test("earned residents move independently while plant stages read saved learning
     page.getByRole("dialog", { name: "Restore this backup?" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Confirm", exact: true }).click();
+  await expect(page.locator(".coastal-world")).toHaveCount(1);
   await expect(page.locator(".living-aquarium .motion-fish")).toHaveCount(2);
   const fish = page.locator(".living-aquarium .motion-fish");
   const periods = await fish.evaluateAll((els) =>
     els.map((el) => getComputedStyle(el).animationDuration),
   );
   expect(new Set(periods).size).toBe(2);
+  const catPeriod = await page
+    .locator(".harbor-cat")
+    .evaluate((el) => getComputedStyle(el).animationDuration);
+  const duckPeriod = await page
+    .locator(".harbor-duck")
+    .evaluate((el) => getComputedStyle(el).animationDuration);
+  expect(catPeriod).not.toBe(duckPeriod); // # Independently timed land and water residents avoid a synchronized scene loop.
   const before = await fish
     .first()
     .evaluate((el) => getComputedStyle(el).transform);

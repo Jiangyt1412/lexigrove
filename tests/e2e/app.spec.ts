@@ -19,9 +19,33 @@ test("fullscreen study preserves navigation, readable order and hidden recall an
     .getByRole("button", { name: "Start learning", exact: true })
     .click();
   await expect(page).toHaveURL(/#study$/);
-  await expect(page.locator(".sidebar, .topbar")).toHaveCount(0); // # The learning scene has no mounted home navigation.
+  await expect(
+    page.locator(".sidebar, .topbar, .world-navigation, .village-weather"),
+  ).toHaveCount(0); // # The independent learning room has no mounted home navigation or home status controls.
   const target = page.locator(".target-word");
   await expect(target).toBeVisible();
+  await expect(page.locator(".study-room")).toHaveAttribute(
+    "data-visible",
+    "true",
+  );
+  await expect
+    .poll(() =>
+      page
+        .locator(".study-room-art")
+        .evaluate((image) => (image as HTMLImageElement).naturalWidth > 0),
+    )
+    .toBe(true);
+  await expect(page.locator(".study-room .room-cloud")).toBeVisible();
+  await expect(page.locator(".study-room .room-fish")).toBeVisible();
+  await expect(page.locator(".study-room .room-cat-tail")).toBeVisible(); // # Real cloud, aquarium and companion layers keep the quiet room alive around the readable paper.
+  await expect(
+    page.getByRole("list", { name: "Word learning steps" }).locator("li"),
+  ).toHaveCount(3);
+  const family = page.locator(".study-family");
+  await expect(family).not.toHaveAttribute("open", "");
+  await family.locator("summary").click();
+  await expect(family).toHaveAttribute("open", "");
+  await expect(family.locator(".chips, .family-empty")).toBeVisible(); // # Secondary notebook pages start closed and remain available without replacing the primary word hierarchy.
   const word = (await target.innerText()).trim();
   const boxes = await Promise.all(
     [
@@ -214,7 +238,7 @@ test("Chinese search, readable details and optional visibility persist", async (
     0,
   );
 });
-test("desktop home has honest counts, local fonts and no overflow", async ({
+test("desktop home is one continuous world with honest counts and accessible scene objects", async ({
   page,
 }) => {
   await page.goto("./");
@@ -222,9 +246,29 @@ test("desktop home has honest counts, local fonts and no overflow", async ({
     page.getByRole("button", { name: "Explore 60 words" }),
   ).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
-  await expect(page.locator(".today-strip .metric strong").first()).toHaveText(
-    "0",
-  );
+  const world = page.locator(".coastal-world");
+  await expect(world).toHaveCount(1);
+  await expect(world.locator(".coast-garden")).toBeVisible();
+  await expect(world.locator(".harbor-aquarium")).toBeVisible();
+  await expect(
+    page.locator(
+      ".home-worlds, .study-launch, .today-strip, .aquarium-teaser, .sidebar, .topbar",
+    ),
+  ).toHaveCount(0); // # A structural regression cannot pass by merely decorating the old dashboard cards.
+  await expect(
+    page.getByRole("complementary", { name: "Village signpost" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("navigation", { name: "Main navigation" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Today", exact: true }),
+  ).toHaveAttribute("aria-current", "page");
+  await expect(world.locator(".coastal-status b").first()).toHaveText("0");
+  await expect(world.locator(".coastal-status b").nth(2)).toHaveText("0");
+  await expect(world.locator("[data-plant-stage]")).toHaveCount(0);
+  await expect(world.locator(".living-aquarium .motion-fish")).toHaveCount(0); // # Scenery may be inhabited, but earned plants and aquarium residents cannot predate learning.
+  await expect(world.locator(".field-marker")).toHaveText("0 words cultivated");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -232,7 +276,7 @@ test("desktop home has honest counts, local fonts and no overflow", async ({
   ).toBe(true);
   expect(
     await page
-      .locator(".world-sign")
+      .locator(".world-object .object-label b")
       .first()
       .evaluate((el) => getComputedStyle(el).fontFamily),
   ).toContain("Pixelify");
@@ -243,7 +287,15 @@ test("desktop home has honest counts, local fonts and no overflow", async ({
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
-  await expect(page.locator(".launch-actions .primary")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Start learning", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", { name: "Open Memory Aquarium", exact: true })
+    .click();
+  await expect(page).toHaveURL(/#world$/);
+  await expect(page.locator(".coastal-world")).toHaveCount(1);
+  await expect(page.locator(".harbor-aquarium")).toBeVisible(); // # The aquarium object opens the spatial world view rather than a second dashboard panel.
 });
 test("dictionary preserves the current answer and adds personal deck membership", async ({
   page,
@@ -344,9 +396,7 @@ test("three acquisition stages graduate real words", async ({ page }) => {
     page.getByRole("heading", { name: "A little more learned." }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Back to your grove" }).click();
-  await expect(page.locator(".today-strip .metric strong").nth(2)).toHaveText(
-    "2",
-  );
+  await expect(page.locator(".coastal-status b").nth(2)).toHaveText("2");
   await expect(page.locator(".living-garden .field-marker")).toContainText(
     "2 words cultivated",
   );
@@ -417,7 +467,7 @@ test("word-only import can be completed through the existing-entry editor", asyn
     "An area that drains",
   );
 });
-test("cached shell, dictionary and fonts work offline after first load", async ({
+test("cached coastal scene, shell, dictionary and fonts work offline after first load", async ({
   page,
   context,
 }) => {
@@ -425,6 +475,12 @@ test("cached shell, dictionary and fonts work offline after first load", async (
   await expect(
     page.getByRole("button", { name: "Explore 60 words" }),
   ).toBeVisible();
+  const backdropLoaded = () =>
+    page.locator(".coast-backdrop").evaluate((image) => {
+      const asset = image as HTMLImageElement;
+      return asset.complete && asset.naturalWidth > 0;
+    });
+  await expect.poll(backdropLoaded).toBe(true); // # The picture must actually load; the existence of an img element is insufficient.
   await page.evaluate(async () => {
     await navigator.serviceWorker.ready;
     await document.fonts.ready;
@@ -439,6 +495,7 @@ test("cached shell, dictionary and fonts work offline after first load", async (
   await context.setOffline(true);
   await page.reload();
   await expect(page.getByText("Offline", { exact: true })).toBeVisible();
+  await expect.poll(backdropLoaded).toBe(true); // # The scene must survive a genuinely offline document reload along with the functional app shell.
   await page.getByRole("button", { name: "Vocabulary", exact: true }).click();
   await page
     .getByRole("textbox", { name: "Search vocabulary" })
@@ -465,10 +522,13 @@ test("night and decoration-off do not change learning controls or counts", async
     .getByRole("combobox", { name: "Environment", exact: true })
     .selectOption("off");
   await page.getByRole("button", { name: "Today", exact: true }).click();
-  await expect(page.locator(".living-world")).toHaveCount(0);
-  await expect(page.locator(".today-strip .metric strong").nth(2)).toHaveText(
-    "0",
-  );
+  await expect(
+    page.locator(
+      ".coast-backdrop, .coast-atmosphere, .coast-creatures, .harbor-aquarium",
+    ),
+  ).toHaveCount(0);
+  await expect(page.locator(".coastal-world")).toHaveClass(/world-hidden/);
+  await expect(page.locator(".coastal-status b").nth(2)).toHaveText("0");
   await page
     .getByRole("button", { name: "Start learning", exact: true })
     .click();

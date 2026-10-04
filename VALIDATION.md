@@ -1,6 +1,6 @@
 # Validation record
 
-Checked locally on 2026-10-04 with the locked dependencies, for the current three-stage learning, editable recognition review and UK-first neural audio release.
+Checked locally on 2026-10-05 with the locked dependencies, for the current three-stage learning, editable recognition review and UK-first neural audio release.
 
 | Check                                         | Observed result                                                                                                                       |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,7 +23,7 @@ Migration tests lift an actual old version-4 IndexedDB fixture through version 7
 
 Audio browser tests exercise actual bundled WAV decode/play/end events as well as deterministic policy-failure/system-fallback cases. They do not establish subjective naturalness or independent phonetic accuracy. These are Kokoro-generated neural clips, not human recordings; model/generator provenance and limitations are in [AUDIO_SOURCES.md](AUDIO_SOURCES.md). Independent bilingual proofreading, Safari/Firefox coverage, long-term storage reliability and this exact custom protocol's learning outcomes have not been validated. The default dictionary remains 60 editorial starter words.
 
-The current Pages artifact has a 30-entry app-shell precache of approximately 2.09 MiB. Its 9,822,480 bytes of finite word audio warm separately in a versioned cache, with two full-body downloads and foreground playback priority. Cached audio serves proper 206 byte-range responses in CORS mode. Main JS is approximately 695 kB (203 kB gzip). Compilation succeeds with the known upstream Zod annotation notices, mixed static/dynamic model import notice and large-chunk warning. No synthesis model is downloaded or run in the PWA.
+The coastal redesign Pages artifact has a 36-entry app-shell precache of approximately 5.11 MiB, including all five original WebP scene assets (3,130,560 bytes total). Its 9,822,480 bytes of finite word audio warm separately in a versioned cache, with two full-body downloads and foreground playback priority. Cached audio serves proper 206 byte-range responses in CORS mode. Main JS is approximately 695 kB (203 kB gzip). Compilation succeeds with the known upstream Zod annotation notices, mixed static/dynamic model import notice and large-chunk warning. No synthesis model is downloaded or run in the PWA.
 
 ## Public release verification
 
@@ -39,3 +39,11 @@ The follow-up caching change removes the full audio set from service-worker inst
 The final import-compatibility guard applies anonymous CORS only to bundled audio; attributed external URLs keep the prior browser media policy, avoiding a new cross-origin-server requirement. An additional unit case verifies that distinction.
 
 Public cached UK/US `mitigate.wav` responses were inspected: both SHA-256 values and byte counts match the source WAVs, and both carry `Vary: Accept-Encoding`. An offline fixture with differing request headers reproduced the cache-miss failure before the fix. The bounded static-audio route and warmer now match by URL while ignoring Vary; this is restricted to the versioned public audio cache, not private or negotiated data. The regression fixture requires both real offline playback and a 206 response from the service worker. See [Cache.match ignoreVary](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match).
+
+## Coastal scene redesign verification (2026-10-05)
+
+83 unit/integration cases, TypeScript, ESLint and the Pages production build passed. The complete Pages Chromium suite passed 23/23 cases in 40.1 seconds, with no skipped or flaky cases. It covers the continuous home composition, accessible wooden navigation, real zero-progress beds/tank, earned plant/fish projection, four loaded seasonal assets and foreground details, day/night, saved reduced/static modes, operating-system reduced-motion priority, and actual offline image loading. The initial run found a reduced-water cascade conflict; the corrected suite verifies that app Reduced retains an 18-second restrained ripple and OS Reduce stops it.
+
+Desktop study was visually checked at 1440×1000 and 1280×900. Readable HTML follows the generated room's blank paper, with long content scrolling inside it. At 390×844, the answer input, regular-font word content and dictionary confirmation remain usable without horizontal overflow. The living room has independent window clouds/bird, fish, bubbles and cat-tail motion. Correct/wrong text is rendered on a uniform paper strip with approximately 5.4:1 sRGB contrast. The generated assets are original scene bases, not raster interfaces; exact prompts, provenance, anchors and checksums are recorded in [docs/COASTAL_ART.md](docs/COASTAL_ART.md).
+
+All six audio/review and all four lexical-ownership browser cases passed after the visual restructuring. Acquisition remains Copy → Definition → Audio. Recognition confirmation and editable choices, grouped FSRS grading, backup/history and entry-specific pronunciation remain intact. No IndexedDB schema, engine, backup format, dictionary dataset, audio file or scheduling configuration was changed by this redesign. Existing progress remains local to the user's browser. This does not establish Safari/Firefox coverage or subjective visual preference.

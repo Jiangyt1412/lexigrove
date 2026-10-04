@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"; // # Subscribe to persistent local state, including cross-tab changes.
+import { useEffect, useMemo, useState, type CSSProperties } from "react"; // # Subscribe to persistent local state, including cross-tab changes.
 import { useLiveQuery } from "dexie-react-hooks";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import {
@@ -9,13 +9,10 @@ import {
   House,
   Star,
   Plus,
-  ArrowUpRight,
-  ArrowRight,
   ShieldCheck,
   Sun,
   Moon,
   CloudOff,
-  Download,
   X,
 } from "./components/PixelIcons";
 import { db, initialize, saveSettings } from "./db/database";
@@ -23,7 +20,7 @@ import { starterWords } from "./vocabulary/seed";
 import { defaultSettings, type Session } from "./types/model";
 import { startSession } from "./learning/engine";
 import { statistics } from "./statistics/statistics";
-import { Metric, Empty } from "./components/ui";
+import { Empty } from "./components/ui";
 import { Dictionary } from "./dictionary/Dictionary";
 import Vocabulary, { WordEditor } from "./pages/Vocabulary";
 import ImportWords from "./pages/ImportWords";
@@ -31,10 +28,12 @@ import Study from "./pages/Study";
 import Statistics from "./pages/Statistics";
 import Settings from "./pages/Settings";
 import World from "./world/World";
-import { LivingScene } from "./world/LivingScene"; // # Original marine scenery connects the home screen to the study view.
+import { CoastalToday } from "./world/CoastalWorld"; // # One continuous scene replaces the dashboard garden and aquarium cards.
 import { resolveSeason } from "./world/environment";
 import { registerVocabularyTool } from "./utils/webmcp";
 import { warmStarterAudio } from "./speech/audio-cache";
+import { assetUrl } from "./utils/assets"; // # Shared interior scenery follows the deployment base and the selected season.
+import { learningUnits } from "./vocabulary/lexicon"; // # Scene labels count eligible words rather than promising words absent from the library.
 type Page =
   | "Today"
   | "Vocabulary"
@@ -172,7 +171,28 @@ export default function App() {
       setToast((e as Error).message);
     }
   }
-  const activeNew = Math.max(0, settings.dailyTarget - s.newToday),
+  const units = useMemo(() => learningUnits(words), [words]);
+  const continuingWords = new Set(
+    progress
+      .filter((p) => p.introduced && !p.card && !p.known && !p.suspended)
+      .map((p) => p.wordId || p.id),
+  ).size;
+  const availableNew = new Set(
+    progress
+      .filter(
+        (p) =>
+          !p.introduced &&
+          !p.card &&
+          !p.known &&
+          !p.suspended &&
+          units.some((w) => w.id === p.id && w.easyDefinition),
+      )
+      .map((p) => p.wordId || p.id),
+  ).size;
+  const activeNew = Math.min(
+      availableNew,
+      Math.max(0, settings.dailyTarget - s.newToday - continuingWords),
+    ),
     themeNight =
       settings.theme === "night" ||
       (settings.theme === "system" &&
@@ -190,30 +210,43 @@ export default function App() {
     );
   return (
     <div
-      className={`app-shell ${page === "Study" ? `study-mode ${settings.world === "off" ? "study-calm" : ""}` : ""}`}
+      className={`app-shell coastal-shell ${page === "Study" ? `study-mode ${settings.world === "off" ? "study-calm" : ""}` : ""}`}
+      style={
+        {
+          "--village-scenery": `url("${assetUrl(`assets/coastal/coast-${resolveSeason(settings.season)}.webp`)}")`,
+        } as CSSProperties
+      }
     >
       {page !== "Study" && (
-        <aside className="sidebar">
+        <aside className="world-navigation" aria-label="Village signpost">
           <a
-            className="brand"
+            className="village-brand"
             href="#today"
+            aria-label="Lexigrove home"
             onClick={(e) => {
               e.preventDefault();
               go("Today");
             }}
           >
-            <img src={assetUrl("favicon.svg")} alt="" />
-            <span>lexigrove</span>
+            <Sprout size={27} />
           </a>
           <nav aria-label="Main navigation">
             {nav.map(({ page: p, icon: Icon }) => (
               <button
                 key={p}
-                className={`nav-item ${page === p ? "active" : ""}`}
+                className={`village-nav-item ${page === p ? "active" : ""}`}
+                aria-label={
+                  p === "Personal words"
+                    ? "My words"
+                    : p === "Difficult words"
+                      ? "Tricky words"
+                      : p
+                }
                 aria-current={page === p ? "page" : undefined}
+                title={p}
                 onClick={() => go(p)}
               >
-                <Icon size={20} />
+                <Icon size={23} />
                 <span>
                   {p === "Personal words"
                     ? "My words"
@@ -222,196 +255,61 @@ export default function App() {
                       : p}
                 </span>
                 {p === "Today" && s.due > 0 && (
-                  <b className="nav-count">{s.due}</b>
+                  <b className="village-due">{s.due}</b>
                 )}
               </button>
             ))}
-          </nav>
-          <div className="sidebar-bottom">
-            <div className="sidebar-pixel">
-              <svg viewBox="0 0 32 32">
-                <use href={assetUrl("assets/original/sprites.svg#books")} />
-              </svg>
-              <span>One word. One discovery.</span>
-            </div>
             <button
-              className={`nav-item ${page === "Settings & data" ? "active" : ""}`}
+              className={`village-nav-item ${page === "Settings & data" ? "active" : ""}`}
+              aria-label="Settings & data"
+              title="Settings & data"
               onClick={() => go("Settings & data")}
             >
-              <SettingsIcon size={20} />
+              <SettingsIcon size={23} />
               <span>Settings & data</span>
             </button>
-            <div className="local-note">
-              <ShieldCheck size={14} />
-              Saved on this device
-            </div>
-          </div>
+          </nav>
         </aside>
       )}
       <main className="main">
         {page !== "Study" && (
-          <header className="topbar">
+          <div className="village-weather" aria-label="World status">
             <span>
-              <b>{page}</b>
+              {online ? <ShieldCheck size={13} /> : <CloudOff size={13} />}{" "}
+              {online ? "Saved locally" : "Offline"}
             </span>
-            <div>
-              <span className="badge">
-                {online ? <ShieldCheck size={13} /> : <CloudOff size={13} />}{" "}
-                {online ? "Local-first" : "Offline"}
-              </span>
-              <button
-                className="icon-button"
-                aria-label="Toggle day and night theme"
-                onClick={() =>
-                  saveSettings({ theme: themeNight ? "day" : "night" })
-                }
-              >
-                {themeNight ? <Sun size={19} /> : <Moon size={19} />}
-              </button>
-            </div>
-          </header>
+            <button
+              aria-label="Toggle day and night theme"
+              title="Toggle day and night theme"
+              onClick={() =>
+                saveSettings({ theme: themeNight ? "day" : "night" })
+              }
+            >
+              {themeNight ? <Sun size={19} /> : <Moon size={19} />}
+            </button>
+          </div>
         )}
         <div
-          className={`page ${page === "Study" ? "study-container" : page === "Today" ? "today-page" : ""}`}
+          className={`page ${page === "Study" ? "study-container" : page === "Today" ? "today-page" : page === "My world" ? "world-page" : "village-interior"}`}
         >
           {!ready ? (
             <Empty title="Opening your library…" />
           ) : page === "Today" ? (
-            <>
-              <div className="page-heading">
-                <h1>A little world, growing with you.</h1>
-                <span className="date-label">
-                  {new Date(clock).toLocaleDateString("en", {
-                    weekday: "long",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </span>
-              </div>
-              {settings.world !== "off" && (
-                <div
-                  className={`home-worlds ${settings.world === "mixed" ? "both-worlds" : ""}`}
-                >
-                  <LivingScene
-                    kind={settings.world === "ocean" ? "aquarium" : "garden"}
-                    count={
-                      settings.world === "ocean" ? world.aquarium : world.garden
-                    }
-                    settings={settings}
-                    progress={progress}
-                    hero
-                    onInspect={() => go("My world")}
-                  />
-                  {settings.world === "mixed" && (
-                    <LivingScene
-                      kind="aquarium"
-                      count={world.aquarium}
-                      settings={settings}
-                      progress={progress}
-                      onInspect={() => go("My world")}
-                    />
-                  )}
-                </div>
-              )}
-              <div className="today-strip">
-                <Metric
-                  label="Reviews due"
-                  value={s.due}
-                  detail={s.overdue ? `${s.overdue} overdue` : undefined}
-                />
-                <Metric label="New words" value={s.due ? 0 : activeNew} />
-                <Metric label="Words learned" value={s.learned} />
-                <Metric
-                  label="Review recall"
-                  value={s.retention === null ? "—" : `${s.retention}%`}
-                />
-              </div>
-              <div className="home-bottom">
-                <section className="study-launch">
-                  <div>
-                    <span className="eyebrow">TODAY’S FIELD NOTES</span>
-                    <h2>
-                      {s.due
-                        ? "Revisit your discoveries."
-                        : activeNew
-                          ? "Discover a few new words."
-                          : "Your daily target is complete."}
-                    </h2>
-                    {s.overdue >= 50 && (
-                      <p>
-                        {s.overdue} overdue · New words pause while you catch
-                        up.
-                      </p>
-                    )}
-                    <span className="subtle">
-                      {s.due
-                        ? `About ${Math.ceil(s.due * 0.4)} minutes`
-                        : `${settings.dailyTarget} words / day`}
-                    </span>
-                  </div>
-                  <div className="launch-actions">
-                    <button
-                      className="primary"
-                      disabled={!s.due && !activeNew && !s.learning}
-                      onClick={() => study(s.due ? "review" : "acquire")}
-                    >
-                      {s.due
-                        ? "Start review"
-                        : s.learning
-                          ? "Continue learning"
-                          : "Start learning"}
-                      <ArrowRight size={18} />
-                    </button>
-                    {session && session.wordIds.length > 0 && (
-                      <button
-                        className="text-button"
-                        onClick={() => go("Study")}
-                      >
-                        Resume session
-                      </button>
-                    )}
-                  </div>
-                </section>
-                {settings.world === "mixed" && (
-                  <button
-                    className="aquarium-teaser"
-                    onClick={() => go("My world")}
-                  >
-                    <svg className="teaser-fish" viewBox="0 0 32 32">
-                      <use
-                        href={assetUrl(
-                          `assets/original/sprites.svg#${world.aquarium ? "fish-blue" : "shell"}`,
-                        )}
-                      />
-                    </svg>
-                    <span>
-                      <small>MEMORY AQUARIUM</small>
-                      <b>
-                        {world.aquarium
-                          ? `${world.aquarium} lasting memories`
-                          : "Quiet waters."}
-                      </b>
-                    </span>
-                    <ArrowUpRight size={19} />
-                  </button>
-                )}
-              </div>
-              <div className="home-footer">
-                <button
-                  className="text-button"
-                  onClick={() => go("Vocabulary")}
-                >
-                  Explore {words.length} words <ArrowUpRight size={14} />
-                </button>
-                <button
-                  className="text-button"
-                  onClick={() => go("Settings & data")}
-                >
-                  <Download size={14} />
-                  {settings.lastBackup ? "Manage backups" : "Save a backup"}
-                </button>
-              </div>
-            </>
+            <CoastalToday
+              settings={settings}
+              world={world}
+              progress={progress}
+              stats={s}
+              activeNew={activeNew}
+              sessionActive={!!session && session.wordIds.length > 0}
+              date={clock}
+              onStudy={() => study(s.due ? "review" : "acquire")}
+              onResume={() => go("Study")}
+              onLibrary={() => go("Vocabulary")}
+              onWorld={() => go("My world")}
+              onStatistics={() => go("Statistics")}
+              onData={() => go("Settings & data")}
+            />
           ) : page === "Study" ? (
             <Study
               words={words}
@@ -528,4 +426,3 @@ export default function App() {
     </div>
   );
 }
-import { assetUrl } from "./utils/assets"; // # Public asset paths share Vite's configured deployment base.

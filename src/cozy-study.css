@@ -1,0 +1,1417 @@
+/* # The reading surface is a real notebook in a layered coastal room; lexical content stays readable HTML. */
+:root[data-theme] .study-mode .cozy-study .answer-result.correct .result-label {
+  color: #3e705c;
+}
+:root[data-theme]
+  .study-mode
+  .cozy-study
+  .answer-result.incorrect
+  .result-label {
+  color: #945644;
+}
+:root[data-theme] .study-mode,
+:root[data-theme] .study-mode::before {
+  background: #4a6465;
+}
+:root[data-theme] .study-mode::after {
+  display: none;
+}
+:root[data-theme] .study-mode .study-container {
+  width: 100%;
+  max-width: none;
+  padding: 36px 34px 70px;
+}
+.study-page.cozy-study {
+  --study-paper: #fff8ea;
+  --study-edge: #d6bb99;
+  --study-wood: #74574c;
+  --ink: #2f424d;
+  --muted: #657574;
+  --surface: var(--study-paper);
+  --soft: #ede8d9;
+  --line: #d6d4bf;
+  --accent: #397c7e;
+  --green: #39766a;
+  width: 100%;
+  max-width: none;
+  position: relative;
+  isolation: isolate;
+  padding: 0;
+  margin: 0 auto;
+  min-height: calc(100vh - 106px);
+  color: var(--ink);
+}
+.study-room {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: #68888a;
+}
+.study-room-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  object-position: center;
+}
+.room-light {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #234a5310,
+    transparent 28%,
+    transparent 72%,
+    #234a5310
+  );
+}
+.study-room[data-visible="false"] {
+  background: #b7cbcb;
+}
+.study-room[data-visible="false"] > * {
+  display: none;
+}
+:root[data-theme="night"] .study-room-art {
+  filter: brightness(0.43) saturate(0.83);
+}
+:root[data-theme="night"] .room-light {
+  background: radial-gradient(ellipse at 50% 55%, #f4c68322 0, transparent 64%);
+}
+.study-room > svg,
+.room-companion {
+  position: absolute;
+  image-rendering: pixelated;
+  filter: drop-shadow(4px 4px #233f4038);
+}
+.room-plant {
+  width: clamp(68px, 8vw, 120px);
+  left: max(4%, calc(50% - 536px));
+  bottom: 26%;
+}
+.room-tank {
+  width: clamp(112px, 13vw, 188px);
+  right: max(3%, calc(50% - 596px));
+  bottom: 30%;
+}
+.room-companion {
+  width: 118px;
+  left: max(5%, calc(50% - 534px));
+  bottom: 9%;
+  transform-origin: center bottom;
+}
+.room-companion > svg {
+  display: block;
+  width: 100%;
+}
+.companion-spark {
+  position: absolute;
+  color: #e9c976;
+  top: -10px;
+  right: 18px;
+  animation: notebook-bloom 450ms ease-out both;
+}
+.room-cat-tail {
+  transform-origin: 66px 46px;
+  animation: room-tail 9.7s ease-in-out infinite;
+}
+.room-fish {
+  animation: room-swim 17.3s linear infinite;
+  transform-origin: 55px 53px;
+}
+.room-bubbles {
+  animation: room-bubble 6.9s ease-in-out infinite;
+}
+.room-leaves {
+  transform-origin: 38px 103px;
+  animation: room-sway 8.3s ease-in-out infinite;
+}
+.room-blossoms {
+  display: none;
+}
+.cozy-study[data-season="spring"] .room-blossoms {
+  display: block;
+}
+.cozy-study[data-season="autumn"] .room-leaves {
+  filter: sepia(0.35) hue-rotate(318deg);
+}
+.cozy-study[data-season="winter"] .room-season-accent {
+  position: absolute;
+  right: 11%;
+  top: 22%;
+  width: 5px;
+  height: 5px;
+  background: #f6ffff;
+  box-shadow:
+    24px 42px #f6ffff,
+    -38px 92px #f6ffff,
+    58px 112px #f6ffff,
+    6px 142px #f6ffff;
+  opacity: 0.7;
+  animation: room-snow 11.9s linear infinite;
+}
+.cozy-study[data-season="autumn"] .room-season-accent {
+  position: absolute;
+  left: max(4%, calc(50% - 540px));
+  bottom: 22%;
+  width: 54px;
+  height: 40px;
+  background: #d08b55;
+  border: 5px solid #9a6246;
+  box-shadow:
+    inset 12px 0 #e2a060,
+    inset -12px 0 #c3794d;
+  clip-path: polygon(
+    10% 15%,
+    45% 15%,
+    45% 0,
+    60% 0,
+    60% 15%,
+    90% 15%,
+    90% 25%,
+    100% 25%,
+    100% 80%,
+    90% 80%,
+    90% 100%,
+    10% 100%,
+    10% 80%,
+    0 80%,
+    0 25%,
+    10% 25%
+  );
+}
+.companion-happy {
+  animation: companion-happy 450ms ease-out;
+}
+.companion-thoughtful {
+  animation: companion-think 430ms ease-in-out;
+}
+/* # A bounded paper region protects definitions from scenic texture without turning the room into dashboard cards. */
+.study-notebook {
+  position: relative;
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 24px 38px 26px;
+  background: var(--study-paper);
+  border: 3px solid var(--study-edge);
+  outline: 6px solid var(--study-wood);
+  box-shadow:
+    10px 10px 0 #1c343459,
+    inset 6px 0 #eadac1,
+    inset -4px 0 #eee1cb;
+  border-radius: 0;
+  clip-path: polygon(
+    0 8px,
+    8px 8px,
+    8px 0,
+    calc(100% - 8px) 0,
+    calc(100% - 8px) 8px,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    8px calc(100% - 8px),
+    0 calc(100% - 8px)
+  );
+}
+.study-notebook::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 24px,
+    #aa736633 24px,
+    #aa736633 25px,
+    transparent 25px
+  );
+}
+:root[data-theme] .study-mode .cozy-study .study-top {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0 0 15px;
+  color: var(--muted);
+}
+:root[data-theme] .study-mode .cozy-study .study-top > span {
+  color: var(--muted);
+  font: 13px var(--font-learning);
+}
+:root[data-theme] .study-mode .cozy-study .study-top .text-button {
+  color: var(--ink);
+  font-size: 14px;
+}
+:root[data-theme] .study-mode .cozy-study .study-progress {
+  height: 5px;
+  margin: 0 0 22px;
+  background: #d5d9c6;
+  border: none;
+  box-shadow: 0 2px #ece4d3;
+}
+:root[data-theme] .study-mode .cozy-study .study-progress > span {
+  position: relative;
+  background: #75a48a;
+}
+.cozy-study .study-progress svg {
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  color: #54846b;
+}
+.notebook-steps .restarted {
+  color: #937568;
+  border-color: #c4afa0;
+}
+:root[data-theme] .study-mode .cozy-study .study-focus {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-top: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ink);
+  clip-path: none;
+}
+.notebook-binding {
+  position: absolute;
+  left: -44px;
+  top: 6px;
+  bottom: 0;
+  width: 9px;
+  background: repeating-linear-gradient(
+    transparent 0 23px,
+    #6e675a 23px 27px,
+    #c8b697 27px 31px,
+    transparent 31px 47px
+  );
+  pointer-events: none;
+}
+:root[data-theme] .study-mode .cozy-study .study-label {
+  color: #6a786c;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+:root[data-theme] .study-mode .cozy-study .study-label > span {
+  margin-left: auto;
+  border: 1px solid #d4c8ac;
+  padding: 3px 8px;
+  background: #f1e9d6;
+  color: #667264;
+  border-radius: 0;
+}
+.notebook-steps {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 23px;
+  padding: 0;
+}
+.notebook-steps li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 12px/1.4 var(--font-learning);
+  color: #86918a;
+  padding: 5px 7px;
+  border-bottom: 2px solid #dbdccc;
+}
+.notebook-steps .current {
+  color: #397c7e;
+  border-color: #397c7e;
+}
+.notebook-steps .completed {
+  color: #54795d;
+  border-color: #a9bd94;
+}
+.step-mark {
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 11px;
+  text-align: center;
+}
+:root[data-theme] .study-mode .cozy-study .target-word {
+  color: var(--ink);
+  font: 650 50px/1.13 var(--font-learning);
+  margin: 0;
+}
+.study-mode .cozy-study .target-line {
+  margin-bottom: 20px;
+  gap: 12px;
+}
+.study-mode .cozy-study .study-phonetics {
+  gap: 9px;
+  flex-direction: row;
+  align-items: center;
+}
+.study-mode .cozy-study .study-phonetics .word-meta {
+  flex: 0 0 auto;
+  width: fit-content;
+}
+.study-mode .cozy-study .pronunciation-pair {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.study-mode .cozy-study .study-phonetics .word-meta,
+.study-mode .cozy-study .word-meta {
+  color: #64746f;
+  font: 500 14px/1.5 var(--font-learning);
+  text-transform: none;
+}
+.study-mode .cozy-study .study-phonetics .word-meta {
+  background: #e6ecd9;
+  border-bottom: 3px solid #bbcbb4;
+  padding: 5px 9px;
+  border-radius: 0;
+}
+:root[data-theme] .study-mode .cozy-study .pronunciation-button,
+:root[data-theme] .cozy-dictionary .pronunciation-button {
+  color: #3b5e69;
+  background: #e5efeb;
+  border: 1px solid #acc0b6;
+  border-bottom: 3px solid #a0b8ac;
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 37px;
+  padding: 6px 9px;
+  clip-path: none;
+}
+:root[data-theme]
+  .study-mode
+  .cozy-study
+  .pronunciation-button.secondary-accent,
+:root[data-theme] .cozy-dictionary .pronunciation-button.secondary-accent {
+  background: #eeeadf;
+  border-color: #c9c4b4;
+}
+.study-mode .cozy-study .study-meaning {
+  margin-bottom: 18px;
+}
+:root[data-theme] .study-mode .cozy-study .learning-definition {
+  font-size: 22px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+:root[data-theme] .study-mode .cozy-study .chinese-meaning {
+  font-size: 16px;
+  color: #596e6b;
+}
+.study-mode .cozy-study .study-example {
+  margin-bottom: 18px;
+}
+:root[data-theme] .study-mode .cozy-study .study-example blockquote {
+  padding: 6px 0 6px 13px;
+  border-left: 3px solid #a3c0b9;
+  font-size: 17px;
+  line-height: 1.6;
+  background: linear-gradient(90deg, #e1eee973, transparent);
+  color: #4d686d;
+  margin-top: 5px;
+}
+.cozy-study .notebook-disclosure {
+  display: block;
+  margin: 0 0 10px;
+  border: none;
+  background: none;
+}
+.cozy-study .notebook-disclosure summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  list-style: none;
+  cursor: pointer;
+  font: 13px/1.5 var(--font-learning);
+  color: #60736a;
+  background: #e9ebda;
+  border: 1px solid #d0d4bb;
+  border-bottom: 2px solid #bdc8aa;
+  padding: 6px 10px;
+}
+.cozy-study .notebook-disclosure summary::after {
+  content: "+";
+  margin-left: 8px;
+}
+.cozy-study .notebook-disclosure[open] summary::after {
+  content: "−";
+}
+.cozy-study .notebook-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+.cozy-study .notebook-disclosure .chips {
+  margin: 10px 0 10px;
+}
+.cozy-study .family-heading {
+  margin: 10px 0 0;
+}
+.cozy-study .family-heading a,
+.cozy-study .family-empty {
+  font-size: 12px;
+  color: var(--muted);
+}
+:root[data-theme]
+  .study-mode
+  .cozy-study
+  :is(.study-collocations, .study-family)
+  .chip {
+  border-radius: 0;
+  background: #efedde;
+  border: 1px solid #c8cbb8;
+  color: var(--ink);
+}
+.study-mode .cozy-study .answer-label {
+  margin: 22px 0 10px;
+  color: var(--muted);
+}
+:root[data-theme] .study-mode .cozy-study input.answer-input {
+  height: 54px;
+  font: 24px var(--font-learning);
+  background: #fbf5e8;
+  color: var(--ink);
+  border: 2px solid #b0b6a4;
+  border-bottom: 4px solid #8ba395;
+  border-radius: 0;
+  box-shadow: inset 3px 3px #ddd9c933;
+  padding: 9px 13px;
+}
+:root[data-theme] .study-mode .cozy-study input.answer-input:focus {
+  outline: 2px solid #468b91;
+  outline-offset: 3px;
+  border-color: #468b91;
+}
+:root[data-theme] .study-mode .cozy-study .primary {
+  background: #407e7e;
+  border: 2px solid #2c6064;
+  border-bottom: 4px solid #265259;
+  color: #f8f8eb;
+  border-radius: 0;
+  box-shadow: inset 2px 2px #71a196;
+  min-height: 43px;
+  padding: 8px 15px;
+  font: 600 14px var(--font-learning);
+  clip-path: none;
+}
+.study-mode .cozy-study .keyboard-hint {
+  color: var(--muted);
+}
+.study-mode .cozy-study .recognition-word {
+  padding: 35px 0 44px;
+}
+:root[data-theme] .study-mode .cozy-study .recognition-option {
+  border-radius: 0;
+  padding: 20px 10px;
+  border: 2px solid #a6b7a4;
+  border-bottom: 4px solid #819b8b;
+  background: #e8eddc;
+  color: #395d58;
+  font: 600 20px var(--font-learning);
+  box-shadow: inset 2px 2px #ffffef;
+  clip-path: none;
+}
+:root[data-theme] .study-mode .cozy-study .recognition-option.unsure {
+  background: #f0e5d8;
+  border-color: #c6ae91;
+}
+:root[data-theme] .study-mode .cozy-study .recognition-option.unknown {
+  background: #e6e8ef;
+  border-color: #a7b3c7;
+}
+.study-mode .cozy-study .recall-prompt {
+  color: var(--ink);
+  font: 450 28px/1.55 var(--font-learning);
+  margin-top: 28px;
+  min-height: 110px;
+}
+.study-mode .cozy-study .listen-prompt {
+  min-height: 156px;
+  padding: 22px 0 12px;
+}
+.study-mode .cozy-study .pronunciation-listening .pronunciation-button {
+  padding: 12px 17px;
+  min-height: 58px;
+}
+:root[data-theme] .study-mode .cozy-study .answer-result {
+  color: var(--ink);
+  padding-top: 16px;
+  margin-top: 22px;
+  border-color: #c7d3bd;
+}
+:root[data-theme] .study-mode .cozy-study .answer-result.incorrect {
+  border-color: #caada0;
+  animation: notebook-thought 420ms ease-in-out;
+}
+.cozy-study .notebook-success {
+  position: absolute;
+  right: -14px;
+  top: -14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  color: #80a27e;
+  animation: notebook-bloom 450ms ease-out both;
+  pointer-events: none;
+}
+:root[data-theme] .study-mode .cozy-study .study-bottom {
+  border-color: #d5d3bd;
+  margin-top: 18px;
+  padding-top: 12px;
+}
+.study-mode .cozy-study .study-bottom .text-button {
+  color: #527a78;
+}
+:root[data-theme] .study-mode .cozy-study .session-complete {
+  border: none;
+  padding: 64px 26px;
+  background: var(--study-paper);
+  box-shadow: none;
+}
+/* # Dictionary tabs are notebook bookmarks; each POS/pronunciation/sense still owns its original controls. */
+:root[data-theme] .dictionary-modal.cozy-dictionary {
+  --ink: #30434e;
+  --muted: #65716d;
+  --surface: #fff7e8;
+  --soft: #eee8d8;
+  --line: #d4ceba;
+  --accent: #397c7e;
+  width: 870px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100dvh - 48px);
+  color: var(--ink);
+  background: #fff7e8;
+  border: 5px solid #795a4b !important;
+  border-radius: 0;
+  box-shadow:
+    inset -3px -3px #d7b98e,
+    10px 10px #263e405c !important;
+  clip-path: none;
+}
+.cozy-dictionary::backdrop {
+  background: #1d353dad;
+  backdrop-filter: none;
+}
+:root[data-theme] .dictionary-modal.cozy-dictionary .modal-inner {
+  padding: 0;
+}
+.cozy-dictionary .dictionary-journal {
+  display: grid;
+  grid-template-columns: 91px minmax(0, 1fr);
+  min-height: 580px;
+  background: linear-gradient(
+    90deg,
+    #eee0c6 0,
+    #f8edd5 68px,
+    #ddc8a5 86px,
+    #b4a084 91px,
+    #eadbc1 99px,
+    #fff7e8 126px
+  );
+}
+.cozy-dictionary .journal-bookmarks {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 13px;
+  padding: 32px 12px 22px 7px;
+  min-width: 0;
+}
+.cozy-dictionary .journal-bookmarks button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #e0e5cd;
+  color: #52745e;
+  border: 1px solid #b2bc97;
+  border-bottom: 3px solid #9aaa83;
+  padding: 11px 6px;
+  border-radius: 0;
+  font-size: 12px;
+  box-shadow: inset 2px 2px #f9f3dd;
+  min-height: 66px;
+  clip-path: none;
+}
+.cozy-dictionary .journal-bookmarks button:nth-child(2) {
+  background: #e8dec7;
+  border-color: #c5b293;
+  color: #826d50;
+}
+.cozy-dictionary .journal-bookmarks button:nth-child(3) {
+  background: #dce7e7;
+  border-color: #adc3c7;
+  color: #567783;
+}
+.cozy-dictionary .journal-spine {
+  margin-top: 24px;
+  height: 170px;
+  background: repeating-linear-gradient(
+    transparent 0 24px,
+    #c9b592 24px 27px,
+    transparent 27px 40px
+  );
+}
+.cozy-dictionary .dictionary-page {
+  min-width: 0;
+  padding: 32px 38px 30px;
+}
+.cozy-dictionary .modal-heading {
+  top: 23px;
+  right: 23px;
+  z-index: 2;
+}
+.cozy-dictionary .modal-heading .icon-button {
+  border: 1px solid #c4bcab;
+  background: #f3ecd9;
+  border-radius: 0;
+  color: #7a756a;
+  box-shadow: 2px 2px #d9cbae;
+}
+:root[data-theme] .dictionary-modal.cozy-dictionary .word-title h2 {
+  font: 650 45px/1.15 var(--font-learning);
+  color: var(--ink);
+  margin: 0 0 17px;
+  overflow-wrap: anywhere;
+}
+:root[data-theme] .cozy-dictionary .entry-tab {
+  color: #68766b;
+  border: 1px solid #b9c3a5;
+  border-bottom: 3px solid #a7b894;
+  background: #e6ebd8;
+  border-radius: 0;
+  padding: 8px 13px;
+  box-shadow: inset 2px 2px #ffffed;
+  font-size: 14px;
+  clip-path: polygon(
+    0 4px,
+    4px 4px,
+    4px 0,
+    calc(100% - 4px) 0,
+    calc(100% - 4px) 4px,
+    100% 4px,
+    100% 100%,
+    0 100%
+  );
+}
+:root[data-theme] .cozy-dictionary .entry-tab.selected {
+  background: #457d87;
+  color: #f7faee;
+  border-color: #2d5966;
+  box-shadow: inset 2px 2px #79a4a0;
+}
+.cozy-dictionary .word-meta {
+  width: fit-content;
+  padding: 5px 9px;
+  background: #e8ead7;
+  border-bottom: 2px solid #b6c4a4;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-transform: none;
+  color: #5e7464;
+}
+:root[data-theme] .cozy-dictionary .dictionary-definition {
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.65;
+  margin: 17px 0;
+}
+.cozy-dictionary .sense-list {
+  margin: 15px 0 20px;
+  padding-left: 25px;
+}
+.cozy-dictionary .sense-list li {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+  padding-left: 5px;
+  margin-bottom: 13px;
+}
+.cozy-dictionary blockquote {
+  background: #e5ede580;
+  border-left: 3px solid #a1bba8;
+  padding: 10px 14px;
+  color: #4d6b6d;
+  font-size: 17px;
+  line-height: 1.65;
+}
+.cozy-dictionary :is(input, textarea, select) {
+  background: #fbf5e6;
+  color: var(--ink);
+  border: 1px solid #b6b9a7;
+  border-bottom: 3px solid #a0b39e;
+  border-radius: 0;
+  box-shadow: none;
+}
+.cozy-dictionary .chip {
+  border: 1px solid #c9cbb4;
+  border-bottom: 2px solid #b4bba3;
+  border-radius: 0;
+  background: #ececda;
+  color: #48665c;
+  box-shadow: none;
+}
+.cozy-dictionary .detail-section h3 {
+  color: #5a7566;
+}
+.cozy-dictionary .field,
+.cozy-dictionary .subtle,
+.cozy-dictionary .sense-progress,
+.cozy-dictionary .source-details {
+  color: var(--muted);
+}
+.cozy-dictionary .review-confirmation {
+  background: #fff7e8;
+  border-top: 2px solid #b4bea3;
+  box-shadow: 0 -10px 0 #fff7e8;
+  padding-bottom: 5px;
+  z-index: 2;
+}
+:root[data-theme] .dictionary-modal.cozy-dictionary .review-choice {
+  background: #e8ecd8;
+  color: #4d675c;
+  border: 1px solid #b6c1a0;
+  border-bottom: 3px solid #99ac89;
+  border-radius: 0;
+  box-shadow: inset 2px 2px #ffffed;
+  padding: 10px 6px;
+}
+:root[data-theme] .dictionary-modal.cozy-dictionary .review-choice.selected {
+  color: #fffbee;
+  background: #477d85;
+  border-color: #315d66;
+  box-shadow: inset 2px 2px #75a3a0;
+}
+:root[data-theme]
+  .dictionary-modal.cozy-dictionary
+  .review-confirmation
+  > .primary,
+:root[data-theme] .dictionary-modal.cozy-dictionary .actions > .primary {
+  color: #fffbee;
+  background: #407d81;
+  border: 2px solid #2d5a62;
+  border-bottom: 4px solid #284e55;
+  border-radius: 0;
+  box-shadow: inset 2px 2px #72a19b;
+  min-height: 44px;
+}
+/* # Short feedback does not gate navigation or typing, and independent loops stop for reduced/static motion. */
+@keyframes room-tail {
+  0%,
+  55%,
+  76%,
+  100% {
+    transform: rotate(0);
+  }
+  62% {
+    transform: rotate(-6deg);
+  }
+  68% {
+    transform: rotate(4deg);
+  }
+}
+@keyframes room-swim {
+  0%,
+  100% {
+    transform: translate(0, 0) scaleX(1);
+  }
+  32% {
+    transform: translate(36px, 2px) scaleX(1);
+  }
+  38%,
+  44% {
+    transform: translate(36px, 2px) scaleX(-1);
+  }
+  77% {
+    transform: translate(-16px, -4px) scaleX(-1);
+  }
+  83%,
+  88% {
+    transform: translate(-16px, -4px) scaleX(1);
+  }
+}
+@keyframes room-bubble {
+  0% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translateY(-38px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-42px);
+    opacity: 0;
+  }
+}
+@keyframes room-sway {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+@keyframes room-snow {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(86px);
+  }
+}
+@keyframes companion-happy {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  65% {
+    transform: translateY(-2px);
+  }
+}
+@keyframes companion-think {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes notebook-bloom {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.8);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes notebook-thought {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(-2px);
+  }
+  66% {
+    transform: translateX(2px);
+  }
+}
+:root[data-motion="reduced"] .study-room-motion,
+:root[data-motion="static"] :is(.study-room-motion, .room-season-accent),
+:root[data-motion="static"]
+  .cozy-study
+  :is(
+    .room-companion,
+    .companion-spark,
+    .notebook-success,
+    .answer-result.incorrect
+  ) {
+  animation: none !important;
+}
+:root[data-motion="reduced"] .room-season-accent {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cozy-study
+    :is(
+      .study-room-motion,
+      .room-companion,
+      .room-season-accent,
+      .companion-spark,
+      .notebook-success,
+      .answer-result.incorrect
+    ) {
+    animation: none !important;
+  }
+}
+@media (max-width: 1100px) {
+  .room-plant {
+    left: 1%;
+    width: 66px;
+    bottom: 15%;
+  }
+  .room-tank {
+    right: 1%;
+    width: 100px;
+    bottom: 17%;
+  }
+  .room-companion {
+    left: 1%;
+    width: 92px;
+    bottom: 4%;
+  }
+}
+/* # Compact screens keep the word and input near the top; environmental space moves to corners. */
+@media (max-width: 760px) {
+  :root[data-theme] .study-mode .study-container {
+    padding: 18px 12px 36px;
+  }
+  .study-notebook {
+    width: 100%;
+    padding: 18px 18px 23px;
+    outline-width: 3px;
+    box-shadow: 4px 4px #1c343440;
+  }
+  .study-notebook::before {
+    display: none;
+  }
+  .study-room-art {
+    object-position: 22% center;
+  }
+  .room-plant,
+  .room-tank {
+    display: none;
+  }
+  .room-companion {
+    width: 64px;
+    left: auto;
+    right: 18px;
+    bottom: 3px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-top {
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 12px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-top > span {
+    font-size: 11px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-top .text-button {
+    font-size: 12px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-progress {
+    margin-bottom: 16px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-label {
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+  .notebook-steps {
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  .notebook-steps li {
+    font-size: 11px;
+    padding: 4px;
+    gap: 5px;
+  }
+  .notebook-steps svg {
+    width: 16px;
+    height: 16px;
+  }
+  :root[data-theme] .study-mode .cozy-study .target-word {
+    font-size: 39px;
+  }
+  :root[data-theme] .study-mode .cozy-study .learning-definition {
+    font-size: 19px;
+  }
+  .study-mode .cozy-study .study-phonetics {
+    gap: 8px;
+  }
+  .study-mode .cozy-study .study-phonetics .pronunciation-pair {
+    flex-wrap: wrap;
+  }
+  :root[data-theme] .study-mode .cozy-study .pronunciation-button {
+    padding: 6px;
+  }
+  .study-mode .cozy-study .pronunciation-ipa {
+    font-size: 13px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-example blockquote {
+    font-size: 16px;
+  }
+  .study-mode .cozy-study .recall-prompt {
+    margin: 22px 0 16px;
+    font-size: 23px;
+    min-height: 95px;
+  }
+  .study-mode .cozy-study .recognition-word {
+    padding: 25px 0 38px;
+  }
+  :root[data-theme] .study-mode .cozy-study .recognition-option {
+    font-size: 17px;
+    padding: 18px 3px;
+  }
+  .study-mode .cozy-study .study-bottom {
+    flex-wrap: wrap;
+  }
+  .study-mode .cozy-study .study-bottom .text-button {
+    font-size: 12px;
+  }
+  :root[data-theme] .dictionary-modal.cozy-dictionary {
+    max-width: calc(100vw - 18px);
+    max-height: calc(100dvh - 20px);
+    border-width: 3px !important;
+  }
+  .cozy-dictionary .dictionary-journal {
+    grid-template-columns: 39px minmax(0, 1fr);
+    background: linear-gradient(
+      90deg,
+      #f0e4cd 0,
+      #d2bb97 34px,
+      #c7b391 39px,
+      #f4e9d3 45px,
+      #fff7e8 61px
+    );
+  }
+  .cozy-dictionary .journal-bookmarks {
+    padding: 76px 3px 14px;
+    gap: 10px;
+  }
+  .cozy-dictionary .journal-bookmarks button {
+    padding: 9px 3px;
+    gap: 5px;
+    min-height: 59px;
+  }
+  .cozy-dictionary .journal-bookmarks button span {
+    font-size: 10px;
+  }
+  .cozy-dictionary .journal-bookmarks svg {
+    width: 17px;
+    height: 17px;
+  }
+  .cozy-dictionary .dictionary-page {
+    padding: 24px 17px 22px;
+  }
+  .cozy-dictionary .modal-heading {
+    top: 14px;
+    right: 13px;
+  }
+  :root[data-theme] .dictionary-modal.cozy-dictionary .word-title h2 {
+    font-size: 33px;
+  }
+  :root[data-theme] .cozy-dictionary .dictionary-definition {
+    font-size: 20px;
+  }
+  .cozy-dictionary .sense-list li {
+    font-size: 16px;
+  }
+  .cozy-dictionary .entry-tabs {
+    gap: 6px;
+  }
+  :root[data-theme] .cozy-dictionary .entry-tab {
+    padding: 7px 9px;
+    font-size: 13px;
+  }
+  .cozy-dictionary .pronunciation-pair {
+    flex-wrap: wrap;
+  }
+  .cozy-dictionary .pronunciation-button {
+    padding: 6px;
+  }
+  .cozy-dictionary .pronunciation-ipa {
+    font-size: 13px;
+  }
+  .cozy-dictionary .review-confirmation p {
+    font-size: 12px;
+  }
+  :root[data-theme] .dictionary-modal.cozy-dictionary .review-choice {
+    font-size: 13px;
+  }
+}
+
+/* # Desktop text aligns with the original room's paper board rather than introducing a second framed card. */
+.notebook-extras {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+.notebook-extras > details[open] {
+  flex-basis: 100%;
+}
+@media (min-width: 900px) {
+  :root[data-theme] .study-mode .study-container {
+    padding: 0;
+  }
+  .study-page.cozy-study {
+    display: flow-root;
+    min-height: 100vh;
+  }
+  .cozy-study .study-notebook {
+    width: max(35.5vw, 53.25vh);
+    max-width: 620px;
+    margin: max(20px, calc(50vh - max(23.9vw, 35.85vh))) 0 0;
+    left: calc(50vw - max(12.6vw, 18.9vh));
+    padding: 12px 18px 18px;
+    background: transparent;
+    border: 0;
+    outline: none;
+    clip-path: none;
+    box-shadow: none;
+  }
+  .study-notebook::before,
+  .notebook-binding,
+  .room-plant,
+  .room-season-accent {
+    display: none;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-top {
+    padding-bottom: 11px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-progress {
+    margin-bottom: 15px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-label {
+    margin-bottom: 10px;
+  }
+  .cozy-study .notebook-steps {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    margin: 0;
+    gap: 5px;
+  }
+  .cozy-study .notebook-steps li {
+    padding: 3px 5px;
+    gap: 5px;
+  }
+  .cozy-study .notebook-steps li > span:not(.step-mark) {
+    display: none;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-label {
+    min-height: 28px;
+    margin-bottom: 12px;
+    padding-right: 150px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-label > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    padding: 0;
+    border: 0;
+  }
+  :root[data-theme] .study-mode .cozy-study .target-word {
+    font-size: 43px;
+  }
+  .study-mode .cozy-study .target-line {
+    gap: 9px;
+    margin-bottom: 15px;
+  }
+  :root[data-theme] .study-mode .cozy-study .learning-definition {
+    font-size: 20px;
+    line-height: 1.55;
+  }
+  .study-mode .cozy-study .study-meaning {
+    margin-bottom: 14px;
+  }
+  :root[data-theme] .study-mode .cozy-study .chinese-meaning {
+    font-size: 15px;
+    margin-top: 6px;
+  }
+  .study-mode .cozy-study .study-example {
+    margin-bottom: 13px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-example blockquote {
+    font-size: 16px;
+    line-height: 1.5;
+    padding-block: 5px;
+  }
+  .cozy-study .notebook-disclosure {
+    margin-bottom: 0;
+  }
+  .cozy-study .notebook-disclosure summary {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+  .study-mode .cozy-study .answer-label {
+    margin-top: 17px;
+  }
+  :root[data-theme] .study-mode .cozy-study input.answer-input {
+    height: 48px;
+    font-size: 22px;
+  }
+  :root[data-theme] .study-mode .cozy-study .primary {
+    min-height: 39px;
+    padding: 7px 13px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-bottom {
+    margin-top: 13px;
+    padding-top: 10px;
+  }
+  .room-tank {
+    width: 15vw;
+    max-width: none;
+    right: 1%;
+    bottom: 34%;
+    filter: none;
+  }
+  .room-tank > path {
+    display: none;
+  }
+  .room-companion {
+    width: 103px;
+    left: 10%;
+    bottom: 13%;
+  }
+  :root[data-theme="night"] .study-room .room-light {
+    animation: room-lamplight 13.1s ease-in-out infinite;
+  }
+}
+@keyframes room-lamplight {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  46% {
+    opacity: 0.92;
+  }
+  52% {
+    opacity: 0.86;
+  }
+}
+:root[data-motion="reduced"] .room-light,
+:root[data-motion="static"] .room-light {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .room-light {
+    animation: none !important;
+  }
+}
+
+/* # Winter weather is confined to the harbor window; night paper remains softly lamp-lit for contrast. */
+@media (min-width: 900px) {
+  :root[data-theme="night"] .cozy-study .study-notebook {
+    background: #fff8eaea;
+  }
+  .cozy-study[data-season="winter"] .room-season-accent {
+    display: block;
+    left: 20%;
+    right: auto;
+    top: 18%;
+  }
+}
+/* # Long definitions, expanded notes, and answer feedback scroll on the paper instead of spilling onto scenic wood. */
+@media (min-width: 900px) {
+  .cozy-study .study-notebook {
+    max-height: max(64vh, 42.67vw);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #b3a38a transparent;
+  }
+}
+
+/* # Window weather drifts separately from the aquarium and companion, with a pause before the bird flies on. */
+.room-window-air {
+  position: absolute;
+  left: 14%;
+  top: 8%;
+  width: 21%;
+  height: 18%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.room-cloud {
+  position: absolute;
+  width: 86px;
+  left: 9%;
+  top: 13%;
+  opacity: 0.54;
+  animation: room-cloud-drift 81.7s linear infinite;
+}
+.room-bird {
+  position: absolute;
+  width: 34px;
+  left: 18%;
+  top: 63%;
+  opacity: 0;
+  animation: room-bird-visit 53.9s linear infinite;
+}
+:root[data-theme="night"] .room-cloud {
+  opacity: 0.13;
+}
+:root[data-theme="night"] .room-bird {
+  display: none;
+}
+@keyframes room-cloud-drift {
+  from {
+    transform: translateX(-70px);
+  }
+  to {
+    transform: translateX(170px);
+  }
+}
+@keyframes room-bird-visit {
+  0%,
+  9% {
+    opacity: 0;
+    transform: translate(-50px, 9px);
+  }
+  14% {
+    opacity: 0.85;
+    transform: translate(-25px, 5px);
+  }
+  31%,
+  46% {
+    opacity: 0.85;
+    transform: translate(22px, 0);
+  }
+  58% {
+    opacity: 0.85;
+    transform: translate(75px, -14px);
+  }
+  75%,
+  100% {
+    opacity: 0;
+    transform: translate(150px, -28px);
+  }
+}
+@media (max-width: 899px) {
+  .room-window-air {
+    display: none;
+  }
+}
+/* # Turning the environment off keeps a readable notebook and centers it without scenic positioning. */
+@media (min-width: 900px) {
+  .study-calm .cozy-study .study-notebook {
+    left: 0;
+    width: min(720px, calc(100% - 64px));
+    margin: 36px auto;
+    max-height: calc(100dvh - 72px);
+    background: #fff8ea;
+    border: 2px solid #bfbaa5;
+    padding: 24px 34px;
+  }
+}
+
+/* # Feedback text keeps strong contrast from its first frame; the companion and small sprout carry the animation. */
+:root[data-theme] .study-mode .cozy-study .answer-result .result-label {
+  opacity: 1;
+  animation: none;
+  font-family: var(--font-learning);
+  font-weight: 600;
+}
+:root[data-theme] .study-mode .cozy-study .answer-result.correct .result-label {
+  color: #3e705c;
+}
+:root[data-theme]
+  .study-mode
+  .cozy-study
+  .answer-result.incorrect
+  .result-label {
+  color: #945644;
+}
+.study-mode .cozy-study .answer-result .result-label {
+  width: fit-content;
+  background: #fff8ea;
+  padding: 4px 7px;
+}
