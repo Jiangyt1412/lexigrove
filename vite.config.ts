@@ -33,7 +33,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,svg,png,json,woff2,txt}"],
+        globPatterns: ["**/*.{js,css,html,svg,png,json,woff2,txt,m4a,wav}"], // # The finite starter audio set is cached with the app for offline recall.
         dontCacheBustURLsMatching: /-[A-Za-z0-9_-]{8,}\.(?:js|css)$/,
         navigateFallback: `${base}index.html`,
         clientsClaim: true,

@@ -79,7 +79,7 @@ The complete source pages were not subjected to a separate line-by-line historic
 | D, bow            | One noun entry explicitly maps a bending gesture to /baʊ/ and a weapon to the separate UK/US variants; noun POS alone cannot select the pronunciation.                               |
 | E, record         | Five selected dictionary senses map to four learning groups: the information/physical medium senses share a teaching group, while achievement and two verb meanings remain separate. |
 
-These groupings are editorial examples of the generic architecture, not a claim that there is one universally correct sense taxonomy. `tests/fixtures/lexical.ts` supplies the same mappings to automated checks; there is no word-specific branching in the app. No recordings are bundled, so record/bow heteronym listening remains pending until attributed recordings for their selected pronunciations are supplied. Missing Chinese is left empty. Importing the example preserves existing canonical words, cards and notes and adds only genuinely new groups.
+These groupings are editorial examples of the generic architecture, not a claim that there is one universally correct sense taxonomy. `tests/fixtures/lexical.ts` supplies the same mappings to automated checks; there is no word-specific branching in the app. The optional record/bow example has no owned recordings, so its heteronym listening remains pending until attributed recordings for their selected pronunciations are supplied. Missing Chinese is left empty. Importing the example preserves existing canonical words, cards and notes and adds only genuinely new groups.
 
 ## Per-entry attribution links
 
@@ -147,3 +147,6 @@ Every row below links to the source entry. Its contributor history is accessible
 | trend         | noun           | [Wiktionary](https://en.wiktionary.org/wiki/trend#English) · [Kaikki JSONL](https://kaikki.org/dictionary/English/meaning/t/tr/trend.jsonl)                 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | correlation   | noun           | [Wiktionary](https://en.wiktionary.org/wiki/correlation#English) · [Kaikki JSONL](https://kaikki.org/dictionary/English/meaning/c/co/correlation.jsonl)     | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
 | intervention  | noun           | [Wiktionary](https://en.wiktionary.org/wiki/intervention#English) · [Kaikki JSONL](https://kaikki.org/dictionary/English/meaning/i/in/intervention.jsonl)   | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+
+
+Starter audio now has its own model, voice and processing provenance in [AUDIO_SOURCES.md](AUDIO_SOURCES.md). It does not change the selected 60 words, definitions, source ranks, card IDs or dictionary IPA.

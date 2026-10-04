@@ -30,3 +30,5 @@ Main headings, navigation and world controls use pixel typography. All learning 
 ## Other visual/audio sources
 
 Project-original pixel interface geometry is application code covered by [LICENSE](LICENSE), while the original standalone SVG habitat assets listed above retain their CC0 dedication. The installed Lucide package is documented conservatively in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md); its ISC/Feather attribution is separate from the original-art note. No third-party word images or human pronunciation recordings are bundled in the starter. Any future such assets require per-item source, author and licence metadata before redistribution.
+
+The starter now includes pre-generated neural audio, distinct from human recordings and from pixel artwork. See [AUDIO_SOURCES.md](AUDIO_SOURCES.md) for its project output dedication, Apache-licensed source model, voice identities, manifest and limitations.

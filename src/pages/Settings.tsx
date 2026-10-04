@@ -172,8 +172,8 @@ export default function Settings({
                 })
               }
             >
-              <option value="US">🇺🇸 US English</option>
-              <option value="UK">🇬🇧 UK English</option>
+              <option value="UK">🇬🇧 UK English · primary</option>
+              <option value="US">🇺🇸 US English · supplementary</option>
             </select>
           </label>
           <label className="setting-row">
@@ -230,7 +230,9 @@ export default function Settings({
             </select>
           </label>
           <label className="setting-row">
-            <span>Pronounce correct answers</span>
+            <span>
+              自动发音 <small>新词出现、听写开始和提交答案后</small>
+            </span>
             <input
               type="checkbox"
               checked={settings.autoPronounce}
@@ -240,6 +242,7 @@ export default function Settings({
           <label className="setting-row">
             <span>Audio preference</span>
             <select
+              aria-label="Audio preference"
               value={settings.audioPreference}
               onChange={(e) =>
                 save({
@@ -249,21 +252,29 @@ export default function Settings({
               }
             >
               <option value="local">System voice</option>
-              <option value="human">Open recording first</option>
+              <option value="human">Bundled audio first</option>
             </select>
           </label>
           <details className="source-details">
             <summary>Voice availability</summary>
             <p>
-              Automatic selection avoids character and sound-effect voices.
-              Choose a voice and use Test voice to compare it. If the requested
-              accent is unavailable, another English voice is used. Some system
-              voices need internet. No recordings are bundled. An unavailable
-              audio acquisition test remains pending. Country-labelled playback
-              buttons require a matching US or UK voice and report when it is
-              unavailable.
+              60 个默认词均提供预生成合成语音：Kokoro v1.0，英音 bf_emma
+              为主，美音 af_heart 辅助。
+              导入词没有音频时才使用对应口音的系统语音。浏览器可能需要你先点击发音按钮，才能允许自动播放。
+              未成功播放的听写题会保留；切换单词或离开学习页会停止声音。
             </p>
+            <a
+              href="https://huggingface.co/hexgrad/Kokoro-82M"
+              target="_blank"
+              rel="noreferrer"
+            >
+              音频模型与许可
+            </a>
           </details>
+          <h2 className="settings-subheading">复习题型</h2>
+          <p className="subtle">
+            先选认识、不确定或不认识，再核对详情。认识直接完成；不确定做释义输入和听写；不认识重走展示抄写、释义输入和听写。整组只更新一次复习时间。
+          </p>
         </section>
         <div>
           <section className="panel">

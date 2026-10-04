@@ -3,8 +3,39 @@ import { entrySchema, familyLinkSchema } from "./lexicon"; // # Nested entries a
 const text = z.string().max(20000); // # Bound user-supplied strings.
 export const normalize = (word: string) =>
   word.normalize("NFKC").trim().toLocaleLowerCase("en"); // # Exact spelling after Unicode, case and edge-whitespace normalization.
-export const modalitySchema = z.enum(["copy", "definition", "audio", "cloze"]);
+export const modalitySchema = z.enum([
+  "copy",
+  "definition",
+  "audio",
+  "cloze",
+  "recognition",
+]); // # Recognition is a confirmed self-assessment, separate from a typed answer.
 export type Modality = z.infer<typeof modalitySchema>;
+export const recognitionChoiceSchema = z.enum(["known", "unsure", "unknown"]);
+export type RecognitionChoice = z.infer<typeof recognitionChoiceSchema>;
+export function recognitionSteps(choice: RecognitionChoice): Modality[] {
+  return choice === "known"
+    ? []
+    : choice === "unsure"
+      ? ["definition", "audio"]
+      : ["copy", "definition", "audio"];
+} // # The final confirmed choice determines the repair sequence.
+export function migrateAcquisitionStage(p: {
+  card: unknown;
+  introduced: boolean;
+  stage: number;
+  streak: number;
+}) {
+  if (
+    !p.card &&
+    p.introduced &&
+    Number.isInteger(p.stage) &&
+    p.stage >= 0 &&
+    p.stage < 3 &&
+    p.stage === p.streak
+  )
+    p.stage = p.streak = p.stage === 0 ? 1 : 2;
+} // # Legacy copying was outside the three tests; preserve completed copying/meaning without inventing graduation.
 export const lexicalSchema = z
   .object({
     id: z.string().min(1),
@@ -129,6 +160,7 @@ export const progressSchema = z
         definition: accuracy,
         audio: accuracy,
         cloze: accuracy,
+        recognition: accuracy.default({ correct: 0, total: 0 }), // # Legacy history contains no self-assessments.
       })
       .strict(),
     card: cardSchema.nullable(),
@@ -146,6 +178,7 @@ export const progressSchema = z
     (p) =>
       p.correct + p.incorrect === p.attempts &&
       p.stage === p.streak &&
+      (p.stage === 0 || p.introduced) &&
       (p.stage === 3) === (p.card !== null) &&
       (!p.card || p.introduced),
   );
@@ -158,6 +191,9 @@ export const attemptSchema = z
     learningSenseId: z.string().default(""),
     pronunciationId: z.string().nullable().default(null),
     expectedAnswer: text.default(""),
+    reviewGroupId: z.string().min(1).max(500).optional(), // # New grouped reviews have an explicit shared event identity; legacy attempts remain unchanged.
+    reviewChoice: recognitionChoiceSchema.optional(),
+    reviewStep: z.number().int().min(0).max(3).optional(), // # Zero is confirmation; subsequent indices identify the repair tasks.
     at: z.number().finite(),
     mode: z.enum(["intro", "acquisition", "review", "practice"]),
     modality: modalitySchema,
@@ -186,16 +222,17 @@ export const settingsSchema = z
       .default("auto"),
     environmentAnimation: z.enum(["full", "reduced", "static"]).default("full"),
     easyDefault: z.boolean(),
-    showChinese: z.boolean().default(true), // # Optional support; recall prompts still use English.
+    showChinese: z.boolean().default(true), // # Meaning recall uses the saved Chinese hint when available, with the English meaning as support.
     audioPreference: z.enum(["local", "human"]),
     voiceURI: z.string().max(2000).default(""), // # Old settings and backups keep automatic voice selection.
+    reviewCloze: z.boolean().default(false), // # Retained for old backups; current scheduled reviews use recognition and its repair steps.
     lastBackup: z.number().finite().nullable(),
   })
   .strict();
 export type Settings = z.infer<typeof settingsSchema>;
 export const defaultSettings: Settings = {
   id: "settings",
-  accent: "US",
+  accent: "UK",
   speed: 1,
   autoPronounce: true,
   dailyTarget: 20,
@@ -208,8 +245,9 @@ export const defaultSettings: Settings = {
   environmentAnimation: "full",
   easyDefault: true,
   showChinese: true,
-  audioPreference: "local",
+  audioPreference: "human",
   voiceURI: "",
+  reviewCloze: false,
   lastBackup: null,
 };
 export const sessionSchema = z
@@ -221,6 +259,37 @@ export const sessionSchema = z
     lastWord: z.string().nullable(),
     completed: count,
     startedAt: z.number().finite(),
+    review: z
+      .object({
+        includeCloze: z.boolean(),
+        groups: z.record(
+          z.string().min(1),
+          z
+            .object({
+              completed: z.number().int().min(0).max(3),
+              failed: z.boolean(),
+            })
+            .strict(),
+        ),
+      })
+      .strict()
+      .optional(), // # Legacy grouped-review history remains readable.
+    recall: z
+      .object({
+        groups: z.record(
+          z.string().min(1),
+          z
+            .object({
+              choice: recognitionChoiceSchema,
+              phase: z.enum(["draft", "testing", "complete"]),
+              completed: z.number().int().min(0).max(3),
+              failed: z.boolean(),
+            })
+            .strict(),
+        ),
+      })
+      .strict()
+      .optional(), // # Draft choices survive reload; confirmation and repair history are written atomically.
   })
   .strict();
 export type Session = z.infer<typeof sessionSchema>;
@@ -247,6 +316,7 @@ export function freshProgress(id: string): Progress {
       definition: { correct: 0, total: 0 },
       audio: { correct: 0, total: 0 },
       cloze: { correct: 0, total: 0 },
+      recognition: { correct: 0, total: 0 },
     },
     card: null,
     suspended: false,

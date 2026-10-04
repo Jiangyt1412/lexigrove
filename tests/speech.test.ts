@@ -28,16 +28,20 @@ describe("pronunciation voice selection", () => {
       voice("Daniel", "en-GB"),
       voice("Samantha (Enhanced)"),
     ];
-    expect(selectVoice(voices, defaultSettings)?.name).toBe(
-      "Samantha (Enhanced)",
-    );
+    expect(
+      selectVoice(voices, { ...defaultSettings, accent: "US" })?.name,
+    ).toBe("Samantha (Enhanced)");
     expect(
       selectVoice(voices, { ...defaultSettings, accent: "UK" })?.name,
     ).toBe("Daniel");
   });
   it("honors explicit voice choice and falls back safely when offline", () => {
     const voices = [voice("Kathy"), voice("Online English", "en-US", false)];
-    const settings = { ...defaultSettings, voiceURI: "Online English" };
+    const settings = {
+      ...defaultSettings,
+      accent: "US" as const,
+      voiceURI: "Online English",
+    };
     expect(selectVoice(voices, settings, true)?.name).toBe("Online English");
     expect(selectVoice(voices, settings, false)?.name).toBe("Kathy");
   });

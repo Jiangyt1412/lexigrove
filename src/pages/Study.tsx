@@ -13,6 +13,7 @@ import type {
   Session,
   Settings,
   Attempt,
+  RecognitionChoice,
 } from "../types/model";
 import { normalize } from "../types/model";
 import {
@@ -21,13 +22,25 @@ import {
   deferAudioTask,
   cloze,
   dueWords,
+  selectReviewChoice,
   type Task,
 } from "../learning/engine";
-import { pronounce, speechAvailable } from "../speech/speech";
+import {
+  pronounce,
+  speechAvailable,
+  stopPronunciation,
+  isPlaybackCancelled,
+} from "../speech/speech";
 import { Definition, Empty } from "../components/ui";
 import { characterDiff } from "../utils/diff";
 import { Pronunciation } from "../components/Pronunciation"; // # Hide all spelling and IPA inside listening prompts.
 import { hydrateWord } from "../vocabulary/lexicon"; // # Family links open their own lexical entries instead of borrowing the current word's POS.
+import { Dictionary } from "../dictionary/Dictionary"; // # Confirmation uses the same readable details and the exact scheduled learning meaning.
+const CHOICES: { value: RecognitionChoice; label: string; hint: string }[] = [
+  { value: "known", label: "认识", hint: "确认后完成本次复习" },
+  { value: "unsure", label: "不确定", hint: "释义输入 → 听写" },
+  { value: "unknown", label: "不认识", hint: "展示抄写 → 释义输入 → 听写" },
+];
 type Props = {
   words: Lexical[];
   progress: Progress[];
@@ -60,6 +73,22 @@ export default function Study({
     lock = useRef(false);
   const token = useRef(crypto.randomUUID());
   const [voiceTick, setVoiceTick] = useState(0);
+  const [audioError, setAudioError] = useState("");
+  const [detailsOpen, setDetailsOpen] = useState(false),
+    [draftChoice, setDraftChoice] = useState<RecognitionChoice | null>(null),
+    [pendingAdvance, setPendingAdvance] = useState(false);
+  const savedDraft = task ? session?.recall?.groups[task.word.id] : undefined;
+  useEffect(() => {
+    if (!task || task.modality !== "recognition" || result) return;
+    if (savedDraft?.phase === "draft") {
+      setDraftChoice(savedDraft.choice);
+      setDetailsOpen(true);
+    }
+  }, [task, savedDraft?.phase, savedDraft?.choice, result]); // # Reopening a saved session restores its draft; unrelated note/settings updates do not reopen a closed sheet.
+  useEffect(() => {
+    if (pendingAdvance && task && session && session.completed > task.sequence)
+      advance();
+  }, [pendingAdvance, task, session]); // # Wait for the committed database snapshot before loading the next task.
   useEffect(() => {
     if (typeof speechSynthesis === "undefined") return;
     const update = () => setVoiceTick((n) => n + 1);
@@ -68,15 +97,52 @@ export default function Study({
   }, []);
   useEffect(() => {
     if (!task && session)
-      setTask(nextTask(session, words, progress, speechAvailable()));
-  }, [task, session, words, progress, voiceTick]);
+      setTask(
+        nextTask(
+          session,
+          words,
+          progress,
+          words.some((w) => speechAvailable(w, settings)),
+        ),
+      );
+  }, [task, session, words, progress, voiceTick, settings]);
+  useEffect(() => {
+    if (
+      !task ||
+      !settings.autoPronounce ||
+      (!result && !["copy", "audio"].includes(task.modality))
+    )
+      return;
+    const controller = new AbortController();
+    const timer = setTimeout(() => {
+      void pronounce(task.word, settings, {
+        strictAccent: true,
+        signal: controller.signal,
+      })
+        .then((played) => {
+          if (
+            !controller.signal.aborted &&
+            task.modality === "audio" &&
+            !result
+          ) {
+            setHeard(true);
+            setPlayedPronunciation(played.pronunciationId);
+          }
+        })
+        .catch((error: Error) => {
+          if (!isPlaybackCancelled(error) && !controller.signal.aborted)
+            setAudioError(error.message);
+        });
+    }, 0); // # New-word/listening prompts play once, then every submitted answer plays once; definition/cloze prompts never disclose the target early.
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [task, result, settings]);
+  useEffect(() => () => stopPronunciation(), []);
   useEffect(() => {
     if (task && session && task.sessionToken !== session.token) {
-      setTask(null);
-      setAnswer("");
-      setResult(null);
-      setHeard(false);
-      token.current = crypto.randomUUID();
+      advance();
     }
   }, [task, session]);
   useEffect(() => {
@@ -97,8 +163,6 @@ export default function Study({
         playedPronunciation,
       );
       setResult(saved);
-      if (saved.correct && settings.autoPronounce)
-        void pronounce(task.word, settings).catch((e) => notify(e.message));
     } catch (e) {
       notify((e as Error).message);
       setTask(null);
@@ -111,14 +175,53 @@ export default function Study({
     }
   }
   function advance() {
+    stopPronunciation();
     setTask(null);
     setAnswer("");
     setResult(null);
     setHeard(false);
     setPlayedPronunciation(null);
+    setAudioError("");
+    setDetailsOpen(false);
+    setDraftChoice(null);
+    setPendingAdvance(false);
     setFull(!settings.easyDefault);
     token.current = crypto.randomUUID();
   }
+  async function choose(choice: RecognitionChoice) {
+    if (!task || lock.current) return;
+    lock.current = true;
+    setBusy(true);
+    try {
+      await selectReviewChoice(task, choice);
+      setDraftChoice(choice);
+      setDetailsOpen(true);
+    } catch (e) {
+      notify((e as Error).message);
+      advance();
+    } finally {
+      lock.current = false;
+      setBusy(false);
+    }
+  }
+  async function confirmChoice() {
+    if (!task || !draftChoice || lock.current) return;
+    lock.current = true;
+    setBusy(true);
+    try {
+      stopPronunciation();
+      const saved = await submitTask(task, draftChoice, token.current);
+      setResult(saved);
+      setDetailsOpen(false);
+      setPendingAdvance(true);
+    } catch (e) {
+      notify((e as Error).message);
+      advance();
+    } finally {
+      lock.current = false;
+      setBusy(false);
+    }
+  } // # Only confirmation commits the chosen branch; changing draft options creates no review history.
   async function deferAudio() {
     if (!task || lock.current) return;
     lock.current = true;
@@ -166,7 +269,7 @@ export default function Study({
         <h1>{pending ? "Acquisition is saved." : "A little more learned."}</h1>
         <p>
           {pending
-            ? "Add a second dictionary word to keep recall tests interleaved."
+            ? "Your unfinished words are saved. Resume when you’re ready."
             : `${session.completed} attempts saved. You can return whenever you’re ready.`}
         </p>
         <button className="primary" onClick={onExit}>
@@ -177,7 +280,8 @@ export default function Study({
   }
   const { word, mode, modality } = task;
   const showingWord = modality === "copy";
-  const revealed = showingWord || result !== null; // # Reading material is shown only during introduction or after an answer is saved.
+  const recognition = modality === "recognition";
+  const revealed = showingWord || (!recognition && result !== null); // # Recognition reveals only the spelling until an option opens its details.
   const icon =
     modality === "audio" ? (
       <Headphones size={19} />
@@ -186,16 +290,19 @@ export default function Study({
     ) : (
       <BookOpen size={19} />
     );
-  const label =
-    mode === "intro"
-      ? "Meet a new word"
-      : mode === "practice"
-        ? "Recall break"
-        : modality === "audio"
-          ? "Listen & spell"
-          : modality === "cloze"
-            ? "Complete the sentence"
-            : "Recall the word";
+  const label = recognition
+    ? "认识这个词吗？"
+    : modality === "copy" && mode === "review"
+      ? "重新认识这个词"
+      : mode === "intro"
+        ? "Meet a new word"
+        : mode === "practice"
+          ? "Recall break"
+          : modality === "audio"
+            ? "Listen & spell"
+            : modality === "cloze"
+              ? "Complete the sentence"
+              : "Recall the word";
   const diff =
     result && !result.correct
       ? characterDiff(normalize(task.expectedAnswer), normalize(answer))
@@ -203,13 +310,22 @@ export default function Study({
   return (
     <div className="study-page">
       <div className="study-top">
-        <button className="text-button" onClick={onExit}>
+        <button
+          className="text-button"
+          onClick={() => {
+            stopPronunciation();
+            onExit();
+          }}
+        >
           <ArrowLeft size={17} />
           Save & leave
         </button>
         <span>
-          {session.completed} attempts ·{" "}
-          {session.mode === "review" ? "Spaced review" : "Acquisition"}
+          {session.mode === "review"
+            ? `本组复习 ${Object.values(session.recall?.groups ?? {}).filter((g) => g.phase === "complete").length} / ${session.wordIds.length}`
+            : session.mode === "acquire"
+              ? `本组学习 ${session.wordIds.filter((id) => progress.find((p) => p.id === id)?.card).length} / ${session.wordIds.length}`
+              : `练习已完成 ${session.completed} 题`}
         </span>
       </div>
       <div className="study-progress" aria-hidden="true">
@@ -220,9 +336,14 @@ export default function Study({
               (session.mode === "acquire"
                 ? session.wordIds.reduce((n, id) => {
                     const p = progress.find((p) => p.id === id);
-                    return n + (p?.introduced ? 1 : 0) + (p?.stage ?? 0);
-                  }, 0) / Math.max(1, session.wordIds.length * 4)
-                : session.completed / Math.max(1, session.wordIds.length)) *
+                    return n + (p?.stage ?? 0);
+                  }, 0) / Math.max(1, session.wordIds.length * 3)
+                : session.mode === "review"
+                  ? Object.values(session.recall?.groups ?? {}).reduce(
+                      (n, g) => n + Number(g.phase === "complete"),
+                      0,
+                    ) / Math.max(1, session.wordIds.length)
+                  : session.completed / Math.max(1, session.wordIds.length)) *
                 100,
             )}%`,
           }}
@@ -232,7 +353,14 @@ export default function Study({
         <div className="study-label">
           {icon}
           {label}
-          {mode === "acquisition" && <span>{task.progress.stage + 1} / 3</span>}
+          {(mode === "intro" || mode === "acquisition") && (
+            <span>{task.progress.stage + 1} / 3</span>
+          )}
+          {mode === "review" && !recognition && (
+            <span>
+              {(task.reviewStep ?? 0) + 1} / {task.reviewTotal ?? 2}
+            </span>
+          )}
         </div>
         {mode === "practice" && (
           <p className="subtle">
@@ -240,7 +368,11 @@ export default function Study({
             dates.
           </p>
         )}
-        {revealed ? (
+        {recognition ? (
+          <div className="recognition-word">
+            <h1 className="target-word">{word.lemma}</h1>
+          </div>
+        ) : revealed ? (
           <>
             <div className="target-line">
               <div className="word-heading">
@@ -263,6 +395,7 @@ export default function Study({
                   word={word}
                   settings={settings}
                   notify={notify}
+                  onPlayed={() => setAudioError("")}
                 />
               </div>
             </div>
@@ -366,16 +499,16 @@ export default function Study({
               onPlayed={(id) => {
                 setHeard(true);
                 setPlayedPronunciation(id || null);
+                setAudioError("");
               }}
             />
             <p className="audio-scope">
               Audio → spelling checks the spoken form, not meaning
               discrimination.
             </p>
-            {!speechAvailable() && (
+            {!speechAvailable(word, settings) && (
               <p className="subtle">
-                An English system voice is required. This test stays pending
-                until audio is available.
+                当前口音没有可用录音或系统语音。听写会保留，点击另一口音可手动播放。
               </p>
             )}
           </div>
@@ -389,12 +522,48 @@ export default function Study({
                       "",
                     word.clozeSpec?.target || word.lemma,
                   )
-                : word.easyDefinition}
+                : settings.showChinese && word.chineseDefinition
+                  ? word.chineseDefinition
+                  : word.easyDefinition}
             </h2>
+            {modality === "definition" &&
+              settings.showChinese &&
+              word.chineseDefinition && (
+                <p className="translation-support">{word.easyDefinition}</p>
+              )}
             <span className="word-meta">{word.partOfSpeech}</span>
+            {modality === "cloze" && (
+              <p className="cloze-hint">
+                <Definition text={word.easyDefinition} onWord={dictionary} />
+                <br />
+                填入适合句子的词形。
+              </p>
+            )}
           </>
         )}
-        {!result ? (
+        {audioError && (
+          <p className="audio-feedback" role="status">
+            {audioError}
+          </p>
+        )}
+        {recognition ? (
+          <div
+            className="recognition-choices"
+            role="group"
+            aria-label="熟悉程度"
+          >
+            {CHOICES.map((choice) => (
+              <button
+                key={choice.value}
+                className={`recognition-option ${choice.value}`}
+                disabled={busy || pendingAdvance}
+                onClick={() => void choose(choice.value)}
+              >
+                {choice.label}
+              </button>
+            ))}
+          </div>
+        ) : !result ? (
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -473,15 +642,22 @@ export default function Study({
                 </div>
               </>
             )}
-            {!result.correct && mode === "acquisition" && (
-              <p className="subtle">
-                Acquisition restarts at definition recall. All attempts are
-                saved.
-              </p>
-            )}
+            {!result.correct &&
+              (mode === "intro" || mode === "acquisition") && (
+                <p className="subtle">
+                  学习从展示抄写重新开始，之前的记录已保存。
+                </p>
+              )}
             {result.correct && result.after && mode === "acquisition" && (
               <p className="subtle">
                 Learned. Next review: {result.after.due.toLocaleDateString()}.
+              </p>
+            )}
+            {mode === "review" && (
+              <p className="subtle" lang="zh-CN">
+                {result.rating === null
+                  ? "本题已保存，完成本组后安排下次复习。"
+                  : `本组已完成。${result.rating === 1 ? "本次遗忘或考核有错，将安排较近的复习。" : "考核已完成。"} 下次复习：${result.after!.due.toLocaleString()}`}
               </p>
             )}
             <button ref={next} className="primary" onClick={advance}>
@@ -489,26 +665,75 @@ export default function Study({
             </button>
           </div>
         )}
-        <div className="study-bottom">
-          <button
-            className="text-button"
-            aria-label="Notes & entry"
-            onClick={() => dictionary(word.lemma)}
-            disabled={!showingWord && !result}
-          >
-            Other meanings · Notes
-          </button>
-          {modality === "audio" && !heard && (
+        {!recognition && (
+          <div className="study-bottom">
             <button
               className="text-button"
-              disabled={busy}
-              onClick={() => void deferAudio()}
+              aria-label="Notes & entry"
+              onClick={() => dictionary(word.lemma)}
+              disabled={!showingWord && !result}
             >
-              Save this test for later
+              Other meanings · Notes
             </button>
-          )}
-        </div>
+            {modality === "audio" && !heard && (
+              <button
+                className="text-button"
+                disabled={busy}
+                onClick={() => void deferAudio()}
+              >
+                Save this test for later
+              </button>
+            )}
+          </div>
+        )}
       </div>
+      {detailsOpen && recognition && draftChoice && (
+        <Dictionary
+          key={`${task.sessionToken}-${word.id}-${task.sequence}`}
+          initial={word.lemma}
+          words={words}
+          progress={progress}
+          settings={settings}
+          notify={notify}
+          onClose={() => setDetailsOpen(false)}
+          onEdit={dictionary}
+          reviewConfirmation={{
+            learningSenseId: word.learningSenseId,
+            footer: (
+              <div className="review-confirmation" lang="zh-CN">
+                <p>核对释义后，可以修改刚才的选择。</p>
+                <div
+                  className="review-choice-row"
+                  role="group"
+                  aria-label="修改熟悉程度"
+                >
+                  {CHOICES.map((choice) => (
+                    <button
+                      key={choice.value}
+                      className={`review-choice ${draftChoice === choice.value ? "selected" : ""}`}
+                      aria-pressed={draftChoice === choice.value}
+                      disabled={busy}
+                      onClick={() => void choose(choice.value)}
+                    >
+                      {choice.label}
+                    </button>
+                  ))}
+                </div>
+                <p className="review-next-step">
+                  {CHOICES.find((c) => c.value === draftChoice)?.hint}
+                </p>
+                <button
+                  className="primary"
+                  disabled={busy}
+                  onClick={() => void confirmChoice()}
+                >
+                  确认并继续 <ArrowRight size={17} />
+                </button>
+              </div>
+            ),
+          }}
+        />
+      )}
     </div>
   );
 }

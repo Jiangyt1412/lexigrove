@@ -28,9 +28,9 @@ export default function Statistics({
         <Metric label="Mature words" value={s.mature} />
         <Metric label="Learning senses" value={s.learning} />
         <Metric
-          label="Review recall"
+          label="Review outcomes"
           value={s.retention === null ? "—" : `${s.retention}%`}
-          detail="Correct scheduled reviews / all scheduled reviews"
+          detail="Confirmed known or passed uncertain reviews / completed reviews"
         />
       </div>
       <p className="subtle">

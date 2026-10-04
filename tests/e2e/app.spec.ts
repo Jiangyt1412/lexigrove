@@ -9,11 +9,9 @@ test("fullscreen study preserves navigation, readable order and hidden recall an
   await page
     .getByRole("button", { name: "Settings & data", exact: true })
     .click();
-  await page
-    .getByRole("checkbox", { name: "Pronounce correct answers" })
-    .click();
+  await page.getByRole("checkbox", { name: /自动发音/ }).click();
   await expect(
-    page.getByRole("checkbox", { name: "Pronounce correct answers" }),
+    page.getByRole("checkbox", { name: /自动发音/ }),
   ).not.toBeChecked(); // # Wait for the persisted controlled preference rather than assuming a synchronous DOM toggle.
   await page.getByRole("spinbutton", { name: "New words per day" }).fill("2"); // # Two introductions are followed by recall, rather than another unseen introduction.
   await page.getByRole("button", { name: "Today", exact: true }).click(); // # Layout verification does not depend on headless-system speech availability.
@@ -146,6 +144,10 @@ test("flag buttons play distinct accents despite a saved US voice", async ({
   await page
     .getByRole("button", { name: "Settings & data", exact: true })
     .click();
+  await page.getByLabel("Accent", { exact: true }).selectOption("US");
+  await page
+    .getByLabel("Audio preference", { exact: true })
+    .selectOption("local"); // # This case verifies the explicit system-voice fallback; bundled audio has separate playback checks.
   await page.getByLabel("Voice", { exact: true }).selectOption("Samantha");
   await expect(page.getByLabel("Voice", { exact: true })).toHaveValue(
     "Samantha",
@@ -267,9 +269,7 @@ test("dictionary preserves the current answer and adds personal deck membership"
   await page.getByRole("button", { name: "My words", exact: true }).click();
   await expect(page.locator(".vocabulary-row:not(.table-head)")).toHaveCount(1);
 });
-test("copy and three interleaved modalities graduate real words", async ({
-  page,
-}) => {
+test("three acquisition stages graduate real words", async ({ page }) => {
   await page.addInitScript(() => {
     Object.defineProperty(window, "SpeechSynthesisUtterance", {
       value: class {
@@ -308,7 +308,7 @@ test("copy and three interleaved modalities graduate real words", async ({
     .getByRole("button", { name: "Start learning", exact: true })
     .click();
   const words: string[] = [];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 6; i++) {
     const input = page.getByRole("textbox", { name: "Your answer" });
     await expect(input).toBeVisible();
     if (i < 2) {
@@ -329,16 +329,6 @@ test("copy and three interleaved modalities graduate real words", async ({
       await expect(
         page.getByRole("button", { name: "Check answer" }),
       ).toBeDisabled();
-      if (i === 4) {
-        await input.fill(words[i % 2]);
-        await page
-          .getByRole("button", { name: "Play UK pronunciation" })
-          .click(); // # The mocked device has no UK voice; failure cannot earn listening credit.
-        await expect(page.getByRole("status")).toContainText("英音语音不可用");
-        await expect(
-          page.getByRole("button", { name: "Check answer" }),
-        ).toBeDisabled();
-      }
       await page.getByRole("button", { name: "Play US pronunciation" }).click();
       await expect(
         page.getByRole("button", { name: "Play US pronunciation" }),
@@ -375,7 +365,7 @@ test("backup export validates, invalid restore is non-destructive, valid restore
   const download = await downloadPromise;
   const local = await download.path();
   const backup = JSON.parse(await fs.readFile(local!, "utf8"));
-  expect(backup.version).toBe(3);
+  expect(backup.version).toBe(5);
   expect(backup.words.length).toBe(60);
   await page.locator("input[type=file]").setInputFiles({
     name: "invalid.json",

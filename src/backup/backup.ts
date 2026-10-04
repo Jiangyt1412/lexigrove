@@ -8,6 +8,8 @@ import {
   sessionSchema,
   worldSchema,
   normalize,
+  recognitionSteps,
+  migrateAcquisitionStage,
 } from "../types/model"; // # Explicit versioned format; unsupported future versions cannot erase data.
 import {
   hydrateWord,
@@ -17,7 +19,7 @@ import {
 export const backupSchema = z
   .object({
     format: z.literal("lexigrove-backup"),
-    version: z.literal(3),
+    version: z.literal(5),
     exportedAt: z.string().datetime(),
     words: z.array(lexicalSchema).max(100000),
     progress: z.array(progressSchema).max(100000),
@@ -88,9 +90,72 @@ export const backupSchema = z
               u.lexicalEntryId === a.lexicalEntryId,
           ),
       ) ||
-      b.sessions.some((s) => s.wordIds.some((id) => !groupIds.has(id)))
+      b.sessions.some(
+        (s) =>
+          s.wordIds.some((id) => !groupIds.has(id)) ||
+          Object.keys(s.review?.groups ?? {}).some(
+            (id) => !s.wordIds.includes(id),
+          ) ||
+          Object.keys(s.recall?.groups ?? {}).some(
+            (id) => !s.wordIds.includes(id),
+          ),
+      )
     )
       fail("Broken word references.");
+    const recognitionEvents = new Map<string, typeof b.attempts>();
+    for (const a of b.attempts) {
+      if (a.modality === "recognition" && !a.reviewChoice)
+        fail("Recognition history lacks a confirmed choice.");
+      if (!a.reviewChoice) continue;
+      if (
+        a.mode !== "review" ||
+        !a.reviewGroupId ||
+        a.reviewStep === undefined
+      ) {
+        fail("Recognition history lacks its scheduled event identity.");
+        continue;
+      }
+      const events = recognitionEvents.get(a.reviewGroupId) ?? [];
+      events.push(a);
+      recognitionEvents.set(a.reviewGroupId, events);
+    }
+    for (const events of recognitionEvents.values()) {
+      events.sort((a, b) => a.reviewStep! - b.reviewStep!);
+      const choice = events[0].reviewChoice!,
+        plan = ["recognition", ...recognitionSteps(choice)],
+        finished = events.length === plan.length;
+      const rating =
+        choice === "unknown" || events.slice(1).some((a) => !a.correct)
+          ? 1
+          : choice === "unsure"
+            ? 2
+            : 3;
+      if (
+        events.length > plan.length ||
+        events.some(
+          (a, i) =>
+            a.learningSenseId !== events[0].learningSenseId ||
+            a.reviewChoice !== choice ||
+            a.reviewStep !== i ||
+            a.modality !== plan[i] ||
+            (i === 0 &&
+              (a.answer !== choice || a.correct !== (choice === "known"))) ||
+            (a.modality === "audio" && !a.pronunciationId) ||
+            a.rating !==
+              (finished && i === events.length - 1 ? rating : null) ||
+            !a.before ||
+            !a.after ||
+            (a.rating === null &&
+              JSON.stringify(a.before) !== JSON.stringify(a.after)) ||
+            (a.rating !== null &&
+              (a.after.reps !== a.before.reps + 1 ||
+                a.after.last_review?.getTime() !== a.at)),
+        )
+      )
+        fail(
+          "Recognition history cannot represent a single coherent review event.",
+        );
+    } // # Validate finished events even after another session replaces the active cursor; a repaired spelling cannot forge a Good rating for initial forgetting.
     const history = new Map<
       string,
       {
@@ -109,7 +174,11 @@ export const backupSchema = z
       }
       h.total++;
       h.correct += Number(attempt.correct);
-      h.reviewSuccesses += Number(attempt.mode === "review" && attempt.correct);
+      h.reviewSuccesses += Number(
+        attempt.mode === "review" &&
+          attempt.rating !== null &&
+          attempt.rating >= 2,
+      ); // # Only a successful completed group earns one scheduled-review milestone.
       h.modalities[attempt.modality] ??= { total: 0, correct: 0 };
       h.modalities[attempt.modality].total++;
       h.modalities[attempt.modality].correct += Number(attempt.correct);
@@ -122,7 +191,13 @@ export const backupSchema = z
         p.reviewSuccesses !== (h?.reviewSuccesses ?? 0)
       )
         fail("History counters do not match attempts.");
-      for (const m of ["copy", "definition", "audio", "cloze"] as const) {
+      for (const m of [
+        "copy",
+        "definition",
+        "audio",
+        "cloze",
+        "recognition",
+      ] as const) {
         if (
           p.accuracy[m].total !== (h?.modalities[m]?.total ?? 0) ||
           p.accuracy[m].correct !== (h?.modalities[m]?.correct ?? 0)
@@ -130,6 +205,60 @@ export const backupSchema = z
           fail("Modality history is inconsistent.");
       }
     }
+    for (const session of b.sessions) {
+      if (session.review && session.mode !== "review")
+        fail("Grouped review cursor belongs to a non-review session.");
+      for (const [id, group] of Object.entries(session.review?.groups ?? {})) {
+        const events = b.attempts.filter(
+          (a) => a.reviewGroupId === `${session.token}:${id}`,
+        );
+        if (
+          events.length !== group.completed ||
+          events.some((a) => a.mode !== "review" || a.learningSenseId !== id) ||
+          group.failed !== events.some((a) => !a.correct)
+        )
+          fail("Grouped review cursor does not match saved answers.");
+      }
+      if (session.recall && (session.mode !== "review" || session.review))
+        fail("Recognition cursor belongs to an incompatible session.");
+      for (const [id, group] of Object.entries(session.recall?.groups ?? {})) {
+        const events = b.attempts
+          .filter((a) => a.reviewGroupId === `${session.token}:${id}`)
+          .sort((a, b) => (a.reviewStep ?? -1) - (b.reviewStep ?? -1));
+        const plan = recognitionSteps(group.choice),
+          confirmed = group.phase !== "draft";
+        if (
+          group.completed > plan.length ||
+          (group.phase === "complete") !==
+            (confirmed && group.completed === plan.length) ||
+          (!confirmed && (group.completed !== 0 || group.failed)) ||
+          events.length !== (confirmed ? group.completed + 1 : 0) ||
+          events.some(
+            (a, index) =>
+              a.mode !== "review" ||
+              a.learningSenseId !== id ||
+              a.reviewChoice !== group.choice ||
+              a.reviewStep !== index ||
+              a.modality !== (index === 0 ? "recognition" : plan[index - 1]) ||
+              (a.rating !== null) !==
+                (group.phase === "complete" && index === events.length - 1),
+          ) ||
+          group.failed !== events.slice(1).some((a) => !a.correct)
+        )
+          fail(
+            "Recognition choices and repair cursor do not match saved history.",
+          );
+        const last = events.at(-1),
+          expectedRating =
+            group.choice === "unknown" || group.failed
+              ? 1
+              : group.choice === "unsure"
+                ? 2
+                : 3;
+        if (group.phase === "complete" && last?.rating !== expectedRating)
+          fail("Completed familiarity rating is inconsistent.");
+      } // # A restored draft cannot fabricate confirmation or an unheard listening answer.
+    } // # Restoring a half-finished group cannot invent a passed listening step or discard an earlier failed answer.
   });
 export type Backup = z.infer<typeof backupSchema>;
 export async function createBackup(database: GroveDB = db) {
@@ -146,7 +275,7 @@ export async function createBackup(database: GroveDB = db) {
     async () =>
       backupSchema.parse({
         format: "lexigrove-backup",
-        version: 3,
+        version: 5,
         exportedAt: new Date().toISOString(),
         words: await database.words.toArray(),
         progress: await database.progress.toArray(),
@@ -222,7 +351,37 @@ export function migrateBackup(value: unknown) {
         : a;
     });
     b.version = 3;
-    return b;
+    return migrateBackup(b);
+  }
+  if (
+    typeof value === "object" &&
+    value !== null &&
+    "version" in value &&
+    value.version === 3
+  ) {
+    return migrateBackup({ ...structuredClone(value), version: 4 }); // # Old history has one scheduled event per review attempt; new groups mark only their final attempt with a rating.
+  }
+  if (
+    typeof value === "object" &&
+    value !== null &&
+    "version" in value &&
+    value.version === 4
+  ) {
+    const b = structuredClone(value) as Record<string, any>;
+    if (!Array.isArray(b.progress) || !Array.isArray(b.sessions)) return value;
+    for (const p of b.progress) {
+      if (p && p.accuracy) p.accuracy.recognition ??= { correct: 0, total: 0 };
+      if (p && typeof p.introduced === "boolean" && typeof p.stage === "number")
+        migrateAcquisitionStage(p);
+    }
+    for (const session of b.sessions)
+      if (session?.mode === "review") {
+        delete session.review;
+        session.recall = { groups: {} };
+        session.token = crypto.randomUUID();
+      }
+    b.version = 5;
+    return b; // # Preserve all histories and FSRS cards; old unfinished groups restart recognition without grading their earlier answers again.
   }
   return value;
 }

@@ -9,10 +9,14 @@ import {
   normalize,
   defaultSettings,
   freshProgress,
+  recognitionSteps,
+  type RecognitionChoice,
+  recognitionChoiceSchema,
 } from "../types/model"; // # Typed study state.
 import { isMature, projectWorld } from "../world/progression"; // # Milestones are consumers of learning data.
 import { learningUnits, type LearningUnit } from "../vocabulary/lexicon"; // # Queue IDs are learning groups, not bare spellings.
-export const TESTS: Modality[] = ["definition", "audio", "cloze"];
+export const TESTS: Modality[] = ["copy", "definition", "audio"];
+const PRACTICE_TESTS: Modality[] = ["definition", "audio", "cloze"]; // # Context exercises remain unscheduled practice, never a mandatory fourth acquisition step.
 export const schedule = (retention: number) =>
   fsrs({
     request_retention: retention,
@@ -63,14 +67,14 @@ export function chooseModality(
   word: Lexical,
   audioAvailable: boolean,
 ): Modality {
-  const available = TESTS.filter((m) => m !== "audio" || audioAvailable).filter(
-    (m) => m !== "cloze" || hasCloze(word),
-  );
+  const available = PRACTICE_TESTS.filter(
+    (m) => m !== "audio" || audioAvailable,
+  ).filter((m) => m !== "cloze" || hasCloze(word));
   return (
     [...available].sort((a, b) => {
       const score = (m: Modality) =>
         (p.accuracy[m].correct + 1) / (p.accuracy[m].total + 2) +
-        ((p.attempts + TESTS.indexOf(m)) % 3) * 0.025;
+        ((p.attempts + PRACTICE_TESTS.indexOf(m)) % 3) * 0.025;
       return score(a) - score(b);
     })[0] ?? "definition"
   );
@@ -86,6 +90,9 @@ export type Task = {
   sessionToken: string;
   sequence: number;
   audioAvailable: boolean;
+  reviewStep?: number;
+  reviewTotal?: number;
+  reviewChoice?: RecognitionChoice;
 };
 export function nextTask(
   session: Session,
@@ -106,7 +113,10 @@ export function nextTask(
   let pending = ordered;
   if (session.mode === "review")
     pending = ordered.filter(
-      ({ progress: p }) => p.card && p.card.due.getTime() <= now,
+      ({ word, progress: p }) =>
+        p.card &&
+        p.card.due.getTime() <= now &&
+        session.recall?.groups[word.id]?.phase !== "complete",
     );
   if (session.mode === "acquire")
     pending = ordered.filter(({ progress: p }) => !p.card);
@@ -117,61 +127,51 @@ export function nextTask(
       ? p.word.wordId !== previousLemma
       : p.word.id !== session.lastWord,
   );
-  let filler = false;
-  if (!pair && session.mode === "acquire" && pending[0].progress.introduced) {
-    const companion = units.find(
-      (w) =>
-        (previousLemma
-          ? w.wordId !== previousLemma
-          : w.id !== session.lastWord) && w.easyDefinition,
-    );
-    if (!companion) return null;
-    pair = {
-      word: companion,
-      progress: map.get(companion.id) ?? freshProgress(companion.id),
-    };
-    filler = true;
-  }
   pair ??= pending[0];
   const { word, progress: p } = pair;
   const mode: Attempt["mode"] =
-    filler || session.mode === "practice"
+    session.mode === "practice"
       ? "practice"
       : session.mode === "review"
         ? "review"
-        : !p.introduced
+        : p.stage === 0
           ? "intro"
           : "acquisition";
+  const group = session.recall?.groups[word.id];
+  const reviewStep = group?.completed ?? 0;
+  const reviewPlan = group ? recognitionSteps(group.choice) : [];
+  const modality: Modality =
+    mode === "intro"
+      ? "copy"
+      : mode === "acquisition"
+        ? TESTS[p.stage]
+        : mode === "review"
+          ? group?.phase === "testing"
+            ? reviewPlan[reviewStep]
+            : "recognition"
+          : chooseModality(p, word, audioAvailable);
   return {
     word,
     expectedAnswer:
-      mode !== "intro" &&
-      !filler &&
-      (mode === "acquisition"
-        ? TESTS[p.stage]
-        : chooseModality(p, word, audioAvailable)) === "cloze"
+      modality === "cloze"
         ? word.clozeSpec?.expectedAnswer || word.lemma
         : word.lemma,
     acceptedForms:
-      mode !== "intro" &&
-      !filler &&
-      (mode === "acquisition"
-        ? TESTS[p.stage]
-        : chooseModality(p, word, audioAvailable)) === "cloze"
-        ? word.clozeSpec?.acceptedForms || []
-        : [],
+      modality === "cloze" ? word.clozeSpec?.acceptedForms || [] : [],
     progress: p,
     mode,
-    modality:
-      filler || mode === "intro"
-        ? "copy"
-        : mode === "acquisition"
-          ? TESTS[p.stage]
-          : chooseModality(p, word, audioAvailable),
+    modality,
     revision: p.revision,
     sessionToken: session.token,
     sequence: session.completed,
     audioAvailable,
+    ...(mode === "review"
+      ? {
+          reviewStep,
+          reviewTotal: reviewPlan.length,
+          reviewChoice: group?.choice,
+        }
+      : {}),
   };
 }
 export async function startSession(mode: Session["mode"], ids?: string[]) {
@@ -186,6 +186,17 @@ export async function startSession(mode: Session["mode"], ids?: string[]) {
       const words = learningUnits(await db.words.toArray());
       const settings = (await db.settings.get("settings")) ?? defaultSettings;
       const due = dueWords(progress);
+      const active = await db.sessions.get("active");
+      if (
+        mode !== "review" &&
+        active?.mode === "review" &&
+        Object.values(active.recall?.groups ?? {}).some(
+          (g) => g.phase === "testing",
+        )
+      )
+        throw Error(
+          "Finish the confirmed review before starting another session.",
+        ); // # Switching to practice cannot discard an acknowledged forgetting event.
       if (mode === "acquire" && due.length)
         throw Error("Finish your due reviews before learning new words.");
       let wordIds = [
@@ -198,6 +209,27 @@ export async function startSession(mode: Session["mode"], ids?: string[]) {
         ),
       ]; // # A vocabulary-list action expands lemma IDs to their independent learning groups.
       if (mode === "review") wordIds = due.map((p) => p.id);
+      if (mode === "review") {
+        const saved = await db.sessions.get("active");
+        if (
+          saved?.mode === "review" &&
+          saved.wordIds.some((id) => {
+            const unit = words.find((w) => w.id === id);
+            return (
+              unit &&
+              wordIds.includes(id) &&
+              saved.recall?.groups[id]?.phase !== "complete"
+            );
+          })
+        ) {
+          const resumed = {
+            ...saved,
+            wordIds: [...new Set([...saved.wordIds, ...wordIds])],
+          };
+          await db.sessions.put(resumed);
+          return resumed;
+        } // # Starting review again resumes an unfinished group rather than discarding its first answer.
+      }
       if (mode === "acquire") {
         const day = new Date();
         day.setHours(0, 0, 0, 0);
@@ -223,7 +255,7 @@ export async function startSession(mode: Session["mode"], ids?: string[]) {
             !p.card &&
             !p.suspended &&
             !p.known &&
-            words.some((w) => w.id === p.id && w.easyDefinition && hasCloze(w)),
+            words.some((w) => w.id === p.id && w.easyDefinition),
         );
         const chosen = new Set(
           eligible
@@ -246,12 +278,61 @@ export async function startSession(mode: Session["mode"], ids?: string[]) {
         lastWord: null,
         completed: 0,
         startedAt: Date.now(),
+        ...(mode === "review"
+          ? {
+              recall: { groups: {} },
+            }
+          : {}),
       };
       await db.sessions.put(session);
       return session;
     },
   );
 }
+export async function selectReviewChoice(
+  task: Task,
+  choice: RecognitionChoice,
+) {
+  recognitionChoiceSchema.parse(choice); // # Runtime callers cannot save an unrecognized option.
+  return db.transaction(
+    "rw",
+    [db.words, db.progress, db.sessions],
+    async () => {
+      const current = await db.sessions.get("active"),
+        p = await db.progress.get(task.word.id);
+      if (
+        !current ||
+        current.token !== task.sessionToken ||
+        current.completed !== task.sequence ||
+        !p ||
+        p.revision !== task.revision
+      )
+        throw Error(
+          "This review changed in another tab. Reload the study session.",
+        );
+      const expected = nextTask(
+        current,
+        await db.words.toArray(),
+        await db.progress.toArray(),
+        task.audioAvailable,
+      );
+      if (
+        task.modality !== "recognition" ||
+        expected?.modality !== "recognition" ||
+        expected.word.id !== task.word.id
+      )
+        throw Error("This self-assessment is no longer current.");
+      const recall = structuredClone(current.recall ?? { groups: {} });
+      recall.groups[task.word.id] = {
+        choice,
+        phase: "draft",
+        completed: 0,
+        failed: false,
+      };
+      await db.sessions.put({ ...current, recall });
+    },
+  );
+} // # Selecting or changing an option only saves a draft; it cannot award a review, change a card or grow the world.
 export async function deferAudioTask(task: Task) {
   // # Deferral must not let an obsolete tab change the active study queue.
   return db.transaction(
@@ -390,21 +471,38 @@ export async function submitTask(
         throw Error(
           "A completed pronunciation variant is required for listening credit.",
         ); // # New listening attempts always identify what was played; migrated history remains explicitly unknown.
-      const correct = [expected.expectedAnswer, ...expected.acceptedForms].some(
-        (a) => normalize(a) === normalize(answer),
-      );
+      const savedGroup = current.recall?.groups[task.word.id];
+      if (
+        task.modality === "recognition" &&
+        (!savedGroup ||
+          savedGroup.phase !== "draft" ||
+          answer !== savedGroup.choice)
+      )
+        throw Error(
+          "Choose and confirm the current option in the word details first.",
+        );
+      const correct =
+        task.modality === "recognition"
+          ? answer === "known"
+          : [expected.expectedAnswer, ...expected.acceptedForms].some(
+              (a) => normalize(a) === normalize(answer),
+            ); // # Recognition correctness means a confirmed 'known' self-report, not an objectively verified meaning test.
       const before = p.card ? structuredClone(p.card) : null;
       let rating: number | null = null;
       const settings = (await db.settings.get("settings")) ?? defaultSettings;
       const updated = structuredClone(p);
+      const recall =
+        task.mode === "review"
+          ? structuredClone(current.recall ?? { groups: {} })
+          : undefined;
       if (task.mode !== "practice") {
         updated.attempts++;
         updated[correct ? "correct" : "incorrect"]++;
         updated.accuracy[task.modality].total++;
         updated.accuracy[task.modality].correct += Number(correct);
         updated.lastReviewedAt = now;
-        if (task.mode === "intro" && correct) updated.introduced = true;
-        if (task.mode === "acquisition") {
+        if (task.mode === "intro" || task.mode === "acquisition") {
+          if (correct) updated.introduced = true;
           updated.stage = correct ? updated.stage + 1 : 0;
           updated.streak = updated.stage;
           if (!correct) updated.failures++;
@@ -422,13 +520,37 @@ export async function submitTask(
         if (task.mode === "review") {
           if (!updated.card || updated.card.due.getTime() > now)
             throw Error("This review is not due.");
-          rating = correct ? Rating.Good : Rating.Again;
-          updated.reviewSuccesses += Number(correct);
-          updated.card = schedule(settings.retention).next(
-            updated.card as Card,
-            new Date(now),
-            rating,
-          ).card;
+          const group = recall!.groups[task.word.id];
+          if (!group)
+            throw Error(
+              "Confirm a familiarity choice before continuing this review.",
+            );
+          if (task.modality === "recognition") group.phase = "testing";
+          else {
+            if (
+              group.phase !== "testing" ||
+              recognitionSteps(group.choice)[group.completed] !== task.modality
+            )
+              throw Error("This repair step is no longer current.");
+            group.completed++;
+            group.failed ||= !correct;
+          }
+          if (group.completed === recognitionSteps(group.choice).length) {
+            rating =
+              group.choice === "unknown" || group.failed
+                ? Rating.Again
+                : group.choice === "unsure"
+                  ? Rating.Hard
+                  : Rating.Good;
+            group.phase = "complete";
+            updated.reviewSuccesses += Number(rating >= Rating.Hard);
+            if (rating === Rating.Again) updated.failures++;
+            updated.card = schedule(settings.retention).next(
+              updated.card as Card,
+              new Date(now),
+              rating,
+            ).card;
+          } // # Preserve initial forgetting even after successful repair; schedule the complete event exactly once.
         }
         updated.everMature ||= isMature(updated);
         updated.revision++;
@@ -439,6 +561,16 @@ export async function submitTask(
         learningSenseId: task.word.learningSenseId,
         pronunciationId: task.modality === "audio" ? pronunciationId : null,
         expectedAnswer: expected.expectedAnswer,
+        ...(task.mode === "review"
+          ? {
+              reviewGroupId: `${current.token}:${task.word.id}`,
+              reviewChoice: recall!.groups[task.word.id].choice,
+              reviewStep:
+                task.modality === "recognition"
+                  ? 0
+                  : (task.reviewStep ?? 0) + 1,
+            }
+          : {}),
         id: attemptId,
         wordId: task.word.wordId,
         at: now,
@@ -464,6 +596,7 @@ export async function submitTask(
         wordIds: ids,
         lastWord: task.word.id,
         completed: current.completed + 1,
+        ...(recall ? { recall } : {}),
       });
       await db.world.put(
         projectWorld(await db.progress.toArray(), await db.world.get("world")),

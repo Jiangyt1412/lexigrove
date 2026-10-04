@@ -259,3 +259,14 @@ input.answer-input {
 .pronunciation-listening .pronunciation-flag {
   font-size: 26px;
 }
+.pronunciation-button.primary-accent {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.audio-feedback,
+.cloze-hint {
+  font-family: var(--font-learning);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+} /* # Keep playback status and optional context hints readable in the learning scene. */

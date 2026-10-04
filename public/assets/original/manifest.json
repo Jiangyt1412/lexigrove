@@ -7,7 +7,12 @@
   "rendering": {
     "shapeRendering": "crispEdges",
     "css": "image-rendering: pixelated;",
-    "spriteViewBox": [0, 0, 32, 32]
+    "spriteViewBox": [
+      0,
+      0,
+      32,
+      32
+    ]
   },
   "palette": {
     "ink": "#2c453b",
@@ -38,7 +43,12 @@
     "file": "garden-base.svg",
     "width": 1100,
     "height": 340,
-    "viewBox": [0, 0, 550, 170],
+    "viewBox": [
+      0,
+      0,
+      550,
+      170
+    ],
     "cropAnchors": [
       {
         "id": 0,
@@ -141,7 +151,12 @@
     "file": "aquarium-base.svg",
     "width": 700,
     "height": 300,
-    "viewBox": [0, 0, 350, 150],
+    "viewBox": [
+      0,
+      0,
+      350,
+      150
+    ],
     "openHabitat": {
       "x": 83,
       "y": 43,
@@ -156,154 +171,264 @@
       "symbol": "sprites.svg#seed",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "sprout",
       "symbol": "sprites.svg#sprout",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "carrot",
       "symbol": "sprites.svg#carrot",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "radish",
       "symbol": "sprites.svg#radish",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "pumpkin",
       "symbol": "sprites.svg#pumpkin",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "flower",
       "symbol": "sprites.svg#flower",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "berry",
       "symbol": "sprites.svg#berry",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "tree",
       "symbol": "sprites.svg#tree",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "mushroom",
       "symbol": "sprites.svg#mushroom",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "books",
       "symbol": "sprites.svg#books",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "watering-can",
       "symbol": "sprites.svg#watering-can",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "fish-blue",
       "symbol": "sprites.svg#fish-blue",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "fish-orange",
       "symbol": "sprites.svg#fish-orange",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "jellyfish",
       "symbol": "sprites.svg#jellyfish",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "seahorse",
       "symbol": "sprites.svg#seahorse",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "crab",
       "symbol": "sprites.svg#crab",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "shrimp",
       "symbol": "sprites.svg#shrimp",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "coral",
       "symbol": "sprites.svg#coral",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "seaweed",
       "symbol": "sprites.svg#seaweed",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "shell",
       "symbol": "sprites.svg#shell",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "bubbles",
       "symbol": "sprites.svg#bubbles",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     },
     {
       "id": "chest",
       "symbol": "sprites.svg#chest",
       "width": 64,
       "height": 64,
-      "viewBox": [0, 0, 32, 32]
+      "viewBox": [
+        0,
+        0,
+        32,
+        32
+      ]
     }
   ],
   "verification": {
@@ -313,7 +438,10 @@
     "visualScope": "Chromium screenshots and motion checks cover the current home, seasonal worlds and earned residents. XML parsing and inventory counts do not prove every legacy sprite was visually reviewed."
   },
   "marineInterface": {
-    "files": ["blue-horizon.svg", "ocean-tiles.svg"],
+    "files": [
+      "blue-horizon.svg",
+      "ocean-tiles.svg"
+    ],
     "licence": "CC0-1.0",
     "paletteReference": "https://pressmintrocket.oopy.io/dave_the_diver",
     "decorativeNotEarned": true
@@ -402,7 +530,12 @@
   ],
   "livingWorld": {
     "component": "src/world/LivingScene.tsx",
-    "sceneViewBox": [0, 0, 640, 320],
+    "sceneViewBox": [
+      0,
+      0,
+      640,
+      320
+    ],
     "spriteSheet": "world-life.svg",
     "symbols": [
       "bird",
@@ -419,7 +552,12 @@
       "watering",
       "book"
     ],
-    "seasons": ["spring", "summer", "autumn", "winter"],
+    "seasons": [
+      "spring",
+      "summer",
+      "autumn",
+      "winter"
+    ],
     "animation": "CSS steps with independent durations, offsets, pauses and turns; no React per-frame loop",
     "codeLicence": "MIT",
     "standaloneSvgLicence": "CC0-1.0"

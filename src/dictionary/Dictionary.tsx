@@ -1,4 +1,4 @@
-import { useState } from "react"; // # One reusable dictionary sheet with a breadcrumb stack.
+import { useState, type ReactNode } from "react"; // # One reusable dictionary sheet with a breadcrumb stack.
 import { Plus, Check, ExternalLink, Star } from "../components/PixelIcons";
 import {
   type Lexical,
@@ -19,6 +19,7 @@ export function Dictionary({
   onClose,
   onEdit,
   notify,
+  reviewConfirmation,
 }: {
   initial: string;
   words: Lexical[];
@@ -27,10 +28,22 @@ export function Dictionary({
   onClose: () => void;
   onEdit: (word: string) => void;
   notify: (message: string) => void;
+  reviewConfirmation?: { learningSenseId: string; footer: ReactNode }; // # Study opens the tested meaning first and supplies its editable familiarity confirmation.
 }) {
   const [path, setPath] = useState([initial]);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
+  const initialEntry = words
+    .find((w) => normalize(w.lemma) === normalize(initial))
+    ?.entries.find((e) =>
+      e.learningGroups.some(
+        (g) => g.learningSenseId === reviewConfirmation?.learningSenseId,
+      ),
+    );
+  const [selected, setSelected] = useState<string | null>(
+    initialEntry?.entryId ?? null,
+  );
+  const [selectedGroup, setSelectedGroup] = useState<string | null>(
+    reviewConfirmation?.learningSenseId ?? null,
+  );
   const current = path[path.length - 1];
   const raw = words.find((w) => w.normalizedWord === normalize(current));
   const canonical = raw ? hydrateWord(raw) : null;
@@ -59,6 +72,14 @@ export function Dictionary({
       ? projectSense(canonical, entry, group)
       : canonical;
   const p = progress.find((p) => p.id === group?.learningSenseId);
+  const atReviewMeaning =
+    path.length === 1 &&
+    group?.learningSenseId === reviewConfirmation?.learningSenseId;
+  const returnToReview = () => {
+    setPath([initial]);
+    setSelected(initialEntry?.entryId ?? null);
+    setSelectedGroup(reviewConfirmation?.learningSenseId ?? null);
+  }; // # Confirmation cannot be attached to a related word or a different meaning.
   const visit = (word: string) => {
     setPath([...path, word]);
     setSelected(null);
@@ -103,6 +124,11 @@ export function Dictionary({
       <div className="word-title">
         <h2>{word?.lemma ?? current}</h2>
       </div>
+      {reviewConfirmation && !atReviewMeaning && (
+        <button className="secondary" onClick={returnToReview}>
+          返回正在复习的释义
+        </button>
+      )}
       {word ? (
         <>
           {canonical && canonical.entries.length > 1 && (
@@ -342,44 +368,50 @@ export function Dictionary({
               rows={2}
             />
           </label>
-          <div className="actions wrap">
-            <button
-              className="primary"
-              onClick={() => add().catch((e) => notify(e.message))}
-            >
-              <Plus size={17} />
-              Learn this word
+          {!reviewConfirmation && (
+            <div className="actions wrap">
+              <button
+                className="primary"
+                onClick={() => add().catch((e) => notify(e.message))}
+              >
+                <Plus size={17} />
+                Learn this word
+              </button>
+              <button
+                className="secondary"
+                disabled={!group || !!p?.card}
+                onClick={() => {
+                  if (p)
+                    void db.progress.update(p.id, {
+                      known: !p.known,
+                      revision: p.revision + 1,
+                    });
+                }}
+              >
+                <Check size={16} />
+                {p?.known ? "Mark as new" : "I know this word"}
+              </button>
+              <button
+                className="icon-button"
+                disabled={!group}
+                aria-label={p?.favorite ? "Unfavorite word" : "Favorite word"}
+                onClick={() => {
+                  if (p)
+                    void db.progress.update(p.id, { favorite: !p.favorite });
+                }}
+              >
+                <Star size={19} fill={p?.favorite ? "currentColor" : "none"} />
+              </button>
+            </div>
+          )}
+          {!reviewConfirmation && (
+            <button className="text-button" onClick={() => onEdit(word.lemma)}>
+              Edit definition & example
             </button>
-            <button
-              className="secondary"
-              disabled={!group || !!p?.card}
-              onClick={() => {
-                if (p)
-                  void db.progress.update(p.id, {
-                    known: !p.known,
-                    revision: p.revision + 1,
-                  });
-              }}
-            >
-              <Check size={16} />
-              {p?.known ? "Mark as new" : "I know this word"}
-            </button>
-            <button
-              className="icon-button"
-              disabled={!group}
-              aria-label={p?.favorite ? "Unfavorite word" : "Favorite word"}
-              onClick={() => {
-                if (p) void db.progress.update(p.id, { favorite: !p.favorite });
-              }}
-            >
-              <Star size={19} fill={p?.favorite ? "currentColor" : "none"} />
-            </button>
-          </div>
-          <button className="text-button" onClick={() => onEdit(word.lemma)}>
-            Edit definition & example
-          </button>
+          )}
           <details className="source-details">
             <summary>Source & licence</summary>
+            {word.audioAttribution && <p>{word.audioAttribution}</p>}
             {word.chineseDefinition && (
               <p lang="zh-CN">
                 中文：{word.chineseSource || "用户提供"}。仅对应当前英文释义。
@@ -416,14 +448,17 @@ export function Dictionary({
               <p>{word.sourceLicence}</p>
             )}
           </details>
+          {reviewConfirmation && atReviewMeaning && reviewConfirmation.footer}
         </>
       ) : (
         <>
           <p>This word is not in your offline dictionary yet.</p>
-          <button className="primary" onClick={() => onEdit(current)}>
-            <Plus size={17} />
-            Create a personal entry
-          </button>
+          {!reviewConfirmation && (
+            <button className="primary" onClick={() => onEdit(current)}>
+              <Plus size={17} />
+              Create a personal entry
+            </button>
+          )}
         </>
       )}
     </Modal>

@@ -61,7 +61,7 @@ const verb = () =>
   )!;
 async function activate(
   unitId: string,
-  stage = 0,
+  stage = 1,
   mode: Session["mode"] = "acquire",
 ) {
   const progress = (await db.progress.get(unitId))!;
@@ -87,6 +87,18 @@ async function activate(
     true,
   )!;
 } // # A fixture isolates a particular stage; the original engine suite separately verifies the complete interleaved sequence.
+async function activateCloze(id: string) {
+  await activate(id, 0, "practice");
+  const progress = (await db.progress.get(id))!;
+  progress.accuracy.definition = { correct: 1, total: 1 };
+  await db.progress.put(progress);
+  return nextTask(
+    (await db.sessions.get("active"))!,
+    await db.words.toArray(),
+    await db.progress.toArray(),
+    false,
+  )!;
+} // # Isolate context practice without scheduling or manufacturing a graduation event.
 function without<T extends object, K extends keyof T>(
   input: T,
   ...keys: K[]
@@ -310,7 +322,7 @@ describe("sense-consistent learning and progress", () => {
   });
   it("audio acquisition rejects a different entry variant and an unidentified playback", async () => {
     const v = verb(),
-      task = await activate(v.id, 1),
+      task = await activate(v.id, 2),
       before = await db.progress.get(v.id);
     await expect(
       submitTask(
@@ -339,9 +351,9 @@ describe("sense-consistent learning and progress", () => {
     expect(event.lexicalEntryId).toBe(v.lexicalEntryId);
     expect(event.modality).toBe("audio");
   });
-  it("cloze acquisition expects the grammatical surface form instead of the lemma", async () => {
+  it("cloze practice expects the grammatical surface form instead of the lemma", async () => {
     const v = verb(),
-      task = await activate(v.id, 2);
+      task = await activateCloze(v.id);
     expect(task.expectedAnswer).toBe("recorded");
     expect(
       cloze(task.word.clozeSpec!.sentence, task.word.clozeSpec!.target),
@@ -349,12 +361,12 @@ describe("sense-consistent learning and progress", () => {
     const event = await submitTask(task, "recorded", crypto.randomUUID());
     expect(event.correct).toBe(true);
     expect(event.expectedAnswer).toBe("recorded");
-    expect(event.after?.state).toBe(2);
+    expect(event.after).toBeNull();
     expect((await db.progress.get(groups()[0].id))?.card).toBeNull();
     expect((await db.progress.get(groups()[0].id))?.everMature).toBe(false);
   });
   it("does not accept the lemma when the sentence requires an inflected form", async () => {
-    const task = await activate(verb().id, 2),
+    const task = await activateCloze(verb().id),
       event = await submitTask(task, "record", crypto.randomUUID());
     expect(event.correct).toBe(false);
     expect((await db.progress.get(task.word.id))?.stage).toBe(0);
@@ -364,7 +376,7 @@ describe("sense-consistent learning and progress", () => {
       group = word.entries[1].learningGroups[0];
     group.cloze.acceptedForms = ["RECORDED"];
     await db.words.put(word);
-    const task = await activate(group.learningSenseId, 2);
+    const task = await activateCloze(group.learningSenseId);
     expect(
       (await submitTask(task, "  RECORDED ", crypto.randomUUID())).correct,
     ).toBe(true);
@@ -514,7 +526,13 @@ describe("imports, migrations and historical ownership", () => {
     await old.table("words").put(snapshot.word);
     await old.table("progress").put(snapshot.progress);
     await old.table("attempts").bulkPut(snapshot.attempts);
-    await old.table("settings").put(snapshot.settings);
+    await old.table("settings").put({
+      ...snapshot.settings,
+      accent: "US",
+      audioPreference: "local",
+      autoPronounce: false,
+      voiceURI: "Saved US voice",
+    }); // # Upgrade from the previously shipped voice defaults.
     await old.table("sessions").put(snapshot.session);
     await old.table("world").put(snapshot.world);
     old.close();
@@ -527,6 +545,11 @@ describe("imports, migrations and historical ownership", () => {
         ...senseIdentity(groups(simpleWord)[0]),
       });
       const backup = await createBackup(upgraded);
+      expect(backup.settings.accent).toBe("UK");
+      expect(backup.settings.audioPreference).toBe("human");
+      expect(backup.settings.autoPronounce).toBe(true);
+      expect(backup.settings.voiceURI).toBe("");
+      expect(backup.settings.dailyTarget).toBe(snapshot.settings.dailyTarget);
       expect(backup.words[0].note).toBe(snapshot.word.note);
       expect(backup.words[0].decks).toEqual(snapshot.word.decks);
       expect(
@@ -544,7 +567,12 @@ describe("imports, migrations and historical ownership", () => {
           after: a.after,
         })),
       );
-      expect(backup.sessions).toEqual([snapshot.session]);
+      expect(backup.sessions[0]).toMatchObject({
+        ...snapshot.session,
+        token: expect.any(String),
+        recall: { groups: {} },
+      });
+      expect(backup.sessions[0].token).not.toBe(snapshot.session.token);
       expect(backup.world).toEqual(snapshot.world);
       expect(backup.attempts.every((a) => a.pronunciationId === null)).toBe(
         true,
@@ -568,9 +596,14 @@ describe("imports, migrations and historical ownership", () => {
           world: old.world,
         }),
       );
-    expect(backup.version).toBe(3);
+    expect(backup.version).toBe(5);
     expect(backup.progress[0].card).toEqual(old.progress.card);
-    expect(backup.sessions).toEqual([old.session]);
+    expect(backup.sessions[0]).toMatchObject({
+      ...old.session,
+      token: expect.any(String),
+      recall: { groups: {} },
+    });
+    expect(backup.sessions[0].token).not.toBe(old.session.token);
     expect(
       backup.attempts.find((a) => a.modality === "audio")?.pronunciationId,
     ).toBeNull();
@@ -578,7 +611,7 @@ describe("imports, migrations and historical ownership", () => {
   });
   it("allows an earlier played variant to remain in history after the group is edited", async () => {
     const unit = verb(),
-      task = await activate(unit.id, 1);
+      task = await activate(unit.id, 2);
     await submitTask(
       task,
       "record",

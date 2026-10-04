@@ -1,7 +1,7 @@
 import "fake-indexeddb/auto"; // # Real Dexie transactions in an isolated in-memory database.
 import { beforeEach, afterAll, describe, it, expect } from "vitest";
 import { db, initialize, addWord, saveSettings } from "../src/db/database";
-import { manualEntry, freshProgress, type Session } from "../src/types/model";
+import { manualEntry, freshProgress } from "../src/types/model";
 import {
   startSession,
   nextTask,
@@ -11,11 +11,13 @@ import {
   suggestedNew,
   cloze,
   resetProgress,
+  selectReviewChoice,
 } from "../src/learning/engine";
 import { createBackup, restoreBackup, parseBackup } from "../src/backup/backup";
 import { isMature, projectWorld } from "../src/world/progression";
 import { parseImport, commitImport, previewImport } from "../src/import/import";
 import { characterDiff } from "../src/utils/diff";
+import { statistics } from "../src/statistics/statistics"; // # Completed due groups count once even when their final answer is correct after an earlier error.
 const submitTask: typeof commitTask = (
   task,
   answer,
@@ -74,7 +76,6 @@ async function graduate() {
   await step(word.id, "mitigate");
   await step(word.id, "mitigate");
   await step(word.id, "mitigate");
-  await step(word.id, "mitigate");
   return (await db.progress.get(word.id))!;
 }
 async function audioTask() {
@@ -93,9 +94,8 @@ async function audioTask() {
   throw Error("No audio task reached");
 }
 describe("acquisition and FSRS", () => {
-  it("requires introduction and all three interleaved modalities before FSRS", async () => {
+  it("requires exactly copying, meaning and listening before FSRS", async () => {
     await startSession("acquire");
-    await step(word.id, "mitigate");
     await step(word.id, "mitigate");
     await step(word.id, "mitigate");
     expect((await db.progress.get(word.id))!.card).toBeNull();
@@ -107,7 +107,7 @@ describe("acquisition and FSRS", () => {
     const attempts = (await db.attempts.toArray()).sort((a, b) => a.at - b.at);
     expect(
       attempts.filter((a) => a.wordId === word.id).map((a) => a.modality),
-    ).toEqual(["copy", "definition", "audio", "cloze"]);
+    ).toEqual(["copy", "definition", "audio"]);
     for (let i = 1; i < attempts.length; i++)
       expect(attempts[i].wordId).not.toBe(attempts[i - 1].wordId);
   });
@@ -130,9 +130,9 @@ describe("acquisition and FSRS", () => {
     await step(word.id, "mitigate");
     await step(word.id, "mitigate");
     await expect(step(word.id, "mitigate", false)).rejects.toThrow("Play");
-    expect((await db.progress.get(word.id))!.stage).toBe(1);
+    expect((await db.progress.get(word.id))!.stage).toBe(2);
   });
-  it("inserts an ungraded different word for the sole pending acquisition word", async () => {
+  it("continues a single pending word without inserting a fourth filler task", async () => {
     await startSession("acquire");
     await step(word.id, "mitigate");
     const s = {
@@ -146,22 +146,29 @@ describe("acquisition and FSRS", () => {
       await db.progress.toArray(),
       true,
     )!;
-    expect(task.word.id).toBe(companion.id);
-    expect(task.mode).toBe("practice");
-    expect(task.modality).toBe("copy");
+    expect(task.word.id).toBe(word.id);
+    expect(task.mode).toBe("acquisition");
+    expect(task.modality).toBe("definition");
   });
-  it("pauses a one-word library rather than violating interleaving", () => {
-    const p = { ...freshProgress(word.id), introduced: true };
-    const s: Session = {
-      id: "active",
-      token: "test",
-      mode: "acquire",
-      wordIds: [word.id],
-      lastWord: word.id,
-      completed: 1,
-      startedAt: Date.now(),
-    };
-    expect(nextTask(s, [word], [p], true)).toBeNull();
+  it("allows a one-word library with no example to learn all three stages", async () => {
+    await db.delete();
+    await db.open();
+    const solo = manualEntry("retain", "To keep something.");
+    await initialize([solo]);
+    await startSession("acquire");
+    for (const modality of ["copy", "definition", "audio"]) {
+      const task = await current();
+      expect(task.modality).toBe(modality);
+      await submitTask(
+        task,
+        solo.lemma,
+        crypto.randomUUID(),
+        true,
+        ++testClock,
+      );
+    }
+    expect(await current()).toBeNull();
+    expect((await db.progress.get(solo.id))!.card!.reps).toBe(1);
   });
   it("due words block new sessions and recommend zero new words", async () => {
     const p = await graduate();
@@ -183,16 +190,273 @@ describe("acquisition and FSRS", () => {
       submitTask(task, task.word.lemma, crypto.randomUUID(), true),
     ).rejects.toThrow("Reviews are now due");
   });
-  it("wrong recall becomes FSRS Relearning and adds a lapse", async () => {
+  it("a draft can change from known to unknown without changing cards, counters or history", async () => {
     const p = await graduate();
     p.card!.due = new Date(Date.now() - 1000);
     await db.progress.put(p);
     await startSession("review");
     const task = await current();
-    const attempt = await submitTask(task, "wrong", crypto.randomUUID(), true);
-    expect(attempt.after!.state).toBe(3);
-    expect(attempt.after!.lapses).toBe(1);
-    expect(attempt.after!.due.getTime()).toBeGreaterThan(Date.now());
+    expect(task.modality).toBe("recognition");
+    const before = await createBackup();
+    await selectReviewChoice(task, "known");
+    await selectReviewChoice(task, "unknown");
+    const draft = await createBackup();
+    expect(draft.progress).toEqual(before.progress);
+    expect(draft.attempts).toEqual(before.attempts);
+    expect(draft.world).toEqual(before.world);
+    expect(draft.sessions[0].recall!.groups[word.id].choice).toBe("unknown");
+    await expect(
+      submitTask(task, "known", crypto.randomUUID()),
+    ).rejects.toThrow("current option");
+    const confirmed = await submitTask(task, "unknown", crypto.randomUUID());
+    expect(confirmed.rating).toBeNull();
+    expect(confirmed.after).toEqual(p.card);
+    expect((await current()).modality).toBe("copy");
+  });
+  it("confirmed known schedules once with no repair tests, including duplicate confirmation", async () => {
+    const p = await graduate();
+    p.card!.due = new Date(Date.now() - 1000);
+    await db.progress.put(p);
+    await startSession("review");
+    const task = await current(),
+      id = crypto.randomUUID();
+    await expect(submitTask(task, "known", id)).rejects.toThrow(
+      "details first",
+    );
+    await selectReviewChoice(task, "unknown");
+    await selectReviewChoice(task, "known");
+    const done = await submitTask(task, "known", id);
+    await submitTask(task, "known", id);
+    expect(done.rating).toBe(3);
+    expect(done.after!.reps).toBe(p.card!.reps + 1);
+    expect((await db.progress.get(word.id))!.reviewSuccesses).toBe(1);
+    expect(await current()).toBeNull();
+    expect(
+      (await createBackup()).attempts.filter((a) => a.mode === "review"),
+    ).toHaveLength(1);
+  });
+  it("uncertain needs meaning and heard spelling, survives reload/backup, and schedules Hard only once", async () => {
+    const p = await graduate();
+    p.card!.due = new Date(Date.now() - 1000);
+    await db.progress.put(p);
+    const session = await startSession("review"),
+      task = await current();
+    await selectReviewChoice(task, "unsure");
+    const draft = parseBackup(JSON.stringify(await createBackup()));
+    expect(draft.version).toBe(5);
+    await restoreBackup(draft);
+    expect((await startSession("review")).token).toBe(session.token);
+    expect((await current()).modality).toBe("recognition");
+    await submitTask(await current(), "unsure", crypto.randomUUID());
+    const definition = await current();
+    expect(definition.modality).toBe("definition");
+    await submitTask(definition, definition.word.lemma, crypto.randomUUID());
+    expect((await db.progress.get(word.id))!.card).toEqual(p.card);
+    const backup = await createBackup(),
+      forged = structuredClone(backup);
+    forged.sessions[0].recall!.groups[word.id].completed = 2;
+    expect(() => parseBackup(JSON.stringify(forged))).toThrow("cursor");
+    await restoreBackup(backup);
+    const audio = await current();
+    expect(audio.modality).toBe("audio");
+    await expect(
+      submitTask(audio, audio.word.lemma, crypto.randomUUID(), false),
+    ).rejects.toThrow("Play");
+    const done = await submitTask(
+      audio,
+      audio.word.lemma,
+      crypto.randomUUID(),
+      true,
+    );
+    expect(done.rating).toBe(2);
+    expect(done.after!.reps).toBe(p.card!.reps + 1);
+    expect((await db.progress.get(word.id))!.reviewSuccesses).toBe(1);
+    expect(await current()).toBeNull();
+    expect(
+      (await createBackup()).attempts
+        .filter((a) => a.mode === "review")
+        .sort((a, b) => a.reviewStep! - b.reviewStep!)
+        .map((a) => [a.modality, a.rating]),
+    ).toEqual([
+      ["recognition", null],
+      ["definition", null],
+      ["audio", 2],
+    ]);
+  });
+  it("unknown repeats all three steps and successful repair cannot erase the initial forgetting", async () => {
+    const p = await graduate();
+    p.card!.due = new Date(Date.now() - 1000);
+    await db.progress.put(p);
+    await startSession("review");
+    const task = await current();
+    await selectReviewChoice(task, "unknown");
+    await submitTask(task, "unknown", crypto.randomUUID());
+    for (const modality of ["copy", "definition", "audio"]) {
+      const repair = await current();
+      expect(repair.modality).toBe(modality);
+      const a = await submitTask(
+        repair,
+        repair.word.lemma,
+        crypto.randomUUID(),
+        true,
+      );
+      expect(a.rating).toBe(modality === "audio" ? 1 : null);
+      if (modality !== "audio") expect(a.after).toEqual(p.card);
+    }
+    const updated = (await db.progress.get(word.id))!;
+    expect(updated.card!.reps).toBe(p.card!.reps + 1);
+    expect(updated.card!.lapses).toBe(p.card!.lapses + 1);
+    expect(updated.card!.state).toBe(3);
+    expect(updated.reviewSuccesses).toBe(0);
+    expect(await current()).toBeNull();
+    const stats = statistics(
+      await db.words.toArray(),
+      await db.progress.toArray(),
+      await db.attempts.toArray(),
+    );
+    expect(stats.reviewsToday).toBe(1);
+    expect(stats.retention).toBe(0);
+    expect(stats.recentLapses).toBe(1);
+    expect((await createBackup()).sessions[0].recall!.groups[word.id]).toEqual({
+      choice: "unknown",
+      phase: "complete",
+      completed: 3,
+      failed: false,
+    });
+  });
+  it("failed uncertain meaning remains a lapse even after correct listening", async () => {
+    const p = await graduate();
+    p.card!.due = new Date(Date.now() - 1000);
+    await db.progress.put(p);
+    await startSession("review");
+    const task = await current();
+    await selectReviewChoice(task, "unsure");
+    await submitTask(task, "unsure", crypto.randomUUID());
+    await submitTask(await current(), "wrong", crypto.randomUUID());
+    const done = await submitTask(
+      await current(),
+      word.lemma,
+      crypto.randomUUID(),
+      true,
+    );
+    expect(done.rating).toBe(1);
+    expect(done.after!.reps).toBe(p.card!.reps + 1);
+    expect((await db.progress.get(word.id))!.reviewSuccesses).toBe(0);
+    parseBackup(JSON.stringify(await createBackup()));
+  });
+  it("rejects a stale draft after another tab confirms or replaces the session", async () => {
+    const p = await graduate();
+    p.card!.due = new Date(Date.now() - 1000);
+    await db.progress.put(p);
+    await startSession("review");
+    const task = await current();
+    await selectReviewChoice(task, "known");
+    await submitTask(task, "known", crypto.randomUUID());
+    await expect(selectReviewChoice(task, "unknown")).rejects.toThrow(
+      "changed",
+    );
+    expect((await db.progress.get(word.id))!.card!.reps).toBe(p.card!.reps + 1);
+  });
+  it("a confirmed repair cannot be discarded by starting unrelated practice", async () => {
+    const p = await graduate();
+    p.card!.due = new Date(Date.now() - 1000);
+    await db.progress.put(p);
+    const session = await startSession("review"),
+      task = await current();
+    await selectReviewChoice(task, "unknown");
+    await submitTask(task, "unknown", crypto.randomUUID());
+    await expect(startSession("practice", [companion.id])).rejects.toThrow(
+      "confirmed review",
+    );
+    expect((await startSession("review")).token).toBe(session.token);
+    expect((await current()).modality).toBe("copy");
+  });
+  it("completed choice history remains validated after the active session is replaced", async () => {
+    const p = await graduate();
+    p.card!.due = new Date(Date.now() - 1000);
+    await db.progress.put(p);
+    await startSession("review");
+    const task = await current();
+    await selectReviewChoice(task, "known");
+    await submitTask(task, "known", crypto.randomUUID());
+    await startSession("practice", [companion.id]);
+    const saved = await createBackup();
+    for (const patch of [
+      { reviewChoice: "unknown" },
+      { reviewStep: 1 },
+      { rating: 4 },
+    ]) {
+      const bad = structuredClone(saved),
+        event = bad.attempts.find((a) => a.modality === "recognition")!;
+      Object.assign(event, patch);
+      await expect(restoreBackup(bad)).rejects.toThrow("Recognition history");
+      expect((await db.progress.get(word.id))!.card!.reps).toBe(
+        p.card!.reps + 1,
+      );
+    }
+  });
+  it("legacy partial acquisition keeps completed copying and meaning without inventing a card", async () => {
+    await graduate();
+    const original = await createBackup();
+    for (const completed of [1, 2, 3]) {
+      const legacy = { ...structuredClone(original), version: 4 };
+      const p = legacy.progress.find((p) => p.id === word.id)!;
+      const kept = legacy.attempts
+        .filter((a) => a.wordId === word.id)
+        .sort((a, b) => a.at - b.at)
+        .slice(0, completed);
+      for (const a of kept) {
+        a.rating = null;
+        a.before = null;
+        a.after = null;
+      }
+      legacy.attempts = [
+        ...legacy.attempts.filter((a) => a.wordId !== word.id),
+        ...kept,
+      ];
+      p.stage = p.streak = completed - 1;
+      p.card = null;
+      p.acquiredAt = null;
+      p.attempts = p.correct = completed;
+      p.incorrect = 0;
+      for (const m of [
+        "copy",
+        "definition",
+        "audio",
+        "cloze",
+        "recognition",
+      ] as const)
+        p.accuracy[m] = {
+          total: kept.filter((a) => a.modality === m).length,
+          correct: kept.filter((a) => a.modality === m).length,
+        };
+      const migrated = parseBackup(JSON.stringify(legacy)),
+        saved = migrated.progress.find((p) => p.id === word.id)!;
+      expect(saved.stage).toBe(completed === 1 ? 1 : 2);
+      expect(saved.card).toBeNull();
+      expect(migrated.attempts).toEqual(legacy.attempts);
+      expect(migrated.world).toEqual(legacy.world);
+    }
+  });
+  it("legacy migration refuses invalid stages instead of silently repairing a malformed backup", async () => {
+    await graduate();
+    const baseline = await createBackup();
+    for (const patch of [
+      { stage: 3, streak: 3, card: null },
+      { stage: 99, streak: 99, card: null },
+      { stage: 1, streak: 2, card: null },
+      { stage: 1, streak: 1, card: null, introduced: false },
+    ]) {
+      const legacy = { ...structuredClone(baseline), version: 4 };
+      Object.assign(
+        legacy.progress.find((p) => p.id === word.id)!,
+        patch,
+      );
+      await expect(restoreBackup(legacy)).rejects.toThrow();
+      expect((await db.progress.get(word.id))!.card).toEqual(
+        baseline.progress.find((p) => p.id === word.id)!.card,
+      );
+    }
   });
   it("duplicate attempt IDs do not produce duplicate writes", async () => {
     await startSession("acquire");

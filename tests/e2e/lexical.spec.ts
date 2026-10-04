@@ -362,13 +362,37 @@ test("learning focuses on one group and cloze grades an inflected form with hone
     progress = clozeBackup.progress.find(
       (p) => p.id === group.learningSenseId,
     )!;
-  progress.introduced = true;
-  progress.stage = 2;
-  progress.streak = 2;
+  progress.attempts = progress.correct = 2;
+  progress.accuracy.definition = { correct: 1, total: 1 };
+  progress.accuracy.audio = { correct: 1, total: 1 };
+  clozeBackup.attempts.push({
+    id: "prior-definition-fixture",
+    wordId: word.id,
+    lexicalEntryId: entry.entryId,
+    learningSenseId: group.learningSenseId,
+    pronunciationId: null,
+    expectedAnswer: word.lemma,
+    at: Date.now() - 60000,
+    mode: "acquisition",
+    modality: "definition",
+    answer: word.lemma,
+    correct: true,
+    rating: null,
+    before: null,
+    after: null,
+  });
+  clozeBackup.attempts.push({
+    ...clozeBackup.attempts.at(-1)!,
+    id: "prior-audio-fixture",
+    modality: "audio",
+    pronunciationId: group.pronunciationIds[0],
+  }); // # A coherent prior result makes contextual practice the weakest available modality.
   clozeBackup.sessions = [
     {
       ...backup.sessions[0],
       token: "test-inflected-cloze",
+      mode: "practice",
+      wordIds: [group.learningSenseId],
       completed: 0,
       lastWord: null,
     },
@@ -388,7 +412,8 @@ test("learning focuses on one group and cloze grades an inflected form with hone
   await page.getByRole("button", { name: "Save & leave" }).click();
   const result = await exportState(page),
     event = result.attempts.find(
-      (a) => a.learningSenseId === group.learningSenseId,
+      (a) =>
+        a.learningSenseId === group.learningSenseId && a.modality === "cloze",
     )!;
   expect(event).toMatchObject({
     wordId: word.id,
@@ -398,7 +423,8 @@ test("learning focuses on one group and cloze grades an inflected form with hone
     answer: "recorded",
     modality: "cloze",
     correct: true,
-    rating: 3,
+    mode: "practice",
+    rating: null,
   });
   expect(
     result.progress

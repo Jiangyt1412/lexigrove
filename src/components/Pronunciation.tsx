@@ -1,6 +1,6 @@
-import { useRef, useState } from "react"; // # Shared accent controls keep dictionary and study playback consistent.
+import { useEffect, useRef, useState } from "react"; // # Shared accent controls keep dictionary and study playback consistent.
 import type { Lexical, Settings } from "../types/model";
-import { pronounce } from "../speech/speech";
+import { pronounce, isPlaybackCancelled } from "../speech/speech";
 import { Volume2 } from "./PixelIcons";
 
 export function Pronunciation({
@@ -18,25 +18,24 @@ export function Pronunciation({
 }) {
   const [playing, setPlaying] = useState<Settings["accent"] | null>(null);
   const lock = useRef(false);
+  const playback = useRef<AbortController | null>(null);
+  useEffect(() => () => playback.current?.abort(), [word.id]); // # Closing an entry or advancing a task cannot credit stale audio.
   async function play(accent: Settings["accent"]) {
     if (lock.current) return;
     lock.current = true;
     setPlaying(accent);
+    const controller = new AbortController();
+    playback.current = controller;
     try {
-      await pronounce(word, { ...settings, accent }, { strictAccent: true }); // # A flag-labelled button must never silently use another country's voice.
-      const variants = word.entries
-        .flatMap((e) => e.pronunciations)
-        .filter(
-          (p) =>
-            !word.pronunciationIds ||
-            word.pronunciationIds.includes(p.pronunciationId),
-        );
-      onPlayed?.(
-        variants.find((p) => p.locale === accent)?.pronunciationId ||
-          variants.find((p) => p.locale === "neutral")?.pronunciationId,
-      ); // # Listening credit is awarded only after successful playback completes.
+      const completed = await pronounce(
+        word,
+        { ...settings, accent },
+        { strictAccent: true, signal: controller.signal },
+      );
+      if (!controller.signal.aborted)
+        onPlayed?.(completed.pronunciationId || undefined); // # Only the variant whose playback actually completed earns listening credit.
     } catch (error) {
-      notify((error as Error).message);
+      if (!isPlaybackCancelled(error)) notify((error as Error).message);
     } finally {
       lock.current = false;
       setPlaying(null);
@@ -46,16 +45,23 @@ export function Pronunciation({
     <div
       className={`pronunciation-pair ${listening ? "pronunciation-listening" : ""}`}
       role="group"
-      aria-label="US and UK pronunciation"
+      aria-label="UK primary and US supplementary pronunciation"
     >
-      {(["US", "UK"] as const).map((accent) => {
+      {(["UK", "US"] as const).map((accent) => {
         const ipa = accent === "US" ? word.ipaUS : word.ipaUK;
         return (
           <button
             key={accent}
             type="button"
-            className="pronunciation-button"
+            className={`pronunciation-button ${accent === "UK" ? "primary-accent" : "secondary-accent"}`}
             aria-label={`Play ${accent} pronunciation`}
+            title={
+              (accent === "UK" ? word.audioUK : word.audioUS).startsWith(
+                "assets/audio/",
+              )
+                ? `${accent === "UK" ? "英音为主 · bf_emma" : "美音辅助 · af_heart"} · Kokoro 预生成合成语音`
+                : `Play ${accent} pronunciation`
+            }
             disabled={playing !== null}
             aria-busy={playing === accent}
             onClick={() => void play(accent)}

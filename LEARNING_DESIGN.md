@@ -1,8 +1,8 @@
 # Learning engine research and design audit
 
-Verified 2026-09-27. This document separates verified upstream behavior from proposed application rules. The application-specific acquisition protocol and world maturity thresholds are product choices, not independently validated scientific optima.
+Research initially checked 2026-09-27; implementation policy updated 2026-10-04. This document separates verified upstream behavior from proposed application rules. The application-specific acquisition protocol and world maturity thresholds are product choices, not independently validated scientific optima.
 
-Implementation update, 2026-10-04: the lexical graph now separates canonical words, entries, owned pronunciations, dictionary senses and learning groups. FSRS and acquisition state belong to a learning group; deck membership and word notes belong to the canonical word. The installed FSRS grading and parameters are unchanged. World awards count distinct canonical words, while due queues and cards operate on independent groups. Database version 5 and backup version 3 are described in [MIGRATION.md](MIGRATION.md).
+Implementation update, 2026-10-04: the lexical graph now separates canonical words, entries, owned pronunciations, dictionary senses and learning groups. FSRS and acquisition state belong to a learning group; deck membership and word notes belong to the canonical word. The FSRS parameters remain unchanged; the current familiarity-based grade mapping below replaces earlier binary spelling grading. World awards count distinct canonical words, while due queues and cards operate on independent groups. Database version 7 and backup version 5 are described in [MIGRATION.md](MIGRATION.md).
 
 ## Evidence boundaries for product copy
 
@@ -35,12 +35,13 @@ The installed package LICENSE must accompany distributed notices. Upstream main 
 
 ## Recommended acquisition-to-FSRS handoff
 
-The initial copy exercise is **exposure**, not successful retrieval. Track it independently. Successful graduation requires Definition, Audio, and Cloze since the most recent failure, each successful exactly once in the ordered cycle. Failure resets the current cycle/streak/stage but appends an immutable failed attempt; no history deletion.
+Copying is **exposure**, not successful retrieval, but now counts as stage 1 of the requested workflow. Graduation requires correct Copy, Definition and Audio in that order since the last acquisition failure. Failure resets the current cycle while retaining all historical answers. Cloze is unscheduled practice. This three-stage protocol is a product preference, not a research-established acquisition criterion.
 
 Recommended adapter (syntax-valid TypeScript with requested `#` annotations inside comments):
 
 ```ts
 import { createEmptyCard, fsrs, Rating } from "ts-fsrs"; // # Use the maintained library.
+const now = new Date(); // # Demonstration initialization time.
 const scheduler = fsrs({
   // # Configuration is unrelated to decorative worlds.
   request_retention: 0.9, // # Desired recall probability, not measured accuracy.
@@ -50,11 +51,6 @@ const scheduler = fsrs({
   relearning_steps: ["10m"], // # Established library learning-step mechanism.
 }); // # No custom memory formula.
 const graduated = scheduler.next(createEmptyCard(now), now, Rating.Good); // # One graduation scheduling event.
-const reviewed = scheduler.next(
-  card,
-  now,
-  correct ? Rating.Good : Rating.Again,
-); // # Exact spelling drives the grade.
 ```
 
 Do not call `next` three times at graduation to represent the acquisition modalities as spaced reviews. Append one scheduler initialization event associated with the third successful acquisition attempt. Exclude that initialization from statistics labelled “scheduled reviews”. Prior acquisition attempts remain their own history type.
@@ -65,17 +61,17 @@ Official sources: [basic scheduler](https://github.com/open-spaced-repetition/ts
 
 Observed runtime probe, using 5.4.2 and 2026-09-27T08:00:00Z: graduation Good -> Review, stability 2.3065, due 2026-09-29T08:00:00Z; Again at that due date -> Relearning, lapses 1, due +10 minutes; Good then -> Review, due +1 day. These are regression examples for this version/configuration, not a fixed schedule to reimplement.
 
-In a binary spelling UI, wrong/revealed answers map to Again, correct unaided answers to Good. Hard is for a successful but difficult recall, not forgetting. Fast typing alone does not justify Easy. The [official Anki manual](https://docs.ankiweb.net/deck-options#fsrs) explicitly warns that using Hard instead of Again for forgetting distorts FSRS. Retention-setting changes should apply to future reviews unless a distinct rescheduling operation is deliberately implemented.
+In the current UI, confirmed unknown or any failed repair maps to Again, confirmed known to Good, and uncertain with both repair tests passed to Hard. Hard is for a successful but difficult recall, not forgetting. Fast typing alone does not justify Easy. The [official Anki manual](https://docs.ankiweb.net/deck-options#fsrs) explicitly warns that using Hard instead of Again for forgetting distorts FSRS. Retention-setting changes should apply to future reviews unless a distinct rescheduling operation is deliberately implemented.
 
 ## Proposed invariants
 
 1. **Single word identity, independent learning meanings:** normalize with Unicode NFKC, trim, and English case folding. A unique normalized lemma plus set-like deck membership prevents duplicate words. Every learning group has an independent acquisition state and FSRS card. Pronunciation accent variants do not become semantic groups. Changing decks does not create another card.
 2. **Atomic answers:** in one Dexie read/write transaction re-read current progress, verify a prompt/attempt ID has not already committed, append attempt, update modality counts, update acquisition or FSRS, save session cursor, and award newly earned world milestones. Advance UI only after commit. A double Enter or stale tab must not grade twice.
 3. **Historical conservation:** acquisition failure, suspension, deck changes, manual known status and learning reset retain attempts and lifetime counters. The implementation increments the affected progress revision when resetting; it does not append a separate reset-history event. A confirmed full data reset is different.
-4. **Interleaving:** require a different canonical spelling from the previous acquisition prompt, not merely a different group ID. Persist the previous group and derive its word identity across refresh. If only one spelling remains, use real different-word practice marked unscheduled (no FSRS mutation), or pause for a companion. Another sense of the same lemma cannot satisfy this separation.
+4. **Queue order:** prefer a different canonical spelling when another selected word is pending. A single word may continue through all three steps; no extra filler is needed. Persist the session and current stage across reload. Another sense of the same lemma is not a different word.
 5. **Eligibility:** a prompt requires its real data: definition, functioning audio, or a cloze sentence that actually contains the target/accepted variant. A missing-data skip is not success or failure. It leaves acquisition pending. Never count an on-screen definition replacement as an Audio success.
 6. **Daily gate:** recompute active due cards (`due <= now`, not suspended) at study start and before introducing new words. Remaining due cards block new introductions. A practice queue or review quota must not hide them. Overdue is a clearly documented local-calendar subset. Backlog recommendation may return zero new words but cannot reschedule anything.
-7. **Two statistics:** report empirical review recall/accuracy only when actual scheduled review attempts exist, with numerator/denominator and a time window; show an em dash for no data. Label FSRS model retrievability as “estimated recall”. Copy exposure and dictionary browsing are not correct recall.
+7. **Honest statistics:** positive confirmed review outcomes include self-reported known and passed uncertain events; they are not empirical unaided meaning accuracy. Typed meaning/audio accuracy stays separate. Show an em dash with no results. Copying and dictionary browsing do not prove recall.
 8. **Forecast honesty:** count current next-due dates into future buckets and label them a projection of already scheduled cards. Such counts omit subsequent future reviews and new learning; do not call them a full workload simulation.
 9. **World separation:** read-only world projection receives statistics and central thresholds. It must never import the scheduling adapter or write learning tables. Hide-world settings only control rendering.
 10. **Nonpunitive accumulated world:** define current maturity from explicit criteria (proposed Review, stability >=21 days, and >=3 successful spaced reviews), and separately persist an `everMaturedAt` milestone the first time met. Current maturity may decrease after a lapse; an earned aquarium does not. Likewise save `firstAcquiredAt` once. Derive the world from distinct lifetime milestone counts; store a small tier/high-water mark only if needed for future migrations. No day change, loss of streak, lapse, suspension, or per-word reset removes earned scenery.
@@ -98,13 +94,13 @@ The [official Dexie transaction documentation](<https://dexie.org/docs/Dexie/Dex
 
 The [Web Speech API specification](https://webaudio.github.io/web-speech-api/#dom-speechsynthesisvoice-localservice) distinguishes local synthesizer voices from remote voices. SpeechSynthesis availability does not establish offline audio availability. Voice lists may arrive after `voiceschanged`; prefer matching en-US/en-GB with `localService === true` while offline and handle `onerror`/timeouts visibly. Initiate playback from a user gesture where required, cancel a previous utterance, and never rely solely on `navigator.onLine` to certify playback.
 
-Licensed bundled/cached human audio may precede system speech. A bounded optional audio cache and local voice are suitable; a remote URL alone is not offline support. Audio playback unavailable -> retain progress and offer another eligible question/retry, not a fake audio pass. Core reading, spelling, review, and export can work offline while audio-dependent acquisition remains pending. No universal iPhone/offline audio guarantee can be substantiated merely from browser API support; test the target device and disclose this precise limitation.
+Bundled starter neural audio precedes system speech and is cached as a finite asset set. Imported attributed human recordings may also be used. A bounded optional audio cache and local voice are suitable; a remote URL alone is not offline support. Audio playback unavailable -> retain progress and offer another eligible question/retry, not a fake audio pass. Core reading, spelling, review, and export can work offline while audio-dependent acquisition remains pending. No universal iPhone/offline audio guarantee can be substantiated merely from browser API support; test the target device and disclose this precise limitation.
 
 ## Meaningful automated tests
 
-1. Exposure+Definition+Audio cannot graduate; only correct Cloze completes the three distinct modalities. Repeating Definition cannot increment stage incorrectly.
+1. Copy+Definition cannot graduate; the third successful Audio creates one card. Cloze never becomes an obligatory fourth step.
 2. Definition success then Audio failure resets streak/stage but preserves both attempts and per-modality totals. Continue to three new distinct successes and check previous failure still exists.
-3. Three words produce A1,B1,C1,A2,B2,C2,A3…; a failing word requeues after another ID. One-word remaining uses a real distractor or deferred state. Reload preserves separation.
+3. Multiple words alternate when available; one word finishes Copy, Definition and Audio directly. Reload preserves the saved step.
 4. Graduation creates exactly one FSRS log and positive scheduled interval; no duplicate graduation on re-render/double submit. Review correct/incorrect results equal the installed library's own `next` result for fixed dates/settings.
 5. Due Review card becomes eligible; failed review enters Relearning with library time; Relearning remains in due-gate calculation. A future card is not reviewed early just because the world needs growth.
 6. Remaining due card blocks new introductions even across reload/direct page entry; backlog recommendation zero does not change card JSON.
@@ -120,3 +116,20 @@ Licensed bundled/cached human audio may precede system speech. A bounded optiona
 16. Browser tests at 320 and 390 px assert `scrollWidth <= innerWidth`; keyboard Enter does not double submit; autofocus and modal focus restoration work; reduced motion suppresses animation and world-off still permits all study controls.
 
 No claim here that a completed 21-test checklist proves all years-long reliability. Tests validate defined invariants; honest release documentation still distinguishes tested MVP behavior, device-dependent speech behavior, and future optimizer/large-dataset work.
+
+## Implemented familiarity review (2026-10-04)
+
+The review prompt displays only the word. Selecting known/unsure/unknown saves a draft and opens the exact scheduled learning group in the dictionary. Until **确认并继续**, changing the option modifies no progress revision, attempt counter, card or world reward. Closing the sheet leaves the draft pending. Confirmation records one recognition event and freezes its branch: known has no repair, unsure has Definition+Audio, unknown has Copy+Definition+Audio. Each repair result is saved. The group stays due until its branch completes; completed groups are graded once per batch. A due-again word can enter a new review batch afterward.
+
+| Final confirmed option | Repair result                | FSRS grade |
+| ---------------------- | ---------------------------- | ---------- |
+| Known                  | No further tests             | Good       |
+| Unsure                 | Both tests correct           | Hard       |
+| Unsure                 | Any error                    | Again      |
+| Unknown                | Any subsequent repair result | Again      |
+
+The [Anki manual](https://docs.ankiweb.net/studying.html#answer-buttons) defines Again for failed recall and Hard for successful but difficult/doubtful recall. Initial forgetting is therefore never changed to Good by feedback-assisted spelling. The application mapping for unsure is an approximation: seeing details and then passing repair does not demonstrate what the learner could recall unaided initially. No validation of the complete custom protocol or guaranteed retention rate was found in the targeted research. FSRS receives one aggregate observation, not three same-session artificial repetitions. A known answer is a self-report, not an automatic objective semantic test; fast typing never maps to Easy.
+
+Recognition choice, draft status, repair cursor, prior error and event identity survive reload and validated backup. Each event's final attempt records the only scheduler result; earlier attempts keep null ratings and unchanged cards. Mature-world counts use positive completed due events, not their intermediate tasks. Switching to unrelated practice cannot abandon an already confirmed repair. Duplicate confirmation and stale tabs cannot award additional reviews.
+
+Starter pronunciation consists of 120 finite pre-generated neural clips, UK primary and US auxiliary. No model runs on the visitor's device. Automatic playback occurs on copying/listening arrival and once after each submitted typed answer. Meaning and cloze prompts do not play the target before an answer; recognition initially shows just spelling. Completed owned variant IDs are required for listening credit. Autoplay rejection is visible and manually retryable; see [MDN autoplay](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay) and [AUDIO_SOURCES.md](AUDIO_SOURCES.md).

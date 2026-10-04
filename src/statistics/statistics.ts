@@ -11,7 +11,9 @@ export function statistics(
   const today = new Date(now);
   today.setHours(0, 0, 0, 0);
   const start = today.getTime();
-  const reviewed = attempts.filter((a) => a.mode === "review");
+  const reviewed = attempts.filter(
+    (a) => a.mode === "review" && a.rating !== null,
+  ); // # Count completed scheduled groups, not their individual recall exercises.
   const due = dueWords(progress, now);
   return {
     words: words.length,
@@ -35,14 +37,15 @@ export function statistics(
     ).size,
     retention: reviewed.length
       ? Math.round(
-          (reviewed.filter((a) => a.correct).length / reviewed.length) * 100,
+          (reviewed.filter((a) => a.rating! >= 2).length / reviewed.length) *
+            100,
         )
       : null,
     attemptsToday: attempts.filter(
       (a) => a.at >= start && a.mode !== "practice",
     ).length,
     recentLapses: reviewed.filter(
-      (a) => !a.correct && a.at >= now - 7 * 86400000,
+      (a) => a.rating === 1 && a.at >= now - 7 * 86400000,
     ).length,
     modalities: ["definition", "audio", "cloze"].map((m) => {
       const list = attempts.filter(

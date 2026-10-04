@@ -1278,6 +1278,85 @@ body {
     flex-wrap: wrap;
   }
 }
+/* # Recognition stays quiet and readable; the three choices are distinct from answer-entry controls. */
+.recognition-word {
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  padding: 38px 0 50px;
+}
+.recognition-choices,
+.review-choice-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+:root[data-theme] .study-mode .recognition-option {
+  font: 600 20px/1.4 var(--font-learning);
+  min-height: 78px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: none;
+  clip-path: none;
+  background: var(--soft);
+  color: var(--ink);
+}
+:root[data-theme] .study-mode .recognition-option:hover {
+  border-color: var(--accent);
+  background: var(--surface);
+  transform: translateY(-2px);
+}
+.review-confirmation {
+  position: sticky;
+  bottom: 0;
+  margin: 24px 0 0;
+  padding: 16px 0 12px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 -12px 18px var(--surface);
+}
+.review-confirmation p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.dictionary-modal .review-choice {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--soft);
+  color: var(--ink);
+  padding: 10px;
+  box-shadow: none;
+  clip-path: none;
+}
+.dictionary-modal .review-choice.selected {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: white;
+}
+.review-confirmation .review-next-step {
+  margin: 12px 0;
+}
+.review-confirmation > .primary {
+  width: 100%;
+  justify-content: center;
+}
+:root[data-theme] .dictionary-modal .review-confirmation > .primary {
+  min-height: 44px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  clip-path: none;
+  box-shadow: none;
+  background: var(--accent);
+  color: white;
+  padding: 10px 14px;
+}
+.translation-support {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
 /* # Legacy icon-only sidebar rules must not hide navigation labels on small screens. */
 @media (max-width: 760px) {
   :root[data-theme] .sidebar .brand > span,

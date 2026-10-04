@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"; // # Subscribe to persistent local state, including cross-tab changes.
+import { useEffect, useMemo, useState } from "react"; // # Subscribe to persistent local state, including cross-tab changes.
 import { useLiveQuery } from "dexie-react-hooks";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import {
@@ -106,7 +106,10 @@ export default function App() {
       garden: 0,
       aquarium: 0,
     };
-  const settings = { ...defaultSettings, ...preferences }; // # Fill newly introduced preferences after old backup restoration.
+  const settings = useMemo(
+    () => ({ ...defaultSettings, ...preferences }),
+    [preferences],
+  ); // # Background counters and service-worker updates must not restart the same word's automatic audio.
   useEffect(() => {
     const media = matchMedia("(prefers-color-scheme: dark)");
     const apply = () => {

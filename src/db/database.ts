@@ -9,6 +9,7 @@ import {
   defaultSettings,
   freshProgress,
   normalize,
+  migrateAcquisitionStage,
 } from "../types/model"; // # Lexical and learning data stay separate.
 import {
   hydrateWord,
@@ -132,6 +133,41 @@ export class GroveDB extends Dexie {
             s.environmentAnimation ??= s.reduceEffects ? "reduced" : "full";
           });
       }); // # Primary group IDs are the legacy word IDs; card values, history, sessions and earned worlds survive unchanged.
+    this.version(6)
+      .stores({})
+      .upgrade(async (tx) => {
+        await tx
+          .table("settings")
+          .toCollection()
+          .modify((s) => {
+            s.accent = "UK";
+            s.audioPreference = "human";
+            s.autoPronounce = true;
+            s.voiceURI = "";
+            s.reviewCloze ??= false;
+          });
+      }); // # Apply the requested UK-first recording preference once; future manual choices and all learning data remain intact.
+    this.version(7)
+      .stores({})
+      .upgrade(async (tx) => {
+        await tx
+          .table("progress")
+          .toCollection()
+          .modify((p) => {
+            p.accuracy.recognition ??= { correct: 0, total: 0 };
+            migrateAcquisitionStage(p);
+          });
+        await tx
+          .table("sessions")
+          .toCollection()
+          .modify((s) => {
+            if (s.mode === "review") {
+              delete s.review;
+              s.recall = { groups: {} };
+              s.token = crypto.randomUUID();
+            }
+          });
+      }); // # Keep all cards and attempts; an unfinished legacy review restarts with recognition under a fresh event identity.
   }
 }
 export const db = new GroveDB();
@@ -201,6 +237,30 @@ export async function initialize(words: Lexical[] = []) {
             next.familyLinks = source.familyLinks;
             next.wordFamilySource = source.wordFamilySource;
           }
+          for (const entry of next.entries) {
+            const origin = source.entries.find(
+              (e) =>
+                e.entryId === entry.entryId &&
+                e.partOfSpeech === entry.partOfSpeech,
+            );
+            if (!origin) continue;
+            for (const audio of origin.pronunciations.filter(
+              (p) => p.audioURL,
+            )) {
+              const present = entry.pronunciations.find(
+                (p) => p.locale === audio.locale,
+              );
+              if (present && !present.audioURL) {
+                present.audioURL = audio.audioURL;
+                present.audioAttribution = audio.audioAttribution;
+                present.notes = audio.notes;
+              } else if (!present) {
+                entry.pronunciations.push(audio);
+                for (const group of entry.learningGroups)
+                  group.pronunciationIds.push(audio.pronunciationId);
+              }
+            }
+          } // # Fill missing bundled pronunciations while preserving existing variant IDs, custom recordings and all scheduler records.
           await db.words.put(syncPrimary(next)); // # Enrich matching starter senses while preserving edits, notes and all progress.
         }
       }

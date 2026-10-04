@@ -1,0 +1,13 @@
+# Starter pronunciation audio
+
+The 60 starter words each have one UK and one US clip: 120 finite, locally hosted files. They are **pre-generated neural speech**, not human recordings and not audio copied from a commercial dictionary. UK uses `bf_emma`, US uses `af_heart`, as documented in the model author's [voice list](https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md).
+
+- Model: [hexgrad/Kokoro-82M v1.0](https://huggingface.co/hexgrad/Kokoro-82M), Apache-2.0 weights. The model author's card permits production deployment and describes training provenance; that is the author's statement, not an independent audit.
+- ONNX conversion: [thewh1teagle/kokoro-onnx model-files-v1.1](https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.1). Generation uses the MIT-licensed `kokoro-onnx` 0.6.1 package in an isolated development environment. Neither model weights nor Python dependencies ship in the PWA.
+- Output: Lexigrove applies its [CC0 dedication](https://creativecommons.org/publicdomain/zero/1.0/) to any rights it holds in generated audio. This does not relicense model weights or Wiktionary-derived IPA metadata. The Apache model licence text accompanies the public audio manifest.
+- Pronunciation inputs: the current starter entry's accent-specific IPA where present, otherwise its neutral IPA; where neither exists, corresponding `en-gb`/`en-us` grapheme-to-phoneme output. Dictionary IPA is retained with Wiktionary/Kaikki attribution and CC BY-SA 4.0. The generation script removes syllable separators/tie marks, expands syllabic consonants and maps rhotic vowel symbols to model tokens. It does not change stored dictionary IPA or label neutral IPA as a regional transcription.
+- Processing: single target utterance, original model pitch, 24 kHz mono PCM16 WAV, bounded peak normalization, short silence padding. Every clip has generation phones, byte count, duration, source and SHA-256 in [manifest.json](public/assets/audio/manifest.json).
+
+Rebuild with `scripts/generate_audio.py --model-dir PATH` using the pinned generator package and downloaded files whose hashes match the manifest. The Python audio tools are optional development dependencies; normal `npm ci`, tests and website builds use the checked-in clips.
+
+Short utterances and automatic G2P can have errors. The model author specifically describes short-utterance limitations. File structure, finite samples, duration, checksum, actual browser playback and offline/base-path loading are checked; these checks do not establish subjective naturalness, human provenance or independent phonetic accuracy. Imported heteronyms still require an attributed audio variant explicitly owned by their selected learning group.

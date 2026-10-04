@@ -10,3 +10,6 @@ work/
 .env
 .env.*
 lexigrove-backup-*.json
+
+# Disposable phonemizer cache; never a source or user backup.
+:memory:.*

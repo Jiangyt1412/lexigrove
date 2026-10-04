@@ -1,0 +1,365 @@
+{
+  "source": "https://huggingface.co/hexgrad/Kokoro-82M",
+  "entries": [
+    {
+      "lemma": "mitigate",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/mitigate.wav",
+      "US": "assets/audio/us/mitigate.wav"
+    },
+    {
+      "lemma": "significant",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/significant.wav",
+      "US": "assets/audio/us/significant.wav"
+    },
+    {
+      "lemma": "empirical",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/empirical.wav",
+      "US": "assets/audio/us/empirical.wav"
+    },
+    {
+      "lemma": "robust",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/robust.wav",
+      "US": "assets/audio/us/robust.wav"
+    },
+    {
+      "lemma": "infer",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/infer.wav",
+      "US": "assets/audio/us/infer.wav"
+    },
+    {
+      "lemma": "derive",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/derive.wav",
+      "US": "assets/audio/us/derive.wav"
+    },
+    {
+      "lemma": "subsequent",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/subsequent.wav",
+      "US": "assets/audio/us/subsequent.wav"
+    },
+    {
+      "lemma": "constraint",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/constraint.wav",
+      "US": "assets/audio/us/constraint.wav"
+    },
+    {
+      "lemma": "distribution",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/distribution.wav",
+      "US": "assets/audio/us/distribution.wav"
+    },
+    {
+      "lemma": "uncertainty",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/uncertainty.wav",
+      "US": "assets/audio/us/uncertainty.wav"
+    },
+    {
+      "lemma": "estimate",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/estimate.wav",
+      "US": "assets/audio/us/estimate.wav"
+    },
+    {
+      "lemma": "variable",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/variable.wav",
+      "US": "assets/audio/us/variable.wav"
+    },
+    {
+      "lemma": "parameter",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/parameter.wav",
+      "US": "assets/audio/us/parameter.wav"
+    },
+    {
+      "lemma": "framework",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/framework.wav",
+      "US": "assets/audio/us/framework.wav"
+    },
+    {
+      "lemma": "methodology",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/methodology.wav",
+      "US": "assets/audio/us/methodology.wav"
+    },
+    {
+      "lemma": "bias",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/bias.wav",
+      "US": "assets/audio/us/bias.wav"
+    },
+    {
+      "lemma": "causal",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/causal.wav",
+      "US": "assets/audio/us/causal.wav"
+    },
+    {
+      "lemma": "confounder",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/confounder.wav",
+      "US": "assets/audio/us/confounder.wav"
+    },
+    {
+      "lemma": "validate",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/validate.wav",
+      "US": "assets/audio/us/validate.wav"
+    },
+    {
+      "lemma": "simulate",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/simulate.wav",
+      "US": "assets/audio/us/simulate.wav"
+    },
+    {
+      "lemma": "reservoir",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/reservoir.wav",
+      "US": "assets/audio/us/reservoir.wav"
+    },
+    {
+      "lemma": "sediment",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/sediment.wav",
+      "US": "assets/audio/us/sediment.wav"
+    },
+    {
+      "lemma": "runoff",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/runoff.wav",
+      "US": "assets/audio/us/runoff.wav"
+    },
+    {
+      "lemma": "catchment",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/catchment.wav",
+      "US": "assets/audio/us/catchment.wav"
+    },
+    {
+      "lemma": "precipitation",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/precipitation.wav",
+      "US": "assets/audio/us/precipitation.wav"
+    },
+    {
+      "lemma": "severe",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/severe.wav",
+      "US": "assets/audio/us/severe.wav"
+    },
+    {
+      "lemma": "serious",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/serious.wav",
+      "US": "assets/audio/us/serious.wav"
+    },
+    {
+      "lemma": "meticulous",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/meticulous.wav",
+      "US": "assets/audio/us/meticulous.wav"
+    },
+    {
+      "lemma": "evidence",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/evidence.wav",
+      "US": "assets/audio/us/evidence.wav"
+    },
+    {
+      "lemma": "maintain",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/maintain.wav",
+      "US": "assets/audio/us/maintain.wav"
+    },
+    {
+      "lemma": "improve",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/improve.wav",
+      "US": "assets/audio/us/improve.wav"
+    },
+    {
+      "lemma": "support",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/support.wav",
+      "US": "assets/audio/us/support.wav"
+    },
+    {
+      "lemma": "reduce",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/reduce.wav",
+      "US": "assets/audio/us/reduce.wav"
+    },
+    {
+      "lemma": "increase",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/increase.wav",
+      "US": "assets/audio/us/increase.wav"
+    },
+    {
+      "lemma": "compare",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/compare.wav",
+      "US": "assets/audio/us/compare.wav"
+    },
+    {
+      "lemma": "explain",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/explain.wav",
+      "US": "assets/audio/us/explain.wav"
+    },
+    {
+      "lemma": "observe",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/observe.wav",
+      "US": "assets/audio/us/observe.wav"
+    },
+    {
+      "lemma": "evaluate",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/evaluate.wav",
+      "US": "assets/audio/us/evaluate.wav"
+    },
+    {
+      "lemma": "hypothesis",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/hypothesis.wav",
+      "US": "assets/audio/us/hypothesis.wav"
+    },
+    {
+      "lemma": "analysis",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/analysis.wav",
+      "US": "assets/audio/us/analysis.wav"
+    },
+    {
+      "lemma": "data",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/data.wav",
+      "US": "assets/audio/us/data.wav"
+    },
+    {
+      "lemma": "method",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/method.wav",
+      "US": "assets/audio/us/method.wav"
+    },
+    {
+      "lemma": "outcome",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/outcome.wav",
+      "US": "assets/audio/us/outcome.wav"
+    },
+    {
+      "lemma": "process",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/process.wav",
+      "US": "assets/audio/us/process.wav"
+    },
+    {
+      "lemma": "response",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/response.wav",
+      "US": "assets/audio/us/response.wav"
+    },
+    {
+      "lemma": "reliable",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/reliable.wav",
+      "US": "assets/audio/us/reliable.wav"
+    },
+    {
+      "lemma": "consistent",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/consistent.wav",
+      "US": "assets/audio/us/consistent.wav"
+    },
+    {
+      "lemma": "ambiguous",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/ambiguous.wav",
+      "US": "assets/audio/us/ambiguous.wav"
+    },
+    {
+      "lemma": "adapt",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/adapt.wav",
+      "US": "assets/audio/us/adapt.wav"
+    },
+    {
+      "lemma": "retain",
+      "partOfSpeech": "verb",
+      "UK": "assets/audio/uk/retain.wav",
+      "US": "assets/audio/us/retain.wav"
+    },
+    {
+      "lemma": "diverse",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/diverse.wav",
+      "US": "assets/audio/us/diverse.wav"
+    },
+    {
+      "lemma": "efficient",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/efficient.wav",
+      "US": "assets/audio/us/efficient.wav"
+    },
+    {
+      "lemma": "habitat",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/habitat.wav",
+      "US": "assets/audio/us/habitat.wav"
+    },
+    {
+      "lemma": "glacier",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/glacier.wav",
+      "US": "assets/audio/us/glacier.wav"
+    },
+    {
+      "lemma": "drought",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/drought.wav",
+      "US": "assets/audio/us/drought.wav"
+    },
+    {
+      "lemma": "ecosystem",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/ecosystem.wav",
+      "US": "assets/audio/us/ecosystem.wav"
+    },
+    {
+      "lemma": "sustainable",
+      "partOfSpeech": "adjective",
+      "UK": "assets/audio/uk/sustainable.wav",
+      "US": "assets/audio/us/sustainable.wav"
+    },
+    {
+      "lemma": "trend",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/trend.wav",
+      "US": "assets/audio/us/trend.wav"
+    },
+    {
+      "lemma": "correlation",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/correlation.wav",
+      "US": "assets/audio/us/correlation.wav"
+    },
+    {
+      "lemma": "intervention",
+      "partOfSpeech": "noun",
+      "UK": "assets/audio/uk/intervention.wav",
+      "US": "assets/audio/us/intervention.wav"
+    }
+  ]
+}
