@@ -1,0 +1,287 @@
+{
+  "description": "Selected morphological word families, verified against English Wiktionary relation sections. These are not synonyms, translations, an exhaustive etymology database, or a claim of corpus frequency. Unverified entries remain empty.",
+  "source": "English Wiktionary contributors",
+  "licence": "CC BY-SA 4.0",
+  "entries": [
+    {
+      "lemma": "mitigate",
+      "terms": ["mitigation", "mitigative"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/mitigate#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "significant",
+      "terms": ["significance", "significantly"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/significant#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "empirical",
+      "terms": ["empirically", "empiricism"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/empirical#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "robust",
+      "terms": ["robustness", "robustly"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/robust#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "derive",
+      "terms": ["derivation", "derivative"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/derive#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "subsequent",
+      "terms": ["subsequently"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/subsequent#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "constraint",
+      "terms": ["constrain"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/constraint#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "distribution",
+      "terms": ["distributional", "distributionally"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/distribution#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "estimate",
+      "terms": ["estimation", "estimator"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/estimate#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "variable",
+      "terms": ["variably"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/variable#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "parameter",
+      "terms": ["parameterize", "parameterization"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/parameter#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "methodology",
+      "terms": ["methodological", "methodologically"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/methodology#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "causal",
+      "terms": ["noncausal", "multicausal"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/causal#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "validate",
+      "terms": ["validation", "validator"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/validate#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "simulate",
+      "terms": ["simulation", "simulator"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/simulate#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "severe",
+      "terms": ["severity", "severely"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/severe#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "serious",
+      "terms": ["seriousness", "seriously"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/serious#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "meticulous",
+      "terms": ["meticulously", "meticulousness"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/meticulous#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "evidence",
+      "terms": ["evident", "evidential"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/evidence#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "maintain",
+      "terms": ["maintainable", "maintainability"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/maintain#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "improve",
+      "terms": ["improvement", "improvable"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/improve#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "support",
+      "terms": ["supportive", "supportable"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/support#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "reduce",
+      "terms": ["reduction", "reductive"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/reduce#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "increase",
+      "terms": ["increasable"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/increase#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "compare",
+      "terms": ["comparison", "comparative"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/compare#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "explain",
+      "terms": ["explanation", "explanatory"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/explain#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "observe",
+      "terms": ["observation", "observer"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/observe#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "evaluate",
+      "terms": ["evaluative", "evaluator"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/evaluate#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "adapt",
+      "terms": ["adaptation", "adaptable"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/adapt#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "ambiguous",
+      "terms": ["ambiguity", "ambiguously"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/ambiguous#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "consistent",
+      "terms": ["consistency", "consistently"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/consistent#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "correlation",
+      "terms": ["correlate", "correlational"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/correlation#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "diverse",
+      "terms": ["diversity", "diversely"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/diverse#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "efficient",
+      "terms": ["efficiency", "efficiently"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/efficient#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "lemma": "reliable",
+      "terms": ["reliability", "reliably"],
+      "sourceUrl": "https://en.wiktionary.org/wiki/reliable#English",
+      "verifiedAt": "2026-10-04",
+      "evidenceSection": "English: Derived terms / Related terms",
+      "licence": "CC BY-SA 4.0"
+    }
+  ]
+}

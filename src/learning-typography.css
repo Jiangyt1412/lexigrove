@@ -1,0 +1,261 @@
+/* # Learning text uses familiar letterforms; navigation and controls keep the pixel identity. */
+:root {
+  --font-learning:
+    Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Arial,
+    sans-serif;
+}
+.target-word,
+.word-title h2,
+.word-cell strong,
+.learning-definition,
+.dictionary-definition,
+.definition,
+.recall-prompt,
+.word-meta,
+.word-meta > span,
+.meaning-cell,
+blockquote,
+.personal-note,
+input.answer-input,
+.diff-line > div,
+.revealed-word,
+.study-focus .chip,
+.modal .detail-section .chip,
+.modal .field input,
+.modal .field textarea {
+  font-family: var(--font-learning);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+.target-word {
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.7px;
+  line-height: 1.2;
+}
+.word-title h2 {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+.word-cell strong {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.learning-definition,
+.dictionary-definition {
+  font-size: 21px;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+.definition {
+  font-size: inherit;
+  line-height: inherit;
+}
+.definition-word {
+  font-family: inherit;
+}
+.recall-prompt {
+  font-size: 28px;
+  font-weight: 450;
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+.word-meta {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.word-meta > span {
+  font-size: 19px;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+.meaning-cell {
+  font-size: 15px;
+  line-height: 1.65;
+}
+blockquote {
+  font-size: 17px;
+  line-height: 1.7;
+}
+.personal-note {
+  font-size: 16px;
+  line-height: 1.65;
+}
+input.answer-input {
+  font-size: 27px;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+}
+.diff-line > div {
+  font-size: 26px;
+  letter-spacing: 0.6px;
+}
+.revealed-word {
+  font-size: 28px;
+  font-weight: 550;
+}
+.study-focus .chip,
+.modal .detail-section .chip {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.modal .field input,
+.modal .field textarea {
+  font-size: 17px;
+  line-height: 1.6;
+}
+/* # Part-of-speech labels are learning content, including compact vocabulary rows. */
+.word-meta,
+.word-meta > span,
+.word-cell > span {
+  font-family: var(--font-learning) !important;
+  font-style: normal;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+  letter-spacing: 0;
+}
+.word-cell > span {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.word-meta {
+  font-size: 15px;
+}
+.word-meta > span {
+  font-size: 19px;
+}
+/* # Every label and control inside word details uses readable, regular letterforms. */
+.dictionary-modal,
+.dictionary-modal * {
+  font-family: var(--font-learning) !important;
+  font-kerning: normal;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  letter-spacing: normal;
+}
+.dictionary-modal .modal-inner {
+  position: relative;
+}
+.dictionary-modal .modal-heading {
+  position: absolute;
+  top: 25px;
+  right: 26px;
+  margin: 0;
+}
+.dictionary-modal .word-title,
+.dictionary-modal .breadcrumbs {
+  padding-right: 44px;
+}
+.dictionary-modal .word-title h2 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+.dictionary-modal .breadcrumbs {
+  margin: 0 0 18px;
+}
+.dictionary-modal .breadcrumbs button {
+  font-size: 14px;
+}
+.dictionary-modal .detail-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+.dictionary-modal button,
+.dictionary-modal .field,
+.dictionary-modal .source-details {
+  font-size: 15px;
+}
+.dictionary-modal .definition-word {
+  font-size: inherit;
+}
+/* # Chinese learning content uses clear system CJK fonts, preserving the existing learning typography. */
+.chinese-meaning,
+.chinese-field,
+.chinese-setting,
+.chinese-setting small {
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  letter-spacing: 0;
+  line-height: 1.7;
+}
+.chinese-meaning {
+  display: block;
+  font-size: 16px;
+  color: var(--muted);
+  margin: 8px 0 12px;
+}
+.meaning-cell .chinese-meaning {
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+.meaning-cell {
+  display: block;
+}
+.meaning-cell .english-meaning {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* # Country flags, readable IPA and compact accent buttons belong to learning content. */
+.pronunciation-pair {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0 22px;
+}
+.pronunciation-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-learning);
+  font-size: 15px;
+  letter-spacing: 0;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.pronunciation-button:hover {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.pronunciation-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+.pronunciation-flag {
+  font-family:
+    "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif !important;
+  font-size: 20px;
+  line-height: 1;
+}
+.pronunciation-accent {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  white-space: nowrap;
+}
+.pronunciation-ipa {
+  font-family: var(--font-learning);
+  font-size: 16px;
+  color: var(--muted);
+}
+.pronunciation-listening {
+  justify-content: center;
+  margin: 20px 0;
+}
+.pronunciation-listening .pronunciation-button {
+  padding: 16px 22px;
+  min-height: 64px;
+  font-size: 18px;
+}
+.pronunciation-listening .pronunciation-flag {
+  font-size: 26px;
+}

@@ -1,0 +1,427 @@
+{
+  "version": 2,
+  "name": "Lexigrove original pixel habitat art",
+  "author": "Original SVG geometry generated for this project by Codex",
+  "license": "CC0-1.0",
+  "source": "Original integer-grid geometry, without copied or traced commercial game assets. The legacy Blue Horizon mood reference is retained below; the current seasonal living world uses project-original geometry and independently selected palettes.",
+  "rendering": {
+    "shapeRendering": "crispEdges",
+    "css": "image-rendering: pixelated;",
+    "spriteViewBox": [0, 0, 32, 32]
+  },
+  "palette": {
+    "ink": "#2c453b",
+    "deep": "#374f3c",
+    "forest": "#506746",
+    "leaf": "#788b55",
+    "sage": "#a5b77a",
+    "pale": "#c9d2a0",
+    "sky": "#eee7cf",
+    "cream": "#f4edda",
+    "sand": "#dfcda1",
+    "tan": "#b99b70",
+    "wood": "#876f4e",
+    "soil": "#9b774e",
+    "darksoil": "#785d43",
+    "coral": "#c8795b",
+    "salmon": "#e3a084",
+    "rose": "#b76168",
+    "teal": "#235d58",
+    "water": "#398277",
+    "aqua": "#73a797",
+    "lightwater": "#b4d1b0",
+    "gold": "#dab367",
+    "orange": "#d4914f",
+    "blue": "#72a9ad"
+  },
+  "garden": {
+    "file": "garden-base.svg",
+    "width": 1100,
+    "height": 340,
+    "viewBox": [0, 0, 550, 170],
+    "cropAnchors": [
+      {
+        "id": 0,
+        "x": 218,
+        "y": 123,
+        "spriteBox": {
+          "x": 202,
+          "y": 95,
+          "width": 32,
+          "height": 32
+        }
+      },
+      {
+        "id": 1,
+        "x": 265,
+        "y": 123,
+        "spriteBox": {
+          "x": 249,
+          "y": 95,
+          "width": 32,
+          "height": 32
+        }
+      },
+      {
+        "id": 2,
+        "x": 312,
+        "y": 123,
+        "spriteBox": {
+          "x": 296,
+          "y": 95,
+          "width": 32,
+          "height": 32
+        }
+      },
+      {
+        "id": 3,
+        "x": 359,
+        "y": 123,
+        "spriteBox": {
+          "x": 343,
+          "y": 95,
+          "width": 32,
+          "height": 32
+        }
+      },
+      {
+        "id": 4,
+        "x": 218,
+        "y": 149,
+        "spriteBox": {
+          "x": 202,
+          "y": 121,
+          "width": 32,
+          "height": 32
+        }
+      },
+      {
+        "id": 5,
+        "x": 265,
+        "y": 149,
+        "spriteBox": {
+          "x": 249,
+          "y": 121,
+          "width": 32,
+          "height": 32
+        }
+      },
+      {
+        "id": 6,
+        "x": 312,
+        "y": 149,
+        "spriteBox": {
+          "x": 296,
+          "y": 121,
+          "width": 32,
+          "height": 32
+        }
+      },
+      {
+        "id": 7,
+        "x": 359,
+        "y": 149,
+        "spriteBox": {
+          "x": 343,
+          "y": 121,
+          "width": 32,
+          "height": 32
+        }
+      }
+    ],
+    "note": "All eight beds are intentionally empty. Trees, pond, reading hut, and decorative greenery are ambient scenery, never reward progress.",
+    "paletteOverrides": {
+      "sky": "#dce9ee",
+      "cloud": "#f5f6f4",
+      "cloudShadow": "#bdd2dc",
+      "sun": "#f0c4a8"
+    }
+  },
+  "aquarium": {
+    "file": "aquarium-base.svg",
+    "width": 700,
+    "height": 300,
+    "viewBox": [0, 0, 350, 150],
+    "openHabitat": {
+      "x": 83,
+      "y": 43,
+      "width": 205,
+      "height": 77
+    },
+    "note": "Contains ambient rock, sand, and side seaweed only. No fish, coral, chest, shell, or other earned collection item is baked into the base."
+  },
+  "sprites": [
+    {
+      "id": "seed",
+      "symbol": "sprites.svg#seed",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "sprout",
+      "symbol": "sprites.svg#sprout",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "carrot",
+      "symbol": "sprites.svg#carrot",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "radish",
+      "symbol": "sprites.svg#radish",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "pumpkin",
+      "symbol": "sprites.svg#pumpkin",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "flower",
+      "symbol": "sprites.svg#flower",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "berry",
+      "symbol": "sprites.svg#berry",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "tree",
+      "symbol": "sprites.svg#tree",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "mushroom",
+      "symbol": "sprites.svg#mushroom",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "books",
+      "symbol": "sprites.svg#books",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "watering-can",
+      "symbol": "sprites.svg#watering-can",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "fish-blue",
+      "symbol": "sprites.svg#fish-blue",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "fish-orange",
+      "symbol": "sprites.svg#fish-orange",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "jellyfish",
+      "symbol": "sprites.svg#jellyfish",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "seahorse",
+      "symbol": "sprites.svg#seahorse",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "crab",
+      "symbol": "sprites.svg#crab",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "shrimp",
+      "symbol": "sprites.svg#shrimp",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "coral",
+      "symbol": "sprites.svg#coral",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "seaweed",
+      "symbol": "sprites.svg#seaweed",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "shell",
+      "symbol": "sprites.svg#shell",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "bubbles",
+      "symbol": "sprites.svg#bubbles",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    },
+    {
+      "id": "chest",
+      "symbol": "sprites.svg#chest",
+      "width": 64,
+      "height": 64,
+      "viewBox": [0, 0, 32, 32]
+    }
+  ],
+  "verification": {
+    "xml": "All 6 existing original SVG files parsed successfully.",
+    "totalSvgBytes": 61948,
+    "symbolCount": 35,
+    "visualScope": "Chromium screenshots and motion checks cover the current home, seasonal worlds and earned residents. XML parsing and inventory counts do not prove every legacy sprite was visually reviewed."
+  },
+  "marineInterface": {
+    "files": ["blue-horizon.svg", "ocean-tiles.svg"],
+    "licence": "CC0-1.0",
+    "paletteReference": "https://pressmintrocket.oopy.io/dave_the_diver",
+    "decorativeNotEarned": true
+  },
+  "paletteScope": "Legacy base habitat palette; the living-world seasonal palettes are defined in src/world/environment.ts.",
+  "svgFiles": [
+    {
+      "file": "aquarium-base.svg",
+      "bytes": 6379,
+      "sha256": "36582ea33d09a0f414030a59e578c9945a3134071a59426fb9afd8f226f9fbb9",
+      "viewBox": "0 0 350 150",
+      "symbols": []
+    },
+    {
+      "file": "blue-horizon.svg",
+      "bytes": 4105,
+      "sha256": "cd783311b3358bd9968330e00330a9c5e4099d921bed598c390ea9bed525c602",
+      "viewBox": "0 0 720 280",
+      "symbols": []
+    },
+    {
+      "file": "garden-base.svg",
+      "bytes": 32587,
+      "sha256": "7cef7ae6945e57f03b14cbd43dbd81c9e23db0f2cf3efe6f3f3049bf5b43e493",
+      "viewBox": "0 0 550 170",
+      "symbols": []
+    },
+    {
+      "file": "ocean-tiles.svg",
+      "bytes": 541,
+      "sha256": "92e35befd99aeab9ca3d2bb4b56883de0c26c4200d5fec232ed704bfd46f8982",
+      "viewBox": "0 0 128 128",
+      "symbols": []
+    },
+    {
+      "file": "sprites.svg",
+      "bytes": 15224,
+      "sha256": "3ac08f465d96083765b860633a864697fd6147f9b7a80c893e541b2138c64ea7",
+      "viewBox": null,
+      "symbols": [
+        "seed",
+        "sprout",
+        "carrot",
+        "radish",
+        "pumpkin",
+        "flower",
+        "berry",
+        "tree",
+        "mushroom",
+        "books",
+        "watering-can",
+        "fish-blue",
+        "fish-orange",
+        "jellyfish",
+        "seahorse",
+        "crab",
+        "shrimp",
+        "coral",
+        "seaweed",
+        "shell",
+        "bubbles",
+        "chest"
+      ]
+    },
+    {
+      "file": "world-life.svg",
+      "bytes": 3112,
+      "sha256": "1b373e442cb5dc002c5b9311ed8dafc948e186751fc68e78f0866454f40c66d7",
+      "viewBox": null,
+      "symbols": [
+        "bird",
+        "butterfly",
+        "bee",
+        "duck",
+        "frog",
+        "cat",
+        "fish",
+        "reef-fish",
+        "shrimp",
+        "crab",
+        "lantern",
+        "watering",
+        "book"
+      ]
+    }
+  ],
+  "livingWorld": {
+    "component": "src/world/LivingScene.tsx",
+    "sceneViewBox": [0, 0, 640, 320],
+    "spriteSheet": "world-life.svg",
+    "symbols": [
+      "bird",
+      "butterfly",
+      "bee",
+      "duck",
+      "frog",
+      "cat",
+      "fish",
+      "reef-fish",
+      "shrimp",
+      "crab",
+      "lantern",
+      "watering",
+      "book"
+    ],
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "animation": "CSS steps with independent durations, offsets, pauses and turns; no React per-frame loop",
+    "codeLicence": "MIT",
+    "standaloneSvgLicence": "CC0-1.0"
+  }
+}

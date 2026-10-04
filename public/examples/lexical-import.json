@@ -1,0 +1,558 @@
+[
+  {
+    "word": "calm",
+    "deck": "Lexical acceptance",
+    "entries": [
+      {
+        "entryId": "fixture-calm:entry:adjective",
+        "wordId": "fixture-calm",
+        "partOfSpeech": "adjective",
+        "label": "",
+        "register": "",
+        "usageNotes": [],
+        "pronunciations": [
+          {
+            "pronunciationId": "fixture-calm:entry:adjective:pron:main:UK",
+            "lexicalEntryId": "fixture-calm:entry:adjective",
+            "locale": "UK",
+            "ipa": "/kɑːm/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          },
+          {
+            "pronunciationId": "fixture-calm:entry:adjective:pron:main:US",
+            "lexicalEntryId": "fixture-calm:entry:adjective",
+            "locale": "US",
+            "ipa": "/kɑm/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          }
+        ],
+        "senses": [
+          {
+            "senseId": "fixture-calm:entry:adjective:sense:quiet:0",
+            "lexicalEntryId": "fixture-calm:entry:adjective",
+            "easyDefinition": "Free from worry, excitement or disturbance.",
+            "fullDefinition": "Free from worry, excitement or disturbance.",
+            "examples": [
+              "She remained calm during the storm."
+            ],
+            "collocations": [
+              "remain calm",
+              "calm voice"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          }
+        ],
+        "learningGroups": [
+          {
+            "learningSenseId": "fixture-calm",
+            "lexicalEntryId": "fixture-calm:entry:adjective",
+            "pronunciationIds": [
+              "fixture-calm:entry:adjective:pron:main:UK",
+              "fixture-calm:entry:adjective:pron:main:US"
+            ],
+            "dictionarySenseIds": [
+              "fixture-calm:entry:adjective:sense:quiet:0"
+            ],
+            "label": "",
+            "preferredLearningDefinition": "Free from worry, excitement or disturbance.",
+            "chineseDefinition": "",
+            "chineseSource": "",
+            "preferredExample": "She remained calm during the storm.",
+            "preferredCollocations": [
+              "remain calm",
+              "calm voice"
+            ],
+            "cloze": {
+              "sentence": "She remained calm during the storm.",
+              "target": "calm",
+              "expectedAnswer": "calm",
+              "acceptedForms": []
+            }
+          }
+        ]
+      },
+      {
+        "entryId": "fixture-calm:entry:noun",
+        "wordId": "fixture-calm",
+        "partOfSpeech": "noun",
+        "label": "",
+        "register": "",
+        "usageNotes": [],
+        "pronunciations": [
+          {
+            "pronunciationId": "fixture-calm:entry:noun:pron:main:UK",
+            "lexicalEntryId": "fixture-calm:entry:noun",
+            "locale": "UK",
+            "ipa": "/kɑːm/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          },
+          {
+            "pronunciationId": "fixture-calm:entry:noun:pron:main:US",
+            "lexicalEntryId": "fixture-calm:entry:noun",
+            "locale": "US",
+            "ipa": "/kɑm/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          }
+        ],
+        "senses": [
+          {
+            "senseId": "fixture-calm:entry:noun:sense:peace:0",
+            "lexicalEntryId": "fixture-calm:entry:noun",
+            "easyDefinition": "A peaceful state without worry or strong negative emotion.",
+            "fullDefinition": "A peaceful state without worry or strong negative emotion.",
+            "examples": [
+              "She felt a sense of calm after the exam."
+            ],
+            "collocations": [
+              "a sense of calm",
+              "restore calm"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          }
+        ],
+        "learningGroups": [
+          {
+            "learningSenseId": "fixture-calm:entry:noun:learn:peace",
+            "lexicalEntryId": "fixture-calm:entry:noun",
+            "pronunciationIds": [
+              "fixture-calm:entry:noun:pron:main:UK",
+              "fixture-calm:entry:noun:pron:main:US"
+            ],
+            "dictionarySenseIds": [
+              "fixture-calm:entry:noun:sense:peace:0"
+            ],
+            "label": "",
+            "preferredLearningDefinition": "A peaceful state without worry or strong negative emotion.",
+            "chineseDefinition": "",
+            "chineseSource": "",
+            "preferredExample": "She felt a sense of calm after the exam.",
+            "preferredCollocations": [
+              "a sense of calm",
+              "restore calm"
+            ],
+            "cloze": {
+              "sentence": "She felt a sense of calm after the exam.",
+              "target": "calm",
+              "expectedAnswer": "calm",
+              "acceptedForms": []
+            }
+          }
+        ]
+      }
+    ],
+    "sourceurl": "https://en.wiktionary.org/wiki/calm",
+    "sourcelicence": "CC BY-SA 4.0; project-adapted definitions and pronunciation selection",
+    "examplesource": "Lexigrove-authored acceptance examples; not source quotations"
+  },
+  {
+    "word": "record",
+    "deck": "Lexical acceptance",
+    "entries": [
+      {
+        "entryId": "fixture-record:entry:noun",
+        "wordId": "fixture-record",
+        "partOfSpeech": "noun",
+        "label": "",
+        "register": "",
+        "usageNotes": [],
+        "pronunciations": [
+          {
+            "pronunciationId": "fixture-record:entry:noun:pron:main:UK",
+            "lexicalEntryId": "fixture-record:entry:noun",
+            "locale": "UK",
+            "ipa": "/ˈɹɛk.ɔːd/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          },
+          {
+            "pronunciationId": "fixture-record:entry:noun:pron:main:US",
+            "lexicalEntryId": "fixture-record:entry:noun",
+            "locale": "US",
+            "ipa": "/ˈɹɛk.ɚd/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          }
+        ],
+        "senses": [
+          {
+            "senseId": "fixture-record:entry:noun:sense:information:0",
+            "lexicalEntryId": "fixture-record:entry:noun",
+            "easyDefinition": "Information kept so that it can be checked later.",
+            "fullDefinition": "Information kept so that it can be checked later.",
+            "examples": [
+              "The laboratory keeps a record of each experiment."
+            ],
+            "collocations": [
+              "keep a record",
+              "written record"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          },
+          {
+            "senseId": "fixture-record:entry:noun:sense:information:1",
+            "lexicalEntryId": "fixture-record:entry:noun",
+            "easyDefinition": "A document or other medium that preserves information.",
+            "fullDefinition": "A document or other medium that preserves information.",
+            "examples": [],
+            "collocations": [
+              "keep a record",
+              "written record"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          },
+          {
+            "senseId": "fixture-record:entry:noun:sense:achievement:0",
+            "lexicalEntryId": "fixture-record:entry:noun",
+            "easyDefinition": "The best performance officially measured in an activity.",
+            "fullDefinition": "The best performance officially measured in an activity.",
+            "examples": [
+              "The runner broke the national record."
+            ],
+            "collocations": [
+              "break a record",
+              "world record"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          }
+        ],
+        "learningGroups": [
+          {
+            "learningSenseId": "fixture-record",
+            "lexicalEntryId": "fixture-record:entry:noun",
+            "pronunciationIds": [
+              "fixture-record:entry:noun:pron:main:UK",
+              "fixture-record:entry:noun:pron:main:US"
+            ],
+            "dictionarySenseIds": [
+              "fixture-record:entry:noun:sense:information:0",
+              "fixture-record:entry:noun:sense:information:1"
+            ],
+            "label": "",
+            "preferredLearningDefinition": "Information kept so that it can be checked later.",
+            "chineseDefinition": "",
+            "chineseSource": "",
+            "preferredExample": "The laboratory keeps a record of each experiment.",
+            "preferredCollocations": [
+              "keep a record",
+              "written record"
+            ],
+            "cloze": {
+              "sentence": "The laboratory keeps a record of each experiment.",
+              "target": "record",
+              "expectedAnswer": "record",
+              "acceptedForms": []
+            }
+          },
+          {
+            "learningSenseId": "fixture-record:entry:noun:learn:achievement",
+            "lexicalEntryId": "fixture-record:entry:noun",
+            "pronunciationIds": [
+              "fixture-record:entry:noun:pron:main:UK",
+              "fixture-record:entry:noun:pron:main:US"
+            ],
+            "dictionarySenseIds": [
+              "fixture-record:entry:noun:sense:achievement:0"
+            ],
+            "label": "",
+            "preferredLearningDefinition": "The best performance officially measured in an activity.",
+            "chineseDefinition": "",
+            "chineseSource": "",
+            "preferredExample": "The runner broke the national record.",
+            "preferredCollocations": [
+              "break a record",
+              "world record"
+            ],
+            "cloze": {
+              "sentence": "The runner broke the national record.",
+              "target": "record",
+              "expectedAnswer": "record",
+              "acceptedForms": []
+            }
+          }
+        ]
+      },
+      {
+        "entryId": "fixture-record:entry:verb",
+        "wordId": "fixture-record",
+        "partOfSpeech": "verb",
+        "label": "",
+        "register": "",
+        "usageNotes": [],
+        "pronunciations": [
+          {
+            "pronunciationId": "fixture-record:entry:verb:pron:main:UK",
+            "lexicalEntryId": "fixture-record:entry:verb",
+            "locale": "UK",
+            "ipa": "/ɹɪˈkɔːd/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          },
+          {
+            "pronunciationId": "fixture-record:entry:verb:pron:main:US",
+            "lexicalEntryId": "fixture-record:entry:verb",
+            "locale": "US",
+            "ipa": "/ɹɪˈkɔɹd/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          }
+        ],
+        "senses": [
+          {
+            "senseId": "fixture-record:entry:verb:sense:information:0",
+            "lexicalEntryId": "fixture-record:entry:verb",
+            "easyDefinition": "To store measured information so it can be used later.",
+            "fullDefinition": "To store measured information so it can be used later.",
+            "examples": [
+              "The measurements were recorded automatically."
+            ],
+            "collocations": [
+              "record measurements",
+              "record data"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          },
+          {
+            "senseId": "fixture-record:entry:verb:sense:capture:0",
+            "lexicalEntryId": "fixture-record:entry:verb",
+            "easyDefinition": "To capture sound or video for later playback.",
+            "fullDefinition": "To capture sound or video for later playback.",
+            "examples": [
+              "We record each lecture for students to replay."
+            ],
+            "collocations": [
+              "record a lecture",
+              "record a video"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          }
+        ],
+        "learningGroups": [
+          {
+            "learningSenseId": "fixture-record:entry:verb:learn:information",
+            "lexicalEntryId": "fixture-record:entry:verb",
+            "pronunciationIds": [
+              "fixture-record:entry:verb:pron:main:UK",
+              "fixture-record:entry:verb:pron:main:US"
+            ],
+            "dictionarySenseIds": [
+              "fixture-record:entry:verb:sense:information:0"
+            ],
+            "label": "",
+            "preferredLearningDefinition": "To store measured information so it can be used later.",
+            "chineseDefinition": "",
+            "chineseSource": "",
+            "preferredExample": "The measurements were recorded automatically.",
+            "preferredCollocations": [
+              "record measurements",
+              "record data"
+            ],
+            "cloze": {
+              "sentence": "The measurements were recorded automatically.",
+              "target": "recorded",
+              "expectedAnswer": "recorded",
+              "acceptedForms": []
+            }
+          },
+          {
+            "learningSenseId": "fixture-record:entry:verb:learn:capture",
+            "lexicalEntryId": "fixture-record:entry:verb",
+            "pronunciationIds": [
+              "fixture-record:entry:verb:pron:main:UK",
+              "fixture-record:entry:verb:pron:main:US"
+            ],
+            "dictionarySenseIds": [
+              "fixture-record:entry:verb:sense:capture:0"
+            ],
+            "label": "",
+            "preferredLearningDefinition": "To capture sound or video for later playback.",
+            "chineseDefinition": "",
+            "chineseSource": "",
+            "preferredExample": "We record each lecture for students to replay.",
+            "preferredCollocations": [
+              "record a lecture",
+              "record a video"
+            ],
+            "cloze": {
+              "sentence": "We record each lecture for students to replay.",
+              "target": "record",
+              "expectedAnswer": "record",
+              "acceptedForms": []
+            }
+          }
+        ]
+      }
+    ],
+    "sourceurl": "https://en.wiktionary.org/wiki/record",
+    "sourcelicence": "CC BY-SA 4.0; project-adapted definitions and pronunciation selection",
+    "examplesource": "Lexigrove-authored acceptance examples; not source quotations"
+  },
+  {
+    "word": "bow",
+    "deck": "Lexical acceptance",
+    "entries": [
+      {
+        "entryId": "fixture-bow:entry:noun",
+        "wordId": "fixture-bow",
+        "partOfSpeech": "noun",
+        "label": "",
+        "register": "",
+        "usageNotes": [],
+        "pronunciations": [
+          {
+            "pronunciationId": "fixture-bow:entry:noun:pron:gesture:UK",
+            "lexicalEntryId": "fixture-bow:entry:noun",
+            "locale": "UK",
+            "ipa": "/baʊ/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          },
+          {
+            "pronunciationId": "fixture-bow:entry:noun:pron:gesture:US",
+            "lexicalEntryId": "fixture-bow:entry:noun",
+            "locale": "US",
+            "ipa": "/baʊ/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          },
+          {
+            "pronunciationId": "fixture-bow:entry:noun:pron:weapon:UK",
+            "lexicalEntryId": "fixture-bow:entry:noun",
+            "locale": "UK",
+            "ipa": "/ˈbəʊ̯/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          },
+          {
+            "pronunciationId": "fixture-bow:entry:noun:pron:weapon:US",
+            "lexicalEntryId": "fixture-bow:entry:noun",
+            "locale": "US",
+            "ipa": "/ˈboʊ̯/",
+            "audioURL": "",
+            "audioAttribution": "",
+            "notes": ""
+          }
+        ],
+        "senses": [
+          {
+            "senseId": "fixture-bow:entry:noun:sense:gesture:0",
+            "lexicalEntryId": "fixture-bow:entry:noun",
+            "easyDefinition": "A movement that bends the head or upper body as a greeting.",
+            "fullDefinition": "A movement that bends the head or upper body as a greeting.",
+            "examples": [
+              "The actor gave a bow after the performance."
+            ],
+            "collocations": [
+              "take a bow",
+              "a polite bow"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          },
+          {
+            "senseId": "fixture-bow:entry:noun:sense:weapon:0",
+            "lexicalEntryId": "fixture-bow:entry:noun",
+            "easyDefinition": "A weapon with a curved frame and string for shooting arrows.",
+            "fullDefinition": "A weapon with a curved frame and string for shooting arrows.",
+            "examples": [
+              "The archer raised the bow and aimed."
+            ],
+            "collocations": [
+              "draw a bow",
+              "bow and arrow"
+            ],
+            "synonyms": [],
+            "antonyms": [],
+            "usageNotes": []
+          }
+        ],
+        "learningGroups": [
+          {
+            "learningSenseId": "fixture-bow",
+            "lexicalEntryId": "fixture-bow:entry:noun",
+            "pronunciationIds": [
+              "fixture-bow:entry:noun:pron:gesture:UK",
+              "fixture-bow:entry:noun:pron:gesture:US"
+            ],
+            "dictionarySenseIds": [
+              "fixture-bow:entry:noun:sense:gesture:0"
+            ],
+            "label": "Bending the body",
+            "preferredLearningDefinition": "A movement that bends the head or upper body as a greeting.",
+            "chineseDefinition": "",
+            "chineseSource": "",
+            "preferredExample": "The actor gave a bow after the performance.",
+            "preferredCollocations": [
+              "take a bow",
+              "a polite bow"
+            ],
+            "cloze": {
+              "sentence": "The actor gave a bow after the performance.",
+              "target": "bow",
+              "expectedAnswer": "bow",
+              "acceptedForms": []
+            }
+          },
+          {
+            "learningSenseId": "fixture-bow:entry:noun:learn:weapon",
+            "lexicalEntryId": "fixture-bow:entry:noun",
+            "pronunciationIds": [
+              "fixture-bow:entry:noun:pron:weapon:UK",
+              "fixture-bow:entry:noun:pron:weapon:US"
+            ],
+            "dictionarySenseIds": [
+              "fixture-bow:entry:noun:sense:weapon:0"
+            ],
+            "label": "Shooting arrows",
+            "preferredLearningDefinition": "A weapon with a curved frame and string for shooting arrows.",
+            "chineseDefinition": "",
+            "chineseSource": "",
+            "preferredExample": "The archer raised the bow and aimed.",
+            "preferredCollocations": [
+              "draw a bow",
+              "bow and arrow"
+            ],
+            "cloze": {
+              "sentence": "The archer raised the bow and aimed.",
+              "target": "bow",
+              "expectedAnswer": "bow",
+              "acceptedForms": []
+            }
+          }
+        ]
+      }
+    ],
+    "sourceurl": "https://en.wiktionary.org/wiki/bow",
+    "sourcelicence": "CC BY-SA 4.0; project-adapted definitions and pronunciation selection",
+    "examplesource": "Lexigrove-authored acceptance examples; not source quotations"
+  }
+]

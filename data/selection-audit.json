@@ -1,0 +1,625 @@
+[
+  {
+    "lemma": "mitigate",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/mi/mitigate.jsonl",
+    "sourceSha256": "1b3b1cb59436c23a5d6b4f0790619bf29a89f6bdb3512ea3347f99df6d572ac5",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "significant",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/si/significant.jsonl",
+    "sourceSha256": "08a9171ff275e6c0aadaa9bd6566e30c656beddf1b578deda49eb50625747e7b",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1,
+      2
+    ]
+  },
+  {
+    "lemma": "empirical",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/em/empirical.jsonl",
+    "sourceSha256": "0cd243c2297552618f6732a522b97f824bbbec2ea1c8485d6cf8302ed75f7cd3",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "lemma": "robust",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/ro/robust.jsonl",
+    "sourceSha256": "7b2678ea7ee04153ec476858a2e16f55da151564c827971a71979d65aa1b89c6",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      7
+    ]
+  },
+  {
+    "lemma": "infer",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/i/in/infer.jsonl",
+    "sourceSha256": "1fbf6ba172c6634b490cf2f1f79e6d021cd2651eb486a269777837d42cdebfe4",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "derive",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/de/derive.jsonl",
+    "sourceSha256": "9480a0bcec0019bffe99436d5a95a2159240bb2ab2aa55c70eac07448e5d41b9",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      1
+    ]
+  },
+  {
+    "lemma": "subsequent",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/su/subsequent.jsonl",
+    "sourceSha256": "316a32e53752034bb39b1d868605d7b447859ddcc400c1e174476999095a1b60",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "constraint",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/constraint.jsonl",
+    "sourceSha256": "eaf9f77da1592246b9743be82af68f2da3ee61f90e3a292037450ca6c9f22082",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      3
+    ]
+  },
+  {
+    "lemma": "distribution",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/di/distribution.jsonl",
+    "sourceSha256": "b76e3abc7a09b3c24bf48e47c096c4c62d1548fc4f08baf87c13ed0d83d9b5f0",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      9,
+      6
+    ]
+  },
+  {
+    "lemma": "uncertainty",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/u/un/uncertainty.jsonl",
+    "sourceSha256": "542898456642afe85d919ab0af9880b0f963bea4c8c0948bcef07ddc1598c496",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      2
+    ]
+  },
+  {
+    "lemma": "estimate",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/es/estimate.jsonl",
+    "sourceSha256": "88057e71a14f6b175753e11b6601eb44577d3307a2114b4eda4d4752911973a5",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "variable",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/v/va/variable.jsonl",
+    "sourceSha256": "0e2ab93a12e2163511e385d25c5cb61595d32572e29506b8de65fe7464819329",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      2
+    ]
+  },
+  {
+    "lemma": "parameter",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/p/pa/parameter.jsonl",
+    "sourceSha256": "dbc924dc9eeb4ec568252076f25617df3b6614e362e079bdfd31c53047d4ad4b",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1,
+      0
+    ]
+  },
+  {
+    "lemma": "framework",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/f/fr/framework.jsonl",
+    "sourceSha256": "3ae862897b21589d9cc57b14cebffe84acf2359a86d0cac5c33cbdefe2bdb49e",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      3
+    ]
+  },
+  {
+    "lemma": "methodology",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/me/methodology.jsonl",
+    "sourceSha256": "ef2c218327cbca4a5bcb22c8806bfd729c6e4d7e40900cd2a7cfa61a8cebe69e",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1,
+      0
+    ]
+  },
+  {
+    "lemma": "bias",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/b/bi/bias.jsonl",
+    "sourceSha256": "fcdb127e2b182022624dadb7245dd7aed911a8a1a1c094ee610fff62e8b1c283",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      4
+    ]
+  },
+  {
+    "lemma": "causal",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/ca/causal.jsonl",
+    "sourceSha256": "767c6d804f51138d4a5ba9804ad77f26d39437d64d2be14e2b2720b543495ccc",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "confounder",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/confounder.jsonl",
+    "sourceSha256": "62918b832dbf9322b92caecdba2dbe7eb20477f573f5ec39b7d9c0a05a859e29",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1
+    ]
+  },
+  {
+    "lemma": "validate",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/v/va/validate.jsonl",
+    "sourceSha256": "8be7c2e3a6b86003fe4ac6bc500cc2c9678c6928bd1c0011c082f9f0fb871ad3",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1
+    ]
+  },
+  {
+    "lemma": "simulate",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/si/simulate.jsonl",
+    "sourceSha256": "e75e776da452153b206a6f85293c93abab559643c099c8af29f237e096f2d3df",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "reservoir",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/reservoir.jsonl",
+    "sourceSha256": "2d9daff2809cb346625c6b5b36600cd84f802b75527a2b8b633e01778d8cdf73",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1
+    ]
+  },
+  {
+    "lemma": "sediment",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/se/sediment.jsonl",
+    "sourceSha256": "c070813c864242df0d85de372989f096e205d300ffddaed4983482edd86db583",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "runoff",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/ru/runoff.jsonl",
+    "sourceSha256": "cf278dd6e34e8eaa3527bdfc608778ab031cf84f3d23e59882dbb103fc51a586",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "catchment",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/ca/catchment.jsonl",
+    "sourceSha256": "0304448fe311e82b7ec6d8adcc4e9ef828dcb773bdcabb5161fd47894b94536e",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      1
+    ]
+  },
+  {
+    "lemma": "precipitation",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/p/pr/precipitation.jsonl",
+    "sourceSha256": "4afc15ed0544669a9b3c98cb9ddf07c75bf9426aa59b1f64b79cfd88f6773fe9",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      1
+    ]
+  },
+  {
+    "lemma": "severe",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/se/severe.jsonl",
+    "sourceSha256": "3d6f0e069b67b06932426c97ca0b7a075cc43811813b1121169006615190df09",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "serious",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/se/serious.jsonl",
+    "sourceSha256": "79af802595bdb4429b928a4f05c72d12e8f4253c38b3d375da68bc8a6aff4173",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1
+    ]
+  },
+  {
+    "lemma": "meticulous",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/me/meticulous.jsonl",
+    "sourceSha256": "27467280193c62f647bbb6809a44bb6dffc06b4d5b7168e0b1952e2dd9a901c6",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "evidence",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ev/evidence.jsonl",
+    "sourceSha256": "d155a65a3803d904012c4504042c70868b8b52f11e073c88a21bcfb620005783",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "maintain",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/ma/maintain.jsonl",
+    "sourceSha256": "dd34f035dfca0f5499c3ad240e6ed88983e0937194dc98908886c33c3313856a",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      2
+    ]
+  },
+  {
+    "lemma": "improve",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/i/im/improve.jsonl",
+    "sourceSha256": "43a83d69ab3862421384e960ac90e43435bb03e90dde622252b3f5b66771299c",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      1
+    ]
+  },
+  {
+    "lemma": "support",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/su/support.jsonl",
+    "sourceSha256": "b6d4d22af3f753a3a78e2ae9f2469485577a7b38a13ce23fc99b8c1703059773",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      4
+    ]
+  },
+  {
+    "lemma": "reduce",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/reduce.jsonl",
+    "sourceSha256": "9fa18e62dc9f87465f9cbe56ba30a9f6be18877c8c14e1b9c2ca5c4cb9792dc5",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "increase",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/i/in/increase.jsonl",
+    "sourceSha256": "9d7e9352f7d9d06c6b0a101116e1c7c33ce12ca79aade98bcdb63b8191c011ff",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1,
+      0
+    ]
+  },
+  {
+    "lemma": "compare",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/compare.jsonl",
+    "sourceSha256": "e082223c863ca1e21a9af1464d18d763407367010d348550a1433fceb9ed9a0b",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "explain",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ex/explain.jsonl",
+    "sourceSha256": "3a3a7aaa29b0f90ca83295234841264c4cc3077d74cc0ef04f194809796c431e",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      1
+    ]
+  },
+  {
+    "lemma": "observe",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/o/ob/observe.jsonl",
+    "sourceSha256": "4942807872e73f3360630cc0f5336ceee409e1d1b636e5c58d27dbb60d83cd69",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "evaluate",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ev/evaluate.jsonl",
+    "sourceSha256": "9fa4132bf8f649a9965dbe33e383ffd623a7bf114734d67902e59b19be41f32c",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "hypothesis",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/h/hy/hypothesis.jsonl",
+    "sourceSha256": "482c93727323873a5fab0af190e4f331fa66a1baa5d4edbd5ca816158fd40e98",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "analysis",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/a/an/analysis.jsonl",
+    "sourceSha256": "865c749fa1eb9079eeeb7495299d0a9d45f5f0dfe6e613c6bd4e78a4abb9fba3",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "data",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/da/data.jsonl",
+    "sourceSha256": "04f9e3d0939a6c8b7ec077c7961a72eb4598a186b3f0007a2a6048fc0cc5da8c",
+    "pos": "noun",
+    "entryOccurrence": 1,
+    "senseIndices": [
+      1
+    ]
+  },
+  {
+    "lemma": "method",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/me/method.jsonl",
+    "sourceSha256": "00e5f72c5d9f3990674a75b0b478ec5d9be62e7b486eb83a2a987c775efb32a6",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "outcome",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/o/ou/outcome.jsonl",
+    "sourceSha256": "4da3a0fb2b384af850eed6328cbd8e8cb14e2ad0b1dad24aa4e91b0bd90084a9",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "process",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/p/pr/process.jsonl",
+    "sourceSha256": "9301b87afa52ea5acdd2cc88301a5add587c7d3589eb2058a32fcf2f856d301c",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "response",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/response.jsonl",
+    "sourceSha256": "be73da84e96e50dc9223c58f3e26bd050e668c1a587b52919ec542f436e46444",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      7
+    ]
+  },
+  {
+    "lemma": "reliable",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/reliable.jsonl",
+    "sourceSha256": "166926ad44f3acc0d794829424aea00ca115a73527f57a4f2d3b601067edca3e",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "consistent",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/consistent.jsonl",
+    "sourceSha256": "19a96de8e42df8027af8fa5aa8afd250d4d6d73932a1d68936aef4f92a988e09",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      1
+    ]
+  },
+  {
+    "lemma": "ambiguous",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/a/am/ambiguous.jsonl",
+    "sourceSha256": "a02a56144990701ac65b8c43c944148ae94f3a1d997bd8cceb37c7846071de74",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "adapt",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/a/ad/adapt.jsonl",
+    "sourceSha256": "01a240399497742c0856a7f0285c77d803d5611ef65e91edf30915d8f6d13b39",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1
+    ]
+  },
+  {
+    "lemma": "retain",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/retain.jsonl",
+    "sourceSha256": "33a014a10a8082aea1d5616a4ac827ba2da9b3c802c97ac98f79d6ce18bbb7b4",
+    "pos": "verb",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      6,
+      5
+    ]
+  },
+  {
+    "lemma": "diverse",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/di/diverse.jsonl",
+    "sourceSha256": "c428d37474624afb5f01a9edd181c8d6f69ef63ac864fafeda2791d0b5cad44e",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "efficient",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ef/efficient.jsonl",
+    "sourceSha256": "157cb55f62eed80f0d7e6e2d5d0db9ff118eccbbe32ef777461888c937857c7f",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "habitat",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/h/ha/habitat.jsonl",
+    "sourceSha256": "a37e7a39ae1df889b8276125833dcc488e017b1be07ec1ba29bc5651fc73c2dd",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1,
+      0
+    ]
+  },
+  {
+    "lemma": "glacier",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/g/gl/glacier.jsonl",
+    "sourceSha256": "7da1fa0c52d270af5a80a5d5292506ae709292dcf98644372d90e63c53d16f91",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "drought",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/dr/drought.jsonl",
+    "sourceSha256": "f7ba77cd55d8eaf874a0a3689f41f89323e7972a02a5f4ae24d2a01f8eec66c6",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  },
+  {
+    "lemma": "ecosystem",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ec/ecosystem.jsonl",
+    "sourceSha256": "59e379fc970371c81329588bcb18fe5e6b8e81ce735421cd70c3a80cb0405f21",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0,
+      1
+    ]
+  },
+  {
+    "lemma": "sustainable",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/su/sustainable.jsonl",
+    "sourceSha256": "f4b09f08376875a2124983ee7855d4aa384d75bed22b0602e935cb74dfd360af",
+    "pos": "adj",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1
+    ]
+  },
+  {
+    "lemma": "trend",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/t/tr/trend.jsonl",
+    "sourceSha256": "12509187e4b8ff41a87b41129cee6a6142677c88d68b796ce8f4514bea8e2822",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1,
+      5
+    ]
+  },
+  {
+    "lemma": "correlation",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/correlation.jsonl",
+    "sourceSha256": "aed8872e514fa365211170d1e739ede64828757e4cc4857af8e4762e715a8af6",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      1
+    ]
+  },
+  {
+    "lemma": "intervention",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/i/in/intervention.jsonl",
+    "sourceSha256": "c03d3558ad36060cbc4480b63055d52eba2a5ee4e9b664a8ea10af1361799e4c",
+    "pos": "noun",
+    "entryOccurrence": 0,
+    "senseIndices": [
+      0
+    ]
+  }
+]

@@ -1,0 +1,1300 @@
+/* # Original landscape, explorer journal and quiet learning notebook share a compact, accessible shell. */
+:root[data-theme] {
+  --surface: #fafaf3;
+  --bg: #d0dfcf;
+  --soft: #eef1e6;
+  --ink: #293e46;
+  --muted: #586b70;
+  --line: #c9d4c8;
+  --green: #2d7765;
+  --accent: #b96367;
+}
+:root[data-theme="night"] {
+  --surface: #263e4b;
+  --bg: #1f3541;
+  --soft: #304b55;
+  --ink: #eef0dc;
+  --muted: #bed0cb;
+  --line: #49616a;
+  --green: #9ccdac;
+  --accent: #efa6a3;
+}
+body {
+  min-width: 320px;
+}
+:root[data-theme] .app-shell:not(.study-mode) {
+  background: var(--bg) url("/assets/original/ocean-tiles.svg") repeat;
+}
+:root[data-theme] .sidebar {
+  background: #294b52;
+  border-right: 4px solid #193c45;
+  box-shadow: inset -4px 0 #4d726c;
+}
+:root[data-theme] .brand {
+  color: #f2efda;
+  margin-bottom: 28px;
+}
+:root[data-theme] .nav-item {
+  color: #d3e4d8;
+  font-size: 17px;
+  min-height: 46px;
+  border: 1px solid transparent;
+}
+:root[data-theme] .nav-item:hover {
+  background: #365e61;
+}
+:root[data-theme] .nav-item.active {
+  color: #283f47;
+  background: #c4d8ad;
+  border-color: #87a58c;
+  box-shadow:
+    inset 0 -3px #a4bd98,
+    3px 3px #1b3945;
+}
+:root[data-theme] .sidebar-pixel {
+  position: relative;
+  padding-block: 18px 26px;
+  border-top: 2px solid #466d6d;
+}
+:root[data-theme] .sidebar-pixel span {
+  color: #c7d5b2;
+  font-style: normal;
+  font-size: 15px;
+}
+:root[data-theme] .local-note {
+  color: #bdcfbf;
+}
+:root[data-theme] .topbar {
+  background: #e9eddf;
+  color: #506c68;
+  border-bottom: 3px solid #91ad9e;
+  height: 58px;
+  box-shadow: none;
+}
+:root[data-theme="night"] .topbar {
+  background: #29474e;
+  border-color: #43646a;
+}
+:root[data-theme] .topbar b {
+  color: var(--ink);
+}
+:root[data-theme] .topbar .badge {
+  background: var(--soft);
+  color: var(--muted);
+  border-color: var(--line);
+}
+:root[data-theme] .page {
+  max-width: 1440px;
+  padding: 26px 32px 40px;
+}
+.today-page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.today-page .page-heading {
+  order: 0;
+  margin: 0;
+}
+.today-page .page-heading h1 {
+  font-size: 29px;
+}
+.home-worlds {
+  order: 1;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+.home-worlds.both-worlds {
+  grid-template-columns: minmax(0, 2.6fr) minmax(240px, 1fr);
+}
+.living-world {
+  position: relative;
+  overflow: hidden;
+  border: 4px solid #2b5256;
+  box-shadow: 5px 5px #476a6440;
+  background: #518574;
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    calc(100% - 8px) 4px,
+    100% 4px,
+    100% calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 4px) 100%,
+    8px 100%,
+    8px calc(100% - 4px),
+    0 calc(100% - 4px),
+    0 8px,
+    4px 8px,
+    4px 0
+  );
+}
+.landscape-window {
+  height: 370px;
+  position: relative;
+  overflow: hidden;
+}
+.living-landscape {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+}
+.home-worlds .living-garden .living-landscape {
+  min-width: 620px;
+}
+.home-worlds .living-aquarium .living-landscape {
+  width: 740px;
+  max-width: none;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.world-sign {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  color: #eff3df;
+  background: #2a4f51ee;
+  border: 2px solid #658b7a;
+  box-shadow: 3px 3px #25434877;
+  padding: 10px 14px;
+  max-width: calc(100% - 36px);
+}
+.world-sign > span {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  margin-bottom: 3px;
+  color: #c2d8ad;
+}
+.world-sign b {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 500;
+}
+.world-sign small {
+  display: block;
+  margin-top: 4px;
+  font: 12px var(--font-learning);
+  text-transform: capitalize;
+  color: #c7dbd2;
+}
+.home-worlds .living-aquarium .world-sign b {
+  font-size: 22px;
+}
+.world-field-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 46px;
+  padding: 8px 14px;
+  border-top: 3px solid #3b655f;
+  background: #345b58;
+}
+:root[data-theme] .field-marker {
+  font-family: var(--font-ui);
+  border: 1px solid #8caca0;
+  background: #e5e6ce;
+  color: #314b4e;
+  padding: 6px 10px;
+  white-space: nowrap;
+  font-size: 16px;
+  box-shadow: 2px 2px #244644;
+}
+.field-note {
+  font: 12px/1.5 var(--font-learning);
+  color: #d0dfcf;
+}
+.home-worlds .living-aquarium .world-field-labels {
+  flex-wrap: wrap;
+}
+.home-worlds .living-aquarium .field-marker {
+  font-size: 14px;
+  white-space: normal;
+  text-align: left;
+}
+.today-page .home-bottom {
+  order: 2;
+  margin: 0;
+  display: block;
+}
+:root[data-theme] .study-launch {
+  padding: 22px 26px;
+  background: var(--surface);
+  border: 2px solid #799287;
+  border-left: 6px solid #668b73;
+  box-shadow: 4px 4px #637c6740;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  clip-path: none;
+}
+.study-launch h2 {
+  font-size: 25px;
+  margin: 7px 0;
+}
+.study-launch .eyebrow {
+  color: var(--green);
+  font-size: 14px;
+}
+.study-launch .subtle {
+  font: 14px var(--font-learning);
+}
+.aquarium-teaser {
+  display: none;
+}
+.today-page .today-strip {
+  order: 3;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+:root[data-theme] .today-strip .metric {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 6px;
+  min-height: 66px;
+  padding: 12px 16px;
+  background: #f0eddc;
+  border: 2px solid #82978a;
+  box-shadow: 3px 3px #59776335;
+  clip-path: none;
+}
+:root[data-theme] .today-strip .metric strong {
+  font-size: 26px;
+  color: #344e54;
+  grid-column: 2;
+  grid-row: 1 / 3;
+  line-height: 1;
+  margin: 0;
+}
+:root[data-theme] .today-strip .metric > span {
+  color: #465f62;
+  font-size: 15px;
+  grid-column: 1;
+}
+:root[data-theme] .today-strip .metric small {
+  font: 11px var(--font-learning);
+  color: #6a7b71;
+}
+:root[data-theme="night"] .today-strip .metric {
+  background: #355159;
+  border-color: #667f77;
+}
+:root[data-theme="night"] .today-strip .metric :is(strong, span) {
+  color: #e0e8d2;
+}
+:root[data-theme="night"] .today-strip .metric small {
+  color: #b8cbc0;
+}
+.today-page .home-footer {
+  order: 4;
+  margin: 0;
+  padding: 0;
+}
+:root[data-theme] .primary {
+  background: #397665;
+  color: #f0f2df;
+  border: 2px solid #285448;
+  box-shadow:
+    inset 0 2px #6d9982,
+    3px 3px #415b4930;
+}
+:root[data-theme] .primary:hover:not(:disabled) {
+  background: #438674;
+}
+:root[data-theme] .secondary {
+  background: var(--soft);
+  color: var(--ink);
+  border-color: #91a79a;
+  box-shadow: 3px 3px #476d5430;
+}
+:root[data-theme] .panel {
+  border-color: #9aae9f;
+  box-shadow: 4px 4px #69816c33;
+  background: var(--surface);
+}
+.world-section {
+  margin-bottom: 32px;
+}
+.world-section .landscape-window {
+  height: 420px;
+}
+.world-section .living-landscape {
+  width: 100%;
+  min-height: 320px;
+}
+.world-caption {
+  margin-top: 16px;
+}
+/* # Independently offset state paths include pauses, turns and activity; only transforms and opacity change. */
+.world-motion {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-timing-function: steps(24, end);
+  animation-iteration-count: infinite;
+}
+.motion-none {
+  animation: none;
+}
+.motion-cloud {
+  animation-name: drift-cloud;
+}
+.motion-tree,
+.motion-sway {
+  transform-origin: 50% 100%;
+  animation-name: leaf-sway;
+}
+.motion-grass {
+  transform-origin: 50% 100%;
+  animation-name: grass-sway;
+}
+.motion-ripple {
+  animation-name: water-ripple;
+}
+.motion-swim {
+  animation-name: pond-swim;
+}
+.motion-walk {
+  animation-name: path-walk;
+}
+.motion-hop {
+  animation-name: frog-hop;
+}
+.motion-fly {
+  animation-name: bird-flight;
+}
+.motion-flutter {
+  animation-name: butterfly-flight;
+}
+.motion-hover {
+  animation-name: bee-hover;
+}
+.motion-fish {
+  animation-name: reef-swim;
+}
+.motion-weed {
+  transform-origin: 50% 100%;
+  animation-name: seaweed-sway;
+}
+.motion-bubble {
+  animation-name: bubble-rise;
+}
+.motion-fall {
+  animation-name: season-fall;
+}
+.motion-firefly,
+.motion-glow {
+  animation-name: light-glow;
+}
+.motion-jelly {
+  animation-name: jelly-drift;
+  animation-duration: 18s;
+}
+@keyframes drift-cloud {
+  0%,
+  100% {
+    transform: translateX(-24px);
+  }
+  60% {
+    transform: translateX(80px);
+  }
+}
+@keyframes leaf-sway {
+  0%,
+  45%,
+  100% {
+    transform: translate(0, 0);
+  }
+  24% {
+    transform: translate(2px, 0);
+  }
+  76% {
+    transform: translate(-2px, 1px);
+  }
+}
+@keyframes grass-sway {
+  0%,
+  100% {
+    transform: skewX(0);
+  }
+  28% {
+    transform: skewX(8deg);
+  }
+  76% {
+    transform: skewX(-5deg);
+  }
+}
+@keyframes water-ripple {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.6;
+  }
+  38% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+  78% {
+    transform: translateX(-6px);
+    opacity: 0.7;
+  }
+}
+@keyframes pond-swim {
+  0%,
+  12%,
+  100% {
+    transform: translate(0, 0) scaleX(1);
+  }
+  38%,
+  46% {
+    transform: translate(22px, -2px) scaleX(1);
+  }
+  48%,
+  56% {
+    transform: translate(22px, -2px) scaleX(-1);
+  }
+  88%,
+  96% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+}
+@keyframes path-walk {
+  0%,
+  15%,
+  100% {
+    transform: translate(0, 0) scaleX(1);
+  }
+  37%,
+  48% {
+    transform: translate(48px, 0) scaleX(1);
+  }
+  49%,
+  56% {
+    transform: translate(48px, 0) scaleX(-1);
+  }
+  86%,
+  95% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+}
+@keyframes frog-hop {
+  0%,
+  30%,
+  68%,
+  100% {
+    transform: translate(0, 0);
+  }
+  36% {
+    transform: translate(14px, -12px);
+  }
+  41%,
+  55% {
+    transform: translate(24px, 0);
+  }
+  61% {
+    transform: translate(10px, -8px);
+  }
+}
+@keyframes bird-flight {
+  0%,
+  14%,
+  100% {
+    transform: translate(0, 0);
+  }
+  28% {
+    transform: translate(48px, -16px) scaleY(0.7);
+  }
+  48% {
+    transform: translate(var(--travel), -4px);
+  }
+  61%,
+  70% {
+    transform: translate(var(--travel), 12px) scaleX(-1);
+  }
+  82% {
+    transform: translate(42px, -18px) scaleX(-1) scaleY(0.7);
+  }
+  96% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+}
+@keyframes butterfly-flight {
+  0%,
+  100% {
+    transform: translate(0, 0) scaleX(1);
+  }
+  22% {
+    transform: translate(18px, -20px) scaleX(0.5);
+  }
+  45%,
+  52% {
+    transform: translate(42px, -8px);
+  }
+  67% {
+    transform: translate(24px, -32px) scaleX(-0.5);
+  }
+  86% {
+    transform: translate(-4px, -10px) scaleX(-1);
+  }
+}
+@keyframes bee-hover {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  16% {
+    transform: translate(4px, -6px);
+  }
+  35%,
+  42% {
+    transform: translate(20px, -12px);
+  }
+  60% {
+    transform: translate(36px, 0) scaleX(-1);
+  }
+  84% {
+    transform: translate(10px, -6px) scaleX(-1);
+  }
+}
+@keyframes reef-swim {
+  0%,
+  10%,
+  100% {
+    transform: translate(0, 0) scaleX(1);
+  }
+  36%,
+  44% {
+    transform: translate(var(--travel), var(--lift)) scaleX(1);
+  }
+  45%,
+  54% {
+    transform: translate(var(--travel), var(--lift)) scaleX(-1);
+  }
+  82%,
+  94% {
+    transform: translate(-20px, 10px) scaleX(-1);
+  }
+}
+@keyframes seaweed-sway {
+  0%,
+  100% {
+    transform: skewX(-4deg);
+  }
+  45% {
+    transform: skewX(6deg);
+  }
+}
+@keyframes bubble-rise {
+  0% {
+    transform: translate(0, 12px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(10px, -240px);
+    opacity: 0;
+  }
+}
+@keyframes season-fall {
+  0% {
+    transform: translate(0, -24px);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(20px, 240px);
+    opacity: 0;
+  }
+}
+@keyframes light-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  22%,
+  66% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.75;
+  }
+}
+@keyframes jelly-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  46% {
+    transform: translate(18px, -26px);
+  }
+  76% {
+    transform: translate(-8px, -10px);
+  }
+}
+.living-world[data-animation="reduced"] .world-motion {
+  animation: none !important;
+}
+.living-world[data-animation="reduced"] :is(.motion-ripple, .motion-glow) {
+  animation: water-ripple 18s steps(8) infinite !important;
+}
+.living-world[data-animation="static"] .world-motion {
+  animation: none !important;
+}
+:root[data-motion="static"] .world-motion {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .world-motion {
+    animation: none !important;
+  }
+}
+/* # The world frames a calm reading notebook; all learning text and controls use readable sans-serif. */
+:root[data-theme] .study-mode {
+  background: var(--bg);
+}
+:root[data-theme] .study-mode::before {
+  background: var(--bg);
+}
+:root[data-theme] .study-mode::after {
+  background: url("/assets/original/ocean-tiles.svg");
+  opacity: 0.35;
+}
+:root[data-theme] .study-mode.study-calm::after {
+  display: none;
+}
+:root[data-theme] .study-mode .study-container {
+  padding: 24px 40px 44px;
+}
+.study-mode .study-page {
+  max-width: 850px;
+}
+.study-mode .study-page,
+.study-mode .study-page * {
+  font-family: var(--font-learning);
+  letter-spacing: normal;
+}
+:root[data-theme] .study-mode .study-top {
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0 0 12px;
+  box-shadow: none;
+  clip-path: none;
+  margin: 0;
+}
+:root[data-theme] .study-mode .study-top > span {
+  color: var(--muted);
+  font-size: 14px;
+}
+:root[data-theme] .study-mode .study-top .text-button {
+  color: var(--ink);
+  font-size: 15px;
+}
+:root[data-theme] .study-mode .study-progress {
+  border: 0;
+  height: 4px;
+  background: #b9cfc0;
+  box-shadow: none;
+  margin: 0 0 20px;
+}
+:root[data-theme] .study-mode .study-progress > span {
+  background: #609d83;
+}
+:root[data-theme] .study-mode .study-focus {
+  max-width: none;
+  padding: 28px 52px 24px;
+  background: var(--surface);
+  border: 1px solid #99b3a4;
+  border-top: 5px solid #7ca58a;
+  box-shadow: 6px 6px #6d8a6b33;
+  clip-path: none;
+}
+:root[data-theme] .study-mode .study-label {
+  margin: 0 0 22px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+}
+:root[data-theme] .study-mode .study-label > span {
+  background: var(--soft);
+  color: var(--muted);
+  border: 0;
+  padding: 3px 8px;
+  font-size: 12px;
+}
+.study-mode .target-line {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.study-mode .word-heading {
+  max-width: none;
+}
+:root[data-theme] .study-mode .target-word {
+  font-family: var(--font-learning);
+  font-size: 52px;
+  line-height: 1.12;
+  font-weight: 650;
+  color: var(--ink);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.study-mode .study-phonetics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.study-mode .study-phonetics .word-meta {
+  font-size: 14px;
+  font-weight: 550;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.study-mode .study-phonetics .pronunciation-pair {
+  gap: 8px;
+}
+:root[data-theme] .study-mode .pronunciation-button {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--soft);
+  box-shadow: none;
+  padding: 7px 10px;
+  min-height: 36px;
+}
+.study-mode .pronunciation-ipa {
+  font-size: 15px;
+}
+.study-mode .pronunciation-flag {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif !important;
+}
+.study-mode .neutral-ipa {
+  font-size: 17px;
+}
+.study-mode .study-meaning {
+  border: 0;
+  padding: 0;
+  margin-bottom: 23px;
+}
+:root[data-theme] .study-mode .learning-definition {
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.6;
+  margin: 0;
+}
+:root[data-theme] .study-mode .chinese-meaning {
+  font:
+    16px/1.6 var(--font-learning),
+    "PingFang SC",
+    sans-serif;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+.study-mode .reading-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 550;
+  color: var(--muted);
+}
+:root[data-theme] .study-mode .study-example blockquote {
+  padding: 0 0 0 14px;
+  background: none;
+  border-left: 3px solid #a0bba5;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 8px 0 0;
+}
+.study-mode .study-example {
+  margin-bottom: 20px;
+}
+.study-mode .study-collocations {
+  margin-bottom: 18px;
+}
+.study-mode .study-collocations .chips {
+  margin: 8px 0 0;
+}
+:root[data-theme] .study-mode :is(.study-collocations, .study-family) .chip {
+  font-family: var(--font-learning);
+  font-size: 14px;
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  box-shadow: none;
+  background: var(--soft);
+  border-radius: 4px;
+}
+.study-mode .family-heading {
+  margin-bottom: 7px;
+}
+.study-mode .family-empty {
+  font-size: 13px;
+}
+.study-mode .answer-label {
+  margin: 26px 0 12px;
+  font-size: 13px;
+}
+:root[data-theme] .study-mode input.answer-input {
+  height: 56px;
+  font-size: 25px;
+  border: 1px solid #94ac9f;
+  border-radius: 5px;
+  background: var(--surface);
+  box-shadow: none;
+  padding: 10px 14px;
+}
+:root[data-theme] .study-mode input.answer-input:focus {
+  border-color: #407c70;
+  outline: 2px solid #7fab99;
+  outline-offset: 2px;
+}
+.study-mode .answer-actions {
+  margin: 0;
+}
+.study-mode .keyboard-hint {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+.study-mode .study-bottom {
+  border-top: 1px solid var(--line);
+  margin-top: 22px;
+  padding-top: 12px;
+}
+.study-mode .study-bottom .text-button {
+  font-size: 13px;
+}
+.study-mode .recall-prompt {
+  font-size: 28px;
+  line-height: 1.55;
+  font-weight: 450;
+  margin: 38px 0 16px;
+  min-height: 80px;
+}
+.study-mode .listen-prompt {
+  padding: 24px 0 12px;
+}
+.study-mode .audio-scope {
+  text-align: center;
+  font-size: 12px;
+  max-width: 440px;
+  margin: 20px auto 0;
+}
+:root[data-theme] .study-mode .answer-result {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+:root[data-theme] .study-mode .primary {
+  border-radius: 5px;
+  min-height: 44px;
+  box-shadow: none;
+  font-size: 15px;
+}
+:root[data-theme] .study-mode :is(.empty, .session-complete) {
+  border: 1px solid var(--line);
+  clip-path: none;
+  box-shadow: 4px 4px #40584630;
+}
+/* # Dictionary selectors explicitly expose entry and pronunciation ownership without pixel text. */
+.entry-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+:root[data-theme] .entry-tab {
+  border: 1px solid var(--line);
+  background: var(--soft);
+  color: var(--muted);
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+:root[data-theme] .entry-tab.selected {
+  border-color: #639788;
+  color: var(--green);
+  background: var(--surface);
+}
+.dictionary-entry {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-top: 18px;
+}
+.dictionary-entry h3 {
+  font-size: 16px;
+}
+.sense-list {
+  margin: 12px 0 20px;
+  padding-left: 24px;
+  font-family: var(--font-learning);
+}
+.sense-list li {
+  line-height: 1.7;
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+.sense-picker {
+  font: 13px var(--font-learning);
+  display: block;
+}
+.sense-picker select {
+  width: 100%;
+  margin: 8px 0;
+}
+.family-pos {
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.7;
+} /* # Stored POS labels supplement a linked lemma without competing with its name. */
+.sense-progress {
+  font-size: 12px;
+  margin: 10px 0;
+}
+.dictionary-modal :is(button, input, textarea, select, .chip, .field) {
+  font-family: var(--reading-font) !important;
+} /* # The complete dictionary, including actions, keeps the user's readable-font preference. */
+:root[data-theme="night"] .today-page .today-strip .metric:nth-child(n) {
+  color: #edf2e6;
+  background: #304755;
+  border-color: #67858c;
+} /* # This selector also overrides the legacy day palette's individual metric tiles. */
+:root[data-theme="night"] .today-page .today-strip .metric:nth-child(2) {
+  background: #3a405c;
+}
+:root[data-theme="night"] .today-page .today-strip .metric:nth-child(3) {
+  background: #2e5350;
+}
+:root[data-theme="night"] .today-page .today-strip .metric:nth-child(4) {
+  background: #394d47;
+}
+:root[data-theme] .dictionary-modal {
+  border: 1px solid #839f95 !important;
+  box-shadow: 8px 8px #183a4250 !important;
+}
+:root[data-theme] .dictionary-modal .word-title h2 {
+  font-size: 44px;
+  margin-bottom: 16px;
+}
+:root[data-theme] .dictionary-modal .modal-inner {
+  padding: 32px;
+}
+:root[data-theme] .dictionary-modal .dictionary-definition {
+  font-size: 22px;
+  line-height: 1.65;
+}
+.dictionary-modal .pronunciation-button {
+  box-shadow: none;
+}
+/* # Narrow screens recompose the notebook and crop the landscape rather than scaling the full desktop UI down. */
+@media (max-width: 1180px) {
+  .home-worlds.both-worlds {
+    grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
+  }
+  .landscape-window {
+    height: 330px;
+  }
+  .field-note {
+    display: none;
+  }
+  :root[data-theme] .page {
+    padding-inline: 24px;
+  }
+  :root[data-theme] .today-strip .metric {
+    padding: 10px;
+  }
+}
+@media (max-width: 760px) {
+  :root[data-theme] .app-shell:not(.study-mode) {
+    display: block;
+  }
+  :root[data-theme] .sidebar {
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    border-right: 0;
+    border-bottom: 3px solid #294d50;
+  }
+  :root[data-theme] .brand {
+    margin: 0 0 12px;
+    justify-content: center;
+  }
+  :root[data-theme] .brand img {
+    width: 28px;
+    height: 28px;
+  }
+  :root[data-theme] .brand > span {
+    font-size: 26px;
+  }
+  .sidebar nav {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+  :root[data-theme] .sidebar .nav-item {
+    min-width: max-content;
+    width: auto;
+    padding: 8px 10px;
+    font-size: 14px;
+    min-height: 40px;
+    margin: 0;
+    gap: 5px;
+  }
+  .sidebar .nav-item svg {
+    width: 16px;
+    height: 16px;
+  }
+  .sidebar-bottom {
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+  }
+  .sidebar-pixel,
+  .local-note {
+    display: none;
+  }
+  .main {
+    margin-left: 0;
+    width: 100%;
+  }
+  :root[data-theme] .topbar {
+    height: 48px;
+    padding: 0 18px;
+  }
+  :root[data-theme] .page {
+    padding: 18px 14px 30px;
+  }
+  .page-heading {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .today-page .page-heading h1 {
+    font-size: 24px;
+  }
+  .date-label {
+    font-size: 13px;
+  }
+  .home-worlds.both-worlds {
+    display: block;
+  }
+  .home-worlds .living-aquarium {
+    margin-top: 14px;
+  }
+  .home-worlds .living-garden .landscape-window {
+    height: 270px;
+  }
+  .home-worlds .living-garden .living-landscape {
+    width: 600px;
+    min-width: 600px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .home-worlds .living-aquarium .landscape-window {
+    height: 160px;
+  }
+  .home-worlds .living-aquarium .living-landscape {
+    width: 620px;
+  }
+  .home-worlds .living-aquarium .world-sign {
+    top: 10px;
+    left: 12px;
+    padding: 7px 10px;
+  }
+  .home-worlds .living-aquarium .world-sign b {
+    font-size: 18px;
+  }
+  .world-sign > span {
+    font-size: 12px;
+  }
+  .world-sign b {
+    font-size: 21px;
+  }
+  .world-field-labels {
+    padding: 8px 10px;
+  }
+  .field-note {
+    display: none;
+  }
+  :root[data-theme] .study-launch {
+    padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .study-launch h2 {
+    font-size: 23px;
+  }
+  .launch-actions {
+    align-items: stretch;
+  }
+  .launch-actions .primary {
+    width: 100%;
+    justify-content: center;
+  }
+  .today-page .today-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  :root[data-theme] .today-strip .metric {
+    min-height: 60px;
+    padding: 10px 12px;
+  }
+  .home-footer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  :root[data-theme] .study-mode .study-container {
+    padding: 18px 14px 26px;
+  }
+  :root[data-theme] .study-mode .study-focus {
+    padding: 22px 20px;
+  }
+  .study-mode .study-top {
+    gap: 8px;
+  }
+  :root[data-theme] .study-mode .study-top > span {
+    font-size: 12px;
+  }
+  :root[data-theme] .study-mode .target-word {
+    font-size: 40px;
+  }
+  .study-mode .study-phonetics {
+    align-items: start;
+    gap: 8px;
+  }
+  .study-mode .study-phonetics .word-meta {
+    width: 100%;
+  }
+  .study-mode .target-line .pronunciation-pair {
+    flex-direction: column;
+  }
+  :root[data-theme] .study-mode .learning-definition {
+    font-size: 20px;
+  }
+  .study-mode .study-example blockquote {
+    font-size: 17px;
+  }
+  .study-mode .recall-prompt {
+    font-size: 23px;
+    margin-top: 24px;
+  }
+  .study-mode .study-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  :root[data-theme] .modal {
+    max-width: calc(100vw - 20px) !important;
+    min-width: 0;
+    width: calc(100vw - 20px);
+  }
+  :root[data-theme] .modal .modal-inner {
+    padding: 24px 20px;
+  }
+  :root[data-theme] .dictionary-modal .word-title h2 {
+    font-size: 36px;
+  }
+  :root[data-theme] .dictionary-modal .dictionary-definition {
+    font-size: 20px;
+  }
+  .table-toolbar {
+    flex-wrap: wrap;
+  }
+  .search-field {
+    width: 100%;
+    min-width: 0;
+  }
+  .vocabulary-row {
+    grid-template-columns: minmax(80px, 1fr) minmax(110px, 1.6fr);
+    gap: 12px;
+  }
+  .vocabulary-row .row-actions {
+    justify-content: end;
+  }
+  .table-head span:nth-child(n + 3) {
+    display: none;
+  }
+  .settings-columns,
+  .stats-grid {
+    display: block;
+  }
+  .settings-columns > div {
+    min-width: 0;
+  }
+  .setting-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .setting-row select {
+    max-width: 100%;
+  }
+  .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .world-section .landscape-window {
+    height: 260px;
+  }
+  .world-section .living-landscape {
+    width: 640px;
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .world-caption {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .history-list > div {
+    flex-wrap: wrap;
+  }
+}
+/* # Legacy icon-only sidebar rules must not hide navigation labels on small screens. */
+@media (max-width: 760px) {
+  :root[data-theme] .sidebar .brand > span,
+  :root[data-theme] .sidebar .nav-item > span {
+    display: inline;
+  }
+  :root[data-theme] .sidebar .brand {
+    justify-content: flex-start;
+    margin-left: 6px;
+  }
+  :root[data-theme] .sidebar nav {
+    justify-content: flex-start;
+  }
+  .home-worlds.both-worlds .living-aquarium {
+    display: none;
+  }
+  .home-worlds .living-garden .landscape-window {
+    height: 220px;
+  }
+}

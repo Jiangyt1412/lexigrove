@@ -1,0 +1,764 @@
+/* # A desktop marine game shell: integer-grid scenery, tiled textures and stepped frames. */
+:root {
+  --bg: #c5e1e8;
+  --surface: #f1fafb;
+  --ink: #143956;
+  --muted: #466a7e;
+  --line: #8ab7c5;
+  --soft: #deeff3;
+  --green: #187d8b;
+  --accent: #bb493e;
+  --sidebar: #102f4d;
+  --pixel-edge: #143f5e;
+  --pixel-shadow: #7aa6b8;
+  --panel-highlight: #fff;
+  --ocean-navy: #102f4d;
+  --ocean-cyan: #73ded7;
+  --ocean-coral: #ff947c;
+  --step-corners: polygon(
+    0 8px,
+    8px 8px,
+    8px 0,
+    calc(100% - 8px) 0,
+    calc(100% - 8px) 8px,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    8px calc(100% - 8px),
+    0 calc(100% - 8px)
+  );
+  background: var(--bg);
+}
+:root[data-theme="night"] {
+  --bg: #122e48;
+  --surface: #173b53;
+  --ink: #e7f7f8;
+  --muted: #b3d4dc;
+  --line: #487c91;
+  --soft: #224c64;
+  --green: #78d8c5;
+  --accent: #ffb0a1;
+  --pixel-edge: #071e35;
+  --pixel-shadow: #0b233c;
+  --panel-highlight: #35647a;
+}
+:root[data-theme] body {
+  background: var(--bg) url("/assets/original/ocean-tiles.svg") repeat;
+  background-size: 128px 128px;
+}
+/* # Borders use discrete squares instead of smoothing or rounded corners. */
+:root[data-theme] .sidebar {
+  width: 226px;
+  background: #102f4d url("/assets/original/ocean-tiles.svg");
+  border-right: 4px solid #071e36;
+  box-shadow: inset -4px 0 #235773;
+  color: #d3f0f2;
+}
+:root[data-theme] .brand {
+  color: #b6f2e9;
+  margin-bottom: 46px;
+}
+:root[data-theme] .brand img {
+  box-shadow: 4px 4px #061c34;
+}
+:root[data-theme] .brand > span {
+  font-size: 30px;
+}
+:root[data-theme] .nav-item {
+  color: #afcdd8;
+  font-size: 18px;
+}
+:root[data-theme] .nav-item:hover {
+  background: #20536b;
+  border-color: #438398;
+}
+:root[data-theme] .nav-item.active {
+  background: #6dd2cf;
+  color: #10364e;
+  border-color: #071e36;
+  box-shadow:
+    inset 3px 3px #adf2e4,
+    inset -3px -3px #36a4ae,
+    4px 4px #071e36;
+  clip-path: var(--step-corners);
+}
+:root[data-theme] .sidebar-pixel span,
+:root[data-theme] .local-note {
+  color: #a1c6d2;
+}
+.sidebar-pixel {
+  border-top: 4px dotted #376b81;
+  margin: 0 8px;
+}
+:root[data-theme] .topbar {
+  background: #173d59;
+  color: #e1f4f3;
+  border-bottom: 4px solid #102c47;
+  box-shadow: inset 0 -3px #2f6480;
+  height: 66px;
+}
+:root[data-theme] .topbar .badge {
+  background: #224e64;
+  color: #ace9dc;
+  border-color: #498093;
+  box-shadow: 2px 2px #0c2944;
+}
+.topbar .icon-button:hover {
+  background: #2d5e76;
+}
+:root[data-theme] .topbar b {
+  color: #e1f4f3;
+}
+.page {
+  max-width: 1500px;
+  margin-inline: auto;
+  padding: 28px 36px 32px;
+}
+.page-heading {
+  margin-bottom: 22px;
+  align-items: end;
+}
+.page-heading h1 {
+  font-size: 38px;
+}
+.date-label {
+  color: var(--muted);
+  font-size: 17px;
+}
+:root[data-theme] :is(.primary, .danger) {
+  background: #ff947c;
+  color: #16364d;
+  border: 3px solid #203b52;
+  box-shadow:
+    inset 3px 3px #ffc3a9,
+    inset -3px -3px #d46d66,
+    4px 4px #0b284752;
+  min-height: 48px;
+  clip-path: var(--step-corners);
+  padding: 12px 20px;
+}
+:root[data-theme] :is(.primary, .danger):hover {
+  background: #ffa48c;
+}
+:root[data-theme] :is(.primary, .secondary, .danger):active {
+  transform: translate(2px, 2px);
+}
+:root[data-theme] .secondary {
+  background: var(--soft);
+  color: var(--ink);
+  border: 3px solid var(--pixel-edge);
+  box-shadow:
+    inset 2px 2px var(--panel-highlight),
+    inset -2px -2px var(--line),
+    3px 3px var(--pixel-shadow);
+  clip-path: var(--step-corners);
+}
+:root[data-theme] .text-button {
+  color: var(--muted);
+}
+:root[data-theme] .text-button:hover {
+  color: var(--accent);
+}
+:root[data-theme]
+  :is(.panel, .study-focus, .study-launch, .vocabulary-table, .modal) {
+  background: var(--surface);
+  border: 3px solid var(--pixel-edge);
+  box-shadow:
+    inset 3px 3px var(--panel-highlight),
+    inset -3px -3px var(--line),
+    6px 6px var(--pixel-shadow);
+  border-radius: 0;
+}
+/* # The home environment is a full scene, with a compact HUD and real progress counts. */
+:root[data-theme] .ocean-hero {
+  border: 4px solid #102c47;
+  background: #116fa0;
+  box-shadow: 6px 6px #6e9caf;
+  clip-path: var(--step-corners);
+}
+:root[data-theme] .scene-toolbar {
+  padding: 10px 18px;
+  min-height: 43px;
+  color: #c2f1ed;
+  background: #163b57;
+  border-bottom: 3px solid #102b46;
+  box-shadow: inset 0 2px #356d86;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+.scene-toolbar > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+:root[data-theme] .scene-toolbar > b {
+  color: #80c4d4;
+  font-size: 13px;
+}
+:root[data-theme] .scene-toolbar > b::before {
+  display: none;
+}
+.ocean-hero-scene {
+  position: relative;
+  height: 310px;
+  overflow: hidden;
+}
+.ocean-hero-scene > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+.ocean-hero-title {
+  position: absolute;
+  left: 34px;
+  top: 50px;
+  color: #eefbf5;
+}
+.ocean-hero-title > span {
+  font-size: 13px;
+  letter-spacing: 1.8px;
+  color: #a9eee5;
+}
+.ocean-hero-title h2 {
+  font-size: clamp(34px, 3.3vw, 48px);
+  line-height: 1.05;
+  font-weight: 500;
+  margin: 14px 0 0;
+  text-shadow: 3px 3px #0c496f;
+}
+.ocean-world-link {
+  position: absolute;
+  bottom: 20px;
+  left: 34px;
+  background: #123b58;
+  color: #d4f6f0;
+  border: 2px solid #64aaba;
+  box-shadow:
+    inset 2px 2px #295f7b,
+    4px 4px #082745;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  gap: 3px 18px;
+  text-align: left;
+  clip-path: var(--step-corners);
+}
+.ocean-world-link > span {
+  font-size: 12px;
+  color: #8dd8d6;
+  letter-spacing: 1px;
+}
+.ocean-world-link > b {
+  font-size: 16px;
+  font-weight: 400;
+}
+.ocean-world-link > svg {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+}
+.ocean-world-link:hover {
+  background: #205771;
+}
+.today-strip {
+  gap: 14px;
+  padding-bottom: 0;
+  border: 0;
+  margin: 23px 0;
+}
+:root[data-theme] .today-strip .metric {
+  position: relative;
+  border: 3px solid #254f69;
+  padding: 15px 20px;
+  gap: 3px;
+  background: #dceff5;
+  color: #163c59;
+  box-shadow:
+    inset 3px 3px #f4ffff,
+    inset -3px -3px #a7cbd9,
+    4px 4px #76a1b3;
+  clip-path: var(--step-corners);
+}
+:root[data-theme] .today-strip .metric::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  width: 6px;
+  height: 6px;
+  background: #799fb6;
+  box-shadow:
+    8px 0 #799fb6,
+    0 8px #799fb6;
+}
+:root[data-theme] .today-strip .metric > span {
+  color: #466477;
+  font-size: 16px;
+}
+:root[data-theme] .today-strip .metric strong {
+  color: #143f5c;
+  font-size: 36px;
+}
+:root[data-theme] .today-strip .metric:nth-child(1) {
+  background: #ffd3c6;
+  box-shadow:
+    inset 3px 3px #ffede3,
+    inset -3px -3px #e7a38f,
+    4px 4px #769cad;
+}
+:root[data-theme] .today-strip .metric:nth-child(2) {
+  background: #ced6f4;
+  box-shadow:
+    inset 3px 3px #ebedff,
+    inset -3px -3px #a8b5dc,
+    4px 4px #769cad;
+}
+:root[data-theme] .today-strip .metric:nth-child(3) {
+  background: #b6e8db;
+  box-shadow:
+    inset 3px 3px #daf9e9,
+    inset -3px -3px #88bdae,
+    4px 4px #769cad;
+}
+.home-bottom {
+  grid-template-columns: minmax(0, 2fr) minmax(250px, 1fr);
+  gap: 18px;
+}
+:root[data-theme] .home-bottom .study-launch {
+  border-color: var(--pixel-edge);
+  padding: 24px;
+}
+.study-launch .eyebrow {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.study-launch h2 {
+  font-size: 24px;
+}
+.study-launch .subtle {
+  font-size: 16px;
+}
+.launch-actions .primary {
+  min-width: 168px;
+}
+:root[data-theme] .aquarium-teaser {
+  background: #286a85;
+  color: #e0f7f2;
+  border: 3px solid #173f5a;
+  box-shadow:
+    inset 3px 3px #4696a3,
+    inset -3px -3px #1b526e,
+    5px 5px #76a1b3;
+  clip-path: var(--step-corners);
+}
+.aquarium-teaser small {
+  color: #abe8df;
+  font-size: 12px;
+}
+.aquarium-teaser b {
+  font-size: 22px;
+}
+.home-footer .text-button {
+  font-size: 15px;
+}
+/* # Library, dialogs, settings and earned worlds share the same palette and square geometry. */
+:root[data-theme] :is(input, select, textarea, .search-field) {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+  box-shadow: inset 2px 2px var(--soft);
+}
+:root[data-theme] :is(.vocabulary-row, .modal .detail-section) {
+  background: var(--surface);
+  border-color: var(--line);
+}
+:root[data-theme] .table-head {
+  background: var(--soft);
+  color: var(--muted);
+}
+:root[data-theme] :is(.state-chip, .chip, .keyboard-hint) {
+  background: var(--soft);
+  color: var(--muted);
+  border-color: var(--line);
+  box-shadow: none;
+}
+:root[data-theme] .chip.selected {
+  background: #1d7b87;
+  color: #effbf5;
+}
+:root[data-theme] .word-meta,
+:root[data-theme] .source-details {
+  color: var(--muted);
+}
+:root[data-theme] blockquote {
+  background: var(--soft);
+  color: var(--ink);
+  border-color: #339aaa;
+}
+:root[data-theme] .world-frame:not(.ocean-hero) {
+  border: 4px solid #143e5b !important;
+  box-shadow: 6px 6px var(--pixel-shadow) !important;
+}
+:root[data-theme] .scene-inspect {
+  background: #173f58;
+  color: #d0f2ed;
+  border-color: #69a9b9;
+  box-shadow: 3px 3px #0c2d43;
+}
+:root[data-theme] .modal::backdrop {
+  background: #082b48b8;
+}
+:root[data-theme] :is(.toast, .update-banner) {
+  background: #163e59;
+  color: #eefaf6;
+  border-color: #6ea4b9;
+  box-shadow: 5px 5px #0b294a66;
+}
+:root[data-theme] .toast .icon-button:hover {
+  background: #2b6178;
+}
+.definition-word:hover {
+  background: var(--soft);
+}
+/* # Study has its own full-screen environment, with no mounted main navigation or topbar. */
+.study-mode {
+  min-height: 100vh;
+  background: #103b60;
+  isolation: isolate;
+}
+.study-mode::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: #103b60 url("/assets/original/blue-horizon.svg") center bottom /
+    cover no-repeat;
+  image-rendering: pixelated;
+}
+.study-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #082b4866 url("/assets/original/ocean-tiles.svg") repeat;
+}
+.study-mode .main {
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+}
+.study-mode.study-calm::before {
+  background: var(--bg);
+}
+.study-mode.study-calm::after {
+  background: none;
+}
+.family-source {
+  font-family: var(--font-learning);
+  font-size: 12px;
+  color: var(--muted);
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.study-mode .study-container {
+  max-width: none;
+  padding: 24px 48px 40px;
+}
+.study-mode .study-page {
+  max-width: 930px;
+  margin: 0 auto;
+}
+.study-mode .study-top {
+  background: #10354fe8;
+  border: 3px solid #09253e;
+  color: #d8f4f0;
+  box-shadow:
+    inset 2px 2px #2c6985,
+    4px 4px #0b2b4680;
+  padding: 9px 20px;
+  margin: 0 0 12px;
+  clip-path: var(--step-corners);
+}
+.study-mode .study-top > span {
+  color: #acd9e2;
+  font-size: 16px;
+}
+:root[data-theme] .study-mode .study-top .text-button {
+  color: #dcf5ed;
+  font-size: 17px;
+}
+.study-mode .study-top .text-button:hover {
+  color: #ffac91;
+}
+:root[data-theme] .study-mode .study-progress {
+  border: 2px solid #0b2841;
+  background: #1e5370;
+  height: 10px;
+  margin-bottom: 20px;
+  box-shadow: 3px 3px #0c2c4680;
+}
+:root[data-theme] .study-mode .study-progress > span {
+  background: repeating-linear-gradient(
+    90deg,
+    #73ddd0 0 18px,
+    #398e9b 18px 22px
+  );
+  transition: none;
+}
+:root[data-theme] .study-mode .study-focus {
+  position: relative;
+  max-width: none;
+  padding: 24px 38px 22px;
+  border: 4px solid #0c2d46;
+  box-shadow:
+    inset 4px 4px var(--panel-highlight),
+    inset -4px -4px var(--line),
+    8px 8px #08294590;
+  clip-path: var(--step-corners);
+}
+.study-mode .study-label {
+  font-family: var(--font-ui);
+  margin: -24px -38px 25px;
+  padding: 12px 24px;
+  border-bottom: 3px solid var(--line);
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 17px;
+  letter-spacing: 0.5px;
+}
+:root[data-theme] .study-mode .study-label > span {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+.study-mode .target-line {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0 0 16px;
+}
+.study-mode .word-heading {
+  min-width: 0;
+  flex: 0 1 auto;
+  max-width: 48%;
+}
+.study-mode .target-word {
+  font-size: clamp(36px, 3.4vw, 50px);
+  margin: 0 0 3px;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.study-mode .word-heading .word-meta {
+  display: block;
+  font-size: 14px;
+}
+.study-mode .study-phonetics {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 7px;
+}
+.study-mode .neutral-ipa {
+  font-family: var(--font-learning);
+  font-size: 19px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.study-mode .target-line .pronunciation-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+}
+.study-mode .pronunciation-button {
+  background: var(--soft);
+  border: 2px solid var(--line);
+  box-shadow:
+    inset 2px 2px var(--panel-highlight),
+    2px 2px var(--line);
+  padding: 6px 10px;
+  min-height: 36px;
+}
+.study-mode .pronunciation-button:hover {
+  border-color: #3097a6;
+}
+.study-mode .pronunciation-ipa {
+  color: var(--muted);
+  font-size: 16px;
+}
+.study-mode .study-meaning {
+  border-top: 2px solid var(--line);
+  padding-top: 15px;
+}
+.study-mode .study-meaning .chinese-meaning {
+  font-size: 22px;
+  color: var(--ink);
+  margin: 0 0 7px;
+  line-height: 1.5;
+}
+.study-mode .learning-definition {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+.study-mode .reading-label,
+.study-mode .family-heading a,
+.study-mode .family-empty {
+  font-family: var(--font-learning), "PingFang SC", sans-serif;
+  letter-spacing: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.study-mode .reading-label small {
+  font: inherit;
+  margin-left: 5px;
+  opacity: 0.85;
+}
+.study-mode .study-example {
+  margin-bottom: 20px;
+}
+.study-mode .study-example blockquote {
+  margin: 7px 0 0;
+  padding: 13px 16px;
+  font-size: 18px;
+  line-height: 1.6;
+  border-left: 4px solid #3a98a7;
+}
+.study-mode .family-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 9px;
+}
+.study-mode .family-heading a {
+  font-size: 12px;
+  text-decoration: none;
+}
+.study-mode .family-heading a:hover {
+  text-decoration: underline;
+}
+.study-mode .study-family .chips {
+  margin: 0;
+}
+.study-mode .study-family .chip {
+  padding: 6px 12px;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--soft);
+  border: 1px solid var(--line);
+}
+.study-mode .family-empty {
+  margin: 0;
+  font-size: 14px;
+}
+.study-mode .answer-label {
+  margin: 25px 0 14px;
+  font-size: 15px;
+}
+:root[data-theme] .study-mode input.answer-input {
+  background: var(--surface);
+  color: var(--ink);
+  border: 3px solid #568ca3;
+  box-shadow: inset 3px 3px var(--soft);
+  height: 60px;
+  font-size: 26px;
+}
+.study-mode input.answer-input:focus {
+  border-color: #1a8196;
+  outline: 0;
+}
+.study-mode .keyboard-hint {
+  font-size: 14px;
+  border: 2px solid var(--line);
+  padding: 5px 9px;
+}
+.study-mode .study-bottom {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px dashed var(--line);
+}
+.study-mode .study-bottom .text-button {
+  padding-block: 0;
+  font-size: 14px;
+}
+.study-mode .recall-prompt {
+  margin: 40px 0 30px;
+  font-size: 29px;
+  color: var(--ink);
+}
+.study-mode .listen-prompt {
+  padding-block: 28px;
+}
+.study-mode .listen-prompt .pronunciation-button {
+  min-height: 64px;
+  padding: 16px 24px;
+}
+.study-mode .answer-result {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 2px solid var(--line);
+}
+.study-mode .result-label {
+  margin-bottom: 12px;
+}
+:root[data-theme] .study-mode .correct .result-label {
+  color: var(--green);
+}
+:root[data-theme] .study-mode .incorrect .result-label {
+  color: var(--accent);
+}
+.study-mode .answer-result .primary {
+  margin-top: 12px;
+}
+.study-mode :is(.session-complete, .empty) {
+  max-width: 760px;
+  margin: 80px auto 0;
+  padding: 50px;
+  background: var(--surface);
+  border: 4px solid #102d47;
+  box-shadow: 8px 8px #09294790;
+  clip-path: var(--step-corners);
+}
+/* # Desktop density is tuned for laptops while keeping the requested desktop-first layout. */
+@media (max-width: 1300px) {
+  .page {
+    padding-inline: 28px;
+  }
+  .ocean-hero-scene {
+    height: 280px;
+  }
+  .ocean-hero-title {
+    top: 46px;
+    left: 28px;
+  }
+  .ocean-hero-title h2 {
+    font-size: 38px;
+  }
+  .study-launch {
+    flex-wrap: wrap;
+  }
+  .launch-actions {
+    align-items: start;
+  }
+  .study-mode .study-container {
+    padding-inline: 36px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .primary:active,
+  .secondary:active,
+  .danger:active {
+    transform: none;
+  }
+}
+:root[data-motion="reduced"] :is(.primary, .secondary, .danger):active {
+  transform: none;
+}

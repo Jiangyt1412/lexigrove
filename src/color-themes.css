@@ -1,0 +1,669 @@
+/* # A cool, varied pixel palette: cloud, slate, coral, lilac and lagoon. */
+:root {
+  --bg: #edf0f5;
+  --surface: #faf9f5;
+  --ink: #3c4b61;
+  --muted: #66738a;
+  --line: #a8b5c8;
+  --green: #a75e76;
+  --soft: #e5eaf1;
+  --accent: #a65e78;
+  --sidebar: #d9e1ee;
+  --pixel-edge: #7d8ca3;
+  --pixel-shadow: #c1cada;
+  --panel-highlight: #fffefa;
+  --font-ui:
+    "Pixelify Sans", "Lexigrove IPA Pixel", "Lexigrove Unicode Pixel", monospace;
+}
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(90deg, #a6b5cc1e 1px, transparent 1px),
+    linear-gradient(#a6b5cc1e 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+.sidebar {
+  background-color: #d9e1ee;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 7px,
+    #93a3bc1c 7px 8px
+  );
+  border-right-color: #8a9bb3;
+  box-shadow: inset -3px 0 #eef2f8;
+}
+.brand {
+  color: #4b607f;
+}
+.brand img {
+  box-shadow: 3px 3px #a4b2c7;
+}
+.nav-item {
+  color: #61718b;
+}
+.nav-item.active {
+  background: #f5f5fb;
+  color: #54647f;
+  border-color: #8e9eb8;
+  box-shadow:
+    inset 2px 2px #fffefa,
+    inset -2px -2px #ccd4e5,
+    3px 3px #b4bfd4;
+}
+.nav-item:hover {
+  background: #e9edf6;
+  border-color: #9fadc4;
+}
+.sidebar-pixel span,
+.local-note {
+  color: #63748d;
+}
+.topbar {
+  background: #f8f9fc;
+  border-bottom-color: #aab7cd;
+  box-shadow: inset 0 -3px #e2e7f1;
+}
+.topbar .badge {
+  background: #e0ebe6;
+  color: #526f65;
+  border-color: #a2baaf;
+  box-shadow: 2px 2px #c4d6cb;
+}
+.primary {
+  background: #a7667e;
+  color: #fff8f4;
+  border-color: #7e4d66;
+  box-shadow:
+    inset 2px 2px #dca9b8,
+    inset -2px -2px #8c526c,
+    3px 4px #c5bdcd;
+}
+.primary:hover {
+  background: #b7758d;
+}
+.primary:active {
+  box-shadow:
+    inset 2px 2px #895069,
+    1px 2px #bbb3c7;
+}
+.secondary {
+  background: #e9edf6;
+  color: #536883;
+  border-color: #8e9fb9;
+  box-shadow:
+    inset 2px 2px #fffefa,
+    inset -2px -2px #c8d3e5,
+    3px 4px #c0cadb;
+}
+.secondary:hover {
+  background: #f2f3f9;
+}
+.danger {
+  background: #b77071;
+  border-color: #895254;
+  box-shadow:
+    inset 2px 2px #e4b1ab,
+    inset -2px -2px #975b60,
+    3px 4px #c9b8c2;
+}
+.text-button:hover {
+  color: #915c79;
+}
+.danger-text {
+  color: #a26169 !important;
+}
+.panel,
+.study-focus,
+.study-launch,
+.metric,
+.vocabulary-table {
+  border-color: #98a6be;
+  background: #faf9f5;
+  box-shadow:
+    inset 3px 3px #fffefa,
+    inset -3px -3px #e1e5ed,
+    4px 4px #c7cfdf;
+}
+.home-bottom .study-launch {
+  border-color: #99a9bf;
+}
+.metric > span {
+  color: #6b768a;
+}
+.metric:first-child strong {
+  color: #a46078;
+}
+.today-strip .metric:nth-child(1) {
+  background: #f1dfe4;
+  border-color: #b18d9f;
+  box-shadow:
+    inset 2px 2px #fff0f0,
+    inset -2px -2px #debfcd,
+    3px 3px #c8b4c4;
+}
+.today-strip .metric:nth-child(2) {
+  background: #e7e2f3;
+  border-color: #a096ba;
+  box-shadow:
+    inset 2px 2px #f8f4fc,
+    inset -2px -2px #cbc3df,
+    3px 3px #beb7d1;
+}
+.today-strip .metric:nth-child(3) {
+  background: #dfebe3;
+  border-color: #91aa9b;
+  box-shadow:
+    inset 2px 2px #f1f8ed,
+    inset -2px -2px #c5d9ca,
+    3px 3px #b6cabd;
+}
+.today-strip .metric:nth-child(4) {
+  background: #dfeaf4;
+  border-color: #92a8bc;
+  box-shadow:
+    inset 2px 2px #f2f7fb,
+    inset -2px -2px #bed0e2,
+    3px 3px #b4c3d6;
+}
+.today-strip .metric:nth-child(4) strong {
+  color: #547f9f;
+}
+.world-frame {
+  border-color: #879db1;
+  background: #e7edf1;
+  box-shadow: 5px 5px #becbd8;
+}
+.scene-toolbar {
+  background: #e3eaf3;
+  border-bottom-color: #9baec5;
+  box-shadow: inset 0 2px #f8fafc;
+  color: #536c87;
+}
+.scene-toolbar > b {
+  color: #74869b;
+}
+.scene-toolbar > b:before {
+  color: #bd859b;
+}
+.scene-inspect {
+  background: #edf1e9;
+  border-color: #97a890;
+  color: #526f59;
+  box-shadow:
+    inset 2px 2px #fffdf2,
+    inset -2px -2px #d2ddcc,
+    3px 3px #8a9f80;
+}
+.scene-inspect:hover {
+  background: #f7f8ed;
+}
+.frame-aquarium {
+  border-color: #86a5b0 !important;
+  background: #d7e8ec !important;
+  box-shadow: 5px 5px #b7cad0 !important;
+}
+.frame-aquarium .scene-toolbar {
+  background: #dcebef;
+  border-bottom-color: #98b5bd;
+  box-shadow: inset 0 2px #f2faf8;
+  color: #527e8a;
+}
+.frame-aquarium .scene-toolbar > b {
+  color: #6b9297;
+}
+.frame-aquarium .scene-toolbar > b:before {
+  color: #a082aa;
+}
+.aquarium-teaser {
+  background: #dcebee;
+  border-color: #8da9b0;
+  color: #4d7680;
+  box-shadow:
+    inset 3px 3px #f0faf7,
+    inset -3px -3px #bdd4d8,
+    4px 4px #b6cbd3;
+}
+.milestone-track {
+  border-color: #adbec5;
+}
+.milestone-track .reached {
+  color: #68978b;
+}
+input,
+select,
+textarea {
+  background: #fbfcfd;
+  color: var(--ink);
+  border-color: #a8b4c8;
+  box-shadow: inset 2px 2px #e2e8f0;
+}
+.search-field {
+  border-color: #a1b1c7;
+  background: #f7f9fc;
+  box-shadow: inset 2px 2px #dce4ef;
+}
+.search-field input {
+  box-shadow: none;
+}
+.vocabulary-row {
+  background: #faf9f5;
+  border-bottom-color: #d0d8e4;
+}
+.table-head {
+  background: #e3e9f3;
+  color: #657b94;
+}
+.state-chip {
+  background: #e9ecf4;
+  border-color: #adb8ca;
+  color: #687992;
+}
+.state-learning,
+.state-relearning {
+  background: #f0e6ec;
+  color: #927083;
+  border-color: #bda4b4;
+}
+.state-learned,
+.state-mature {
+  background: #e3eee7;
+  color: #537d69;
+  border-color: #a6bfaf;
+}
+.state-review {
+  background: #f4e1e1;
+  color: #a16971;
+  border-color: #c3a1a8;
+}
+.state-suspended {
+  background: #e8e9ef;
+  color: #838999;
+}
+.chip {
+  background: #e8ecf3;
+  color: #677992;
+  border-color: #b5c0d1;
+}
+.chip.selected {
+  background: #8794b2;
+  color: #fffefa;
+  border-color: #6c7a98;
+}
+blockquote {
+  background: #e7edf3;
+  border-left-color: #9daec1;
+  color: #65788d;
+}
+.word-meta {
+  color: #758198;
+}
+.personal-note {
+  border-color: #c5ccdf;
+}
+.definition-word:hover {
+  background: #e5eaf4;
+}
+.source-details {
+  color: #6f8097;
+}
+.modal {
+  background: #faf9f5;
+  border-color: #8d9bb3;
+  box-shadow:
+    inset 3px 3px #fffefa,
+    inset -3px -3px #dce3ed,
+    8px 8px #42577466;
+}
+.modal::backdrop {
+  background: #34455a88;
+}
+.file-drop {
+  background: #e5ebf4;
+  border-color: #9daec5;
+}
+.error-message {
+  background: #f5e5e8;
+  border-color: #c39da9;
+  color: #9e6978;
+}
+.study-progress {
+  background: #e1e6f0;
+  border-color: #a3aec5;
+}
+.study-progress > span {
+  background: #a08eb5;
+}
+.study-label span {
+  background: #ebe7f2;
+  border-color: #b8abc9;
+  color: #807096;
+}
+.audio-button {
+  background: #e2ebf3;
+  color: #668298;
+  border-color: #9eb4c8;
+  box-shadow:
+    inset 3px 3px #f6fafc,
+    3px 4px #becddc;
+}
+input.answer-input {
+  background: #fdfdfb;
+  border-color: #a6b1c5;
+  box-shadow: inset 3px 3px #e2e7ef;
+  color: #44556b;
+}
+.keyboard-hint {
+  background: #e7eaf2;
+  color: #7b8498;
+  border-color: #b3b9ce;
+  box-shadow: 2px 2px #ced2e1;
+}
+.answer-result.correct .result-label {
+  color: #608f78;
+}
+.incorrect .result-label {
+  color: #b06f7b;
+}
+.diff-line del {
+  background: #f2dce3;
+  color: #9d5668;
+  border-color: #bd8c9d;
+}
+.diff-line mark {
+  background: #dcece2;
+  color: #527763;
+}
+.completion-mark {
+  background: #e1ece9;
+  border-color: #a2beb4;
+  color: #679586;
+  box-shadow: 4px 4px #becfc9;
+}
+.chart-bar {
+  background: #9cb4cc;
+  border-color: #7c96b1;
+}
+.progress-track {
+  background: #e0e5ef;
+  border-color: #b0bad0;
+}
+.progress-track > span {
+  background: #a293b9;
+}
+.forecast-list > div {
+  border-color: #d1d7e4;
+}
+.history-list > div {
+  border-color: #ced7e4;
+}
+.setting-row input[type="checkbox"] {
+  background: #f7f8fc;
+  border-color: #94a6bf;
+  box-shadow: inset 2px 2px #dce3ed;
+}
+.setting-row input[type="checkbox"]:checked {
+  background: #869cb9;
+  box-shadow: inset 0 0 0 4px #f4f7fc;
+}
+.toast {
+  background: #71889b;
+  color: #fffaf3;
+  border-color: #536a82;
+  box-shadow:
+    inset 2px 2px #adc1cc,
+    5px 5px #516d8166;
+}
+.toast .icon-button:hover {
+  background: #8da3b6;
+}
+/* # The same families become slate, plum and muted ocean tones at night. */
+:root[data-theme="night"] {
+  --bg: #26323f;
+  --surface: #344456;
+  --ink: #edf0ef;
+  --muted: #b5c1cf;
+  --line: #647c94;
+  --green: #b37894;
+  --soft: #425268;
+  --accent: #e0a3be;
+  --sidebar: #2d3c50;
+  --pixel-edge: #63788f;
+  --pixel-shadow: #1b2938;
+  --panel-highlight: #61768e;
+}
+[data-theme="night"] body {
+  background-color: #26323f;
+  background-image:
+    linear-gradient(90deg, #758dac17 1px, transparent 1px),
+    linear-gradient(#758dac17 1px, transparent 1px);
+}
+[data-theme="night"] .sidebar {
+  background-color: #2d3c50;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 7px,
+    #708aaa18 7px 8px
+  );
+  border-right-color: #70869d;
+  box-shadow: inset -3px 0 #495f76;
+}
+[data-theme="night"] .brand {
+  color: #d4dfec;
+}
+[data-theme="night"] .nav-item {
+  color: #b9c7d7;
+}
+[data-theme="night"] .nav-item.active {
+  background: #536680;
+  border-color: #8f9fba;
+  color: #f0f1f5;
+  box-shadow:
+    inset 2px 2px #8495b0,
+    inset -2px -2px #364c66,
+    3px 3px #1c2c3f;
+}
+[data-theme="night"] .nav-item:hover {
+  background: #455a75;
+  border-color: #8196b2;
+}
+[data-theme="night"] .sidebar-pixel span,
+[data-theme="night"] .local-note {
+  color: #aabbcd;
+}
+[data-theme="night"] .topbar {
+  background: #334457;
+  border-color: #71879f;
+  box-shadow: inset 0 -3px #26374d;
+}
+[data-theme="night"] .topbar .badge {
+  background: #436460;
+  color: #d5e8dc;
+  border-color: #7b9b8c;
+  box-shadow: 2px 2px #273f3f;
+}
+[data-theme="night"] .primary {
+  background: #a26886;
+  color: #fff4fa;
+  border-color: #d09ab4;
+  box-shadow:
+    inset 2px 2px #c995b0,
+    inset -2px -2px #7e4d6c,
+    3px 4px #1e2d41;
+}
+[data-theme="night"] .secondary {
+  background: #526985;
+  color: #eaf0f8;
+  border-color: #92a8c1;
+  box-shadow:
+    inset 2px 2px #849cbb,
+    inset -2px -2px #374f6d,
+    3px 4px #1d2c40;
+}
+[data-theme="night"] .panel,
+[data-theme="night"] .study-focus,
+[data-theme="night"] .study-launch,
+[data-theme="night"] .metric,
+[data-theme="night"] .vocabulary-table {
+  background: #344456;
+  border-color: #75889e;
+  box-shadow:
+    inset 3px 3px #5d728a,
+    inset -3px -3px #26384d,
+    4px 4px #1e2d3d;
+}
+[data-theme="night"] .metric > span {
+  color: #c7d2df;
+}
+[data-theme="night"] .metric:first-child strong {
+  color: #ecc0d3;
+}
+[data-theme="night"] .today-strip .metric:nth-child(1) {
+  background: #705164;
+  border-color: #ac8caa;
+  box-shadow:
+    inset 2px 2px #94768e,
+    inset -2px -2px #4c3b51,
+    3px 3px #1e2c3c;
+}
+[data-theme="night"] .today-strip .metric:nth-child(2) {
+  background: #5e587c;
+  border-color: #a398c0;
+  box-shadow:
+    inset 2px 2px #8980a4,
+    inset -2px -2px #3e3e5a,
+    3px 3px #1e2c3c;
+}
+[data-theme="night"] .today-strip .metric:nth-child(3) {
+  background: #456960;
+  border-color: #8ba79a;
+  box-shadow:
+    inset 2px 2px #79968a,
+    inset -2px -2px #304e4b,
+    3px 3px #1e2c3c;
+}
+[data-theme="night"] .today-strip .metric:nth-child(4) {
+  background: #4a6481;
+  border-color: #98aec6;
+  box-shadow:
+    inset 2px 2px #7b94b0,
+    inset -2px -2px #30485f,
+    3px 3px #1e2c3c;
+}
+[data-theme="night"] .today-strip .metric:nth-child(4) strong {
+  color: #c7e0f7;
+}
+[data-theme="night"] .world-frame {
+  border-color: #7c90a9;
+  box-shadow: 5px 5px #1e2c3c;
+}
+[data-theme="night"] .scene-toolbar {
+  background: #4b607a;
+  color: #e2ebf5;
+  border-bottom-color: #8ba0bb;
+  box-shadow: inset 0 2px #8d9fb7;
+}
+[data-theme="night"] .scene-toolbar > b {
+  color: #c1d1e3;
+}
+[data-theme="night"] .scene-toolbar > b:before {
+  color: #e1a3bd;
+}
+[data-theme="night"] .frame-aquarium .scene-toolbar {
+  background: #3e6772;
+  color: #d9f0ed;
+  border-bottom-color: #8aafb5;
+  box-shadow: inset 0 2px #86aeb8;
+}
+[data-theme="night"] .frame-aquarium .scene-toolbar > b {
+  color: #b5d6d6;
+}
+[data-theme="night"] .aquarium-teaser {
+  background: #395d6e;
+  color: #dcecef;
+  border-color: #80a1b0;
+  box-shadow:
+    inset 3px 3px #779cab,
+    inset -3px -3px #274452,
+    4px 4px #1e2c3c;
+}
+[data-theme="night"] input,
+[data-theme="night"] select,
+[data-theme="night"] textarea,
+[data-theme="night"] .search-field {
+  background: #293b50;
+  border-color: #8298b2;
+  color: #edf0f2;
+  box-shadow: inset 2px 2px #1f2f43;
+}
+[data-theme="night"] .search-field input {
+  box-shadow: none;
+}
+[data-theme="night"] .vocabulary-row {
+  background: #344456;
+  border-bottom-color: #5c7189;
+}
+[data-theme="night"] .table-head {
+  background: #465c78;
+  color: #d5e3f2;
+}
+[data-theme="night"] .chip,
+[data-theme="night"] blockquote {
+  background: #415772;
+  color: #c5d8e9;
+  border-color: #8197b4;
+}
+[data-theme="night"] .word-meta,
+[data-theme="night"] .source-details {
+  color: #b2c5d8;
+}
+[data-theme="night"] .modal {
+  background: #344456;
+  border-color: #7c8fa8;
+  box-shadow:
+    inset 3px 3px #647c96,
+    inset -3px -3px #26394e,
+    8px 8px #192b4199;
+}
+[data-theme="night"] .study-label span,
+[data-theme="night"] .keyboard-hint {
+  background: #575675;
+  color: #d8d8f0;
+  border-color: #9791b6;
+}
+[data-theme="night"] .audio-button {
+  background: #486480;
+  color: #d4e9f4;
+  border-color: #8ba6c1;
+  box-shadow:
+    inset 3px 3px #7e9fbd,
+    3px 4px #263d55;
+}
+[data-theme="night"] input.answer-input {
+  background: #2d415a;
+  color: #f0f0ef;
+  box-shadow: inset 3px 3px #1e3148;
+  border-color: #91a8c1;
+}
+[data-theme="night"] .state-chip {
+  background: #4b5b73;
+  color: #d7e2f1;
+  border-color: #8196b2;
+}
+[data-theme="night"] .state-learning,
+[data-theme="night"] .state-relearning {
+  background: #705c73;
+  color: #efcfdf;
+  border-color: #ab92ac;
+}
+[data-theme="night"] .state-learned,
+[data-theme="night"] .state-mature {
+  background: #476a61;
+  color: #c5e2d7;
+  border-color: #84a795;
+}
+[data-theme="night"] .answer-result.correct .result-label {
+  color: #a8d9c4;
+}
+[data-theme="night"] .incorrect .result-label {
+  color: #e9b0bc;
+}

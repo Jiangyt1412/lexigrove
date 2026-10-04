@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-09-28",
+  "sources": {
+    "PixelifySans-OFL.txt": "https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/OFL.txt",
+    "PixelifySans-METADATA.pb": "https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/METADATA.pb",
+    "PixelifySans-Variable.ttf": "https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/PixelifySans%5Bwght%5D.ttf",
+    "Unifont-LICENSE.txt": "https://unifoundry.com/LICENSE.txt",
+    "Unifont-OFL-1.1.txt": "https://unifoundry.com/OFL-1.1.txt",
+    "unifont-18.0.01.otf": "https://unifoundry.com/pub/unifont/unifont-18.0.01/font-builds/unifont-18.0.01.otf"
+  },
+  "fonts": [
+    {
+      "file": "pixelify-sans-variable.woff2",
+      "family": "Pixelify Sans",
+      "weight": "400 700",
+      "bytes": 23060,
+      "sha256": "7e4bbb8d20a3a3f093097ea52f283265acad4b88059260ae858fef9a8bb57e20",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/main/ofl/pixelifysans/PixelifySans%5Bwght%5D.ttf",
+      "sourceSha256": "9ba86cd010a4de309d263ceff8e8044092c9db7efda869620cb9ff1c4389e8a5",
+      "licence": "OFL-1.1",
+      "changes": "Lossless WOFF2 conversion; all source glyphs and the 400–700 variable weight axis retained; family name unchanged.",
+      "mappedUnicodeCodePoints": 574,
+      "embeddedCopyright": "Copyright 2021 The Pixelify Sans Project Authors (https://github.com/eifetx/Pixelify-Sans)",
+      "embeddedLicence": "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL"
+    },
+    {
+      "file": "lexigrove-unicode-pixel.woff2",
+      "family": "Lexigrove Unicode Pixel",
+      "weight": "400",
+      "bytes": 912100,
+      "sha256": "3cb969a0e2d4bf3ac92e70f378525b9305edd1e5676f9336f15636b092b318c4",
+      "sourceUrl": "https://unifoundry.com/pub/unifont/unifont-18.0.01/font-builds/unifont-18.0.01.otf",
+      "sourceSha256": "88d0a14d4aa9a96419720b39ba5da921a59560d76d4ec7d523acc06ed85cd3c2",
+      "licence": "OFL-1.1",
+      "changes": "Lossless WOFF2 conversion; font family and PostScript names changed; all original BMP glyphs retained.",
+      "mappedUnicodeCodePoints": 58910,
+      "embeddedCopyright": "Copyright © 1998-2026 Roman Czyborra, Paul Hardy, Qianqian Fang, Andrew Miller, Johnnie Weaver, David Corbett, Ælla Chiana Moskopp, Rebecca Bettencourt, Ho-Seok Ee, et al.",
+      "embeddedLicence": "Dual license: SIL Open Font License version 1.1, and GNU GPL version 2 or later with the GNU Font Embedding Exception."
+    },
+    {
+      "file": "lexigrove-ipa-pixel.woff2",
+      "family": "Lexigrove IPA Pixel",
+      "weight": "400",
+      "bytes": 42624,
+      "sha256": "48ce6b6d713d01591cca9a256280337f3e8082059ae1e813e0d566be3b0ffb15",
+      "sourceUrl": "https://unifoundry.com/pub/unifont/unifont-18.0.01/font-builds/unifont-18.0.01.otf",
+      "sourceSha256": "88d0a14d4aa9a96419720b39ba5da921a59560d76d4ec7d523acc06ed85cd3c2",
+      "licence": "OFL-1.1",
+      "changes": "Subset to Latin, Greek, Cyrillic, IPA, combining marks, phonetic extensions, punctuation, symbols and math; family/PostScript names changed; WOFF2 conversion.",
+      "mappedUnicodeCodePoints": 3964,
+      "embeddedCopyright": "Copyright © 1998-2026 Roman Czyborra, Paul Hardy, Qianqian Fang, Andrew Miller, Johnnie Weaver, David Corbett, Ælla Chiana Moskopp, Rebecca Bettencourt, Ho-Seok Ee, et al.",
+      "embeddedLicence": "Dual license: SIL Open Font License version 1.1, and GNU GPL version 2 or later with the GNU Font Embedding Exception."
+    }
+  ],
+  "licenceChoice": "All bundled font binaries are distributed under SIL Open Font License 1.1. GNU Unifont also offers GPL-2.0-or-later with the GNU Font Embedding Exception upstream.",
+  "upstreamUnifontVersion": "18.0.01",
+  "tools": {
+    "fontTools": "4.60.2",
+    "brotli": "1.2.0"
+  }
+}

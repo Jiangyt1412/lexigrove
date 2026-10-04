@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+<!-- # Original 32-pixel creatures and objects; drawn for Lexigrove, CC0. -->
+<symbol id="bird" viewBox="0 0 32 32"><path fill="#263d58" d="M2 10h8v4h4v-4h8v4h-4v4h-4v4h-4v-4H6v-4H2z"/><path fill="#ed967e" d="M10 14h8v4h-8z"/></symbol>
+<symbol id="butterfly" viewBox="0 0 32 32"><path fill="#393452" d="M14 8h4v16h-4z"/><path fill="#b87fd1" d="M2 6h8v4h4v10h-4v6H6v-4H2zm28 0h-8v4h-4v10h4v6h4v-4h4z"/><path fill="#f3c4d0" d="M6 10h4v8H6zm16 0h4v8h-4z"/></symbol>
+<symbol id="bee" viewBox="0 0 32 32"><path fill="#e5f2f2" d="M8 2h8v8H8zm12 4h8v8h-8z"/><path fill="#293e4c" d="M4 10h20v4h4v10H4z"/><path fill="#f5c76b" d="M8 10h4v14H8zm8 0h4v14h-4z"/><path fill="#fff5e9" d="M22 14h4v4h-4z"/></symbol>
+<symbol id="duck" viewBox="0 0 32 32"><path fill="#253e48" d="M14 6h12v12h4v8H4v-4H0v-4h14z"/><path fill="#f6f0d3" d="M18 10h8v12H6v-4h12z"/><path fill="#e69b62" d="M26 14h6v4h-6z"/><path fill="#253e48" d="M22 10h4v4h-4z"/><path fill="#e6ce9b" d="M6 22h12v4H6z"/></symbol>
+<symbol id="frog" viewBox="0 0 32 32"><path fill="#294d48" d="M6 6h8v4h4V6h8v8h4v12H2V14h4z"/><path fill="#90b95e" d="M6 10h20v12H6z"/><path fill="#294d48" d="M8 10h4v4H8zm12 0h4v4h-4zm-8 10h8v2h-8z"/><path fill="#d9dba0" d="M10 16h12v4H10z"/></symbol>
+<symbol id="cat" viewBox="0 0 32 32"><path fill="#454555" d="M2 4h4l4 4h8l4-4h4v16h4v8H6V16H2z"/><path fill="#c0b1c2" d="M6 10h16v10H6zm4 12h16v4H10z"/><path fill="#454555" d="M8 12h4v4H8zm10 0h4v4h-4z"/><path fill="#e4a2a2" d="M12 18h4v2h-4z"/></symbol>
+<symbol id="fish" viewBox="0 0 32 32"><path fill="#254b65" d="M0 6l8 6h4V8h16v4h4v12h-4v4H12v-4H8l-8 6z"/><path fill="#f59f70" d="M10 12h18v12H10z"/><path fill="#fff1be" d="M14 12h4v12h-4zm8 0h4v12h-4z"/><path fill="#254b65" d="M26 12h4v4h-4z"/></symbol>
+<symbol id="reef-fish" viewBox="0 0 32 32"><path fill="#21485d" d="M0 8l8 4h4V4h12v4h4v4h4v12h-8v4H12v-4H8l-8 4z"/><path fill="#78d6c4" d="M8 12h20v12H8z"/><path fill="#506fa9" d="M14 8h4v16h-4zm8 4h4v12h-4z"/><path fill="#21485d" d="M26 12h4v4h-4z"/></symbol>
+<symbol id="shrimp" viewBox="0 0 32 32"><path fill="#cf839c" d="M6 6h20v4h4v8h-4v4H14v-4H6zm-4 8h4v12h12v4H6v-4H2z"/><path fill="#f4b8af" d="M10 10h16v8H10z"/><path fill="#244c64" d="M22 10h4v4h-4z"/><path fill="#f4b8af" d="M12 22h2v6h-2zm6-2h2v8h-2z"/></symbol>
+<symbol id="crab" viewBox="0 0 32 32"><path fill="#db7d77" d="M0 4h8v8H4v4h24v-4h-4V4h8v12h-4v12H4V16H0z"/><path fill="#f3ae89" d="M8 14h16v8H8z"/><path fill="#263d58" d="M10 10h4v4h-4zm8 0h4v4h-4z"/></symbol>
+<symbol id="lantern" viewBox="0 0 32 32"><path fill="#334953" d="M12 0h8v4h4v4h4v20H4V8h4V4h4z"/><path fill="#eac584" d="M8 12h16v12H8z"/><path fill="#ffefd4" d="M12 12h8v12h-8z"/></symbol>
+<symbol id="watering" viewBox="0 0 32 32"><path fill="#2b5664" d="M8 10h16v4h8v4h-8v10H4V14H0v-4h4V2h16v4H8z"/><path fill="#79b5b4" d="M8 14h12v10H8z"/></symbol>
+<symbol id="book" viewBox="0 0 32 32"><path fill="#304959" d="M2 6h12v4h4V6h12v22H18v2h-4v-2H2z"/><path fill="#f5edda" d="M6 10h8v14H6zm12 4h8v10h-8z"/><path fill="#c399ac" d="M6 12h4v2H6zm12 4h4v2h-4z"/></symbol>
+</svg>

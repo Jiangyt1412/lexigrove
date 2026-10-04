@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" shape-rendering="crispEdges">
+  <!-- # Original integer-grid marine scene. Decorative scenery, not earned reward objects. -->
+  <rect width="720" height="280" fill="#126fa1"/>
+  <path fill="#178abd" d="M0 0h720v48H604v8H492v-8H360v12H240V48H104v8H0z"/>
+  <path fill="#23abd0" d="M0 0h720v20H612v8H492V16H360v12H240V16H104v12H0z"/>
+  <path fill="#73e2df" d="M0 0h720v8H616v4H492V8H368v4H236V8H108v4H0z"/>
+  <g fill="#9fece3"><path d="M44 8h76v4H44zM184 4h60v4h-60zM332 8h84v4h-84zM504 4h52v4h-52zM644 8h56v4h-56z"/></g>
+  <path fill="#126497" d="M0 140h84v-8h84v16h76v-12h108v16h100v-8h108v-16h84v12h76v140H0z"/>
+  <path fill="#114878" d="M0 212h68v-12h68v12h76v-12h76v16h88v-12h68v-16h88v12h80v-8h108v88H0z"/>
+  <g fill="#63d8df" opacity=".12"><path d="M364 16h24v36h12v40h12v44h12v44h-36v-40h-12V96h-12V52h-12V16zM484 12h16v40h12v40h12v44h12v40h-28v-44h-12V88h-12V48h-12V12zM596 12h12v36h12v36h12v36h12v32h-24v-32h-12V84h-12V48h-12V12z"/></g>
+  <g fill="#2687b2" opacity=".52"><path d="M20 100h20v8H20zM72 176h16v8H72zM200 72h12v8h-12zM236 168h24v8h-24zM324 60h12v8h-12zM440 212h20v8h-20zM660 108h16v8h-16zM608 180h12v8h-12z"/></g>
+  <g fill="#49b9c5" opacity=".42"><path d="M32 64h8v8h-8zM96 132h8v8h-8zM284 48h8v8h-8zM356 164h8v8h-8zM424 60h8v8h-8zM624 72h8v8h-8zM660 184h8v8h-8zM284 220h8v8h-8z"/></g>
+  <!-- # Layered reefs and square highlights create texture at the edges, leaving a readable text area. -->
+  <path fill="#0b315a" d="M0 228h28v-12h28v12h24v16h36v12h52v24H0zM500 280v-28h36v-12h20v-20h28v-20h20v-40h24v-28h28v-20h28V92h36v188z"/>
+  <path fill="#17567d" d="M0 228h28v-12h28v12h24v16h36v12h-8v-4H76v-12H48v-12H20v12H0zM532 252h24v-24h28v-20h28v-40h20v-28h28v-20h24v-20h36v16h-24v20h-28v24h-20v32h-28v32h-20v24h-36v16h-32z"/>
+  <g fill="#247594"><path d="M584 216h16v8h-16zM620 172h12v8h-12zM656 148h20v8h-20zM684 116h20v8h-20zM40 232h20v8H40zM80 256h20v8H80zM544 260h24v8h-24z"/></g>
+  <g fill="#0e2549"><path d="M0 264h80v8h64v8H0zM600 260h24v-12h32v-12h20v-12h44v56H584v-12h16z"/></g>
+  <!-- # Original branching coral and kelp use repeated four-pixel tiles. -->
+  <path fill="#dc6080" d="M656 248v-44h8v-20h8v-20h8v20h-8v28h12v-8h8v-20h8v28h-8v8h-20v28z"/>
+  <path fill="#ff907d" d="M660 240v-28h4v-20h4v-16h4v20h-4v20h20v-8h4v-12h4v16h-8v8h-24v20z"/>
+  <path fill="#ec8657" d="M548 264v-32h-12v-8h-8v-16h8v12h8v8h4v-28h8v-12h8v20h-8v24h12v-16h8v-8h8v16h-8v16h-20v24z"/>
+  <path fill="#ffba83" d="M552 256v-28h4v-20h4v-12h4v12h-4v28h12v-12h4v16h-20v16zM532 216h4v8h-4z"/>
+  <path fill="#269d9b" d="M32 260v-32h-8v-16h8v-20h8v-16h8v20h-8v24h8v16h-8v24zM84 264v-24h-8v-16h8v-24h8v28h8v16h-8v20zM616 264v-20h-8v-12h8v-20h8v-16h8v24h-8v16h8v12h-8v16z"/>
+  <g fill="#62d2ba"><path d="M40 196h4v24h-4zM88 208h4v20h-4zM624 220h4v16h-4z"/></g>
+  <!-- # An original compact explorer in a teal suit, designed from new geometry. -->
+  <g transform="translate(442 88)">
+    <path fill="#082947" d="M20 0h28v8h8v12h8v16h-8v8h-8v8H28v12H12v-8H0v-8h12V36h8V20h-4V8h4zM56 40h16v8h12v8h-8v8H60v-8h-8z"/>
+    <path fill="#f7bd62" d="M24 8h20v24H24z"/><path fill="#ffe4a0" d="M24 8h8v20h-8z"/>
+    <path fill="#266b85" d="M40 12h8v8h8v16h-8v8H28V32h12z"/>
+    <path fill="#48d2cb" d="M40 16h8v8h4v8h-4v4H28v-8h12z"/>
+    <path fill="#a7efe6" d="M40 20h8v8h-8z"/>
+    <path fill="#229baf" d="M24 36h24v12H32v8H16v-8h8z"/>
+    <path fill="#5fe0d0" d="M24 36h8v12h-8z"/>
+    <path fill="#f39166" d="M12 52h8v8H4v-4h8zM60 48h12v8h8v4H64v-8h-4z"/>
+    <path fill="#70c7d1" d="M52 32h8v4h-8zM60 24h8v4h-8zM68 16h4v4h-4z"/>
+  </g>
+  <g fill="none" stroke="#7ee1df" stroke-width="2" opacity=".65"><path d="M518 80h8v8h-8zM534 56h4v4h-4zM522 36h6v6h-6z"/></g>
+  <!-- # Decorative fish silhouettes are separate from the earned aquarium population. -->
+  <g fill="#72ded8"><path d="M580 60h16v4h8v-4h4v16h-4v-4h-8v4h-16v-4h-4v-8h4zM376 184h16v4h8v-4h4v16h-4v-4h-8v4h-16v-4h-4v-8h4z"/></g>
+  <g fill="#164674"><path d="M584 64h4v4h-4zM380 188h4v4h-4z"/></g>
+  <g fill="#f6a26b"><path d="M620 96h12v4h8v-4h4v12h-4v-4h-8v4h-12v-4h-4v-4h4z"/></g>
+</svg>

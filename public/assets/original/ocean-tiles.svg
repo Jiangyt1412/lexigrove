@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" shape-rendering="crispEdges">
+  <!-- # Original repeating mosaic, kept low contrast behind readable panels. -->
+  <path fill="#3898b2" fill-opacity=".12" d="M0 0h32v8H0zM32 8h8v24h-8zM40 32h24v8H40zM64 40h8v24h-8zM72 64h24v8H72zM96 72h8v24h-8zM104 96h24v8h-24zM0 96h8v32H0zM8 88h24v8H8zM32 64h8v24h-8zM40 56h24v8H40zM64 32h8v24h-8zM72 24h24v8H72zM96 0h8v24h-8z"/>
+  <path fill="#77d9d5" fill-opacity=".15" d="M16 48h8v8h-8zM48 104h8v8h-8zM112 40h8v8h-8zM80 112h4v4h-4z"/>
+</svg>

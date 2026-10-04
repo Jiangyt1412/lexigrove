@@ -1,0 +1,1562 @@
+[
+  {
+    "lemma": "mitigate",
+    "partOfSpeech": "verb",
+    "definition": "To reduce, lessen, or decrease and thereby to make less severe or easier to bear.",
+    "fullDefinitions": [
+      "To reduce, lessen, or decrease and thereby to make less severe or easier to bear."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/mitigate#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/mi/mitigate.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=mitigate&action=history",
+    "example": "The new drainage system may mitigate flood damage.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "mitigate risk",
+      "mitigate damage"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ˈmɪt.ɪ.ɡeɪt/"
+  },
+  {
+    "lemma": "significant",
+    "partOfSpeech": "adjective",
+    "definition": "Having a noticeable or major effect.",
+    "fullDefinitions": [
+      "Having a noticeable or major effect.",
+      "Reasonably large in number or amount."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/significant#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/si/significant.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=significant&action=history",
+    "example": "The new sensor produced a significant improvement in accuracy.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "significant difference",
+      "significant effect"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/sɪɡˈnɪf.ɪ.kənt/",
+    "ipaUS": "/sɪɡˈnɪf.ə.kənt/"
+  },
+  {
+    "lemma": "empirical",
+    "partOfSpeech": "adjective",
+    "definition": "Pertaining to or based on experience, as opposed to theory.",
+    "fullDefinitions": [
+      "Pertaining to or based on experience, as opposed to theory.",
+      "Pertaining to, derived from, or testable by observations made using the physical senses or using instruments which extend the senses.",
+      "Verifiable by means of scientific experimentation."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/empirical#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/em/empirical.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=empirical&action=history",
+    "example": "The paper supports its argument with empirical evidence.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "empirical evidence",
+      "empirical study"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/ɪmˈpɪɹɪkəl/",
+    "ipaUK": "/ɪmˈpɪɹɪkəl/"
+  },
+  {
+    "lemma": "robust",
+    "partOfSpeech": "adjective",
+    "definition": "Able to withstand adverse conditions.",
+    "fullDefinitions": [
+      "Able to withstand adverse conditions.",
+      "Not greatly influenced by errors in assumptions about the distribution of sample errors."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/robust#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/ro/robust.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=robust&action=history",
+    "example": "The team needs a robust method that works under difficult conditions.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "robust method",
+      "robust evidence"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ɹəʊˈbʌst/",
+    "ipaUS": "/ɹoʊˈbʌst/"
+  },
+  {
+    "lemma": "infer",
+    "partOfSpeech": "verb",
+    "definition": "To introduce (something) as a reasoned conclusion; to conclude by reasoning or deduction, as from premises or evidence.",
+    "fullDefinitions": [
+      "To introduce (something) as a reasoned conclusion; to conclude by reasoning or deduction, as from premises or evidence."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/infer#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/i/in/infer.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=infer&action=history",
+    "example": "We cannot infer a cause from this pattern alone.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "infer meaning",
+      "infer a relationship"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ɪnˈfɜː/",
+    "ipaUS": "/ɪnˈfɝ/",
+    "ipa": "/ɪnˈfeː/"
+  },
+  {
+    "lemma": "derive",
+    "partOfSpeech": "verb",
+    "definition": "To obtain or receive (something) from something else.",
+    "fullDefinitions": [
+      "To obtain or receive (something) from something else.",
+      "To deduce (a conclusion) by reasoning."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/derive#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/de/derive.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=derive&action=history",
+    "example": "The researchers derive their estimates from field measurements.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "derive an estimate",
+      "derive a formula"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/dɪˈɹaɪv/",
+    "ipaUK": "/dɪˈɹaɪv/"
+  },
+  {
+    "lemma": "subsequent",
+    "partOfSpeech": "adjective",
+    "definition": "Following in time; coming or being after something else at any time, indefinitely.",
+    "fullDefinitions": [
+      "Following in time; coming or being after something else at any time, indefinitely."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/subsequent#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/su/subsequent.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=subsequent&action=history",
+    "example": "The subsequent experiment used a larger sample.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "subsequent analysis",
+      "subsequent study"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈsʌbsɪkwənt/",
+    "ipaUS": "/ˈsʌbsɪkwənt/"
+  },
+  {
+    "lemma": "constraint",
+    "partOfSpeech": "noun",
+    "definition": "Something that constrains; a restriction.",
+    "fullDefinitions": [
+      "Something that constrains; a restriction.",
+      "A condition that a solution to an optimization problem must satisfy."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/constraint#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/constraint.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=constraint&action=history",
+    "example": "Limited funding was the main constraint on the project.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "time constraint",
+      "budget constraint"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/kənˈstɹeɪnt/",
+    "ipaUK": "/kənˈstɹeɪnt/"
+  },
+  {
+    "lemma": "distribution",
+    "partOfSpeech": "noun",
+    "definition": "A probability distribution; the set of relative likelihoods that a variable will have a value in a given interval.",
+    "fullDefinitions": [
+      "A probability distribution; the set of relative likelihoods that a variable will have a value in a given interval.",
+      "The frequency of occurrence or extent of existence."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/distribution#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/di/distribution.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=distribution&action=history",
+    "example": "The model describes the probability distribution of river flows.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "probability distribution",
+      "spatial distribution"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˌdɪstɹɪˈbjuːʃən/",
+    "ipaUS": "/ˌdɪstɹɪˈbjuʃən/"
+  },
+  {
+    "lemma": "uncertainty",
+    "partOfSpeech": "noun",
+    "definition": "Doubt; the condition of being uncertain or without conviction.",
+    "fullDefinitions": [
+      "Doubt; the condition of being uncertain or without conviction.",
+      "A parameter that measures the dispersion of a range of measured values."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/uncertainty#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/u/un/uncertainty.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=uncertainty&action=history",
+    "example": "The report explains the uncertainty in the final estimate.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "measurement uncertainty",
+      "reduce uncertainty"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ʌnˈsɜːtənti/",
+    "ipaUS": "/ʌnˈsɝtənti/"
+  },
+  {
+    "lemma": "estimate",
+    "partOfSpeech": "noun",
+    "definition": "A rough calculation or assessment of the value, size, or cost of something.",
+    "fullDefinitions": [
+      "A rough calculation or assessment of the value, size, or cost of something."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/estimate#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/es/estimate.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=estimate&action=history",
+    "example": "We need an estimate of the total cost before work begins.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "rough estimate",
+      "parameter estimate"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ˈɛs.tɪ.mət/"
+  },
+  {
+    "lemma": "variable",
+    "partOfSpeech": "noun",
+    "definition": "A quantity that may assume any one of a set of values.",
+    "fullDefinitions": [
+      "A quantity that may assume any one of a set of values."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/variable#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/v/va/variable.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=variable&action=history",
+    "example": "Temperature was the only variable changed during the experiment.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "dependent variable",
+      "random variable"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt."
+  },
+  {
+    "lemma": "parameter",
+    "partOfSpeech": "noun",
+    "definition": "A variable that describes a property or characteristic of some system (material, object, event, etc.) or some aspect thereof.",
+    "fullDefinitions": [
+      "A variable that describes a property or characteristic of some system (material, object, event, etc.) or some aspect thereof.",
+      "A value kept constant during an experiment, equation, calculation, or similar, but varied over other versions of the experiment, equation, calculation, etc."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/parameter#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/p/pa/parameter.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=parameter&action=history",
+    "example": "We adjusted one parameter of the model at a time.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "model parameter",
+      "parameter value"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/pəˈɹæm.ɪ.tə/",
+    "ipaUS": "/pəˈɹæm.ə.tɚ/"
+  },
+  {
+    "lemma": "framework",
+    "partOfSpeech": "noun",
+    "definition": "A basic conceptual structure.",
+    "fullDefinitions": [
+      "A basic conceptual structure."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/framework#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/f/fr/framework.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=framework&action=history",
+    "example": "The paper presents a framework for comparing the two methods.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "conceptual framework",
+      "analytical framework"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈfɹeɪm.wɜːk/",
+    "ipaUS": "/ˈfɹeɪm.wɝk/"
+  },
+  {
+    "lemma": "methodology",
+    "partOfSpeech": "noun",
+    "definition": "A collection of methods, practices, procedures and rules used by those who work in some field.",
+    "fullDefinitions": [
+      "A collection of methods, practices, procedures and rules used by those who work in some field.",
+      "The study of methods used in a field."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/methodology#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/me/methodology.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=methodology&action=history",
+    "example": "The report describes the methodology used to collect the data.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "research methodology",
+      "study methodology"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˌmɛθ.əˈdɒl.ə.d͡ʒi/",
+    "ipaUS": "/ˌmɛθ.əˈdɑ.lə.d͡ʒi/"
+  },
+  {
+    "lemma": "bias",
+    "partOfSpeech": "noun",
+    "definition": "Inclination towards something.",
+    "fullDefinitions": [
+      "Inclination towards something.",
+      "The difference between the expectation of the sample estimator and the true population value, which reduces the representativeness of the estimator by systematically distorting it."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/bias#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/b/bi/bias.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=bias&action=history",
+    "example": "The researchers checked whether the sample introduced bias.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "selection bias",
+      "measurement bias"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ˈbaɪ.əs/"
+  },
+  {
+    "lemma": "causal",
+    "partOfSpeech": "adjective",
+    "definition": "Of, relating to, or being a cause of something; causing.",
+    "fullDefinitions": [
+      "Of, relating to, or being a cause of something; causing."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/causal#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/ca/causal.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=causal&action=history",
+    "example": "The study investigates a possible causal relationship between the factors.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "causal relationship",
+      "causal effect"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈkɔːzəl/",
+    "ipa": "/ˈkɔ.zəl/"
+  },
+  {
+    "lemma": "confounder",
+    "partOfSpeech": "noun",
+    "definition": "A factor, in data analysis, that causes the effects of two distinct processes to be indistinguishable; a confounding variable.",
+    "fullDefinitions": [
+      "A factor, in data analysis, that causes the effects of two distinct processes to be indistinguishable; a confounding variable."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/confounder#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/confounder.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=confounder&action=history",
+    "example": "Age may be a confounder in the comparison between the groups.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "potential confounder",
+      "adjust for a confounder"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt."
+  },
+  {
+    "lemma": "validate",
+    "partOfSpeech": "verb",
+    "definition": "To check or prove the validity of; verify.",
+    "fullDefinitions": [
+      "To check or prove the validity of; verify."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/validate#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/v/va/validate.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=validate&action=history",
+    "example": "The team will validate the model using an independent dataset.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "validate a model",
+      "validate results"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ˈvæl.ɪ.deɪt/"
+  },
+  {
+    "lemma": "simulate",
+    "partOfSpeech": "verb",
+    "definition": "To model, replicate, duplicate the behavior, appearance or properties of.",
+    "fullDefinitions": [
+      "To model, replicate, duplicate the behavior, appearance or properties of."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/simulate#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/si/simulate.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=simulate&action=history",
+    "example": "We use the model to simulate water movement through the soil.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "simulate a process",
+      "simulate flow"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈsɪm.jʊˌleɪt/",
+    "ipaUS": "/ˈsɪm.jəˌleɪt/"
+  },
+  {
+    "lemma": "reservoir",
+    "partOfSpeech": "noun",
+    "definition": "A large natural or artificial lake used as a source of water supply.",
+    "fullDefinitions": [
+      "A large natural or artificial lake used as a source of water supply."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/reservoir#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/reservoir.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=reservoir&action=history",
+    "example": "The village draws its drinking water from a nearby reservoir.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "water reservoir",
+      "reservoir storage"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈɹɛz.ə.vwɑː/",
+    "ipaUS": "/ˈɹɛz.ə(ɹ).vwɑɹ/"
+  },
+  {
+    "lemma": "sediment",
+    "partOfSpeech": "noun",
+    "definition": "A collection of small particles, particularly dirt, that precipitates from a river or other body of water.",
+    "fullDefinitions": [
+      "A collection of small particles, particularly dirt, that precipitates from a river or other body of water."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/sediment#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/se/sediment.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=sediment&action=history",
+    "example": "The sample contained fine sediment from the river bed.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "fine sediment",
+      "sediment transport"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ˈsɛd.ɪ.mənt/"
+  },
+  {
+    "lemma": "runoff",
+    "partOfSpeech": "noun",
+    "definition": "That portion of precipitation or irrigation on an area which does not infiltrate or evaporate, but instead is discharged from the area.",
+    "fullDefinitions": [
+      "That portion of precipitation or irrigation on an area which does not infiltrate or evaporate, but instead is discharged from the area."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/runoff#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/ru/runoff.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=runoff&action=history",
+    "example": "The team measured runoff after the storm.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "surface runoff",
+      "runoff volume"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt."
+  },
+  {
+    "lemma": "catchment",
+    "partOfSpeech": "noun",
+    "definition": "Any structure or land feature which catches and holds water; the collection of such water.",
+    "fullDefinitions": [
+      "Any structure or land feature which catches and holds water; the collection of such water.",
+      "A catchment area, or the people it serves."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/catchment#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/ca/catchment.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=catchment&action=history",
+    "example": "The researchers mapped the catchment above the monitoring station.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "river catchment",
+      "catchment area"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈkatʃmənt/",
+    "ipaUS": "/ˈkɛt͡ʃmənt/"
+  },
+  {
+    "lemma": "precipitation",
+    "partOfSpeech": "noun",
+    "definition": "Any or all of the forms of water particles, whether liquid or solid, that fall from the upper atmosphere (e.g., rain, hail, snow or sleet).",
+    "fullDefinitions": [
+      "Any or all of the forms of water particles, whether liquid or solid, that fall from the upper atmosphere (e.g., rain, hail, snow or sleet). It is a major class of hydrometeor, but it is distinguished from cloud, fog, dew, rime, frost, etc., in that it must fall. It is distinguished from cloud and virga in that it must reach the ground.",
+      "The amount of water precipitated in any form."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/precipitation#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/p/pr/precipitation.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=precipitation&action=history",
+    "example": "The station records daily precipitation throughout the year.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "annual precipitation",
+      "precipitation pattern"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/pɹɪˌsɪpɪˈteɪʃn̩/",
+    "ipaUK": "/pɹɪˌsɪpɪˈteɪʃn̩/"
+  },
+  {
+    "lemma": "severe",
+    "partOfSpeech": "adjective",
+    "definition": "Very bad or intense.",
+    "fullDefinitions": [
+      "Very bad or intense."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/severe#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/se/severe.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=severe&action=history",
+    "example": "The region experienced a severe drought last summer.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "severe damage",
+      "severe drought"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/sɪˈvɪə/",
+    "ipaUS": "/sɪˈvɪɹ/"
+  },
+  {
+    "lemma": "serious",
+    "partOfSpeech": "adjective",
+    "definition": "Important; weighty; not insignificant.",
+    "fullDefinitions": [
+      "Important; weighty; not insignificant."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/serious#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/se/serious.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=serious&action=history",
+    "example": "A serious error in the calculation changed the result.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "serious problem",
+      "serious concern"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈsɪə̯.ɹi.əs/",
+    "ipa": "/ˈsɪɹ.i.əs/",
+    "ipaUS": "/ˈsɪɚ.i.əs/"
+  },
+  {
+    "lemma": "meticulous",
+    "partOfSpeech": "adjective",
+    "definition": "Characterized by very precise, conscientious attention to details.",
+    "fullDefinitions": [
+      "Characterized by very precise, conscientious attention to details."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/meticulous#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/me/meticulous.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=meticulous&action=history",
+    "example": "She kept meticulous records of each laboratory measurement.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "meticulous records",
+      "meticulous attention"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/mɪˈtɪkjɪlɪs/"
+  },
+  {
+    "lemma": "evidence",
+    "partOfSpeech": "noun",
+    "definition": "Facts or observations presented in support of an assertion.",
+    "fullDefinitions": [
+      "Facts or observations presented in support of an assertion."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/evidence#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ev/evidence.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=evidence&action=history",
+    "example": "The new measurements provide evidence for the proposed explanation.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "supporting evidence",
+      "empirical evidence"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/ˈɛv.ɪ.dəns/",
+    "ipaUK": "/ˈɛv.ɪ.dəns/"
+  },
+  {
+    "lemma": "maintain",
+    "partOfSpeech": "verb",
+    "definition": "To keep up; to preserve; to uphold (a state, condition etc.).",
+    "fullDefinitions": [
+      "To keep up; to preserve; to uphold (a state, condition etc.).",
+      "To keep in good condition and working order."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/maintain#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/ma/maintain.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=maintain&action=history",
+    "example": "The technician checks the equipment to maintain reliable operation.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "maintain quality",
+      "maintain equipment"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/meɪnˈteɪn/"
+  },
+  {
+    "lemma": "improve",
+    "partOfSpeech": "verb",
+    "definition": "To make (something) better; to increase the value or productivity (of something).",
+    "fullDefinitions": [
+      "To make (something) better; to increase the value or productivity (of something).",
+      "To become better."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/improve#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/i/im/improve.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=improve&action=history",
+    "example": "Repeated practice can improve performance on the task.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "improve accuracy",
+      "improve performance"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ɪmˈpɹuːv/"
+  },
+  {
+    "lemma": "support",
+    "partOfSpeech": "verb",
+    "definition": "To provide evidence for; to lend credibility to.",
+    "fullDefinitions": [
+      "To provide evidence for; to lend credibility to."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/support#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/su/support.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=support&action=history",
+    "example": "The observations support the team's interpretation of the results.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "support a conclusion",
+      "support an argument"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/səˈpɔːt/",
+    "ipaUS": "/səˈpoɹt/",
+    "ipa": "/səˈpo(ː)ɹt/"
+  },
+  {
+    "lemma": "reduce",
+    "partOfSpeech": "verb",
+    "definition": "To bring down the size, quantity, quality, value or intensity of something; to diminish, to lower.",
+    "fullDefinitions": [
+      "To bring down the size, quantity, quality, value or intensity of something; to diminish, to lower."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/reduce#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/reduce.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=reduce&action=history",
+    "example": "The team changed the design to reduce measurement errors.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "reduce uncertainty",
+      "reduce risk"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ɹɪˈd͡ʒuːs/",
+    "ipaUS": "/ɹɪˈd(j)us/"
+  },
+  {
+    "lemma": "increase",
+    "partOfSpeech": "verb",
+    "definition": "To make (a quantity, etc.) larger.",
+    "fullDefinitions": [
+      "To make (a quantity, etc.) larger.",
+      "(of a quantity, etc.) To become larger or greater, to greaten."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/increase#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/i/in/increase.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=increase&action=history",
+    "example": "The researchers plan to increase the sample size.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "increase efficiency",
+      "increase the sample size"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ɪnˈkɹiːs/"
+  },
+  {
+    "lemma": "compare",
+    "partOfSpeech": "verb",
+    "definition": "To assess the similarities and differences between two or more things [“to compare X with Y”]. Having made the comparison of X with Y, one might have found it similar to Y or different from Y.",
+    "fullDefinitions": [
+      "To assess the similarities and differences between two or more things [“to compare X with Y”]. Having made the comparison of X with Y, one might have found it similar to Y or different from Y."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/compare#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/compare.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=compare&action=history",
+    "example": "We will compare the results from the two monitoring stations.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "compare results",
+      "compare methods"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/kəmˈpɛɚ/",
+    "ipaUK": "/kəmˈpɛə/"
+  },
+  {
+    "lemma": "explain",
+    "partOfSpeech": "verb",
+    "definition": "To make plain, manifest, or intelligible; to clear of obscurity; to illustrate the meaning of.",
+    "fullDefinitions": [
+      "To make plain, manifest, or intelligible; to clear of obscurity; to illustrate the meaning of.",
+      "To give the reason for, justification for, or cause of."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/explain#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ex/explain.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=explain&action=history",
+    "example": "The diagram helps explain how the instrument works.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "explain a process",
+      "explain a difference"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ɪkˈspleɪn/"
+  },
+  {
+    "lemma": "observe",
+    "partOfSpeech": "verb",
+    "definition": "To notice or view, especially carefully or with attention to detail.",
+    "fullDefinitions": [
+      "To notice or view, especially carefully or with attention to detail."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/observe#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/o/ob/observe.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=observe&action=history",
+    "example": "The students will observe changes in the samples each day.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "observe a pattern",
+      "observe changes"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/əbˈzɜːv/",
+    "ipaUS": "/əbˈzɝv/"
+  },
+  {
+    "lemma": "evaluate",
+    "partOfSpeech": "verb",
+    "definition": "To draw conclusions from examining; to assess; to appraise.",
+    "fullDefinitions": [
+      "To draw conclusions from examining; to assess; to appraise."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/evaluate#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ev/evaluate.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=evaluate&action=history",
+    "example": "The team will evaluate the method using a new dataset.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "evaluate performance",
+      "evaluate evidence"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ɪˈvaljʊeɪt/",
+    "ipaUS": "/ɪˈvæl.juˌeɪt/"
+  },
+  {
+    "lemma": "hypothesis",
+    "partOfSpeech": "noun",
+    "definition": "A tentative conjecture explaining an observation, phenomenon or scientific problem and that can be tested by further observation, investigation, or experimentation.",
+    "fullDefinitions": [
+      "A tentative conjecture explaining an observation, phenomenon or scientific problem and that can be tested by further observation, investigation, or experimentation."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/hypothesis#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/h/hy/hypothesis.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=hypothesis&action=history",
+    "example": "The experiment was designed to test the hypothesis.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "test a hypothesis",
+      "alternative hypothesis"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/haɪˈpɒθɪsɪs/"
+  },
+  {
+    "lemma": "analysis",
+    "partOfSpeech": "noun",
+    "definition": "Decomposition into components in order to study (a complex thing, concept, theory, etc.).",
+    "fullDefinitions": [
+      "Decomposition into components in order to study (a complex thing, concept, theory, etc.)."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/analysis#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/a/an/analysis.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=analysis&action=history",
+    "example": "The analysis examines each stage of the treatment process.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "data analysis",
+      "sensitivity analysis"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/əˈnælɪsɪs/",
+    "ipaUS": "/əˈnælɪsɪs/"
+  },
+  {
+    "lemma": "data",
+    "partOfSpeech": "noun",
+    "definition": "Material recorded and known or assumed as facts and used as a basis for reasoning, discussion, or calculation, represented especially in the form of numbers, and usually structured (such as statistics).",
+    "fullDefinitions": [
+      "Material recorded and known or assumed as facts and used as a basis for reasoning, discussion, or calculation, represented especially in the form of numbers, and usually structured (such as statistics)."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/data#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/da/data.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=data&action=history",
+    "example": "The team collected data from six monitoring stations.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "collect data",
+      "data quality"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈdɑːtə/",
+    "ipaUS": "/ˈdeɪtə/"
+  },
+  {
+    "lemma": "method",
+    "partOfSpeech": "noun",
+    "definition": "A process by which a task is completed; a way of doing something (followed by the adposition of, to or for before the purpose of the process).",
+    "fullDefinitions": [
+      "A process by which a task is completed; a way of doing something (followed by the adposition of, to or for before the purpose of the process)."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/method#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/m/me/method.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=method&action=history",
+    "example": "This method measures the amount of water in a soil sample.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "research method",
+      "sampling method"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ˈmɛθəd/"
+  },
+  {
+    "lemma": "outcome",
+    "partOfSpeech": "noun",
+    "definition": "That which is produced or occurs as a result of an event or process.",
+    "fullDefinitions": [
+      "That which is produced or occurs as a result of an event or process."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/outcome#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/o/ou/outcome.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=outcome&action=history",
+    "example": "The outcome of the experiment was recorded in the report.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "study outcome",
+      "expected outcome"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ˈaʊtkʌm/"
+  },
+  {
+    "lemma": "process",
+    "partOfSpeech": "noun",
+    "definition": "A series of events leading to a result or product.",
+    "fullDefinitions": [
+      "A series of events leading to a result or product."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/process#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/p/pr/process.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=process&action=history",
+    "example": "The diagram shows each step in the purification process.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "learning process",
+      "physical process"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈpɹəʊ.sɛs/",
+    "ipaUS": "/ˈpɹɑ.sɛs/"
+  },
+  {
+    "lemma": "response",
+    "partOfSpeech": "noun",
+    "definition": "An answer or reply, or something in the nature of an answer or reply.",
+    "fullDefinitions": [
+      "An answer or reply, or something in the nature of an answer or reply.",
+      "A reaction to a stimulus or provocation."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/response#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/response.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=response&action=history",
+    "example": "The team recorded the response to each interview question.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "response rate",
+      "response to treatment"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ɹɪˈspɒns/",
+    "ipaUS": "/ɹɪˈspɑns/"
+  },
+  {
+    "lemma": "reliable",
+    "partOfSpeech": "adjective",
+    "definition": "Suitable or fit to be relied on; worthy of dependence, reliance or trust; dependable, trustworthy",
+    "fullDefinitions": [
+      "Suitable or fit to be relied on; worthy of dependence, reliance or trust; dependable, trustworthy"
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/reliable#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/reliable.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=reliable&action=history",
+    "example": "The instrument provides reliable measurements when properly calibrated.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "reliable evidence",
+      "reliable method"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/ɹɪˈlaɪəbl̩/"
+  },
+  {
+    "lemma": "consistent",
+    "partOfSpeech": "adjective",
+    "definition": "Of a regularly occurring, dependable nature.",
+    "fullDefinitions": [
+      "Of a regularly occurring, dependable nature.",
+      "Compatible, accordant."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/consistent#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/consistent.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=consistent&action=history",
+    "example": "The instrument produced consistent results across repeated trials.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "consistent results",
+      "consistent pattern"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/kənˈsɪs.tənt/"
+  },
+  {
+    "lemma": "ambiguous",
+    "partOfSpeech": "adjective",
+    "definition": "Open to multiple interpretations.",
+    "fullDefinitions": [
+      "Open to multiple interpretations."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/ambiguous#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/a/am/ambiguous.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=ambiguous&action=history",
+    "example": "The ambiguous instruction led to two different interpretations.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "ambiguous wording",
+      "ambiguous result"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/æmˈbɪɡ.ju.əs/",
+    "ipaUS": "/æmˈbɪɡ.ju.əs/"
+  },
+  {
+    "lemma": "adapt",
+    "partOfSpeech": "verb",
+    "definition": "To fit by alteration; to modify or remodel for a different purpose; to adjust.",
+    "fullDefinitions": [
+      "To fit by alteration; to modify or remodel for a different purpose; to adjust."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/adapt#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/a/ad/adapt.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=adapt&action=history",
+    "example": "We need to adapt the method for use in the field.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "adapt a method",
+      "adapt to change"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/əˈdæpt/"
+  },
+  {
+    "lemma": "retain",
+    "partOfSpeech": "verb",
+    "definition": "To keep (something) in the mind; to recall, to remember.",
+    "fullDefinitions": [
+      "To keep (something) in the mind; to recall, to remember.",
+      "To keep (something) in control or possession; to continue having (something); to keep back."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/retain#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/r/re/retain.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=retain&action=history",
+    "example": "Regular practice helps learners retain new vocabulary.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "retain information",
+      "retain knowledge"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ɹɪˈteɪn/",
+    "ipaUS": "/ɹəˈteɪn/"
+  },
+  {
+    "lemma": "diverse",
+    "partOfSpeech": "adjective",
+    "definition": "Consisting of different elements; various.",
+    "fullDefinitions": [
+      "Consisting of different elements; various."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/diverse#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/di/diverse.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=diverse&action=history",
+    "example": "The team collected samples from diverse environments.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "diverse sources",
+      "diverse environments"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/daɪˈvɜːs/",
+    "ipaUS": "/daɪˈvɝs/"
+  },
+  {
+    "lemma": "efficient",
+    "partOfSpeech": "adjective",
+    "definition": "Making good, thorough, or careful use of resources; not consuming extra. Especially, making good use of time or energy.",
+    "fullDefinitions": [
+      "Making good, thorough, or careful use of resources; not consuming extra. Especially, making good use of time or energy."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/efficient#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ef/efficient.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=efficient&action=history",
+    "example": "The new procedure makes more efficient use of laboratory time.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "efficient method",
+      "efficient use"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ɪˈfɪʃənt/",
+    "ipaUS": "/ɪˈfɪʃənt/"
+  },
+  {
+    "lemma": "habitat",
+    "partOfSpeech": "noun",
+    "definition": "A range; a place where a species naturally occurs.",
+    "fullDefinitions": [
+      "A range; a place where a species naturally occurs.",
+      "Conditions suitable for an organism or population of organisms to live."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/habitat#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/h/ha/habitat.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=habitat&action=history",
+    "example": "The field team mapped the bird's habitat along the coast.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "natural habitat",
+      "habitat loss"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/ˈhæb.ɪ.tæt/"
+  },
+  {
+    "lemma": "glacier",
+    "partOfSpeech": "noun",
+    "definition": "A large body of ice which flows under its own mass, usually downhill.",
+    "fullDefinitions": [
+      "A large body of ice which flows under its own mass, usually downhill."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/glacier#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/g/gl/glacier.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=glacier&action=history",
+    "example": "The researchers measured the movement of the glacier.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "glacier movement",
+      "glacier retreat"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈɡlæs.jə/",
+    "ipaUS": "/ˈɡleɪ.ʃɚ/"
+  },
+  {
+    "lemma": "drought",
+    "partOfSpeech": "noun",
+    "definition": "A period of unusually low rainfall, longer and more severe than a dry spell.",
+    "fullDefinitions": [
+      "A period of unusually low rainfall, longer and more severe than a dry spell."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/drought#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/d/dr/drought.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=drought&action=history",
+    "example": "The drought reduced the amount of water available for irrigation.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "prolonged drought",
+      "drought risk"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/dɹaʊt/"
+  },
+  {
+    "lemma": "ecosystem",
+    "partOfSpeech": "noun",
+    "definition": "A system formed by an ecological community and its environment that functions as a unit.",
+    "fullDefinitions": [
+      "A system formed by an ecological community and its environment that functions as a unit.",
+      "The interconnectedness of organisms (plants, animals, microbes) with each other and their environment."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/ecosystem#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/e/ec/ecosystem.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=ecosystem&action=history",
+    "example": "The study examines how the wetland ecosystem responds to changing water levels.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "aquatic ecosystem",
+      "ecosystem function"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˈiːkəʊˌsɪstəm/",
+    "ipaUS": "/ˈikoʊˌsɪstəm/"
+  },
+  {
+    "lemma": "sustainable",
+    "partOfSpeech": "adjective",
+    "definition": "Able to be produced or sustained for an indefinite period without damaging the environment, or without depleting a resource; renewable.",
+    "fullDefinitions": [
+      "Able to be produced or sustained for an indefinite period without damaging the environment, or without depleting a resource; renewable."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/sustainable#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/s/su/sustainable.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=sustainable&action=history",
+    "example": "The project explores sustainable ways to manage the water supply.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "sustainable development",
+      "sustainable management"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/səˈsteɪnəbəl/"
+  },
+  {
+    "lemma": "trend",
+    "partOfSpeech": "noun",
+    "definition": "A tendency.",
+    "fullDefinitions": [
+      "A tendency.",
+      "A line drawn on a graph that approximates the trend of a number of disparate points; the shift over time represented by such a curve on a graph."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/trend#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/t/tr/trend.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=trend&action=history",
+    "example": "The graph shows a clear trend in the monthly measurements.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "long-term trend",
+      "upward trend"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipa": "/tɹɛnd/"
+  },
+  {
+    "lemma": "correlation",
+    "partOfSpeech": "noun",
+    "definition": "One of the several measures of the linear statistical relationship between two random variables, indicating both the strength and direction of the relationship.",
+    "fullDefinitions": [
+      "One of the several measures of the linear statistical relationship between two random variables, indicating both the strength and direction of the relationship."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/correlation#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/c/co/correlation.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=correlation&action=history",
+    "example": "The analysis found a positive correlation between the two measurements.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "positive correlation",
+      "correlation coefficient"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUK": "/ˌkɒɹ.əˈleɪ.ʃən/",
+    "ipaUS": "/ˌkɔɹ.əˈleɪ.ʃən/"
+  },
+  {
+    "lemma": "intervention",
+    "partOfSpeech": "noun",
+    "definition": "The action of intervening; interfering in some course of events.",
+    "fullDefinitions": [
+      "The action of intervening; interfering in some course of events."
+    ],
+    "sourceUrl": "https://en.wiktionary.org/wiki/intervention#English",
+    "sourceName": "English Wiktionary contributors, via Kaikki / Wiktextract",
+    "sourceLicence": "CC BY-SA 4.0",
+    "sourceLicenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceExtractionUrl": "https://kaikki.org/dictionary/English/meaning/i/in/intervention.jsonl",
+    "sourceHistoryUrl": "https://en.wiktionary.org/w/index.php?title=intervention&action=history",
+    "example": "The team measured conditions before and after the intervention.",
+    "exampleSource": "Original project-authored teaching example; not a Wiktionary quotation.",
+    "collocations": [
+      "policy intervention",
+      "evaluate an intervention"
+    ],
+    "collocationsSource": "Original project-curated usage phrases; not corpus frequency claims.",
+    "wordFamily": [],
+    "retrievedAt": "2026-09-27",
+    "definitionNote": "Selected verbatim Wiktionary glosses extracted by Wiktextract; primary precipitation definition is an exact first-sentence excerpt.",
+    "ipaUS": "/ɪntɚˈvɛnʃən/",
+    "ipaUK": "/ɪntəˈvɛnʃən/"
+  }
+]

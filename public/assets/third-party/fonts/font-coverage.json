@@ -1,0 +1,815 @@
+{
+  "checkedAt": "2026-09-28",
+  "starterEntries": 60,
+  "ipaStrings": 97,
+  "ipaDistinctCharacters": 47,
+  "ipaCharacters": [
+    "U+0028 (",
+    "U+0029 )",
+    "U+002E .",
+    "U+002F /",
+    "U+0061 a",
+    "U+0062 b",
+    "U+0064 d",
+    "U+0065 e",
+    "U+0066 f",
+    "U+0068 h",
+    "U+0069 i",
+    "U+006A j",
+    "U+006B k",
+    "U+006C l",
+    "U+006D m",
+    "U+006E n",
+    "U+006F o",
+    "U+0070 p",
+    "U+0073 s",
+    "U+0074 t",
+    "U+0075 u",
+    "U+0076 v",
+    "U+0077 w",
+    "U+007A z",
+    "U+00E6 æ",
+    "U+0251 ɑ",
+    "U+0252 ɒ",
+    "U+0254 ɔ",
+    "U+0259 ə",
+    "U+025A ɚ",
+    "U+025B ɛ",
+    "U+025C ɜ",
+    "U+025D ɝ",
+    "U+0261 ɡ",
+    "U+026A ɪ",
+    "U+0279 ɹ",
+    "U+0283 ʃ",
+    "U+028A ʊ",
+    "U+028C ʌ",
+    "U+0292 ʒ",
+    "U+02C8 ˈ",
+    "U+02CC ˌ",
+    "U+02D0 ː",
+    "U+0329 ̩",
+    "U+032F ̯",
+    "U+0361 ͡",
+    "U+03B8 θ"
+  ],
+  "missingIPAByFont": {
+    "Pixelify Sans": [
+      "U+0251 ɑ",
+      "U+0252 ɒ",
+      "U+0254 ɔ",
+      "U+0259 ə",
+      "U+025A ɚ",
+      "U+025B ɛ",
+      "U+025C ɜ",
+      "U+025D ɝ",
+      "U+0261 ɡ",
+      "U+026A ɪ",
+      "U+0279 ɹ",
+      "U+0283 ʃ",
+      "U+028A ʊ",
+      "U+028C ʌ",
+      "U+0292 ʒ",
+      "U+02C8 ˈ",
+      "U+02CC ˌ",
+      "U+02D0 ː",
+      "U+0329 ̩",
+      "U+032F ̯",
+      "U+0361 ͡"
+    ],
+    "Lexigrove IPA Pixel": [],
+    "Lexigrove Unicode Pixel": []
+  },
+  "confusableCharacters": {
+    "Pixelify Sans": {
+      "glyphs": {
+        "I": {
+          "glyph": "I",
+          "advance": 404,
+          "outlineSha256": "b195b778fbd076e7cdfafcb3d0634a85eb85cae8e568dbb593ab48d7d2ca9136"
+        },
+        "l": {
+          "glyph": "l",
+          "advance": 222,
+          "outlineSha256": "5bb2f42498b964117a53f037d00df21b1fa994592a8d8440b685755f2261eddd"
+        },
+        "1": {
+          "glyph": "one",
+          "advance": 404,
+          "outlineSha256": "b99729deae50988cf05c02a5efb5c7ae3d604d41de4cc0a49541716e2b60c9d3"
+        },
+        "O": {
+          "glyph": "O",
+          "advance": 586,
+          "outlineSha256": "aa5aa9729835530d1050d836bdbcc0c1296b8770b2090e6489ade4abe016c97c"
+        },
+        "0": {
+          "glyph": "zero",
+          "advance": 586,
+          "outlineSha256": "aa5aa9729835530d1050d836bdbcc0c1296b8770b2090e6489ade4abe016c97c"
+        },
+        "r": {
+          "glyph": "r",
+          "advance": 586,
+          "outlineSha256": "8141123b3cdaf5de3e63c7116914690064487258076b3eb4d4e5ef880fdc811b"
+        },
+        "n": {
+          "glyph": "n",
+          "advance": 586,
+          "outlineSha256": "841e60bb7742bdce5cb710f28fd2f2237d3f2690de616d59a5e8b988ea0fd8d3"
+        },
+        "m": {
+          "glyph": "m",
+          "advance": 767,
+          "outlineSha256": "6b64aa79843a67429e0bc62f10f8039df690d16cb05c0ffe52ed14f663bba162"
+        }
+      },
+      "I_l_1_haveDistinctOutlines": true,
+      "O_0_haveDistinctOutlines": false,
+      "rnAdvance": 1172,
+      "mAdvance": 767
+    },
+    "Lexigrove IPA Pixel": {
+      "glyphs": {
+        "I": {
+          "glyph": "cid00074",
+          "advance": 32,
+          "outlineSha256": "1b90f0237df9477cc1f3d75665c5fa63630c805b2086b0ac1c56460c88004bb0"
+        },
+        "l": {
+          "glyph": "cid00109",
+          "advance": 32,
+          "outlineSha256": "71a0e472bfefafeb194fde737ebf7eea0efb93ee9624b11f5609a35d7d8c148f"
+        },
+        "1": {
+          "glyph": "cid00050",
+          "advance": 32,
+          "outlineSha256": "bb98c766f33bdac7d8d3c2cad4cb1b8cf520e052dcabddccaca2b40629c6fa25"
+        },
+        "O": {
+          "glyph": "cid00080",
+          "advance": 32,
+          "outlineSha256": "855bf7db2695649cc7db16728601d5410ac5119d6f99182159cf1a8928fbcd63"
+        },
+        "0": {
+          "glyph": "cid00049",
+          "advance": 32,
+          "outlineSha256": "059f2b4bd9d6eb8b7f3d478fb030e6a858a485d506a6a131eaed2462de978c91"
+        },
+        "r": {
+          "glyph": "cid00115",
+          "advance": 32,
+          "outlineSha256": "8dc65e14734478f9d103cc83cec2f1a902bfa53412edcc824f84d678d4888bd8"
+        },
+        "n": {
+          "glyph": "cid00111",
+          "advance": 32,
+          "outlineSha256": "21fbb1fb66da5901a101c4cadfe855d64575860085bc8931ea67c148f26f891e"
+        },
+        "m": {
+          "glyph": "cid00110",
+          "advance": 32,
+          "outlineSha256": "b464e2919febbebfe4623371796717a7881d3168665a1b1e994b231073ad81e4"
+        }
+      },
+      "I_l_1_haveDistinctOutlines": true,
+      "O_0_haveDistinctOutlines": true,
+      "rnAdvance": 64,
+      "mAdvance": 32
+    },
+    "Lexigrove Unicode Pixel": {
+      "glyphs": {
+        "I": {
+          "glyph": "cid00074",
+          "advance": 32,
+          "outlineSha256": "1b90f0237df9477cc1f3d75665c5fa63630c805b2086b0ac1c56460c88004bb0"
+        },
+        "l": {
+          "glyph": "cid00109",
+          "advance": 32,
+          "outlineSha256": "71a0e472bfefafeb194fde737ebf7eea0efb93ee9624b11f5609a35d7d8c148f"
+        },
+        "1": {
+          "glyph": "cid00050",
+          "advance": 32,
+          "outlineSha256": "bb98c766f33bdac7d8d3c2cad4cb1b8cf520e052dcabddccaca2b40629c6fa25"
+        },
+        "O": {
+          "glyph": "cid00080",
+          "advance": 32,
+          "outlineSha256": "855bf7db2695649cc7db16728601d5410ac5119d6f99182159cf1a8928fbcd63"
+        },
+        "0": {
+          "glyph": "cid00049",
+          "advance": 32,
+          "outlineSha256": "059f2b4bd9d6eb8b7f3d478fb030e6a858a485d506a6a131eaed2462de978c91"
+        },
+        "r": {
+          "glyph": "cid00115",
+          "advance": 32,
+          "outlineSha256": "8dc65e14734478f9d103cc83cec2f1a902bfa53412edcc824f84d678d4888bd8"
+        },
+        "n": {
+          "glyph": "cid00111",
+          "advance": 32,
+          "outlineSha256": "21fbb1fb66da5901a101c4cadfe855d64575860085bc8931ea67c148f26f891e"
+        },
+        "m": {
+          "glyph": "cid00110",
+          "advance": 32,
+          "outlineSha256": "b464e2919febbebfe4623371796717a7881d3168665a1b1e994b231073ad81e4"
+        }
+      },
+      "I_l_1_haveDistinctOutlines": true,
+      "O_0_haveDistinctOutlines": true,
+      "rnAdvance": 64,
+      "mAdvance": 32
+    }
+  },
+  "representativeChinese": "中文词汇学习音标记忆花园水族馆備份恢复環境科学参数分布你好",
+  "representativeChineseMissing": [],
+  "pronunciations": [
+    {
+      "lemma": "mitigate",
+      "field": "ipa",
+      "text": "/ˈmɪt.ɪ.ɡeɪt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "significant",
+      "field": "ipaUS",
+      "text": "/sɪɡˈnɪf.ə.kənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "significant",
+      "field": "ipaUK",
+      "text": "/sɪɡˈnɪf.ɪ.kənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "empirical",
+      "field": "ipaUS",
+      "text": "/ɪmˈpɪɹɪkəl/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "empirical",
+      "field": "ipaUK",
+      "text": "/ɪmˈpɪɹɪkəl/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "robust",
+      "field": "ipaUS",
+      "text": "/ɹoʊˈbʌst/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "robust",
+      "field": "ipaUK",
+      "text": "/ɹəʊˈbʌst/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "infer",
+      "field": "ipa",
+      "text": "/ɪnˈfeː/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "infer",
+      "field": "ipaUS",
+      "text": "/ɪnˈfɝ/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "infer",
+      "field": "ipaUK",
+      "text": "/ɪnˈfɜː/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "derive",
+      "field": "ipaUS",
+      "text": "/dɪˈɹaɪv/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "derive",
+      "field": "ipaUK",
+      "text": "/dɪˈɹaɪv/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "subsequent",
+      "field": "ipaUS",
+      "text": "/ˈsʌbsɪkwənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "subsequent",
+      "field": "ipaUK",
+      "text": "/ˈsʌbsɪkwənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "constraint",
+      "field": "ipaUS",
+      "text": "/kənˈstɹeɪnt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "constraint",
+      "field": "ipaUK",
+      "text": "/kənˈstɹeɪnt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "distribution",
+      "field": "ipaUS",
+      "text": "/ˌdɪstɹɪˈbjuʃən/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "distribution",
+      "field": "ipaUK",
+      "text": "/ˌdɪstɹɪˈbjuːʃən/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "uncertainty",
+      "field": "ipaUS",
+      "text": "/ʌnˈsɝtənti/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "uncertainty",
+      "field": "ipaUK",
+      "text": "/ʌnˈsɜːtənti/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "estimate",
+      "field": "ipa",
+      "text": "/ˈɛs.tɪ.mət/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "parameter",
+      "field": "ipaUS",
+      "text": "/pəˈɹæm.ə.tɚ/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "parameter",
+      "field": "ipaUK",
+      "text": "/pəˈɹæm.ɪ.tə/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "framework",
+      "field": "ipaUS",
+      "text": "/ˈfɹeɪm.wɝk/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "framework",
+      "field": "ipaUK",
+      "text": "/ˈfɹeɪm.wɜːk/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "methodology",
+      "field": "ipaUS",
+      "text": "/ˌmɛθ.əˈdɑ.lə.d͡ʒi/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "methodology",
+      "field": "ipaUK",
+      "text": "/ˌmɛθ.əˈdɒl.ə.d͡ʒi/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "bias",
+      "field": "ipa",
+      "text": "/ˈbaɪ.əs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "causal",
+      "field": "ipa",
+      "text": "/ˈkɔ.zəl/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "causal",
+      "field": "ipaUK",
+      "text": "/ˈkɔːzəl/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "validate",
+      "field": "ipa",
+      "text": "/ˈvæl.ɪ.deɪt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "simulate",
+      "field": "ipaUS",
+      "text": "/ˈsɪm.jəˌleɪt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "simulate",
+      "field": "ipaUK",
+      "text": "/ˈsɪm.jʊˌleɪt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "reservoir",
+      "field": "ipaUS",
+      "text": "/ˈɹɛz.ə(ɹ).vwɑɹ/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "reservoir",
+      "field": "ipaUK",
+      "text": "/ˈɹɛz.ə.vwɑː/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "sediment",
+      "field": "ipa",
+      "text": "/ˈsɛd.ɪ.mənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "catchment",
+      "field": "ipaUS",
+      "text": "/ˈkɛt͡ʃmənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "catchment",
+      "field": "ipaUK",
+      "text": "/ˈkatʃmənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "precipitation",
+      "field": "ipaUS",
+      "text": "/pɹɪˌsɪpɪˈteɪʃn̩/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "precipitation",
+      "field": "ipaUK",
+      "text": "/pɹɪˌsɪpɪˈteɪʃn̩/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "severe",
+      "field": "ipaUS",
+      "text": "/sɪˈvɪɹ/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "severe",
+      "field": "ipaUK",
+      "text": "/sɪˈvɪə/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "serious",
+      "field": "ipa",
+      "text": "/ˈsɪɹ.i.əs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "serious",
+      "field": "ipaUS",
+      "text": "/ˈsɪɚ.i.əs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "serious",
+      "field": "ipaUK",
+      "text": "/ˈsɪə̯.ɹi.əs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "meticulous",
+      "field": "ipaUS",
+      "text": "/mɪˈtɪkjɪlɪs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "evidence",
+      "field": "ipaUS",
+      "text": "/ˈɛv.ɪ.dəns/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "evidence",
+      "field": "ipaUK",
+      "text": "/ˈɛv.ɪ.dəns/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "maintain",
+      "field": "ipa",
+      "text": "/meɪnˈteɪn/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "improve",
+      "field": "ipa",
+      "text": "/ɪmˈpɹuːv/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "support",
+      "field": "ipa",
+      "text": "/səˈpo(ː)ɹt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "support",
+      "field": "ipaUS",
+      "text": "/səˈpoɹt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "support",
+      "field": "ipaUK",
+      "text": "/səˈpɔːt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "reduce",
+      "field": "ipa",
+      "text": "/ɹɪˈd͡ʒuːs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "reduce",
+      "field": "ipaUS",
+      "text": "/ɹɪˈd(j)us/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "increase",
+      "field": "ipa",
+      "text": "/ɪnˈkɹiːs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "compare",
+      "field": "ipaUS",
+      "text": "/kəmˈpɛɚ/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "compare",
+      "field": "ipaUK",
+      "text": "/kəmˈpɛə/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "explain",
+      "field": "ipa",
+      "text": "/ɪkˈspleɪn/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "observe",
+      "field": "ipaUS",
+      "text": "/əbˈzɝv/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "observe",
+      "field": "ipaUK",
+      "text": "/əbˈzɜːv/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "evaluate",
+      "field": "ipaUS",
+      "text": "/ɪˈvæl.juˌeɪt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "evaluate",
+      "field": "ipaUK",
+      "text": "/ɪˈvaljʊeɪt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "hypothesis",
+      "field": "ipaUK",
+      "text": "/haɪˈpɒθɪsɪs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "analysis",
+      "field": "ipaUS",
+      "text": "/əˈnælɪsɪs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "analysis",
+      "field": "ipaUK",
+      "text": "/əˈnælɪsɪs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "data",
+      "field": "ipaUS",
+      "text": "/ˈdeɪtə/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "data",
+      "field": "ipaUK",
+      "text": "/ˈdɑːtə/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "method",
+      "field": "ipa",
+      "text": "/ˈmɛθəd/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "outcome",
+      "field": "ipa",
+      "text": "/ˈaʊtkʌm/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "process",
+      "field": "ipaUS",
+      "text": "/ˈpɹɑ.sɛs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "process",
+      "field": "ipaUK",
+      "text": "/ˈpɹəʊ.sɛs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "response",
+      "field": "ipaUS",
+      "text": "/ɹɪˈspɑns/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "response",
+      "field": "ipaUK",
+      "text": "/ɹɪˈspɒns/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "reliable",
+      "field": "ipa",
+      "text": "/ɹɪˈlaɪəbl̩/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "consistent",
+      "field": "ipa",
+      "text": "/kənˈsɪs.tənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "ambiguous",
+      "field": "ipaUS",
+      "text": "/æmˈbɪɡ.ju.əs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "ambiguous",
+      "field": "ipaUK",
+      "text": "/æmˈbɪɡ.ju.əs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "adapt",
+      "field": "ipa",
+      "text": "/əˈdæpt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "retain",
+      "field": "ipaUS",
+      "text": "/ɹəˈteɪn/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "retain",
+      "field": "ipaUK",
+      "text": "/ɹɪˈteɪn/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "diverse",
+      "field": "ipaUS",
+      "text": "/daɪˈvɝs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "diverse",
+      "field": "ipaUK",
+      "text": "/daɪˈvɜːs/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "efficient",
+      "field": "ipaUS",
+      "text": "/ɪˈfɪʃənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "efficient",
+      "field": "ipaUK",
+      "text": "/ɪˈfɪʃənt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "habitat",
+      "field": "ipaUS",
+      "text": "/ˈhæb.ɪ.tæt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "glacier",
+      "field": "ipaUS",
+      "text": "/ˈɡleɪ.ʃɚ/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "glacier",
+      "field": "ipaUK",
+      "text": "/ˈɡlæs.jə/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "drought",
+      "field": "ipa",
+      "text": "/dɹaʊt/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "ecosystem",
+      "field": "ipaUS",
+      "text": "/ˈikoʊˌsɪstəm/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "ecosystem",
+      "field": "ipaUK",
+      "text": "/ˈiːkəʊˌsɪstəm/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "sustainable",
+      "field": "ipa",
+      "text": "/səˈsteɪnəbəl/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "trend",
+      "field": "ipa",
+      "text": "/tɹɛnd/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "correlation",
+      "field": "ipaUS",
+      "text": "/ˌkɔɹ.əˈleɪ.ʃən/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "correlation",
+      "field": "ipaUK",
+      "text": "/ˌkɒɹ.əˈleɪ.ʃən/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "intervention",
+      "field": "ipaUS",
+      "text": "/ɪntɚˈvɛnʃən/",
+      "ipaFallbackCoversEveryCodePoint": true
+    },
+    {
+      "lemma": "intervention",
+      "field": "ipaUK",
+      "text": "/ɪntəˈvɛnʃən/",
+      "ipaFallbackCoversEveryCodePoint": true
+    }
+  ],
+  "scopeNote": "Cmap and outline audit of the distributed files. This does not prove browser shaping or subjective legibility at every font size. Pixelify Sans O and 0 are identical. Use a Unifont-derived face where distinction matters."
+}
