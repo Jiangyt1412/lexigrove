@@ -2,6 +2,8 @@
 
 Lexigrove is a local-first vocabulary-learning Progressive Web App for personal, general, academic and environmental English. It combines typed recall, FSRS scheduling and two original pixel environments: a Study Garden for acquisition and a Memory Aquarium for accumulated retention milestones. It runs independently of Codex, ChatGPT and OpenAI APIs. No account, application backend, paid dictionary API or cloud database is required.
 
+**Public website:** [Open Lexigrove](https://jiangyt1412.github.io/lexigrove/). The application was deployed and its live resources verified on 2026-10-04; the deployment and browser checks are recorded in [VALIDATION.md](VALIDATION.md).
+
 This is a **60-word starter application**, not a complete NGSL, NAWL, AWL or examination vocabulary course. Its current validation results and remaining checks belong in [VALIDATION.md](VALIDATION.md); the presence of features or tests is not a claim that every browser and device has been verified.
 
 ## Run locally
@@ -36,7 +38,7 @@ The build produces static files. Serve `dist/` over HTTPS. The default deploymen
 
 ## GitHub Pages deployment
 
-Create a **public** repository containing this source and choose **Settings → Pages → Build and deployment → Source → GitHub Actions**. The checked-in [Pages workflow](.github/workflows/pages.yml) installs locked dependencies with Node 22, checks lint and unit tests, builds with the repository's base path, and deploys the static artifact. Pushing to `main` or running the workflow manually triggers it. The published URL is shown by the successful deployment; a prepared workflow alone does not mean the site is live.
+This public repository is deployed at [jiangyt1412.github.io/lexigrove](https://jiangyt1412.github.io/lexigrove/) using **Settings → Pages → Build and deployment → Source → GitHub Actions**. The checked-in [Pages workflow](.github/workflows/pages.yml) installs locked dependencies with Node 22, checks lint and unit tests, builds with the repository's base path, and deploys the static artifact. Pushing to `main` or running the workflow manually triggers it. For a fork, enable the same Pages source and inspect that fork's successful deployment for its own URL.
 
 GitHub Pages hosts the application; it does not provide an application database or user accounts. Each visitor has their own local browser data. Before switching from localhost to the public site, export a backup on localhost and restore it on the public site. Only application source, starter dictionary and licensed assets belong in the repository; personal backups, browser data and `.openai/` hosting metadata are excluded.
 
