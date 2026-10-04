@@ -43,6 +43,7 @@ export default defineConfig({
             handler: "CacheFirst",
             options: {
               cacheName: AUDIO_CACHE,
+              matchOptions: { ignoreVary: true }, // # These versioned public WAV URLs have fixed bytes; CDN Accept-Encoding variants must not cause an offline media cache miss.
               cacheableResponse: { statuses: [200] },
               rangeRequests: true,
             },

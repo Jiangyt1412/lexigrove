@@ -350,6 +350,27 @@ test("all 120 clips cache and British and American word audio actually finish of
     page.evaluate(
       () => (window as unknown as { __endedClips: string[] }).__endedClips,
     );
+  await page.evaluate(async (lemma) => {
+    const key = (await caches.keys()).find((name) =>
+      name.startsWith("lexigrove-audio-"),
+    )!;
+    const cache = await caches.open(key);
+    for (const accent of ["uk", "us"]) {
+      const url = new URL(
+        `assets/audio/${accent}/${lemma}.wav`,
+        document.baseURI,
+      ).href;
+      const original = (await cache.match(url))!;
+      const headers = new Headers(original.headers);
+      headers.set("Vary", "X-Lexigrove-Test-Variant");
+      await cache.put(
+        new Request(url, {
+          headers: { "X-Lexigrove-Test-Variant": "background" },
+        }),
+        new Response(await original.arrayBuffer(), { status: 200, headers }),
+      );
+    }
+  }, word); // # Reproduce a server Vary header that differs between full-body warming and media requests; the bytes remain identical.
   const cachedResponse = page.waitForResponse((response) =>
     response.url().endsWith(`/assets/audio/uk/${word}.wav`),
   ); // # Verify that offline media really uses the service worker's byte-range route.

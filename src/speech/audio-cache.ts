@@ -37,7 +37,7 @@ export function warmStarterAudio(): Promise<void> {
       while (next < paths.length) {
         const path = paths[next++];
         const url = new URL(assetUrl(path), location.href).href;
-        if (await cache.match(url)) continue;
+        if (await cache.match(url, { ignoreVary: true })) continue; // # Full downloads and media Range requests can differ in CDN Vary headers while referring to the same immutable clip.
         let retry = true;
         while (retry) {
           retry = false;
