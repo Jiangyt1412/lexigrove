@@ -5,7 +5,6 @@ import {
   ExternalLink,
   Star,
   BookOpen,
-  TextCursorInput,
   Sprout,
 } from "../components/PixelIcons";
 import {
@@ -19,7 +18,6 @@ import { Pronunciation } from "../components/Pronunciation"; // # Both accents a
 import { hydrateWord, projectSense } from "../vocabulary/lexicon"; // # All entry panels use a single projection of their selected sense.
 import { Definition, Modal } from "../components/ui";
 import { learningState } from "../learning/engine"; // # Current scheduling state is distinct from a permanently earned world milestone.
-import { NotebookDecor } from "../components/NotebookDecor";
 export function Dictionary({
   initial,
   words,
@@ -40,7 +38,7 @@ export function Dictionary({
   reviewConfirmation?: { learningSenseId: string; footer: ReactNode }; // # Study opens the tested meaning first and supplies its editable familiarity confirmation.
 }) {
   const [path, setPath] = useState([initial]);
-  const [bookmark, setBookmark] = useState("Definitions"); // # Bookmark navigation scrolls only the journal and preserves the current meaning and draft choice.
+  const [bookmark, setBookmark] = useState("Definitions"); // # Section navigation preserves the current lexical meaning and draft choice.
   const initialEntry = words
     .find((w) => normalize(w.lemma) === normalize(initial))
     ?.entries.find((e) =>
@@ -86,11 +84,13 @@ export function Dictionary({
     path.length === 1 &&
     group?.learningSenseId === reviewConfirmation?.learningSenseId;
   const returnToReview = () => {
+    setBookmark("Definitions");
     setPath([initial]);
     setSelected(initialEntry?.entryId ?? null);
     setSelectedGroup(reviewConfirmation?.learningSenseId ?? null);
   }; // # Confirmation cannot be attached to a related word or a different meaning.
   const visit = (word: string) => {
+    setBookmark("Definitions");
     setPath([...path, word]);
     setSelected(null);
     setSelectedGroup(null);
@@ -114,8 +114,13 @@ export function Dictionary({
       showTitle={false}
       className="dictionary-modal cozy-dictionary"
     >
-      <div className="dictionary-journal">
-        <NotebookDecor className="dictionary-decoration" />
+      <div
+        className="dictionary-journal"
+        data-bookmark={bookmark}
+        data-confirming={
+          reviewConfirmation && atReviewMeaning ? "true" : undefined
+        }
+      >
         <aside
           className="journal-bookmarks"
           aria-label="Dictionary page sections"
@@ -146,11 +151,6 @@ export function Dictionary({
               icon: <Star size={21} />,
               target: ".entry-tabs, .sense-list",
             },
-            {
-              label: "Notes",
-              icon: <TextCursorInput size={21} />,
-              target: "textarea",
-            },
           ].map((tab) => (
             <button
               key={tab.label}
@@ -158,10 +158,10 @@ export function Dictionary({
               aria-pressed={bookmark === tab.label}
               onClick={(event) => {
                 setBookmark(tab.label);
-                event.currentTarget
+                const readingPage = event.currentTarget
                   .closest("dialog")
-                  ?.querySelector(tab.target)
-                  ?.scrollIntoView({ block: "center" });
+                  ?.querySelector<HTMLElement>(".dictionary-page");
+                if (readingPage) readingPage.scrollTop = 0; // # Change only the visible book section; lexical ownership and review drafts stay intact.
               }}
             >
               {tab.icon}
@@ -178,6 +178,7 @@ export function Dictionary({
                   key={i}
                   onClick={() => {
                     setPath(path.slice(0, i + 1));
+                    setBookmark("Definitions");
                     setSelected(null);
                     setSelectedGroup(null);
                   }}
@@ -190,6 +191,17 @@ export function Dictionary({
           )}
           <div className="word-title">
             <h2>{word?.lemma ?? current}</h2>
+            <button
+              className="journal-notes-link"
+              onClick={(event) => {
+                setBookmark("Notes");
+                const page =
+                  event.currentTarget.closest<HTMLElement>(".dictionary-page");
+                if (page) page.scrollTop = 0;
+              }}
+            >
+              Notes
+            </button>
           </div>
           {reviewConfirmation && !atReviewMeaning && (
             <button className="secondary" onClick={returnToReview}>
@@ -355,7 +367,11 @@ export function Dictionary({
                     </p>
                   )}
                   {entry && (
-                    <ol className="sense-list" aria-label="Dictionary meanings">
+                    <ol
+                      className="sense-list"
+                      start={2}
+                      aria-label="Dictionary meanings"
+                    >
                       {entry.senses
                         .filter(
                           (s) =>
@@ -433,7 +449,7 @@ export function Dictionary({
                   )}
                 </>
               )}
-              <label className="field">
+              <label className="field dictionary-note">
                 Personal note
                 <textarea
                   key={word.id}
@@ -536,9 +552,6 @@ export function Dictionary({
                   <p>{word.sourceLicence}</p>
                 )}
               </details>
-              {reviewConfirmation &&
-                atReviewMeaning &&
-                reviewConfirmation.footer}
             </>
           ) : (
             <>
@@ -552,6 +565,11 @@ export function Dictionary({
             </>
           )}
         </div>
+        {reviewConfirmation && atReviewMeaning && (
+          <div className="reference-confirmation-footer">
+            {reviewConfirmation.footer}
+          </div>
+        )}
       </div>
     </Modal>
   );

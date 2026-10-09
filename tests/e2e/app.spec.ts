@@ -35,14 +35,16 @@ test("fullscreen study preserves navigation, readable order and hidden recall an
         .evaluate((image) => (image as HTMLImageElement).naturalWidth > 0),
     )
     .toBe(true);
-  await expect(page.locator(".study-room .room-window-glint")).toBeVisible();
+  await page
+    .locator(".study-room-art")
+    .evaluate((image) => (image as HTMLImageElement).decode()); // # The reference already paints window light; verify the complete image rather than the removed polygon overlay.
   await expect(
     page.locator('.study-room [data-resident="bird"]'),
   ).toBeVisible();
   await expect(page.locator('.study-room [data-resident="cat"]')).toBeVisible(); // # Detailed independent residents flank the notebook; the old oversized cloud and cat shapes are absent.
   await expect(page.locator(".study-room-art")).toHaveAttribute(
     "src",
-    /study-room-v3\.webp$/,
+    /study-room-v2\.webp$/,
   );
   await expect(
     page.getByRole("list", { name: "Word learning steps" }).locator("li"),
@@ -282,7 +284,7 @@ test("desktop home is one continuous world with honest counts and accessible sce
   await expect(world.locator(".coastal-status b").nth(2)).toHaveText("0");
   await expect(world.locator("[data-plant-stage]")).toHaveCount(0);
   await expect(world.locator(".living-aquarium .motion-fish")).toHaveCount(0); // # Scenery may be inhabited, but earned plants and aquarium residents cannot predate learning.
-  await expect(world.locator(".field-marker")).toHaveText("0 words cultivated");
+  await expect(world.locator(".field-marker")).toHaveText("0");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
@@ -411,9 +413,7 @@ test("three acquisition stages graduate real words", async ({ page }) => {
   ).toBeVisible();
   await page.getByRole("button", { name: "Back to your grove" }).click();
   await expect(page.locator(".coastal-status b").nth(2)).toHaveText("2");
-  await expect(page.locator(".living-garden .field-marker")).toContainText(
-    "2 words cultivated",
-  );
+  await expect(page.locator(".living-garden .field-marker")).toContainText("2");
 });
 test("backup export validates, invalid restore is non-destructive, valid restore works", async ({
   page,

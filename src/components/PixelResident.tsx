@@ -15,6 +15,7 @@ export function PixelResident({
   style?: CSSProperties;
 }) {
   const keeper = kind === "gardener" || kind === "diver";
+  const referenceCompanion = kind === "cat" || kind === "bird"; // # These two identities now come directly from the supplied room and feedback references.
   const row = keeper
     ? kind === "gardener"
       ? action === "walk"
@@ -38,9 +39,12 @@ export function PixelResident({
         className="resident-frames"
         style={
           {
-            "--resident-atlas": `url("${assetUrl(`assets/coastal/${keeper ? "keepers" : "companions"}-atlas-v2.webp`)}")`,
-            "--resident-row":
-              kind === "bird" ? "34.090909%" : `${(row * 100) / 3}%`, // # The generated bird feet extend below the nominal row; a slightly taller CSS window includes them without editing the atlas.
+            "--resident-atlas": `url("${assetUrl(referenceCompanion ? "assets/reference/companions-atlas-v1.webp" : `assets/coastal/${keeper ? "keepers" : "companions"}-atlas-v2.webp`)}")`,
+            "--resident-row": referenceCompanion
+              ? kind === "bird"
+                ? "100%"
+                : "0%"
+              : `${(row * 100) / 3}%`, // # Reference companions occupy two equal atlas rows; other residents retain their four-row source.
           } as CSSProperties
         }
       />

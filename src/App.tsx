@@ -35,7 +35,6 @@ import { registerVocabularyTool } from "./utils/webmcp";
 import { warmStarterAudio } from "./speech/audio-cache";
 import { assetUrl } from "./utils/assets"; // # Shared interior scenery follows the deployment base and the selected season.
 import { learningUnits } from "./vocabulary/lexicon"; // # Scene labels count eligible words rather than promising words absent from the library.
-import { NotebookDecor } from "./components/NotebookDecor";
 type Page =
   | "Today"
   | "Vocabulary"
@@ -49,8 +48,8 @@ const nav = [
   { page: "Today", icon: House },
   { page: "Vocabulary", icon: BookOpen },
   { page: "My world", icon: Sprout },
-  { page: "Difficult words", icon: Star },
   { page: "Personal words", icon: Plus },
+  { page: "Difficult words", icon: Star },
   { page: "Statistics", icon: ChartNoAxesCombined },
 ] as const;
 const routes: Record<Page, string> = {
@@ -218,12 +217,14 @@ export default function App() {
           "--village-scenery": `url("${assetUrl(`assets/coastal/coast-${resolveSeason(settings.season)}.webp`)}")`,
           "--wood-board": `url("${assetUrl("assets/original/wood-board-v2.svg")}")`,
           "--paper-board": `url("${assetUrl("assets/original/paper-board-v2.svg")}")`, // # Frame URLs use the same root/Pages base as the original scene assets.
+          "--reference-nav": `url("${assetUrl("assets/reference/navigation-v1.webp")}")`,
+          "--reference-sign": `url("${assetUrl("assets/reference/standing-sign-v1.webp")}")`,
+          "--reference-book": `url("${assetUrl("assets/reference/dictionary-book-v1.webp")}")`, // # Complete reference-derived illustrations replace repeated procedural frame strips.
         } as CSSProperties
       }
     >
       {page !== "Study" && (
         <aside className="world-navigation" aria-label="Village signpost">
-          <NotebookDecor className="nav-decoration" />
           <a
             className="village-brand"
             href="#today"
@@ -255,31 +256,30 @@ export default function App() {
                 <Icon size={23} />
                 <span>
                   {p === "Personal words"
-                    ? "My words"
+                    ? "My Words"
                     : p === "Difficult words"
-                      ? "Tricky words"
-                      : p}
+                      ? "Tricky Words"
+                      : p === "My world"
+                        ? "My World"
+                        : p}
                 </span>
                 {p === "Today" && s.due > 0 && (
                   <b className="village-due">{s.due}</b>
                 )}
               </button>
             ))}
-            <button
-              className={`village-nav-item ${page === "Settings & data" ? "active" : ""}`}
-              aria-label="Settings & data"
-              title="Settings & data"
-              onClick={() => go("Settings & data")}
-            >
-              <SettingsIcon size={23} />
-              <span>Settings & data</span>
-            </button>
           </nav>
         </aside>
       )}
       <main className="main">
         {page !== "Study" && (
           <div className="village-weather" aria-label="World status">
+            <img
+              className="reference-status-art"
+              src={assetUrl("assets/reference/calendar-controls-v1.webp")}
+              alt=""
+              aria-hidden="true"
+            />
             <span
               className="village-calendar"
               aria-label="Date and selected season"
@@ -298,7 +298,7 @@ export default function App() {
               </span>
             </span>
             <button
-              aria-label="Open settings"
+              aria-label="Settings & data"
               title={
                 online
                   ? "Settings · progress saved locally"

@@ -35,7 +35,12 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,svg,png,webp,json,woff2,txt}"], // # Original compact environment images are available offline; audio warms separately.
-        globIgnores: ["assets/coastal/study-room.webp"], // # Keep the earlier generated edit source available for provenance without installing an unused scene in every offline cache.
+        globIgnores: [
+          "assets/coastal/study-room.webp",
+          "assets/coastal/study-room-v3.webp",
+          "assets/coastal/review-aquarium-v2.webp",
+          "assets/reference/study-room-v1.webp",
+        ], // # Historical scene bases remain attributed but are no longer installed; the faithful reference scenes are cached instead.
         runtimeCaching: [
           {
             urlPattern: ({ url, sameOrigin }) =>

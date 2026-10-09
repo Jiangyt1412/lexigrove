@@ -10,6 +10,7 @@ import "./living-world.css"; // # Seasonal scenery and quiet learning notebooks 
 import "./coastal-world.css"; // # The village itself is the layout; navigation and actions belong to the scenery.
 import "./cozy-study.css"; // # Quiet readable notebook content stays inside the same coastal world.
 import "./woodland-game.css"; // # Wood-bound interfaces and detailed frame animation follow the user's scene references.
+import "./reference-match.css"; // # Reference proportions and complete painted parts replace the previous procedural approximation.
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

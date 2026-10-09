@@ -70,36 +70,53 @@ test("four seasons change coastal artwork and details while motion preferences p
     "true",
   );
   const contrasts = await page
-    .locator(".coastal-status > span")
-    .evaluateAll((tiles) =>
-      tiles.map((tile) => {
-        const luminance = (color: string) => {
-          const channels = color
-            .match(/[\d.]+/g)!
-            .slice(0, 3)
-            .map(Number)
-            .map((n) => {
+    .locator(".world-object")
+    .evaluateAll(async (tiles) =>
+      Promise.all(
+        tiles.map(async (tile) => {
+          const luminance = (rgb: number[]) => {
+            const channels = rgb.map((n) => {
               const c = n / 255;
               return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
             });
-          return (
-            channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722
+            return (
+              channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722
+            );
+          }; // # Inspect the visible standing signs, including the painted paper behind live text.
+          const image = new Image();
+          image.src = getComputedStyle(tile).backgroundImage.match(
+            /url\(["']?(.*?)["']?\)/,
+          )![1];
+          await image.decode();
+          const canvas = document.createElement("canvas");
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          const context = canvas.getContext("2d")!;
+          context.drawImage(image, 0, 0);
+          const paper = context.getImageData(
+            Math.floor(canvas.width * 0.5),
+            Math.floor(canvas.height * 0.4),
+            1,
+            1,
+          ).data;
+          if (paper[3] < 250 || tile.getBoundingClientRect().width === 0)
+            throw new Error("Standing sign paper is not visible");
+          const foreground = luminance(
+            getComputedStyle(tile.querySelector("b")!)
+              .color.match(/[\d.]+/g)!
+              .slice(0, 3)
+              .map(Number),
           );
-        }; // # Inspect actual rendered foreground/background after every stylesheet has applied.
-        const foreground = luminance(
-          getComputedStyle(tile.querySelector("b")!).color,
-        );
-        const background = luminance(
-          getComputedStyle(tile.parentElement!).backgroundColor,
-        );
-        return (
-          (Math.max(foreground, background) + 0.05) /
-          (Math.min(foreground, background) + 0.05)
-        );
-      }),
+          const background = luminance(Array.from(paper).slice(0, 3));
+          return (
+            (Math.max(foreground, background) + 0.05) /
+            (Math.min(foreground, background) + 0.05)
+          );
+        }),
+      ),
     );
   expect(contrasts).toHaveLength(4);
-  expect(contrasts.every((ratio) => ratio >= 4.5)).toBe(true); // # Small world status values retain text contrast in night mode.
+  expect(contrasts.every((ratio) => ratio >= 4.5)).toBe(true); // # Actual visible sign values retain text contrast in night mode.
   await page.screenshot({ path: shot("home-seasonal-night"), fullPage: true });
   await page
     .getByRole("button", { name: "Settings & data", exact: true })
@@ -313,9 +330,7 @@ test("earned residents move independently while plant stages read saved learning
   await expect
     .poll(() => fish.first().evaluate((el) => getComputedStyle(el).transform))
     .not.toBe(before);
-  await expect(page.locator(".living-garden .field-marker")).toContainText(
-    "2 words cultivated",
-  );
+  await expect(page.locator(".living-garden .field-marker")).toContainText("2");
   await expect(page.locator(".living-garden [data-plant-stage]")).toHaveCount(
     2,
   ); // # Two acquired words cannot claim eight planted beds.

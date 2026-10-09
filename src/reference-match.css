@@ -1,0 +1,1339 @@
+/* # Whole painted parts and reference geometry replace repeated SVG bevels; all changing text is live HTML. */
+.reference-status-art {
+  display: none;
+}
+.coast-garden [data-empty="true"] {
+  display: none;
+}
+.coastal-shell
+  .pixel-resident:is([data-resident="cat"], [data-resident="bird"])
+  .resident-frames {
+  height: 100%;
+  background-size: 400% 200%;
+}
+.coastal-shell .pixel-resident[data-resident="cat"]::after {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .coastal-shell .world-navigation {
+    top: 28px;
+    left: 18px;
+    width: 224px;
+    height: 426px;
+    padding: 0;
+    border: 0;
+    background: var(--reference-nav) center / 100% 100% no-repeat;
+    border-image: none;
+    box-shadow: none;
+    filter: drop-shadow(2px 3px 2px #2e24152b);
+  }
+  .coastal-shell .village-brand {
+    position: absolute;
+    left: 41%;
+    top: 10%;
+    width: 54%;
+    height: 10%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    align-items: center;
+  }
+  .coastal-shell .village-brand > svg {
+    display: none;
+  }
+  .coastal-shell .village-brand > span {
+    font: 600 21px/1 var(--font-learning);
+    color: #fff4db;
+    letter-spacing: 0;
+  }
+  .coastal-shell .world-navigation nav {
+    position: absolute;
+    top: 25.7%;
+    left: 16.3%;
+    width: 66.9%;
+    height: 65.2%;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+  }
+  .coastal-shell .village-nav-item {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 0 7px 0 40px;
+    border: 0;
+    border-image: none;
+    border-radius: 3px;
+    box-shadow: none;
+    clip-path: none;
+    background: none;
+    font: 550 15px/1.2 var(--font-learning);
+    color: #fff4df;
+  }
+  .coastal-shell .village-nav-item > svg {
+    display: none;
+  }
+  .coastal-shell .village-nav-item.active {
+    background: linear-gradient(100deg, #f8e9c9, #f0d8ad);
+    color: #30291f;
+    border-image: none;
+    box-shadow:
+      inset 0 0 0 1px #cda46c,
+      0 1px #513322;
+    margin: 3px 2px;
+    width: calc(100% - 4px);
+  }
+  .coastal-shell .village-nav-item.active > svg {
+    display: block;
+    position: absolute;
+    left: 9px;
+    width: 24px;
+    height: 24px;
+    color: #56806b;
+    filter: none;
+  }
+  .coastal-shell .village-nav-item:hover {
+    filter: brightness(1.1);
+    background-color: #e4c29420;
+    color: #fff9ea;
+  }
+  .coastal-shell .village-nav-item.active:hover {
+    color: #30291f;
+  }
+  .coastal-shell .village-due {
+    top: 2px;
+    right: 4px;
+    font-size: 10px;
+  }
+
+  /* # The date, season and two controls align with the exact blank writing spaces of the painted reference plaque. */
+  .coastal-shell .village-weather {
+    display: block;
+    width: 500px;
+    height: 167px;
+    top: -8px;
+    right: 20px;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    z-index: 15;
+  }
+  .coastal-shell .reference-status-art {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .coastal-shell .village-weather .village-calendar {
+    position: absolute;
+    inset: 35% 27% 25% 4%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+    background: none;
+    border: 0;
+    border-image: none;
+    filter: none;
+  }
+  .coastal-shell .village-calendar::before,
+  .coastal-shell .village-calendar svg {
+    display: none;
+  }
+  .coastal-shell .village-calendar time {
+    position: absolute;
+    left: 22%;
+    top: 40%;
+    font: 600 15px/1 var(--font-learning);
+    color: #fff6e5;
+  }
+  .coastal-shell .calendar-season {
+    position: absolute;
+    left: 77%;
+    top: 40%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: 600 15px/1 var(--font-learning);
+    color: #fff6e5;
+  }
+  .coastal-shell .village-weather > button {
+    position: absolute;
+    top: 34%;
+    left: 74%;
+    width: 12%;
+    height: 42%;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    clip-path: none;
+    border-radius: 5px;
+  }
+  .coastal-shell .village-weather > button + button {
+    left: 87%;
+  }
+  .coastal-shell .village-weather > button > svg {
+    visibility: hidden;
+  }
+  .coastal-shell .village-weather > button:hover {
+    background: #e9f0f812;
+  }
+
+  /* # Compact, complete standing signs keep their painted posts; labels sit only on the cream face. */
+  .coastal-shell .world-object {
+    display: block;
+    width: 205px;
+    height: 137px;
+    min-height: 0;
+    max-width: none;
+    padding: 30px 30px 48px;
+    border: 0;
+    border-image: none;
+    clip-path: none;
+    box-shadow: none;
+    background: var(--reference-sign) center / 100% 100% no-repeat;
+    color: #2f291f;
+    overflow: visible;
+    text-align: center;
+  }
+  .coastal-shell .world-object::after,
+  .coastal-shell .world-object::before,
+  .coastal-shell .object-icon {
+    display: none;
+  }
+  .coastal-shell .object-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .coastal-shell .object-label small {
+    color: #463b29;
+    font: 500 13px/1.3 var(--font-learning);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .coastal-shell .object-label b {
+    color: #2e281f;
+    font: 650 22px/1.25 var(--font-learning);
+  }
+  .coastal-shell .object-label .sign-count {
+    font-size: 25px;
+  }
+  .coastal-shell .sign-action {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    font: 600 12px/1.2 var(--font-learning);
+  }
+  .coastal-shell .world-object:hover {
+    background: var(--reference-sign) center / 100% 100% no-repeat;
+    transform: translateY(-2px);
+  }
+  .coastal-shell .mailbox-object {
+    left: 35%;
+    top: 51%;
+    height: 150px;
+  }
+  .coastal-shell .seed-object {
+    left: 53%;
+    top: 77%;
+    width: 195px;
+  }
+  .coastal-shell .ledger-object {
+    left: 26%;
+    top: 78%;
+    width: 195px;
+  }
+  .coastal-shell .aquarium-object {
+    left: auto;
+    right: 5%;
+    top: 77%;
+    width: 195px;
+  }
+  .coastal-shell .coastal-status {
+    display: none;
+  }
+  .coastal-shell .resume-book {
+    left: 36%;
+    top: calc(51% + 136px);
+    padding: 5px 10px;
+    border: 1px solid #87643d;
+    border-image: none;
+    background: #efdeb8;
+    color: #413420;
+    border-radius: 3px;
+    box-shadow: none;
+    font: 500 12px var(--font-learning);
+  }
+
+  /* # Scene coordinates follow the supplied wide image, including its crop in taller desktop windows. */
+  .coastal-shell.study-mode .cozy-study {
+    --reference-w: max(100vw, 172.4607vh);
+    --reference-h: max(100vh, 57.9842vw);
+    min-height: 100vh;
+    padding: 0;
+  }
+  .coastal-shell .study-room {
+    position: fixed;
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: var(--reference-w);
+    height: var(--reference-h);
+    transform: translate(-50%, -50%);
+    overflow: visible;
+  }
+  .coastal-shell .study-room-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
+  }
+  .coastal-shell
+    .study-room
+    :is(.room-season-accent, .room-light, .room-window-air),
+  .coastal-shell.study-mode .cozy-study > .notebook-decoration {
+    display: none;
+  }
+  .coastal-shell .study-room .room-companion {
+    top: 50%;
+    left: 16%;
+    bottom: auto;
+    width: 12%;
+    height: 23.78%;
+    filter: none;
+  }
+  .coastal-shell .study-room .study-bird {
+    top: 57%;
+    left: 75%;
+    bottom: auto;
+    width: 9.5%;
+    height: 18.83%;
+    filter: none;
+  }
+  .coastal-shell .bird-reward {
+    top: -15px;
+    left: 32%;
+    padding: 8px 12px;
+    border: 2px solid #775237;
+    border-image: none;
+    background: #fff1d3;
+    border-radius: 3px;
+    box-shadow: 2px 2px #53352160;
+    color: #302a1e;
+  }
+  .coastal-shell .bird-reward::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 14px;
+    width: 12px;
+    height: 12px;
+    background: #fff1d3;
+    border-right: 2px solid #775237;
+    border-bottom: 2px solid #775237;
+    transform: rotate(45deg);
+  }
+
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .study-notebook {
+    position: fixed;
+    top: calc(50vh - var(--reference-h) * 0.26);
+    left: calc(50vw - var(--reference-w) * 0.18);
+    width: calc(var(--reference-w) * 0.421);
+    height: calc(var(--reference-h) * 0.475);
+    margin: 0;
+    padding: 58px 0 0;
+    max-width: none;
+    max-height: none;
+    border: 0;
+    border-image: none;
+    outline: 0;
+    box-shadow: none;
+    background: none;
+    border-radius: 0;
+    clip-path: none;
+    overflow: visible;
+    transform: none;
+  }
+  .coastal-shell .study-notebook::before,
+  .coastal-shell .notebook-binding {
+    display: none;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .study-focus {
+    position: static;
+    overflow-y: auto;
+    max-height: 100%;
+    height: 100%;
+    padding: 0 4px 12px 0;
+    margin: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    clip-path: none;
+    color: #2c2821;
+    scrollbar-width: thin;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .study-top {
+    position: fixed;
+    top: 18px;
+    left: 22px;
+    right: 22px;
+    padding: 0;
+    margin: 0;
+    z-index: 8;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .study-top
+    :is(button, span) {
+    pointer-events: auto;
+    color: #fff2d8;
+    background: #5e3e279c;
+    border: 1px solid #b48b5666;
+    padding: 7px 11px;
+    border-radius: 3px;
+    font: 500 13px/1.3 var(--font-learning);
+    box-shadow: none;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .study-progress {
+    display: none;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .study-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0;
+    min-height: 38px;
+    padding: 7px 12px;
+    border: 2px solid #976b3d;
+    border-radius: 3px;
+    background: linear-gradient(#f6deb0, #e7c895);
+    box-shadow: 1px 2px #5f41275c;
+    color: #35291e;
+    font: 550 14px/1.25 var(--font-learning);
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .study-label > span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+  }
+  .coastal-shell .notebook-steps {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 38px;
+    margin: 0;
+    padding: 5px 11px;
+    gap: 8px;
+    background: #c6d1a2b5;
+    border: 1px solid #a6b285;
+    border-radius: 3px;
+  }
+  .coastal-shell .notebook-steps li {
+    padding: 0;
+    border: 0;
+    font: 12px var(--font-learning);
+    gap: 4px;
+  }
+  .coastal-shell .notebook-steps li > span:not(.step-mark) {
+    display: none;
+  }
+  .coastal-shell .notebook-steps svg {
+    width: 24px;
+    height: 24px;
+  }
+  .coastal-shell .notebook-steps .current,
+  .coastal-shell .notebook-steps .completed {
+    color: #4f7940;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .target-word {
+    color: #191b17;
+    font: 700 clamp(34px, 2.65vw, 46px)/1.15 var(--font-learning);
+    margin: 0;
+  }
+  .coastal-shell.study-mode .cozy-study .target-line {
+    display: block;
+    margin: 0 0 14px;
+  }
+  .coastal-shell.study-mode .cozy-study .study-phonetics {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 9px;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .word-meta {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #684a38;
+    font: 500 16px/1.4 var(--font-learning);
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .pronunciation-button {
+    padding: 3px 6px;
+    border: 0;
+    border-bottom: 0;
+    background: #f2e7d080;
+    box-shadow: none;
+    color: #315d83;
+    font: 500 15px/1.2 var(--font-learning);
+    border-radius: 3px;
+  }
+  .coastal-shell.study-mode .cozy-study .neutral-ipa {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #61513e;
+    font-size: 16px;
+  }
+  .coastal-shell.study-mode .cozy-study .study-meaning {
+    margin: 0 0 12px;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .learning-definition {
+    margin: 0;
+    color: #272723;
+    font: 400 20px/1.55 var(--font-learning);
+  }
+  .coastal-shell.study-mode .cozy-study .chinese-meaning {
+    margin: 5px 0 0;
+    font-size: 15px;
+    color: #77725b;
+  }
+  .coastal-shell.study-mode .cozy-study .reading-label {
+    display: none;
+  }
+  .coastal-shell.study-mode .cozy-study .study-example {
+    margin: 0 0 12px;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .study-example
+    blockquote {
+    margin: 0;
+    padding: 10px 13px;
+    background: #d9d6caa1;
+    border: 1px solid #d6ccb5;
+    border-radius: 5px;
+    box-shadow: none;
+    color: #315b82;
+    font: 400 16px/1.5 var(--font-learning);
+  }
+  .coastal-shell.study-mode .cozy-study .notebook-extras {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    margin: 0;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .notebook-disclosure
+    summary {
+    min-height: 34px;
+    padding: 7px 13px;
+    border: 1px solid #d7b57b;
+    border-radius: 4px;
+    background: #eed4a4;
+    color: #403521;
+    font: 500 13px/1.2 var(--font-learning);
+    box-shadow: none;
+  }
+  .coastal-shell.study-mode .cozy-study .study-bottom {
+    padding: 0;
+    margin: 9px 0 0;
+    border: 0;
+    display: flex;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .study-bottom button {
+    padding: 7px 12px;
+    color: #514027;
+    background: #ecd2a581;
+    border: 1px solid #d7b57b;
+    border-radius: 4px;
+    font: 500 13px/1.2 var(--font-learning);
+  }
+
+  /* # Input and Check share one horizontal strip below the paper, exactly as in the study reference. */
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .study-focus > form,
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .answer-result {
+    position: fixed;
+    top: calc(50vh + var(--reference-h) * 0.29);
+    left: calc(50vw - var(--reference-w) * 0.205);
+    width: calc(var(--reference-w) * 0.492);
+    min-height: 72px;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    align-items: stretch;
+    gap: 13px;
+    border: 2px solid #b79165;
+    outline: 2px solid #f5e3c1;
+    background: #fff0d4ef;
+    border-radius: 6px;
+    box-shadow: 3px 5px #38271845;
+    color: #2e2d24;
+  }
+  .coastal-shell.study-mode .cozy-study .answer-label {
+    position: relative;
+    flex: 1;
+    margin: 0;
+    min-width: 0;
+    color: transparent;
+    font-size: 0;
+    gap: 0;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .answer-input {
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 12px 17px;
+    font: 400 19px/1.2 var(--font-learning);
+    background: #fff8e6;
+    color: #252d27;
+    border: 2px solid #d0b58e;
+    outline: 0;
+    clip-path: none;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px #7966441a;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .answer-input:focus {
+    border-color: #638878;
+    outline: 2px solid #7198833b;
+    outline-offset: 1px;
+  }
+  .coastal-shell.study-mode .cozy-study .answer-actions {
+    display: contents;
+  }
+  .coastal-shell.study-mode .cozy-study .keyboard-hint {
+    display: none;
+  }
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study
+    :is(.answer-actions, .answer-result)
+    > .primary {
+    width: 27%;
+    min-width: 135px;
+    min-height: 60px;
+    padding: 10px 16px;
+    margin: 0;
+    border: 2px solid #385833;
+    background: linear-gradient(#5c8850, #3c6b39);
+    border-radius: 4px;
+    clip-path: none;
+    box-shadow:
+      inset 1px 1px #9bb277,
+      1px 2px #40613a;
+    color: #fff8e9;
+    font: 600 18px/1.25 var(--font-learning);
+  }
+  .coastal-shell.study-mode .cozy-study .answer-result {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .coastal-shell.study-mode .cozy-study .answer-result .result-label {
+    flex: 1;
+    font: 650 24px/1.3 var(--font-learning);
+    color: #416c36;
+  }
+  .coastal-shell.study-mode .cozy-study .answer-result .diff-line {
+    flex-basis: calc(50% - 14px);
+  }
+  .coastal-shell.study-mode .cozy-study .answer-result .subtle {
+    font-size: 12px;
+    margin: 0;
+    flex-basis: 65%;
+  }
+  .coastal-shell.study-mode .cozy-study .answer-result .primary {
+    margin-left: auto;
+  }
+
+  /* # Aquarium remains the dominant illustration; a compact live book occupies only its existing reading alcove. */
+  .coastal-shell.study-mode .cozy-study[data-scene="aquarium"] {
+    --reference-w: max(100vw, 200vh);
+    --reference-h: max(100vh, 50vw);
+    --review-width: clamp(440px, 36vw, 560px);
+    --review-height: min(600px, 56vh);
+  }
+  .coastal-shell.study-mode .cozy-study[data-scene="aquarium"] .study-room {
+    left: auto;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  .coastal-shell.study-mode .cozy-study .aquarium-book-close {
+    position: absolute;
+    z-index: 3;
+    top: calc(var(--review-height) * 0.148);
+    right: calc(var(--review-width) * 0.062);
+    display: grid;
+    place-items: center;
+    width: calc(var(--review-width) * 0.08);
+    height: calc(var(--review-height) * 0.08);
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    clip-path: none;
+    box-shadow: none;
+    background: transparent;
+    color: #654723;
+  } /* # A live close control occupies the blank painted tab in the aquarium reading book. */
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study[data-scene="aquarium"]
+    .study-notebook {
+    left: auto;
+    right: 3vw;
+    top: 14vh;
+    width: var(--review-width);
+    height: var(--review-height);
+    padding: 86px 35px 65px;
+    background: var(--reference-book) right center / 146% 100% no-repeat;
+  }
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study[data-scene="aquarium"]
+    .study-label {
+    top: 68px;
+    left: 35px;
+    right: auto;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    font-size: 13px;
+    color: #6b654f;
+  }
+  .coastal-shell.study-mode .cozy-study[data-scene="aquarium"] .notebook-steps {
+    top: 37px;
+    left: 35px;
+    padding: 2px 6px;
+    height: 27px;
+    gap: 4px;
+    background: none;
+    border: 0;
+  }
+  .coastal-shell.study-mode
+    .cozy-study[data-scene="aquarium"]
+    .notebook-steps
+    svg {
+    width: 19px;
+    height: 19px;
+  }
+  .coastal-shell.study-mode
+    .cozy-study[data-scene="aquarium"]
+    .recognition-word {
+    min-height: min(25vh, 230px);
+    padding: 0;
+    display: grid;
+    place-items: center;
+  }
+  .coastal-shell.study-mode
+    .cozy-study[data-scene="aquarium"]
+    .recognition-choices {
+    margin: 10px 0 0;
+    display: flex;
+    gap: 9px;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .recognition-option {
+    padding: 15px 8px;
+    min-height: 58px;
+    flex: 1;
+    font: 600 17px/1.3 var(--font-learning);
+    color: #4c513c;
+    background: #eddfbc;
+    border: 1px solid #ae8d5f;
+    border-radius: 4px;
+    box-shadow: 0 2px #ab885b4d;
+    clip-path: none;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .recognition-option.known {
+    background: #d8e3be;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .recognition-option.unknown {
+    background: #e7d4c4;
+  }
+  .coastal-shell.study-mode .cozy-study[data-scene="aquarium"] .room-companion,
+  .coastal-shell.study-mode .cozy-study[data-scene="aquarium"] .study-bird {
+    display: none;
+  }
+  .coastal-shell .review-diver.pixel-resident {
+    left: 61%;
+    bottom: 5%;
+    width: 6%;
+    height: 12%;
+  }
+  .coastal-shell .review-mature-label {
+    position: absolute;
+    left: 72%;
+    top: 77%;
+    width: 20.6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: #35291d;
+    font: 500 16px/1.35 var(--font-learning);
+  }
+  .coastal-shell .review-mature-label strong {
+    font-size: 29px;
+  }
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study[data-scene="aquarium"]
+    .study-focus
+    > form,
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study[data-scene="aquarium"]
+    .answer-result {
+    top: calc(14vh + var(--review-height) - 72px);
+    left: auto;
+    right: calc(3vw + 30px);
+    width: calc(var(--review-width) - 60px);
+    min-height: 48px;
+    padding: 6px;
+    outline: 0;
+    gap: 7px;
+  }
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study[data-scene="aquarium"]
+    .answer-input {
+    height: 43px;
+    padding: 7px 10px;
+    font-size: 16px;
+  }
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study[data-scene="aquarium"]
+    :is(.answer-actions, .answer-result)
+    > .primary {
+    min-width: 100px;
+    min-height: 43px;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study[data-scene="aquarium"]
+    .target-word {
+    font-size: 37px;
+  }
+  :root[data-theme]
+    .coastal-shell
+    .cozy-study[data-scene="aquarium"]
+    .learning-definition {
+    font-size: 17px;
+  }
+  .coastal-shell.study-mode
+    .cozy-study[data-scene="aquarium"]
+    .study-example
+    blockquote {
+    font-size: 14px;
+    padding: 7px 9px;
+  }
+
+  /* # A quiet fallback still works when the user switches the illustrated world off. */
+  :root[data-theme] .coastal-shell.study-calm .cozy-study .study-notebook {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: 110px;
+    width: min(740px, calc(100vw - 70px));
+    height: calc(100vh - 245px);
+    background: #fff4dc;
+    border: 2px solid #c5a071;
+    padding: 58px 25px 20px;
+    border-radius: 5px;
+  }
+  :root[data-theme] .coastal-shell.study-calm .cozy-study .study-focus > form,
+  :root[data-theme] .coastal-shell.study-calm .cozy-study .answer-result {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    top: auto;
+    bottom: 25px;
+    width: min(760px, calc(100vw - 70px));
+  }
+}
+
+@media (max-width: 899px) {
+  .aquarium-book-close {
+    display: none;
+  } /* # The compact fallback retains its visible Save and leave control. */
+}
+
+/* # The dictionary uses the original five-item index and the complete two-page painting, with no procedural frame around it. */
+:root[data-theme] .coastal-shell .dictionary-modal.cozy-dictionary {
+  width: min(980px, calc(100vw - 48px));
+  height: min(648px, calc(100vw * 0.635), 88vh);
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  border: 0 !important;
+  border-image: none !important;
+  outline: 0;
+  box-shadow: none !important;
+  clip-path: none;
+  background: var(--reference-book) center / 100% 100% no-repeat !important;
+  overflow: hidden;
+}
+:root[data-theme] .coastal-shell .cozy-dictionary .modal-inner {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: none;
+  overflow: hidden;
+}
+.coastal-shell .cozy-dictionary .dictionary-journal {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  display: block;
+  background: none;
+  min-height: 0;
+}
+.coastal-shell .cozy-dictionary .journal-bookmarks {
+  position: absolute;
+  left: 4.7%;
+  top: 28%;
+  width: 22.8%;
+  height: 55.7%;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+:root[data-theme] .coastal-shell .cozy-dictionary .journal-bookmarks button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  padding: 0 3px 0 30%;
+  border: 0;
+  border-image: none;
+  background: none;
+  box-shadow: none;
+  clip-path: none;
+  color: #433524;
+  font: 500 15px/1.25 var(--font-learning);
+  text-align: left;
+}
+.coastal-shell .cozy-dictionary .journal-bookmarks button svg,
+.coastal-shell .cozy-dictionary .journal-spine,
+.coastal-shell .cozy-dictionary .notebook-decoration {
+  display: none;
+}
+.coastal-shell .cozy-dictionary .journal-bookmarks button[aria-pressed="true"] {
+  color: #2c251b;
+  font-weight: 650;
+}
+.coastal-shell .cozy-dictionary .journal-bookmarks button:hover {
+  background: #ba95641a;
+}
+.coastal-shell .cozy-dictionary .dictionary-page {
+  position: absolute;
+  left: 33.8%;
+  right: 6%;
+  top: 16.8%;
+  bottom: 8.3%;
+  margin: 0;
+  padding: 0 8px 10px 0;
+  overflow-y: auto;
+  color: #2c2a24;
+  scrollbar-width: thin;
+}
+.coastal-shell .cozy-dictionary .modal-heading {
+  position: absolute;
+  z-index: 6;
+  top: 15.8%;
+  right: 4.8%;
+  padding: 0;
+  margin: 0;
+}
+.coastal-shell .cozy-dictionary .modal-heading .icon-button {
+  width: 31px;
+  height: 31px;
+  min-height: 0;
+  padding: 4px;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  clip-path: none;
+  color: #523925;
+}
+:root[data-theme] .coastal-shell .cozy-dictionary .word-title h2 {
+  font: 700 36px/1.15 var(--font-learning);
+  color: #1e211b;
+  margin: 0 0 13px;
+}
+:root[data-theme] .coastal-shell .cozy-dictionary .entry-tab {
+  border: 1px solid #bf9761;
+  border-radius: 4px 4px 0 0;
+  background: #e7cda3;
+  color: #3e3327;
+  box-shadow: none;
+  clip-path: none;
+  font: 500 14px var(--font-learning);
+  padding: 7px 15px;
+}
+:root[data-theme] .coastal-shell .cozy-dictionary .entry-tab.selected {
+  background: #4374ad;
+  border-color: #315983;
+  color: #fff;
+}
+.coastal-shell .cozy-dictionary .word-meta {
+  width: fit-content;
+  padding: 4px 10px;
+  margin: 0 0 9px;
+  border: 0;
+  border-radius: 3px;
+  background: #4576af;
+  color: #fff;
+  font: 500 14px/1.3 var(--font-learning);
+}
+:root[data-theme] .coastal-shell .cozy-dictionary .pronunciation-button {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 5px 6px;
+  font: 500 15px/1.3 var(--font-learning);
+  color: #446b8e;
+  border-radius: 3px;
+}
+.coastal-shell .cozy-dictionary .pronunciation-pair {
+  margin-bottom: 12px;
+}
+.coastal-shell .cozy-dictionary .sense-progress {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+:root[data-theme] .coastal-shell .cozy-dictionary .dictionary-definition {
+  position: relative;
+  margin: 15px 0 10px;
+  padding-left: 33px;
+  font: 400 19px/1.55 var(--font-learning);
+  color: #262823;
+}
+.coastal-shell .cozy-dictionary .dictionary-definition::before {
+  content: "1";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e5dcc8;
+  text-align: center;
+  font: 650 16px/24px var(--font-learning);
+}
+.coastal-shell .cozy-dictionary .sense-list {
+  padding-left: 31px;
+  margin: 16px 0;
+}
+.coastal-shell .cozy-dictionary .sense-list li {
+  font: 400 19px/1.55 var(--font-learning);
+  margin: 0 0 13px;
+  color: #282a24;
+}
+.coastal-shell .cozy-dictionary blockquote {
+  font: italic 400 16px/1.5 var(--font-learning);
+  margin: 10px 0 18px 33px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: #81765f;
+}
+.coastal-shell .cozy-dictionary .chinese-meaning {
+  margin-left: 33px;
+  color: #776d58;
+  font-size: 15px;
+}
+.coastal-shell .cozy-dictionary .detail-section {
+  margin-top: 25px;
+}
+.coastal-shell .cozy-dictionary .detail-section h3 {
+  font: 600 15px/1.5 var(--font-learning);
+  color: #765f3f;
+}
+.coastal-shell
+  .cozy-dictionary
+  .dictionary-journal[data-confirming="true"]
+  .dictionary-page {
+  bottom: 195px;
+}
+.coastal-shell .cozy-dictionary .reference-confirmation-footer {
+  position: absolute;
+  left: 33.8%;
+  right: 6%;
+  bottom: 8.1%;
+  padding: 0 8px 0 0;
+  background: #fbf0dce8;
+}
+.coastal-shell
+  .cozy-dictionary
+  .reference-confirmation-footer
+  .review-confirmation {
+  margin: 0;
+  padding: 10px 0 0;
+  border-top: 1px solid #d7be91;
+}
+
+@media (max-width: 899px) {
+  .coastal-shell .cozy-dictionary .journal-bookmarks {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 42px;
+    display: flex;
+    gap: 2px;
+    padding: 0;
+  }
+  :root[data-theme] .coastal-shell .dictionary-modal.cozy-dictionary {
+    width: calc(100vw - 18px);
+    height: 90dvh;
+    background: #fff5e1 !important;
+    border: 3px solid #967142 !important;
+    border-radius: 4px;
+  }
+  .coastal-shell .cozy-dictionary .dictionary-journal {
+    position: relative;
+    inset: auto;
+    padding: 44px 12px 0;
+  }
+  :root[data-theme] .coastal-shell .cozy-dictionary .journal-bookmarks button {
+    flex: 1;
+    padding: 2px 3px;
+    font-size: 10px;
+    text-align: center;
+    justify-content: center;
+    border-bottom: 1px solid #c5a374;
+  }
+  .coastal-shell .cozy-dictionary .journal-bookmarks button > span {
+    display: block;
+  }
+  .coastal-shell .cozy-dictionary .dictionary-page {
+    left: 13px;
+    right: 13px;
+    top: 102px;
+    bottom: 14px;
+  }
+  .coastal-shell .cozy-dictionary .modal-heading {
+    top: 8px;
+    right: 9px;
+  }
+  :root[data-theme] .coastal-shell .cozy-dictionary .word-title h2 {
+    font-size: 31px;
+  }
+  .coastal-shell
+    .cozy-dictionary
+    .dictionary-journal[data-confirming="true"]
+    .dictionary-page {
+    bottom: 216px;
+  }
+  .coastal-shell .cozy-dictionary .reference-confirmation-footer {
+    left: 13px;
+    right: 13px;
+    bottom: 13px;
+    padding: 0;
+  }
+  .coastal-shell .review-mature-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coastal-shell .resident-frames,
+  .coastal-shell .bird-celebrating,
+  .coastal-shell .bird-reward {
+    animation: none !important;
+  }
+}
+
+/* # Section bookmarks show their real dictionary content; the selected meaning never changes implicitly. */
+.coastal-shell .cozy-dictionary .word-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.coastal-shell .cozy-dictionary .journal-notes-link {
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: #86745b;
+  font: 500 12px var(--font-learning);
+}
+.coastal-shell .cozy-dictionary .detail-section {
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.coastal-shell
+  .cozy-dictionary
+  .dictionary-journal:not([data-bookmark="Notes"])
+  .dictionary-note {
+  display: none;
+}
+.coastal-shell
+  .cozy-dictionary
+  .dictionary-journal:not([data-bookmark="Collocations"])
+  .dictionary-collocations {
+  display: none;
+}
+.coastal-shell
+  .cozy-dictionary
+  .dictionary-journal:not([data-bookmark="Word family"])
+  .dictionary-family {
+  display: none;
+}
+.coastal-shell
+  .cozy-dictionary
+  .dictionary-journal:is(
+    [data-bookmark="Collocations"],
+    [data-bookmark="Word family"],
+    [data-bookmark="Notes"]
+  )
+  :is(.dictionary-definition, .sense-list, .chinese-meaning, blockquote) {
+  display: none;
+}
+.coastal-shell
+  .cozy-dictionary
+  .dictionary-journal[data-bookmark="Examples"]
+  :is(.dictionary-definition, .sense-list, .chinese-meaning) {
+  display: none;
+}
+.coastal-shell
+  .cozy-dictionary
+  .dictionary-journal[data-bookmark="Notes"]
+  .source-details {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .coastal-shell .village-calendar time,
+  .coastal-shell .calendar-season {
+    top: 35%;
+  }
+  .coastal-shell .study-room .room-companion {
+    top: 51.4%;
+    height: 20.69%;
+  }
+  .coastal-shell .study-room .study-bird {
+    top: 58.5%;
+    height: 16.38%;
+  }
+  .coastal-shell .notebook-steps {
+    right: auto;
+    width: fit-content;
+    max-width: 220px;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .study-top
+    .text-button {
+    color: #fff2d8;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .target-word {
+    font-size: 42px;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .learning-definition {
+    font-size: 23px;
+    line-height: 1.55;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .study-example
+    blockquote {
+    font-size: 18px;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .study-focus
+    .answer-input {
+    border: 2px solid #ceb088;
+    border-radius: 4px;
+    clip-path: none;
+    outline: 0;
+    box-shadow: inset 0 1px 2px #7966441a;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study
+    .study-focus
+    .answer-input:focus {
+    border-color: #927850;
+    outline: 2px solid #bf9b5c59;
+    outline-offset: 1px;
+  }
+  :root[data-theme] .coastal-shell.study-mode .cozy-study .notebook-detail-tab {
+    min-height: 34px;
+    padding: 7px 13px;
+    border: 1px solid #d7b57b;
+    border-radius: 4px;
+    background: #eed4a4;
+    color: #403521;
+    font: 500 13px/1.2 var(--font-learning);
+    box-shadow: none;
+    display: inline-flex;
+    gap: 6px;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study[data-scene="aquarium"]
+    .study-focus:has(.recognition-word)
+    .study-label {
+    display: none;
+  }
+  :root[data-theme]
+    .coastal-shell.study-mode
+    .cozy-study[data-scene="aquarium"]
+    .learning-definition {
+    font-size: 17px;
+  }
+}

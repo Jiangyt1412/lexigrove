@@ -121,7 +121,7 @@ async function dueReview(page: Page) {
   );
   await expect(page.locator(".study-room-art")).toHaveAttribute(
     "src",
-    /review-aquarium-v2\.webp$/,
+    /aquarium-v1\.webp$/,
   ); // # Every scheduled recognition and repair stays in the aquarium scene, independently of its FSRS outcome.
   await expect(
     page.locator(
@@ -147,7 +147,9 @@ test("review opens editable details, restores its draft, and known changed to un
   const before = await dueReview(page);
   await page.getByRole("button", { name: "认识", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: "Dictionary" });
-  await expect(dialog.locator(".word-title")).toHaveText("mitigate");
+  await expect(
+    dialog.getByRole("heading", { level: 2, name: "mitigate", exact: true }),
+  ).toBeVisible(); // # The lexical heading remains separate from the neighboring Notes control.
   await expect(dialog.locator(".dictionary-definition")).toContainText(
     "less severe",
   );
@@ -160,14 +162,21 @@ test("review opens editable details, restores its draft, and known changed to un
   await expect(
     dialog.getByRole("button", { name: "不认识", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
+  await dialog
+    .getByRole("button", { name: "Word family", exact: true })
+    .click();
   await dialog.getByRole("button", { name: "mitigation", exact: true }).click();
-  await expect(dialog.locator(".word-title")).toHaveText("mitigation");
+  await expect(
+    dialog.getByRole("heading", { level: 2, name: "mitigation", exact: true }),
+  ).toBeVisible();
   await expect(page.getByRole("dialog")).toHaveCount(1);
   await expect(
     dialog.getByRole("button", { name: "Create a personal entry" }),
   ).toHaveCount(0);
   await dialog.getByRole("button", { name: "返回正在复习的释义" }).click();
-  await expect(dialog.locator(".word-title")).toHaveText("mitigate");
+  await expect(
+    dialog.getByRole("heading", { level: 2, name: "mitigate", exact: true }),
+  ).toBeVisible();
   await expect(
     dialog.getByRole("button", { name: "不认识", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");

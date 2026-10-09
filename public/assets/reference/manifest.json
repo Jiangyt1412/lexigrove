@@ -1,0 +1,103 @@
+{
+  "mode": "built-in image generation; targeted edits of user-supplied references",
+  "assets": [
+    {
+      "file": "study-room-v1.webp",
+      "source": "exec-51db5158-8921-46ac-9fd3-9a8b5c07fe28.png",
+      "width": 1766,
+      "height": 891,
+      "alpha": false,
+      "alphaPreserved": false,
+      "bytes": 290610,
+      "sha256": "67646f8da81e5e94f95d7c67edca817e7d70ff08e01c029ad2b903a34715440e",
+      "selectedRuntimeAsset": false
+    },
+    {
+      "file": "navigation-v1.webp",
+      "source": "exec-9c6ed157-c01a-4882-829f-b95eac82b996.png",
+      "width": 909,
+      "height": 1730,
+      "alpha": true,
+      "alphaPreserved": true,
+      "bytes": 208708,
+      "sha256": "f387187cdaa10a8eaca6661a0bf5c78fe5027d1d7578d44a9c671034d0fa3e6d",
+      "selectedRuntimeAsset": true
+    },
+    {
+      "file": "dictionary-book-v1.webp",
+      "source": "exec-4969cf5b-b8c4-4745-b4d9-420f98dfc20e.png",
+      "width": 1542,
+      "height": 1020,
+      "alpha": true,
+      "alphaPreserved": true,
+      "bytes": 144000,
+      "sha256": "93103b8418c6b7a641a0d891d1727def34163b5ebd4c50822fabbfe987011831",
+      "selectedRuntimeAsset": true
+    },
+    {
+      "file": "standing-sign-v1.webp",
+      "source": "exec-9b20d51c-5dcf-4a32-9982-f6a1fd0c850f.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "alphaPreserved": true,
+      "bytes": 90432,
+      "sha256": "8b8382011a152911a01646585524feee291b79db605dc909bf2d0029a916eb79",
+      "selectedRuntimeAsset": true
+    },
+    {
+      "file": "calendar-controls-v1.webp",
+      "source": "exec-8bba05d1-58d3-42cc-bb9a-b92fb14e4c00.png",
+      "width": 2172,
+      "height": 724,
+      "alpha": true,
+      "alphaPreserved": true,
+      "bytes": 113422,
+      "sha256": "679a662963c49d788b5a3c6b0dc6eb867654eb2e38948620d8cd3b3caf86c2b0",
+      "selectedRuntimeAsset": true
+    },
+    {
+      "file": "aquarium-v1.webp",
+      "source": "exec-1080bfe2-80d4-4040-919f-38860121bbb4.png",
+      "width": 1774,
+      "height": 887,
+      "alpha": false,
+      "alphaPreserved": false,
+      "bytes": 337728,
+      "sha256": "28d3fe850b66112d6224fd38c648f44a6e22cf9e34f67a82b04882a495c8c554",
+      "selectedRuntimeAsset": true
+    },
+    {
+      "file": "companions-atlas-v1.webp",
+      "source": "exec-915be8f4-f277-4965-883c-18035f8e7d04.png",
+      "width": 1774,
+      "height": 887,
+      "alpha": true,
+      "alphaPreserved": true,
+      "bytes": 247560,
+      "sha256": "141f39bde7a731bab6462b83d8ed09ddbafad8d8ab8f0d141e4d97ea90277a95",
+      "selectedRuntimeAsset": true
+    },
+    {
+      "file": "study-room-v2.webp",
+      "source": "exec-c8af357f-4eee-4117-b904-7bfcee2e8411.png",
+      "width": 1647,
+      "height": 955,
+      "alpha": false,
+      "alphaPreserved": false,
+      "bytes": 275168,
+      "sha256": "97ad03da72496f6425408bf26214051978899fa261e95928ef2757751b69a384",
+      "selectedRuntimeAsset": true
+    }
+  ],
+  "conversionGeometryEdits": false,
+  "sourceProvenance": "User-supplied concept references; underlying independent licence not verified; excluded from original-art CC0 dedication.",
+  "conversion": {
+    "format": "WebP",
+    "quality": 92,
+    "method": 6,
+    "crop": false,
+    "resize": false,
+    "alphaModification": false
+  }
+}

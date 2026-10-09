@@ -143,7 +143,15 @@ test("dictionary selectors update POS, pronunciation, definition, example, collo
   await expect(dialog.locator("blockquote")).toHaveText(
     "The laboratory keeps a record of each experiment.",
   );
+  await dialog
+    .getByRole("button", { name: "Collocations", exact: true })
+    .click();
+  await expect(dialog.locator(".dictionary-collocations")).toBeVisible();
   await expect(dialog.locator(".chips")).toContainText("keep a record");
+  await expect(dialog.locator(".dictionary-definition")).toBeHidden();
+  await dialog
+    .getByRole("button", { name: "Definitions", exact: true })
+    .click(); // # Bookmarks reveal the actual selected meaning's content while preserving its lexical ownership.
   await page.screenshot({
     path: path.resolve("../lexigrove-dictionary-record-noun.png"),
   });
@@ -160,7 +168,13 @@ test("dictionary selectors update POS, pronunciation, definition, example, collo
   await expect(dialog.locator("blockquote")).toHaveText(
     "The measurements were recorded automatically.",
   );
+  await dialog
+    .getByRole("button", { name: "Collocations", exact: true })
+    .click();
   await expect(dialog.locator(".chips")).toContainText("record measurements");
+  await dialog
+    .getByRole("button", { name: "Definitions", exact: true })
+    .click();
   await expect(dialog.locator(".sense-progress")).toHaveText(
     "New · This learning meaning",
   );
@@ -176,7 +190,13 @@ test("dictionary selectors update POS, pronunciation, definition, example, collo
   await expect(dialog.locator("blockquote")).toHaveText(
     "We record each lecture for students to replay.",
   );
+  await dialog
+    .getByRole("button", { name: "Collocations", exact: true })
+    .click();
   await expect(dialog.locator(".chips")).toContainText("record a video");
+  await dialog
+    .getByRole("button", { name: "Definitions", exact: true })
+    .click();
   await page.screenshot({
     path: path.resolve("../lexigrove-dictionary-record-verb.png"),
   });

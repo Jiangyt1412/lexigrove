@@ -193,6 +193,7 @@ export function CoastalWorld({
                 {beds.map((stage, i) => (
                   <g
                     key={i}
+                    data-empty={!stage ? "true" : undefined}
                     transform={`translate(${(i % 4) * 58} ${Math.floor(i / 4) * 43})`}
                   >
                     <path
@@ -435,14 +436,11 @@ export function CoastalToday({
         aria-label={action}
         icon={<BookOpen size={25} />}
       >
-        <small>
-          {stats.due
-            ? `${stats.due} reviews waiting`
-            : `${activeNew} new discoveries`}
-        </small>
-        <b>
-          {action} <ArrowRight size={15} />
-        </b>
+        <small>{stats.due ? "Reviews due" : "New words"}</small>
+        <b className="sign-count">{stats.due || activeNew}</b>
+        <span className="sign-action">
+          {action} <ArrowRight size={13} />
+        </span>
       </WorldObject>
       <WorldObject
         className="seed-object"
@@ -450,8 +448,8 @@ export function CoastalToday({
         aria-label={`Explore ${stats.words} words`}
         icon={<Sprout size={25} />}
       >
-        <small>THE SEED LIBRARY</small>
-        <b>Explore {stats.words} words</b>
+        <small>Vocabulary</small>
+        <b>{stats.words} words</b>
       </WorldObject>
       <WorldObject
         className="aquarium-object"
@@ -463,8 +461,8 @@ export function CoastalToday({
           </svg>
         }
       >
-        <small>MEMORY AQUARIUM</small>
-        <b>{world.aquarium} lasting memories</b>
+        <small>Mature vocabulary</small>
+        <b>{world.aquarium} words</b>
       </WorldObject>
       <WorldObject
         className="ledger-object"
@@ -472,8 +470,8 @@ export function CoastalToday({
         aria-label="Open learning statistics"
         icon={<ChartNoAxesCombined size={25} />}
       >
-        <small>GARDEN LEDGER</small>
-        <b className="field-marker">{world.garden} words cultivated</b>
+        <small>Words cultivated</small>
+        <b className="field-marker">{world.garden}</b>
         <span className="field-note">
           {stages.seeds} seeds · {stages.sprouts} sprouts ·{" "}
           {stages.young + stages.growing} growing · {stages.mature} flowering

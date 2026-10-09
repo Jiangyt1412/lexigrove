@@ -8,6 +8,7 @@ import {
   TextCursorInput,
   Sprout,
   Star,
+  X,
 } from "../components/PixelIcons";
 import type {
   Lexical,
@@ -65,7 +66,7 @@ function StudyRoom({
       <img
         className="study-room-art"
         src={assetUrl(
-          `assets/coastal/${review ? "review-aquarium-v2" : "study-room-v3"}.webp`,
+          `assets/reference/${review ? "aquarium-v1" : "study-room-v2"}.webp`,
         )}
         alt=""
       />
@@ -110,6 +111,10 @@ function StudyRoom({
             action={feedback?.correct ? "wave" : "idle"}
             className="review-diver"
           />
+          <div className="review-mature-label">
+            <span>Mature vocabulary</span>
+            <strong>{matureResidents} words</strong>
+          </div>
         </>
       ) : (
         <div className="room-window-air">
@@ -507,6 +512,19 @@ export default function Study({
             <Sprout size={15} />
           </span>
         </div>
+        {session.mode === "review" && settings.world !== "off" && (
+          <button
+            className="aquarium-book-close"
+            aria-label="Save and leave review"
+            onClick={() => {
+              stopPronunciation();
+              onExit();
+            }}
+          >
+            <X size={17} />
+          </button>
+        )}{" "}
+        {/* # Keep the painted close tab outside the scrollable reading surface; it saves the same pending review as the top return control. */}
         <div className="study-focus">
           <div className="notebook-binding" aria-hidden="true" />
           {result?.correct && (
@@ -690,6 +708,14 @@ export default function Study({
                     <p className="family-empty">暂无已核实的词形家族</p>
                   )}
                 </details>
+                <button
+                  type="button"
+                  className="notebook-detail-tab"
+                  aria-label="Notes & entry"
+                  onClick={() => dictionary(word.lemma)}
+                >
+                  <BookOpen size={15} /> Other meanings
+                </button>
               </div>
               {word.fullDefinitions.length > 1 && (
                 <>
@@ -888,7 +914,7 @@ export default function Study({
               </button>
             </div>
           )}
-          {!recognition && (
+          {!recognition && !revealed && (
             <div className="study-bottom">
               <button
                 className="text-button"
