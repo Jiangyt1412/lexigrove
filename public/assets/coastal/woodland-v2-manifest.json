@@ -1,0 +1,40 @@
+{
+  "created": "2026-10-05",
+  "method": "OpenAI built-in image generation; WebP format conversion only",
+  "assets": [
+    {
+      "file": "companions-atlas-v2.webp",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 443806,
+      "sha256": "4ffcb840d1bc3aa1c3794deb996e36e23ffc70a0fefb901912766e2b9558d8e8",
+      "alpha_preserved": true
+    },
+    {
+      "file": "keepers-atlas-v2.webp",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 499418,
+      "sha256": "7fe5c03ceb21c05985b863dd4cb11230182da418ae3b372539cd3d107185c1fc",
+      "alpha_preserved": true
+    },
+    {
+      "file": "review-aquarium-v2.webp",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 538896,
+      "sha256": "3f3828848c30383457f706d780281ec1a363e3159192726cd9224a04ca0c755b"
+    },
+    {
+      "file": "study-room-v3.webp",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 478248,
+      "sha256": "69ed0e1021bf90a71d839dda99bf4518d4110b85f820b99dfa767c031f0e9c1d"
+    }
+  ]
+}

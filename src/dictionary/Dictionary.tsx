@@ -5,8 +5,8 @@ import {
   ExternalLink,
   Star,
   BookOpen,
-  Headphones,
   TextCursorInput,
+  Sprout,
 } from "../components/PixelIcons";
 import {
   type Lexical,
@@ -19,6 +19,7 @@ import { Pronunciation } from "../components/Pronunciation"; // # Both accents a
 import { hydrateWord, projectSense } from "../vocabulary/lexicon"; // # All entry panels use a single projection of their selected sense.
 import { Definition, Modal } from "../components/ui";
 import { learningState } from "../learning/engine"; // # Current scheduling state is distinct from a permanently earned world milestone.
+import { NotebookDecor } from "../components/NotebookDecor";
 export function Dictionary({
   initial,
   words,
@@ -39,6 +40,7 @@ export function Dictionary({
   reviewConfirmation?: { learningSenseId: string; footer: ReactNode }; // # Study opens the tested meaning first and supplies its editable familiarity confirmation.
 }) {
   const [path, setPath] = useState([initial]);
+  const [bookmark, setBookmark] = useState("Definitions"); // # Bookmark navigation scrolls only the journal and preserves the current meaning and draft choice.
   const initialEntry = words
     .find((w) => normalize(w.lemma) === normalize(initial))
     ?.entries.find((e) =>
@@ -113,23 +115,39 @@ export function Dictionary({
       className="dictionary-modal cozy-dictionary"
     >
       <div className="dictionary-journal">
+        <NotebookDecor className="dictionary-decoration" />
         <aside
           className="journal-bookmarks"
           aria-label="Dictionary page sections"
         >
           {[
             {
-              label: "发音",
-              icon: <Headphones size={21} />,
-              target: ".pronunciation-pair",
-            },
-            {
-              label: "释义",
+              label: "Definitions",
               icon: <BookOpen size={21} />,
               target: ".dictionary-definition, .sense-list",
             },
             {
-              label: "笔记",
+              label: "Examples",
+              icon: <BookOpen size={21} />,
+              target: "blockquote",
+            },
+            {
+              label: "Collocations",
+              icon: <Sprout size={21} />,
+              target: ".dictionary-collocations",
+            },
+            {
+              label: "Word family",
+              icon: <Sprout size={21} />,
+              target: ".dictionary-family",
+            },
+            {
+              label: "Other meanings",
+              icon: <Star size={21} />,
+              target: ".entry-tabs, .sense-list",
+            },
+            {
+              label: "Notes",
               icon: <TextCursorInput size={21} />,
               target: "textarea",
             },
@@ -137,7 +155,9 @@ export function Dictionary({
             <button
               key={tab.label}
               type="button"
+              aria-pressed={bookmark === tab.label}
               onClick={(event) => {
+                setBookmark(tab.label);
                 event.currentTarget
                   .closest("dialog")
                   ?.querySelector(tab.target)
@@ -357,7 +377,7 @@ export function Dictionary({
                     <blockquote key={i}>{e}</blockquote>
                   ))}
                   {!!word.collocations.length && (
-                    <div className="detail-section">
+                    <div className="detail-section dictionary-collocations">
                       <h3>Collocations</h3>
                       <div className="chips">
                         {word.collocations.map((c) => (
@@ -369,7 +389,7 @@ export function Dictionary({
                     </div>
                   )}
                   {!!word.wordFamily.length && (
-                    <div className="detail-section">
+                    <div className="detail-section dictionary-family">
                       <h3>Word family</h3>
                       {word.wordFamilySource && (
                         <a

@@ -26,6 +26,14 @@ test("four seasons change coastal artwork and details while motion preferences p
     await page.getByRole("button", { name: "Today", exact: true }).click();
     const scene = page.locator(".coastal-world");
     await expect(scene).toHaveCount(1);
+    await expect(scene.locator(".coast-cloud")).toHaveCount(0);
+    await expect(scene.locator('[data-resident="gardener"]')).toBeVisible();
+    await expect(page.locator(".village-calendar")).toBeVisible();
+    await expect(
+      page
+        .getByRole("button", { name: "Vocabulary", exact: true })
+        .locator("span"),
+    ).toBeVisible(); // # Desktop navigation has permanent readable labels and the calendar replaces the old title card.
     await expect(scene).toHaveAttribute("data-season", season);
     await expect(scene.locator(".coast-backdrop")).toHaveAttribute(
       "src",
@@ -35,9 +43,16 @@ test("four seasons change coastal artwork and details while motion preferences p
       .poll(() =>
         scene
           .locator(".coast-backdrop")
-          .evaluate((image) => (image as HTMLImageElement).naturalWidth > 0),
+          .evaluate(
+            (image) =>
+              (image as HTMLImageElement).complete &&
+              (image as HTMLImageElement).naturalWidth > 0,
+          ),
       )
       .toBe(true);
+    await scene
+      .locator(".coast-backdrop")
+      .evaluate((image) => (image as HTMLImageElement).decode()); // # Visual checks wait for actual decoded scenery, not only downloaded image metadata.
     if (fixtures[season])
       await expect(
         scene.locator(`[data-detail="${fixtures[season]}"]`).first(),
@@ -103,6 +118,13 @@ test("four seasons change coastal artwork and details while motion preferences p
         els.every((el) => getComputedStyle(el).animationName === "none"),
       ),
   ).toBe(true); // # Reduced mode stops travelling creatures while retaining restrained water motion.
+  expect(
+    await page
+      .locator(".resident-frames")
+      .evaluateAll((els) =>
+        els.every((el) => getComputedStyle(el).animationName === "none"),
+      ),
+  ).toBe(true); // # Reducing travel alone is insufficient: detailed frame cycles also stop.
   expect(
     await page
       .locator(".motion-ripple")

@@ -1,0 +1,1293 @@
+/* # Detailed wood frames and resident atlases share scene scale; every label remains normal, readable HTML. */
+.coastal-shell {
+  --font-ui: var(--font-learning);
+}
+.coastal-shell :is(.toast, .update-banner) {
+  font-family: var(--font-learning);
+} /* # Status messages follow the same readable interface typography. */
+.screen-reader-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.world-navigation {
+  top: 82px;
+  left: 22px;
+  width: 208px;
+  padding: 15px 10px 13px;
+  border: 6px solid #503828;
+  background: var(--wood-board) center / 100% 84px repeat-y;
+  box-shadow:
+    inset 2px 2px #c49a62,
+    inset -2px -2px #65452c,
+    5px 6px #213e4545;
+  clip-path: none;
+}
+.village-brand {
+  height: 51px;
+  gap: 9px;
+  margin: 0 0 10px;
+  padding: 0 4px 8px;
+  border-bottom: 2px solid #c29b615e;
+  justify-content: flex-start;
+}
+.village-brand > span {
+  font: 650 22px/1.2 var(--font-learning);
+  color: #fff2d6;
+  letter-spacing: -0.4px;
+}
+.village-brand svg {
+  color: #b4d873;
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(2px 2px #38543b);
+}
+.world-navigation nav {
+  gap: 6px;
+}
+.village-nav-item {
+  width: 100%;
+  height: 49px;
+  padding: 4px 6px;
+  justify-content: flex-start;
+  gap: 10px;
+  border: 10px solid transparent;
+  border-image: var(--wood-board) 14 fill / 10px / 0 stretch;
+  background: none;
+  box-shadow: 0 2px #49342680;
+  color: #fff0d8;
+  font: 550 14px var(--font-learning);
+  clip-path: none;
+}
+.village-nav-item > svg {
+  flex-shrink: 0;
+  width: 23px;
+  height: 23px;
+  color: #f2dfad;
+  filter: drop-shadow(1px 1px #543b2b);
+}
+.village-nav-item > span,
+.village-nav-item:hover > span,
+.village-nav-item:focus-visible > span {
+  display: block;
+  position: static;
+  width: auto;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+}
+.village-nav-item.active {
+  background: none;
+  border-image-source: var(--paper-board);
+  color: #443e2c;
+  box-shadow: 0 2px #50362980;
+}
+.village-nav-item.active > svg {
+  color: #4d795a;
+  filter: drop-shadow(1px 1px #fff0c8);
+}
+.village-nav-item:hover {
+  background: none;
+  color: #fff8e8;
+  filter: brightness(1.12);
+}
+.village-nav-item.active:hover {
+  color: #443e2c;
+}
+.village-nav-item:focus-visible {
+  outline: 3px solid #8ee3ed;
+  outline-offset: 3px;
+}
+.village-due {
+  top: 2px;
+  right: 0;
+  font-size: 10px;
+}
+.notebook-decoration.nav-decoration {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: 100%;
+  z-index: 2;
+}
+.nav-decoration .notebook-lantern {
+  display: none;
+}
+.nav-decoration .notebook-vine {
+  width: 50px;
+  top: -26px;
+  left: -21px;
+}
+.nav-decoration .vine-right {
+  left: auto;
+  right: -19px;
+  width: 40px;
+}
+
+/* # The calendar is a hanging wooden plaque in the upper-right, without an unrelated headline card. */
+.village-weather {
+  top: 28px;
+  right: 28px;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.village-weather .village-calendar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 15px;
+  min-height: 62px;
+  color: #fff1d7;
+  font: 600 14px var(--font-learning);
+  border: 11px solid transparent;
+  border-image: var(--wood-board) 14 fill / 11px / 0 stretch;
+  filter: drop-shadow(3px 4px #243c3c55);
+}
+.village-calendar::before {
+  content: "";
+  position: absolute;
+  height: 34px;
+  top: -38px;
+  left: 12%;
+  right: 12%;
+  background: linear-gradient(
+    90deg,
+    #604732 0 4px,
+    transparent 4px calc(100% - 4px),
+    #604732 calc(100% - 4px)
+  );
+}
+.village-calendar > svg {
+  color: #f6e4ba;
+  flex-shrink: 0;
+}
+.calendar-season {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 3px;
+  padding-left: 10px;
+  border-left: 2px solid #b3936760;
+  text-transform: capitalize;
+}
+.calendar-season svg {
+  color: #f0c257;
+}
+.village-weather > button {
+  min-width: 43px;
+  min-height: 46px;
+  padding: 9px;
+  background: #2d536a;
+  color: #e9e4c5;
+  border: 3px solid #203e51;
+  box-shadow:
+    inset 2px 2px #608798,
+    inset -2px -2px #274457,
+    2px 3px #253a4150;
+}
+.village-weather > button:hover {
+  background: #396a7b;
+}
+.village-weather .local-save-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* # Standing signboards attach through visible posts and shadows, rather than hovering as cards. */
+.world-object {
+  padding: 12px 14px;
+  min-height: 80px;
+  max-width: 245px;
+  gap: 9px;
+  border: 12px solid transparent;
+  border-image: var(--paper-board) 16 fill / 12px / 0 stretch;
+  background: none;
+  box-shadow: 3px 5px #3c41313b;
+  clip-path: none;
+  color: #473e31;
+}
+.world-object::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  top: calc(100% + 3px);
+  left: 15%;
+  right: 15%;
+  height: 45px;
+  background: linear-gradient(
+    90deg,
+    #543c28 0 4px,
+    #a17b4a 4px 11px,
+    #6b4f31 11px 15px,
+    transparent 15px calc(100% - 15px),
+    #674a30 calc(100% - 15px) calc(100% - 11px),
+    #b68c53 calc(100% - 11px) calc(100% - 4px),
+    #4f3929 calc(100% - 4px)
+  );
+  filter: drop-shadow(3px 3px #37413938);
+}
+.mailbox-object::before {
+  display: none;
+}
+.world-object:hover {
+  background: none;
+  transform: translateY(-2px);
+  filter: brightness(1.035);
+}
+.world-object:disabled {
+  opacity: 0.72;
+}
+.world-object .object-icon svg {
+  width: 27px;
+  height: 27px;
+}
+.object-label b,
+.ledger-object .object-label b,
+.aquarium-object .object-label b {
+  font: 650 16px/1.35 var(--font-learning);
+  color: #453e31;
+}
+.object-label small {
+  font: 11px/1.35 var(--font-learning);
+  color: #716247;
+  letter-spacing: 0.2px;
+}
+.ledger-object .field-note {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.mailbox-object {
+  top: 54%;
+  left: 24%;
+  width: 232px;
+}
+.seed-object {
+  top: 79%;
+  left: 52%;
+  width: 222px;
+}
+.ledger-object {
+  top: 83%;
+  left: 24%;
+  width: 236px;
+  border-left: 12px solid transparent;
+}
+.aquarium-object {
+  top: 80%;
+  left: 80%;
+  width: 220px;
+}
+.resume-book {
+  top: calc(54% + 119px);
+  left: 25.5%;
+  z-index: 8;
+  padding: 9px 11px;
+  border: 9px solid transparent;
+  border-image: var(--wood-board) 14 fill / 9px / 0 stretch;
+  background: none;
+  color: #fff1d6;
+  box-shadow: 2px 3px #3a422d38;
+}
+.coastal-status {
+  left: 262px;
+  bottom: 13px;
+  right: 24px;
+  padding: 9px 14px;
+  gap: 12px 21px;
+  border: 8px solid transparent;
+  border-image: var(--wood-board) 14 fill / 8px / 0 stretch;
+  background: #805631;
+  color: #fff0d2;
+}
+.coastal-status button {
+  color: #fff0d2;
+}
+.coastal-status b {
+  font-size: 15px;
+  color: #fff6dc;
+}
+.coast-garden {
+  left: 40%;
+  top: 65%;
+  width: 23%;
+  filter: none;
+  transform: scaleY(0.8) rotate(-2deg);
+}
+.coast-foreground,
+.harbor-flowers {
+  display: none;
+}
+.coast-atmosphere .motion-ripple {
+  opacity: 0.25;
+}
+.coast-cloud {
+  display: none;
+}
+.village-title {
+  top: 115px;
+  left: 272px;
+  background: none;
+  border: 11px solid transparent;
+  border-image: var(--paper-board) 14 fill / 11px / 0 stretch;
+  color: #4e4535;
+}
+.village-title > span {
+  font: 600 11px var(--font-learning);
+  letter-spacing: 1px;
+}
+.village-title h1 {
+  font: 600 21px/1.35 var(--font-learning);
+}
+.world-journal {
+  left: 272px;
+  top: 235px;
+  border: 13px solid transparent;
+  border-image: var(--paper-board) 14 fill / 13px / 0 stretch;
+  background: none;
+}
+:root[data-theme] .coastal-shell .page.village-interior {
+  margin-left: 258px;
+  width: calc(100% - 290px);
+  border: 14px solid transparent;
+  border-image: var(--paper-board) 16 fill / 14px / 0 stretch;
+}
+
+/* # Four actual poses per row animate blinks and wingbeats; outer travel remains independent. */
+.pixel-resident {
+  position: relative;
+  display: block;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+.resident-frames {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-image: var(--resident-atlas);
+  background-repeat: no-repeat;
+  background-size: 400% 400%;
+  background-position: 0 var(--resident-row);
+  image-rendering: pixelated;
+  animation: resident-blink 5.9s steps(1, end) infinite;
+}
+.pixel-resident[data-resident="bird"][data-action="idle"] .resident-frames {
+  animation: none;
+}
+.pixel-resident[data-resident="bird"] .resident-frames {
+  height: 105.263158%;
+  background-size: 400% 380%;
+} /* # Equal physical atlas scaling preserves proportions while the viewport includes the bird's feet. */
+.pixel-resident[data-resident="duck"] .resident-frames {
+  animation: resident-cycle 1.8s steps(1, end) infinite;
+}
+.pixel-resident[data-resident="butterfly"] .resident-frames {
+  animation: resident-cycle 0.72s steps(1, end) infinite;
+}
+.pixel-resident[data-action="walk"] .resident-frames {
+  animation: resident-cycle 1.16s steps(1, end) infinite;
+}
+.pixel-resident[data-action="wave"] .resident-frames {
+  animation: resident-cycle 1.4s steps(1, end) 2;
+}
+.pixel-resident[data-action="cheer"] .resident-frames {
+  animation: resident-cycle 0.72s steps(1, end) 2;
+}
+.pixel-resident[data-resident="cat"]::after,
+.pixel-resident[data-resident="gardener"]::after,
+.pixel-resident[data-resident="diver"]::after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 7%;
+  left: 15%;
+  bottom: 2%;
+  background: #363f3438;
+  clip-path: polygon(
+    15% 0,
+    85% 0,
+    85% 25%,
+    100% 25%,
+    100% 75%,
+    85% 75%,
+    85% 100%,
+    15% 100%,
+    15% 75%,
+    0 75%,
+    0 25%,
+    15% 25%
+  );
+}
+.coast-creatures .pixel-resident {
+  position: absolute;
+  filter: drop-shadow(1px 2px #2f463f25);
+}
+.harbor-cat.pixel-resident {
+  left: 28.5%;
+  top: 71.2%;
+  width: 78px;
+  height: 78px;
+  animation: none;
+}
+.harbor-duck.pixel-resident {
+  left: 69%;
+  top: 43%;
+  width: 39px;
+  height: 39px;
+  animation: refined-duck 23s ease-in-out infinite;
+}
+.harbor-bird.pixel-resident {
+  left: 73.5%;
+  top: 56%;
+  width: 55px;
+  height: 55px;
+}
+.harbor-butterfly.pixel-resident {
+  left: 38%;
+  top: 60%;
+  width: 32px;
+  height: 32px;
+  animation: refined-butterfly 18s ease-in-out infinite;
+}
+.harbor-gardener.pixel-resident {
+  left: 38%;
+  top: 65%;
+  width: 70px;
+  height: 70px;
+  animation: resident-stroll 15s ease-in-out infinite;
+}
+@keyframes resident-cycle {
+  0% {
+    background-position-x: 0%;
+  }
+  25% {
+    background-position-x: 33.333333%;
+  }
+  50% {
+    background-position-x: 66.666667%;
+  }
+  75%,
+  100% {
+    background-position-x: 100%;
+  }
+}
+@keyframes resident-blink {
+  0%,
+  85%,
+  100% {
+    background-position-x: 0%;
+  }
+  86%,
+  89% {
+    background-position-x: 33.333333%;
+  }
+  90%,
+  93% {
+    background-position-x: 66.666667%;
+  }
+  94%,
+  97% {
+    background-position-x: 100%;
+  }
+}
+@keyframes resident-stroll {
+  0%,
+  20%,
+  100% {
+    transform: translate(0, 0);
+  }
+  48%,
+  67% {
+    transform: translate(18px, 3px);
+  }
+  80% {
+    transform: translate(8px, 1px);
+  }
+}
+@keyframes refined-duck {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  45% {
+    transform: translate(44px, 4px);
+  }
+  55% {
+    transform: translate(44px, 4px) scaleX(-1);
+  }
+  90% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+}
+@keyframes refined-butterfly {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20px, -16px);
+  }
+  50% {
+    transform: translate(6px, -27px);
+  }
+  75% {
+    transform: translate(-14px, -10px);
+  }
+}
+
+/* # Small lamp and ivy ornaments sit on wooden edges, never behind or across word text. */
+.notebook-decoration {
+  pointer-events: none;
+  position: fixed;
+  z-index: 3;
+  left: calc(50vw - max(12.6vw, 18.9vh));
+  top: max(20px, calc(50vh - max(23.9vw, 35.85vh)));
+  width: min(620px, max(35.5vw, 53.25vh));
+  height: 0;
+}
+.notebook-vine {
+  position: absolute;
+  top: -34px;
+  left: -41px;
+  width: 68px;
+  height: 94px;
+  filter: drop-shadow(2px 2px #303d2c38);
+}
+.notebook-vine.vine-right {
+  left: auto;
+  right: -44px;
+  transform: scaleX(-1);
+}
+.notebook-lantern {
+  position: absolute;
+  width: 46px;
+  height: 73px;
+  left: 50%;
+  top: -68px;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 12px #ffd78063);
+}
+.room-window-glint {
+  position: absolute;
+  inset: 8% 10%;
+  background: radial-gradient(ellipse at 15% 20%, #fff5d624, transparent 45%);
+  animation: quiet-window-light 16s ease-in-out infinite;
+}
+.room-window-butterfly {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 63%;
+  top: 68%;
+  animation: refined-butterfly 22s ease-in-out infinite;
+}
+.study-room .room-companion {
+  left: 20%;
+  bottom: 33.5%;
+  width: 132px;
+  height: 132px;
+  filter: none;
+}
+.room-companion .pixel-resident {
+  width: 100%;
+  height: 100%;
+}
+.room-companion .room-cat-tail {
+  animation: none;
+}
+.study-bird {
+  position: absolute;
+  left: 84.1%;
+  bottom: 33.5%;
+  width: 116px;
+  height: 116px;
+  filter: drop-shadow(2px 3px #283e3d25);
+}
+.study-bird .pixel-resident {
+  width: 100%;
+  height: 100%;
+}
+.bird-celebrating {
+  animation: bird-cheer-hop 1.44s ease-out;
+}
+.bird-reward {
+  position: absolute;
+  top: -43px;
+  left: 17%;
+  padding: 7px 12px;
+  color: #425d45;
+  border: 8px solid transparent;
+  border-image: var(--paper-board) 14 fill / 8px / 0 stretch;
+  font: 650 16px var(--font-learning);
+  animation: bird-note-rise 1.4s ease-out both;
+}
+.bird-reward > svg {
+  position: absolute;
+  color: #eed079;
+  top: -10px;
+  left: -18px;
+}
+.bird-reward > svg:last-child {
+  left: auto;
+  right: -18px;
+  top: 12px;
+}
+@keyframes bird-cheer-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-14px) rotate(-3deg);
+  }
+  45% {
+    transform: translateY(0);
+  }
+  65% {
+    transform: translateY(-7px) rotate(2deg);
+  }
+  80% {
+    transform: translateY(0);
+  }
+}
+@keyframes bird-note-rise {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  22%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes quiet-window-light {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* # Scheduled reviews occupy an aquarium gallery, with geometry matched to its own blank notebook page. */
+.cozy-study[data-scene="aquarium"] .study-notebook {
+  width: max(36.5vw, 54.75vh);
+  max-width: none;
+  left: calc(50vw - max(7.5vw, 11.25vh));
+  margin-top: max(16px, calc(50vh - max(19.8vw, 29.7vh)));
+  max-height: max(47vh, 31.33vw);
+  padding: 13px 20px 18px;
+}
+.cozy-study[data-scene="aquarium"] > .notebook-decoration {
+  left: calc(50vw - max(7.5vw, 11.25vh));
+  top: max(16px, calc(50vh - max(19.8vw, 29.7vh)));
+  width: max(36.5vw, 54.75vh);
+}
+.cozy-study[data-scene="aquarium"] > .notebook-decoration .notebook-lantern {
+  display: none;
+}
+.cozy-study[data-scene="aquarium"] .study-room .room-companion {
+  left: 7%;
+  bottom: 14.5%;
+  width: 100px;
+  height: 100px;
+}
+.cozy-study[data-scene="aquarium"] .study-bird {
+  left: 33.7%;
+  bottom: 29.8%;
+  width: 86px;
+  height: 86px;
+}
+.review-diver.pixel-resident {
+  position: absolute;
+  left: 87.5%;
+  bottom: 15%;
+  width: 98px;
+  height: 98px;
+}
+.review-water-life {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.review-fish {
+  position: absolute;
+  width: 53px;
+  height: 53px;
+  animation: review-fish-pass 19s ease-in-out infinite;
+}
+.review-air-bubble {
+  position: absolute;
+  width: 5px;
+  height: 6px;
+  border: 1px solid #d9f5f98a;
+  box-shadow: -1px -1px #bdeffc60;
+  animation: review-bubble 14s linear infinite;
+}
+@keyframes review-fish-pass {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  42% {
+    transform: translate(46px, -9px);
+  }
+  50%,
+  82% {
+    transform: translate(46px, -9px) scaleX(-1);
+  }
+  91% {
+    transform: translate(0, 0) scaleX(-1);
+  }
+}
+@keyframes review-bubble {
+  from {
+    transform: translate(0, 25px);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.8;
+  }
+  to {
+    transform: translate(9px, -150px);
+    opacity: 0;
+  }
+}
+
+/* # The dictionary is a wood-bound notebook with labeled section bookmarks and a quiet central page. */
+:root[data-theme] .dictionary-modal.cozy-dictionary {
+  width: 1020px;
+  max-width: calc(100vw - 48px);
+  border: 16px solid transparent !important;
+  border-image: var(--paper-board) 16 fill / 16px / 0 stretch !important;
+  box-shadow: 8px 10px #15323d66 !important;
+  background: #fff6e4;
+}
+.cozy-dictionary .dictionary-journal {
+  position: relative;
+  grid-template-columns: 173px minmax(0, 1fr);
+  background: linear-gradient(
+    90deg,
+    #f0dfba 0,
+    #ecdbb7 165px,
+    #826244 169px,
+    #dbc6a3 174px,
+    #fbf2dd 191px,
+    #fff7e8 220px
+  );
+}
+.notebook-decoration.dictionary-decoration {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 0;
+}
+.dictionary-decoration .notebook-vine {
+  left: -32px;
+  top: -20px;
+  width: 65px;
+}
+.dictionary-decoration .vine-right {
+  left: auto;
+  right: -21px;
+}
+.dictionary-decoration .notebook-lantern {
+  left: 63%;
+  top: -5px;
+  width: 31px;
+  height: 48px;
+}
+.cozy-dictionary .journal-bookmarks {
+  padding: 72px 11px 20px 7px;
+  gap: 9px;
+}
+.cozy-dictionary .journal-bookmarks button {
+  flex-direction: row;
+  justify-content: flex-start;
+  min-height: 53px;
+  padding: 9px 7px;
+  gap: 9px;
+  border: 8px solid transparent;
+  border-image: var(--paper-board) 16 fill / 8px / 0 stretch;
+  background: none;
+  color: #68543a;
+  box-shadow: 0 2px #9f794e40;
+  font: 550 12px/1.35 var(--font-learning);
+  text-align: left;
+}
+.cozy-dictionary .journal-bookmarks button svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #73894d;
+}
+.cozy-dictionary .journal-bookmarks button:nth-child(2) svg {
+  color: #a8744e;
+}
+.cozy-dictionary .journal-bookmarks button:nth-child(3) svg {
+  color: #a3974c;
+}
+.cozy-dictionary .journal-bookmarks button:nth-child(4) svg {
+  color: #537f8f;
+}
+.cozy-dictionary .journal-bookmarks button[aria-pressed="true"] {
+  color: #443b2a;
+  filter: brightness(1.04);
+  box-shadow:
+    inset 3px 0 #bf9545,
+    0 2px #9f794e40;
+}
+.cozy-dictionary .dictionary-page {
+  padding: 39px 35px 25px;
+}
+.cozy-dictionary .journal-spine {
+  height: 120px;
+  margin: 11px 0 0 9px;
+  width: 110px;
+  opacity: 0.5;
+}
+.cozy-dictionary .modal-heading {
+  top: 14px;
+  right: 14px;
+}
+.cozy-dictionary .modal-heading .icon-button {
+  background: #eedcb8;
+  border: 2px solid #a77d46;
+  box-shadow: 2px 2px #c19a63;
+}
+
+/* # Reduced/static settings and the operating-system override stop frame cycles as well as travel. */
+:root[data-motion="reduced"]
+  :is(
+    .resident-frames,
+    .pixel-resident,
+    .study-bird,
+    .bird-reward,
+    .room-window-glint
+  ),
+:root[data-motion="static"]
+  :is(
+    .resident-frames,
+    .pixel-resident,
+    .study-bird,
+    .bird-reward,
+    .room-window-glint
+  ) {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme]
+    :is(
+      .resident-frames,
+      .pixel-resident,
+      .study-bird,
+      .bird-reward,
+      .room-window-glint,
+      .review-fish,
+      .review-air-bubble
+    ) {
+    animation: none !important;
+  }
+}
+.study-calm .notebook-decoration {
+  display: none;
+}
+:root[data-theme]
+  .study-calm
+  .cozy-study[data-scene="aquarium"]
+  .study-notebook {
+  left: 0;
+  width: min(720px, calc(100% - 64px));
+  margin: 36px auto;
+  max-height: calc(100dvh - 72px);
+  background: #fff8ea;
+}
+@media (max-width: 1100px) and (min-width: 701px) {
+  .world-navigation {
+    left: 12px;
+    width: 185px;
+  }
+  .village-brand > span {
+    font-size: 19px;
+  }
+  .village-nav-item {
+    font-size: 12px;
+    gap: 7px;
+  }
+  .world-object {
+    max-width: 218px;
+    padding: 9px 10px;
+  }
+  .mailbox-object {
+    left: 24%;
+  }
+  .ledger-object {
+    left: 23%;
+  }
+  .aquarium-object {
+    left: auto;
+    right: 16px;
+  }
+  .seed-object {
+    left: 51%;
+  }
+  .coastal-status {
+    left: 215px;
+    gap: 8px 12px;
+  }
+}
+/* # Desktop remains primary; compact fallback preserves the existing usable answer controls. */
+@media (max-width: 899px) {
+  .cozy-study > .notebook-decoration {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  .cozy-study > .notebook-decoration .notebook-lantern {
+    display: none;
+  }
+  .cozy-study > .notebook-decoration .notebook-vine {
+    width: 42px;
+    height: 60px;
+    left: -14px;
+    top: -20px;
+  }
+  .cozy-study > .notebook-decoration .vine-right {
+    left: auto;
+    right: -12px;
+  }
+  .study-room .room-companion {
+    width: 74px;
+    height: 74px;
+    left: 12px;
+    bottom: 5px;
+  }
+  .study-bird {
+    width: 70px;
+    height: 70px;
+    left: auto;
+    right: 16px;
+    bottom: 6px;
+  }
+  .review-diver.pixel-resident {
+    display: none;
+  }
+  .cozy-study[data-scene="aquarium"] .study-notebook {
+    width: 100%;
+    left: 0;
+    margin-top: 0;
+    max-height: none;
+    padding: 18px 18px 23px;
+    background: #fff8eaf5;
+  }
+  .cozy-study[data-scene="aquarium"] > .notebook-decoration {
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .cozy-study[data-scene="aquarium"] .study-room .room-companion {
+    left: 12px;
+    bottom: 5px;
+    width: 64px;
+    height: 64px;
+  }
+  .cozy-study[data-scene="aquarium"] .study-bird {
+    left: auto;
+    right: 16px;
+    bottom: 5px;
+    width: 64px;
+    height: 64px;
+  }
+}
+@media (min-width: 900px) {
+  .cozy-study > .notebook-decoration {
+    display: none;
+  } /* # The selected scene bases already have matching lamp, leaves and brass binding; duplicate ornaments would create another seam. */
+  .cozy-study[data-scene="study"] .study-notebook {
+    padding-left: 35px;
+  } /* # Text and input begin beyond the real brass ring bindings. */
+}
+/* # Shorter desktop windows tighten spacing so the answer and Check remain inside the actual paper, above the wood edge. */
+@media (min-width: 900px) and (max-height: 950px) {
+  .cozy-study[data-scene="study"] .study-notebook {
+    max-height: max(61vh, 40.67vw);
+  }
+  :root[data-theme] .study-mode .cozy-study .study-top {
+    padding-bottom: 8px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-progress {
+    margin-bottom: 8px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-label {
+    margin-bottom: 8px;
+  }
+  .study-mode .cozy-study .target-line {
+    margin-bottom: 10px;
+  }
+  .study-mode .cozy-study .study-meaning {
+    margin-bottom: 10px;
+  }
+  .study-mode .cozy-study .study-example {
+    margin-bottom: 9px;
+  }
+  .study-mode .cozy-study .answer-label {
+    margin-top: 12px;
+  }
+  :root[data-theme] .study-mode .cozy-study .study-bottom {
+    margin-top: 8px;
+    padding-top: 7px;
+  }
+}
+@media (max-width: 700px) {
+  .world-navigation {
+    top: 12px;
+    left: 12px;
+    width: calc(100% - 24px);
+    padding: 5px;
+    border-width: 3px;
+  }
+  .village-brand {
+    width: 32px;
+    height: 36px;
+    padding: 0;
+    margin: 0 4px 0 0;
+    border: 0;
+  }
+  .village-brand > span {
+    display: none;
+  }
+  .village-brand > svg {
+    width: 25px;
+    height: 25px;
+  }
+  .nav-decoration {
+    display: none;
+  }
+  .world-navigation nav {
+    gap: 2px;
+  }
+  .village-nav-item {
+    width: 33px;
+    height: 36px;
+    min-width: 0;
+    padding: 4px;
+    border-width: 3px;
+    border-image-width: 3px;
+  }
+  .village-nav-item > svg {
+    width: 18px;
+    height: 18px;
+  }
+  .village-nav-item > span {
+    display: none;
+  }
+  .village-nav-item:hover > span,
+  .village-nav-item:focus-visible > span {
+    display: block;
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 38px;
+    padding: 6px;
+    width: max-content;
+    border: 2px solid #785736;
+    background: #f4e4c2;
+    color: #443b2d;
+    z-index: 4;
+  }
+  .village-weather {
+    top: 80px;
+    right: 12px;
+    gap: 5px;
+  }
+  .village-weather .village-calendar {
+    font-size: 10px;
+    padding: 7px 8px;
+    min-height: 43px;
+    gap: 6px;
+    border-width: 7px;
+    border-image-width: 7px;
+  }
+  .village-calendar > svg,
+  .calendar-season svg {
+    width: 18px;
+    height: 18px;
+  }
+  .calendar-season {
+    gap: 5px;
+    padding-left: 6px;
+    margin: 0;
+  }
+  .village-calendar::before {
+    top: -27px;
+    height: 23px;
+  }
+  .village-weather > button {
+    min-width: 33px;
+    min-height: 35px;
+    padding: 4px;
+  }
+  .village-weather > button > svg {
+    width: 19px;
+    height: 19px;
+  }
+  .world-object {
+    width: 218px;
+    max-width: calc(100% - 30px);
+    min-height: 75px;
+    padding: 11px;
+  }
+  .mailbox-object {
+    top: 36%;
+    left: 17px;
+  }
+  .seed-object {
+    top: 55%;
+    left: auto;
+    right: 17px;
+  }
+  .ledger-object {
+    top: 76%;
+    left: 17px;
+  }
+  .aquarium-object {
+    top: 87%;
+    left: auto;
+    right: 17px;
+  }
+  .world-object::after {
+    height: 31px;
+  }
+  .resume-book {
+    left: 22px;
+    top: calc(36% + 115px);
+  }
+  .coastal-status {
+    left: 12px;
+    right: 12px;
+    padding: 8px;
+    gap: 6px 13px;
+    bottom: 10px;
+  }
+  .coastal-status b {
+    font-size: 13px;
+  }
+  .harbor-gardener.pixel-resident {
+    left: 14%;
+    top: 68%;
+    width: 54px;
+    height: 54px;
+  }
+  .harbor-cat.pixel-resident {
+    left: 22%;
+    top: 73%;
+    width: 60px;
+    height: 60px;
+  }
+  .harbor-duck.pixel-resident {
+    left: 51%;
+    top: 25%;
+    width: 33px;
+    height: 33px;
+  }
+  .harbor-bird.pixel-resident {
+    left: 76%;
+    top: 71%;
+    width: 39px;
+    height: 39px;
+  }
+  .harbor-butterfly.pixel-resident {
+    width: 28px;
+    height: 28px;
+  }
+  .village-title {
+    top: 161px;
+    left: 18px;
+  }
+  .world-journal {
+    left: 18px;
+    top: 283px;
+    width: calc(100% - 36px);
+  }
+  :root[data-theme] .coastal-shell .page.village-interior {
+    margin: 148px 12px 20px;
+    width: calc(100% - 24px);
+    padding: 18px 12px;
+  }
+  :root[data-theme] .dictionary-modal.cozy-dictionary {
+    border-width: 8px !important;
+    border-image-width: 8px !important;
+    max-width: calc(100vw - 18px);
+    max-height: calc(100dvh - 20px);
+  }
+  .cozy-dictionary .dictionary-journal {
+    grid-template-columns: 40px minmax(0, 1fr);
+    background: linear-gradient(
+      90deg,
+      #ecdbb7 0 32px,
+      #8c6c45 36px,
+      #dbc6a3 40px,
+      #fff7e8 53px
+    );
+  }
+  .cozy-dictionary .journal-bookmarks {
+    padding: 69px 2px 16px;
+    gap: 8px;
+  }
+  .cozy-dictionary .journal-bookmarks button {
+    justify-content: center;
+    padding: 6px 2px;
+    min-height: 48px;
+    border-width: 3px;
+    border-image-width: 3px;
+  }
+  .cozy-dictionary .journal-bookmarks button > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .cozy-dictionary .dictionary-page {
+    padding: 28px 13px 20px;
+  }
+  .cozy-dictionary .journal-spine {
+    width: 20px;
+    margin-left: 6px;
+  }
+  .dictionary-decoration .notebook-lantern {
+    display: none;
+  }
+  .dictionary-decoration .notebook-vine {
+    width: 40px;
+    top: -10px;
+    left: -18px;
+  }
+  .dictionary-decoration .vine-right {
+    left: auto;
+    right: -14px;
+  }
+}

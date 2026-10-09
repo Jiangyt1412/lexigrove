@@ -17,6 +17,8 @@ const paths: Record<string, string> = {
     "M2 2h3V1h6v1h3v8h-2v2h-2v2H6v-2H4v-2H2zm3 4v3h2v2h2V9h2V5H9v3H7V6z",
   Sun: "M7 0h2v3H7zm0 13h2v3H7zM0 7h3v2H0zm13 0h3v2h-3zM2 2h2v2H2zm10 0h2v2h-2zM2 12h2v2H2zm10 0h2v2h-2zM5 4h6v1h1v6h-1v1H5v-1H4V5h1z",
   Moon: "M7 1h5v2h-3v2H7v5h2v2h5v2h-3v1H5v-2H3v-2H2V5h2V3h3z",
+  CalendarDays:
+    "M3 0h2v3H3zm8 0h2v3h-2zM1 2h2v3h10V2h2v13H1zm2 5v6h10V7zm2 1h2v2H5zm4 0h2v2H9zm-4 3h2v1H5z", // # Calendar geometry remains on the existing native 16-pixel icon grid.
   CloudOff:
     "M4 4h2V2h6v2h2v2h2v6H6v-2H2V8H0V6h4zM1 1h2v2H1zm2 2h2v2H3zm2 2h2v2H5zm2 2h2v2H7zm2 2h2v2H9zm2 2h2v2h-2zm2 2h2v2h-2z",
   Download: "M6 1h4v6h3v2h-2v2H9v2H7v-2H5V9H3V7h3zM1 12h2v2h10v-2h2v4H1z",
@@ -72,6 +74,7 @@ export const House = icon("House"),
   ShieldCheck = icon("ShieldCheck"),
   Sun = icon("Sun"),
   Moon = icon("Moon"),
+  CalendarDays = icon("CalendarDays"),
   CloudOff = icon("CloudOff"),
   Download = icon("Download"),
   Upload = icon("Upload"),

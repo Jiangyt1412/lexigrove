@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Download,
 } from "../components/PixelIcons";
+import { PixelResident } from "../components/PixelResident"; // # Detailed transparent frame atlases replace low-detail resident symbols.
 
 export function WorldSprite({
   name,
@@ -116,16 +117,6 @@ export function CoastalWorld({
                 ))}
               </g>
             )}
-            <g fill={night ? "#8ea5b4" : "#fff5da"} opacity=".45">
-              <path
-                className="world-motion motion-cloud coast-cloud"
-                d="M540 80h26V68h42V56h40v12h42v12h26v12H540z"
-              />
-              <path
-                className="world-motion motion-cloud coast-cloud second-cloud"
-                d="M220 102h22v-8h28v-8h30v8h32v8h22v10H220z"
-              />
-            </g>
             {[0, 1, 2, 3, 4, 5].map((i) => (
               <path
                 key={i}
@@ -204,10 +195,25 @@ export function CoastalWorld({
                     key={i}
                     transform={`translate(${(i % 4) * 58} ${Math.floor(i / 4) * 43})`}
                   >
-                    <path d="M0 4h50v27H0z" fill="#4f4b43" />
-                    <path d="M3 2h44v27H3z" fill="#ab7c56" />
-                    <path d="M7 7h37v16H7z" fill="#62493c" />
-                    <path d="M8 11h35v2H8zm0 7h35v2H8z" fill="#80563f" />
+                    <path
+                      d="M7 15h6v-3h23v3h7v4h5v6h-7v3H10v-3H4v-6h3z"
+                      fill="#654b37"
+                      fillOpacity=".72"
+                    />
+                    <path
+                      d="M11 16h25v3h7v4H9v-4h2z"
+                      fill={season === "winter" ? "#cbdce0" : "#98704b"}
+                    />
+                    <path
+                      d="M13 19h7v2h-7zm18 2h7v2h-7zM22 24h5v2h-5z"
+                      fill="#bb9564"
+                      fillOpacity=".6"
+                    />
+                    <path
+                      d="M8 25h4v3H8zm30-10h5v3h-5z"
+                      fill="#b1aa75"
+                      fillOpacity=".65"
+                    />
                     {stage && (
                       <g data-plant-stage={stage}>
                         <use
@@ -215,7 +221,7 @@ export function CoastalWorld({
                             `assets/original/sprites.svg#${stage === "mature" ? (season === "autumn" ? "pumpkin" : "flower") : stage === "growing" ? "carrot" : stage === "young" ? "radish" : stage}`,
                           )}
                           x="10"
-                          y="-7"
+                          y="-5"
                           width="32"
                           height="32"
                           className="world-motion motion-sway"
@@ -334,27 +340,29 @@ export function CoastalWorld({
             </div>
           </div>
           <div className="coast-creatures" aria-hidden="true">
-            <WorldSprite
-              name="cat"
+            <PixelResident
+              kind="cat"
               className="world-motion motion-walk harbor-cat"
             />
-            <WorldSprite
-              name="duck"
+            <PixelResident
+              kind="duck"
               className="world-motion motion-swim harbor-duck"
             />
-            <WorldSprite
-              name="bird"
-              className="world-motion motion-fly harbor-bird"
-            />
+            <PixelResident kind="bird" className="world-motion harbor-bird" />
             {season !== "winter" && (
-              <WorldSprite
-                name="butterfly"
+              <PixelResident
+                kind="butterfly"
                 className="world-motion motion-flutter harbor-butterfly"
               />
             )}
             <WorldSprite
               name="flower"
               className="world-motion motion-sway harbor-flowers"
+            />
+            <PixelResident
+              kind="gardener"
+              action="walk"
+              className="world-motion harbor-gardener"
             />
           </div>
           <div className="coast-foreground" aria-hidden="true">
@@ -378,7 +386,6 @@ export function CoastalToday({
   stats,
   activeNew,
   sessionActive,
-  date,
   onStudy,
   onResume,
   onLibrary,
@@ -398,7 +405,6 @@ export function CoastalToday({
   };
   activeNew: number;
   sessionActive: boolean;
-  date: number;
   onStudy: () => void;
   onResume: () => void;
   onLibrary: () => void;
@@ -419,17 +425,9 @@ export function CoastalToday({
       progress={progress}
       aquariumFocus={settings.world === "ocean"}
     >
-      <div className="village-title">
-        <span>LEXIGROVE</span>
-        <h1>A harbour for your words.</h1>
-        <small>
-          {resolveSeason(settings.season)} ·{" "}
-          {new Date(date).toLocaleDateString("en", {
-            month: "short",
-            day: "numeric",
-          })}
-        </small>
-      </div>
+      <h1 className="screen-reader-title">
+        Lexigrove · your coastal vocabulary world
+      </h1>
       <WorldObject
         className="mailbox-object"
         onClick={onStudy}

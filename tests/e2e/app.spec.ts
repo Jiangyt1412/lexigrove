@@ -35,9 +35,15 @@ test("fullscreen study preserves navigation, readable order and hidden recall an
         .evaluate((image) => (image as HTMLImageElement).naturalWidth > 0),
     )
     .toBe(true);
-  await expect(page.locator(".study-room .room-cloud")).toBeVisible();
-  await expect(page.locator(".study-room .room-fish")).toBeVisible();
-  await expect(page.locator(".study-room .room-cat-tail")).toBeVisible(); // # Real cloud, aquarium and companion layers keep the quiet room alive around the readable paper.
+  await expect(page.locator(".study-room .room-window-glint")).toBeVisible();
+  await expect(
+    page.locator('.study-room [data-resident="bird"]'),
+  ).toBeVisible();
+  await expect(page.locator('.study-room [data-resident="cat"]')).toBeVisible(); // # Detailed independent residents flank the notebook; the old oversized cloud and cat shapes are absent.
+  await expect(page.locator(".study-room-art")).toHaveAttribute(
+    "src",
+    /study-room-v3\.webp$/,
+  );
   await expect(
     page.getByRole("list", { name: "Word learning steps" }).locator("li"),
   ).toHaveCount(3);
@@ -78,6 +84,14 @@ test("fullscreen study preserves navigation, readable order and hidden recall an
   await expect(target).toHaveText(word);
   await page.getByRole("textbox", { name: "Your answer" }).fill(word);
   await page.getByRole("button", { name: "Check answer" }).click();
+  await expect(
+    page.locator('.study-bird [data-resident="bird"]'),
+  ).toHaveAttribute("data-action", "cheer");
+  expect(
+    await page
+      .locator(".study-bird .resident-frames")
+      .evaluate((el) => getComputedStyle(el).animationName),
+  ).toBe("resident-cycle"); // # Correct feedback triggers actual wing poses without blocking Continue.
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   const second = (await target.innerText()).trim();
   await page.getByRole("textbox", { name: "Your answer" }).fill(second);
@@ -279,7 +293,7 @@ test("desktop home is one continuous world with honest counts and accessible sce
       .locator(".world-object .object-label b")
       .first()
       .evaluate((el) => getComputedStyle(el).fontFamily),
-  ).toContain("Pixelify");
+  ).toContain("Inter"); // # The new reference explicitly requires ordinary readable text on pixel wood signs.
   await page.screenshot({ path: screenshotPath, fullPage: true });
   await page.setViewportSize({ width: 1280, height: 900 });
   expect(

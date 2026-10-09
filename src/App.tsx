@@ -14,6 +14,7 @@ import {
   Moon,
   CloudOff,
   X,
+  CalendarDays,
 } from "./components/PixelIcons";
 import { db, initialize, saveSettings } from "./db/database";
 import { starterWords } from "./vocabulary/seed";
@@ -34,6 +35,7 @@ import { registerVocabularyTool } from "./utils/webmcp";
 import { warmStarterAudio } from "./speech/audio-cache";
 import { assetUrl } from "./utils/assets"; // # Shared interior scenery follows the deployment base and the selected season.
 import { learningUnits } from "./vocabulary/lexicon"; // # Scene labels count eligible words rather than promising words absent from the library.
+import { NotebookDecor } from "./components/NotebookDecor";
 type Page =
   | "Today"
   | "Vocabulary"
@@ -214,11 +216,14 @@ export default function App() {
       style={
         {
           "--village-scenery": `url("${assetUrl(`assets/coastal/coast-${resolveSeason(settings.season)}.webp`)}")`,
+          "--wood-board": `url("${assetUrl("assets/original/wood-board-v2.svg")}")`,
+          "--paper-board": `url("${assetUrl("assets/original/paper-board-v2.svg")}")`, // # Frame URLs use the same root/Pages base as the original scene assets.
         } as CSSProperties
       }
     >
       {page !== "Study" && (
         <aside className="world-navigation" aria-label="Village signpost">
+          <NotebookDecor className="nav-decoration" />
           <a
             className="village-brand"
             href="#today"
@@ -229,6 +234,7 @@ export default function App() {
             }}
           >
             <Sprout size={27} />
+            <span>lexigrove</span>
           </a>
           <nav aria-label="Main navigation">
             {nav.map(({ page: p, icon: Icon }) => (
@@ -274,10 +280,34 @@ export default function App() {
       <main className="main">
         {page !== "Study" && (
           <div className="village-weather" aria-label="World status">
-            <span>
-              {online ? <ShieldCheck size={13} /> : <CloudOff size={13} />}{" "}
-              {online ? "Saved locally" : "Offline"}
+            <span
+              className="village-calendar"
+              aria-label="Date and selected season"
+            >
+              <CalendarDays size={25} />
+              <time dateTime={new Date(clock).toLocaleDateString("en-CA")}>
+                {new Date(clock).toLocaleDateString("en", {
+                  weekday: "short",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </time>
+              <span className="calendar-season">
+                {themeNight ? <Moon size={25} /> : <Sun size={25} />}
+                {resolveSeason(settings.season)}
+              </span>
             </span>
+            <button
+              aria-label="Open settings"
+              title={
+                online
+                  ? "Settings · progress saved locally"
+                  : "Settings · offline"
+              }
+              onClick={() => go("Settings & data")}
+            >
+              <SettingsIcon size={24} />
+            </button>
             <button
               aria-label="Toggle day and night theme"
               title="Toggle day and night theme"
@@ -287,6 +317,13 @@ export default function App() {
             >
               {themeNight ? <Sun size={19} /> : <Moon size={19} />}
             </button>
+            <span
+              className="local-save-status"
+              title={online ? "Progress saved locally" : "Offline"}
+            >
+              {online ? <ShieldCheck size={13} /> : <CloudOff size={13} />}
+              {online ? "Saved locally" : "Offline"}
+            </span>
           </div>
         )}
         <div
@@ -302,7 +339,6 @@ export default function App() {
               stats={s}
               activeNew={activeNew}
               sessionActive={!!session && session.wordIds.length > 0}
-              date={clock}
               onStudy={() => study(s.due ? "review" : "acquire")}
               onResume={() => go("Study")}
               onLibrary={() => go("Vocabulary")}
@@ -319,6 +355,7 @@ export default function App() {
               dictionary={setDictionary}
               onExit={() => go("Today")}
               notify={setToast}
+              matureResidents={world.aquarium}
             />
           ) : ["Vocabulary", "Personal words", "Difficult words"].includes(
               page,

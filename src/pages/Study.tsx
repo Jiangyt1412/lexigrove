@@ -39,143 +39,112 @@ import { Pronunciation } from "../components/Pronunciation"; // # Hide all spell
 import { hydrateWord } from "../vocabulary/lexicon"; // # Family links open their own lexical entries instead of borrowing the current word's POS.
 import { assetUrl } from "../utils/assets"; // # Scene assets resolve through the current root or GitHub Pages base path.
 import { resolveSeason } from "../world/environment"; // # Environmental changes remain independent of learning records.
+import { PixelResident } from "../components/PixelResident"; // # Detailed frame animation stays outside the lexical reading surface.
+import { NotebookDecor } from "../components/NotebookDecor";
+import { WorldSprite } from "../world/CoastalWorld";
 import { Dictionary } from "../dictionary/Dictionary"; // # Confirmation uses the same readable details and the exact scheduled learning meaning.
 
 function StudyRoom({
   settings,
   feedback,
+  review,
+  matureResidents,
 }: {
   settings: Settings;
   feedback?: Attempt | null;
+  review: boolean;
+  matureResidents: number;
 }) {
   return (
     <div
-      className="study-room"
+      className={`study-room ${review ? "review-aquarium-room" : "learning-wood-room"}`}
       aria-hidden="true"
       data-visible={settings.world !== "off"}
+      data-mature-residents={review ? matureResidents : undefined}
     >
       <img
         className="study-room-art"
-        src={assetUrl("assets/coastal/study-room.webp")}
+        src={assetUrl(
+          `assets/coastal/${review ? "review-aquarium-v2" : "study-room-v3"}.webp`,
+        )}
         alt=""
       />
       <div className="room-light" />
-      <div className="room-window-air">
-        <svg
-          className="study-room-motion room-cloud"
-          viewBox="0 0 88 32"
-          shapeRendering="crispEdges"
-        >
-          <path d="M4 14h12V8h20V4h16v4h16v6h12v12H4z" fill="#f7f4dc" />
-          <path d="M12 24h62v4H12z" fill="#c7dbd6" />
-        </svg>
-        <svg
-          className="study-room-motion room-bird"
-          viewBox="0 0 40 24"
-          shapeRendering="crispEdges"
-        >
-          <path d="M12 10h16v8H12zM24 6h8v8h-8zM32 10h8v4h-8z" fill="#f4f3e3" />
-          <path
-            d="M2 4h4v4h6v4h10v4H10v-4H4V8H2zM20 8h6v4h-6z"
-            fill="#d1ddd9"
+      {review ? (
+        <>
+          <div className="review-water-life">
+            {Array.from(
+              {
+                length: Math.min(
+                  8,
+                  matureResidents ? Math.ceil(Math.sqrt(matureResidents)) : 0,
+                ),
+              },
+              (_, i) => (
+                <WorldSprite
+                  key={i}
+                  name={i % 2 ? "reef-fish" : "fish"}
+                  className="study-room-motion review-fish"
+                  style={{
+                    left: `${8 + ((i * 7) % 20)}%`,
+                    top: `${23 + ((i * 13) % 35)}%`,
+                    animationDelay: `-${i * 2.7}s`,
+                  }}
+                />
+              ),
+            )}
+            {[0, 1, 2, 3, 4].map((i) => (
+              <i
+                key={i}
+                className="study-room-motion review-air-bubble"
+                style={{
+                  left: `${8 + i * 6}%`,
+                  top: `${36 + ((i * 11) % 29)}%`,
+                  animationDelay: `-${i * 2.9}s`,
+                }}
+              />
+            ))}
+          </div>
+          <PixelResident
+            kind="diver"
+            action={feedback?.correct ? "wave" : "idle"}
+            className="review-diver"
           />
-          <path d="M28 8h2v2h-2z" fill="#364f61" />
-          <path d="M34 10h6v2h-6z" fill="#d8a160" />
-        </svg>
-      </div>
-      <svg
-        className="room-plant"
-        viewBox="0 0 76 132"
-        shapeRendering="crispEdges"
-      >
-        <path d="M24 104h32v20H24zM20 100h40v8H20z" fill="#b87860" />
-        <path d="M28 108h24v12H28z" fill="#d79d73" />
-        <g className="study-room-motion room-leaves">
-          <path
-            d="M36 104V28h4v76zM36 64H16v-8h20zm4 20h20v-8H40z"
-            fill="#45796a"
-          />
-          <path
-            d="M36 44H20V32H8v-8h24v8h8v12zM40 68h16V56h12V40H52v8H40zM36 88H20V76H8v-8h24v8h8v12z"
-            fill="#6da282"
-          />
-          <path
-            d="M16 28h12v4H16zm36 16h12v4H52zM16 72h12v4H16z"
-            fill="#a5cfa3"
-          />
-          <g className="room-blossoms" fill="#eab6c7">
-            <path d="M32 24h12v12H32zM28 28h20v4H28z" />
-            <path d="M58 48h12v12H58zM54 52h20v4H54z" />
-          </g>
-        </g>
-      </svg>
-      <svg
-        className="room-tank"
-        viewBox="0 0 140 114"
-        shapeRendering="crispEdges"
-      >
-        <path d="M4 12h132v84H4z" fill="#465f69" />
-        <path d="M8 16h124v76H8z" fill="#94c8ca" />
-        <path d="M8 26h124v58H8z" fill="#418b9e" />
-        <path d="M8 78h124v14H8z" fill="#b5c1a8" />
-        <path
-          d="M24 82V50h4v12h8V40h4v42zM108 84V52h4v14h8V44h4v40z"
-          fill="#70b88c"
-        />
-        <path
-          d="M2 8h136v8H2zM0 94h140v8H0zM8 102h8v12H8zm116 0h8v12h-8z"
-          fill="#735a4f"
-        />
-        <g className="study-room-motion room-fish">
-          <g transform="translate(11 10.6) scale(.8)">
-            <path d="M49 44v-4h6v4zM47 58v4h6v-4z" fill="#d69260" />
-            <path
-              d="M46 44h18v4h6v8h-6v4H46v-4h-8v-12h8zM32 46h6v12h-6z"
-              fill="#efb774"
+        </>
+      ) : (
+        <div className="room-window-air">
+          <span className="study-room-motion room-window-glint" />
+          {resolveSeason(settings.season) !== "winter" && (
+            <PixelResident
+              kind="butterfly"
+              className="study-room-motion room-window-butterfly"
             />
-            <path d="M44 46h12v3H44zM48 49h7v3h-7z" fill="#ffe0a1" />
-            <path d="M46 56h14v3H46zM34 48h3v8h-3z" fill="#d69864" />
-            <path d="M60 48h3v3h-3z" fill="#2c535b" />
-            <path d="M56 53h4v3h-4z" fill="#df985f" />
-          </g>
-        </g>
-        <g className="study-room-motion room-bubbles" fill="#d4eded">
-          <path d="M94 50h4v4h-4zM100 66h4v4h-4zM90 74h2v2h-2z" />
-        </g>
-        <path d="M16 22h4v46h-4zM22 22h8v4h-8z" fill="#d7eeee" opacity=".55" />
-      </svg>
+          )}
+        </div>
+      )}
+      <div className="room-companion">
+        <PixelResident kind="cat" className="room-cat-tail" />
+      </div>
       <div
-        className={`room-companion ${feedback ? (feedback.correct ? "companion-happy" : "companion-thoughtful") : ""}`}
-        key={feedback?.id ?? "quiet"}
+        className={`study-bird ${feedback?.correct ? "bird-celebrating" : ""}`}
+        key={feedback?.id ?? "quiet-bird"}
       >
-        <svg viewBox="0 0 92 62" shapeRendering="crispEdges">
-          <ellipse cx="46" cy="55" rx="40" ry="4" fill="#263c4540" />
-          <g className="study-room-motion room-cat-tail">
-            <path d="M64 40h16V28h8v18h-8v6H64z" fill="#c98b63" />
-            <path d="M80 24h8v8h-8z" fill="#e7b083" />
-          </g>
-          <path
-            d="M20 36h40v-8h12v24H20zM12 24h36v24H12zM12 16h8v12h-8zm28 0h8v12h-8z"
-            fill="#e7b083"
-          />
-          <path
-            d="M20 40h28v12H20zM20 24h20v16H20zM48 48h20v4H48z"
-            fill="#f7e3c2"
-          />
-          <path d="M20 30h6v2h-6zm14 0h6v2h-6zM28 36h4v2h-4z" fill="#465057" />
-          <path d="M12 20h6v4h-6zm28 0h6v4h-6z" fill="#d89585" />
-          <path d="M52 32h8v4h-8zM60 40h8v4h-8z" fill="#c98b63" />
-        </svg>
+        <PixelResident
+          kind="bird"
+          action={feedback?.correct ? "cheer" : "idle"}
+        />
         {feedback?.correct && (
-          <span className="companion-spark">
-            <Star size={16} />
-          </span>
+          <div className="bird-reward">
+            <span>Nice!</span>
+            <Star size={15} />
+            <Star size={10} />
+          </div>
         )}
       </div>
       <div className="room-season-accent" />
     </div>
   );
-} // # Original layered SVG residents animate separately from the generated room scenery.
+} // # A scheduled review uses a different aquarium room; earned residents still come only from actual progress.
 
 const CHOICES: { value: RecognitionChoice; label: string; hint: string }[] = [
   { value: "known", label: "认识", hint: "确认后完成本次复习" },
@@ -190,6 +159,7 @@ type Props = {
   dictionary: (word: string) => void;
   onExit: () => void;
   notify: (message: string) => void;
+  matureResidents: number; // # The visual projection reads the earned world without touching the learning engine.
 };
 export default function Study({
   words,
@@ -199,6 +169,7 @@ export default function Study({
   dictionary,
   onExit,
   notify,
+  matureResidents,
 }: Props) {
   const [task, setTask] = useState<Task | null>(null),
     [answer, setAnswer] = useState(""),
@@ -406,8 +377,13 @@ export default function Study({
       <div
         className="study-page cozy-study"
         data-season={resolveSeason(settings.season)}
+        data-scene={session.mode === "review" ? "aquarium" : "study"}
       >
-        <StudyRoom settings={settings} />
+        <StudyRoom
+          settings={settings}
+          review={session.mode === "review"}
+          matureResidents={matureResidents}
+        />
         <div className="session-complete study-notebook">
           <div className="completion-mark">
             <Check size={36} />
@@ -476,11 +452,18 @@ export default function Study({
     <div
       className="study-page cozy-study"
       data-season={resolveSeason(settings.season)}
+      data-scene={session.mode === "review" ? "aquarium" : "study"}
       data-feedback={
         result ? (result.correct ? "correct" : "incorrect") : "idle"
       }
     >
-      <StudyRoom settings={settings} feedback={result} />
+      <StudyRoom
+        settings={settings}
+        feedback={result}
+        review={session.mode === "review"}
+        matureResidents={matureResidents}
+      />
+      <NotebookDecor />
       <div className="study-notebook">
         <div className="study-top">
           <button

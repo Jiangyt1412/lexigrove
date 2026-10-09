@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="96" viewBox="0 0 240 96" shape-rendering="crispEdges"><!-- # Original stepped wood board; live labels are separate HTML. -->
+<path d="M7 0h224v4h5v4h4v80h-5v4h-5v4H7v-4H3v-4H0V8h3V4h4z" fill="#3c3027"/>
+<path d="M9 4h221v4h6v79h-6v5H9v-5H4V9h5z" fill="#987044"/>
+<path d="M11 9h217v3h5v70h-5v5H11v-5H8V12h3z" fill="#805231"/>
+<path d="M13 13h213v69H13z" fill="#865b38"/>
+<path d="M14 15h208v2H14zM23 21h132v2H23zM172 20h47v2h-47zM13 46h201v2H13zM31 55h97v2H31zM141 61h83v2h-83zM23 77h191v2H23z" fill="#a17144"/>
+<path d="M15 35h63v2H15zM88 32h78v2H88zM177 35h46v2h-46zM14 65h29v2H14zM52 69h112v2H52zM183 70h41v2h-41zM39 44h116v1H39z" fill="#694529"/>
+<path d="M161 27h12v2h7v4h-7v2h-12v-2h-7v-4h7zM51 55h10v2h5v3h-5v2H51v-2h-5v-3h5z" fill="#754b2e"/>
+<path d="M162 29h11v3h-11zM52 58h10v2H52z" fill="#a07142"/>
+<path d="M8 10h6v6H8zM226 10h6v6h-6zM8 80h6v6H8zM226 80h6v6h-6z" fill="#402f24"/>
+<path d="M9 10h4v4H9zM227 10h4v4h-4zM9 80h4v4H9zM227 80h4v4h-4z" fill="#bd9f60"/>
+<path d="M10 10h2v2h-2zM228 10h2v2h-2zM10 80h2v2h-2zM228 80h2v2h-2z" fill="#f0cc7f"/>
+</svg>

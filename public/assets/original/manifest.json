@@ -432,8 +432,8 @@
     }
   ],
   "verification": {
-    "xml": "All 6 existing original SVG files parsed successfully.",
-    "totalSvgBytes": 61948,
+    "xml": "All 8 existing original SVG files parsed successfully.",
+    "totalSvgBytes": 64136,
     "symbolCount": 35,
     "visualScope": "Chromium screenshots and motion checks cover the current home, seasonal worlds and earned residents. XML parsing and inventory counts do not prove every legacy sprite was visually reviewed."
   },
@@ -477,6 +477,13 @@
       "symbols": []
     },
     {
+      "file": "paper-board-v2.svg",
+      "bytes": 1060,
+      "sha256": "b398873c3458122add116efe79a22a2b9e8d716989bf38c8a642afda58e2832f",
+      "viewBox": "0 0 240 96",
+      "symbols": []
+    },
+    {
       "file": "sprites.svg",
       "bytes": 15224,
       "sha256": "3ac08f465d96083765b860633a864697fd6147f9b7a80c893e541b2138c64ea7",
@@ -505,6 +512,13 @@
         "bubbles",
         "chest"
       ]
+    },
+    {
+      "file": "wood-board-v2.svg",
+      "bytes": 1128,
+      "sha256": "d404f65efc83371e9024ba33bf30af5d2eb6537af2f7b655e8d7c6baf2efae48",
+      "viewBox": "0 0 240 96",
+      "symbols": []
     },
     {
       "file": "world-life.svg",

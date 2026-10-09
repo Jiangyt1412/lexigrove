@@ -29,6 +29,8 @@ Main headings, navigation and world controls use pixel typography. All learning 
 
 ## Other visual/audio sources
 
+The 2026-10-05 woodland refinement adds four original built-in-image-generated WebPs (two transparent pose atlases, an aquarium review gallery and an edited wood-bound learning room), plus native `wood-board-v2.svg` and `paper-board-v2.svg`. These selected project-original art files follow the original-art CC0 dedication above to the extent rights apply. The user-supplied reference screenshots are not redistributed. Exact prompts, actual returned dimensions, CSS atlas-window adjustments, alpha preservation and the saved asset paths are recorded in [docs/WOODLAND_REFINEMENT.md](docs/WOODLAND_REFINEMENT.md); checksums are in `public/assets/coastal/woodland-v2-manifest.json`. Live interface text and interaction remain application code under MIT.
+
 Project-original pixel interface geometry is application code covered by [LICENSE](LICENSE), while the original standalone SVG habitat assets listed above retain their CC0 dedication. The installed Lucide package is documented conservatively in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md); its ISC/Feather attribution is separate from the original-art note. No third-party word images or human pronunciation recordings are bundled in the starter. Any future such assets require per-item source, author and licence metadata before redistribution.
 
 The starter now includes pre-generated neural audio, distinct from human recordings and from pixel artwork. See [AUDIO_SOURCES.md](AUDIO_SOURCES.md) for its project output dedication, Apache-licensed source model, voice identities, manifest and limitations.

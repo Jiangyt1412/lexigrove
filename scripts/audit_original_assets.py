@@ -23,7 +23,7 @@ manifest["source"] = "Original integer-grid geometry, without copied or traced c
 for sprite in manifest.get("sprites", []):  # # Legacy sprites are symbols, not missing standalone files.
     sprite.pop("file", None)  # # Remove only the inaccurate file field, retaining symbol/placement metadata.
 manifest["paletteScope"] = "Legacy base habitat palette; the living-world seasonal palettes are defined in src/world/environment.ts."  # # Do not present old ochre colours as the current UI.
-manifest["svgFiles"] = files  # # Six original SVG files are currently present.
+manifest["svgFiles"] = files  # # Inventory all actual original SVGs, including the native wooden frame additions.
 manifest["livingWorld"] = {"component": "src/world/LivingScene.tsx", "sceneViewBox": [0, 0, 640, 320], "spriteSheet": "world-life.svg", "symbols": symbols.get("world-life.svg", []), "seasons": ["spring", "summer", "autumn", "winter"], "animation": "CSS steps with independent durations, offsets, pauses and turns; no React per-frame loop", "codeLicence": "MIT", "standaloneSvgLicence": "CC0-1.0"}  # # Code and standalone art retain their separate licence scopes.
 manifest["verification"] = {"xml": f"All {len(files)} existing original SVG files parsed successfully.", "totalSvgBytes": sum(item["bytes"] for item in files), "symbolCount": sum(len(ids) for ids in symbols.values()), "visualScope": "Chromium screenshots and motion checks cover the current home, seasonal worlds and earned residents. XML parsing and inventory counts do not prove every legacy sprite was visually reviewed."}  # # Report only the audit's actual scope.
 manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n")  # # Commit the reproducible inventory with the distributed assets.

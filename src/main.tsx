@@ -9,6 +9,7 @@ import "./ocean-game.css"; // # Marine game frames preserve the readable learnin
 import "./living-world.css"; // # Seasonal scenery and quiet learning notebooks share accessible layout rules.
 import "./coastal-world.css"; // # The village itself is the layout; navigation and actions belong to the scenery.
 import "./cozy-study.css"; // # Quiet readable notebook content stays inside the same coastal world.
+import "./woodland-game.css"; // # Wood-bound interfaces and detailed frame animation follow the user's scene references.
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

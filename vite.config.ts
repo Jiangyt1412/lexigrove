@@ -35,6 +35,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,svg,png,webp,json,woff2,txt}"], // # Original compact environment images are available offline; audio warms separately.
+        globIgnores: ["assets/coastal/study-room.webp"], // # Keep the earlier generated edit source available for provenance without installing an unused scene in every offline cache.
         runtimeCaching: [
           {
             urlPattern: ({ url, sameOrigin }) =>

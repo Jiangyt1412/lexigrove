@@ -115,6 +115,14 @@ async function dueReview(page: Page) {
   await page.getByRole("button", { name: /^Today/ }).click();
   await page.getByRole("button", { name: "Start review", exact: true }).click();
   await expect(page.locator(".target-word")).toHaveText("mitigate");
+  await expect(page.locator(".cozy-study")).toHaveAttribute(
+    "data-scene",
+    "aquarium",
+  );
+  await expect(page.locator(".study-room-art")).toHaveAttribute(
+    "src",
+    /review-aquarium-v2\.webp$/,
+  ); // # Every scheduled recognition and repair stays in the aquarium scene, independently of its FSRS outcome.
   await expect(
     page.locator(
       ".study-focus .study-meaning, .study-focus .study-phonetics, .answer-input",
