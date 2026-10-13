@@ -266,6 +266,26 @@ test("desktop home is one continuous world with honest counts and accessible sce
   await expect(world).toHaveCount(1);
   await expect(world.locator(".coast-garden")).toBeVisible();
   await expect(world.locator(".harbor-aquarium")).toBeVisible();
+  const sceneGeometry = await world.evaluate((element) => {
+    const actors = element.querySelector(".coast-creatures")!;
+    const box = actors.getBoundingClientRect();
+    return {
+      aspect: box.width / box.height,
+      rendering: getComputedStyle(element.querySelector(".coast-backdrop")!)
+        .imageRendering,
+      residents: [...actors.querySelectorAll(".resident-frames")].map(
+        (frame) => getComputedStyle(frame).imageRendering,
+      ),
+      doubleGlass: getComputedStyle(element.querySelector(".aquarium-water")!)
+        .display,
+    };
+  });
+  expect(sceneGeometry.aspect).toBeCloseTo(1.5, 4);
+  expect(sceneGeometry.rendering).toBe("auto");
+  expect(
+    sceneGeometry.residents.every((mode) => mode === sceneGeometry.rendering),
+  ).toBe(true);
+  expect(sceneGeometry.doubleGlass).toBe("none"); // # Residents share the actual 3:2 cover stage and raster resampling; painted glass must not receive a second flat glass outline.
   await expect(
     page.locator(
       ".home-worlds, .study-launch, .today-strip, .aquarium-teaser, .sidebar, .topbar",

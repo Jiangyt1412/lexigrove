@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react"; // # Transparent atlas frames preserve detailed resident artwork without a raster interface.
 import { assetUrl } from "../utils/assets";
+import { residentAtlases } from "./resident-atlases"; // # Calibrated viewports retain the actual fine painted sprite detail and every hat/foot.
 
 export type Resident =
   "cat" | "bird" | "duck" | "butterfly" | "gardener" | "diver";
@@ -15,7 +16,6 @@ export function PixelResident({
   style?: CSSProperties;
 }) {
   const keeper = kind === "gardener" || kind === "diver";
-  const referenceCompanion = kind === "cat" || kind === "bird"; // # These two identities now come directly from the supplied room and feedback references.
   const row = keeper
     ? kind === "gardener"
       ? action === "walk"
@@ -27,27 +27,26 @@ export function PixelResident({
     : { cat: 0, bird: 1, duck: 2, butterfly: 3 }[
         kind as "cat" | "bird" | "duck" | "butterfly"
       ];
+  const atlas = residentAtlases[keeper ? "keepers" : "companions"];
+  const frame = atlas.rows[row];
   return (
     <span
       className={`pixel-resident ${className}`}
       data-resident={kind}
       data-action={action}
       aria-hidden="true"
-      style={style}
+      style={
+        {
+          "--resident-atlas": `url("${assetUrl(`assets/coastal/${atlas.file}`)}")`,
+          "--resident-row": `${frame.backgroundY}%`,
+          "--resident-bg-height": `${frame.backgroundHeight}%`,
+          "--resident-aspect": frame.aspect,
+          "--resident-ground": `${frame.groundPercent}%`, // # Contact points come from the actual returned atlas rather than assumed square slots.
+          ...style,
+        } as CSSProperties
+      }
     >
-      <span
-        className="resident-frames"
-        style={
-          {
-            "--resident-atlas": `url("${assetUrl(referenceCompanion ? "assets/reference/companions-atlas-v1.webp" : `assets/coastal/${keeper ? "keepers" : "companions"}-atlas-v2.webp`)}")`,
-            "--resident-row": referenceCompanion
-              ? kind === "bird"
-                ? "100%"
-                : "0%"
-              : `${(row * 100) / 3}%`, // # Reference companions occupy two equal atlas rows; other residents retain their four-row source.
-          } as CSSProperties
-        }
-      />
+      <span className="resident-frames" />
     </span>
   );
 } // # Idle blinking, wingbeats and walking are separate frame cycles; motion preferences can stop both the atlas and travel.

@@ -11,6 +11,7 @@ import "./coastal-world.css"; // # The village itself is the layout; navigation 
 import "./cozy-study.css"; // # Quiet readable notebook content stays inside the same coastal world.
 import "./woodland-game.css"; // # Wood-bound interfaces and detailed frame animation follow the user's scene references.
 import "./reference-match.css"; // # Reference proportions and complete painted parts replace the previous procedural approximation.
+import "./scene-cohesion.css"; // # Shared scene coordinates, painted texture and lighting make residents part of their environment.
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />

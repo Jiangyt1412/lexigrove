@@ -89,7 +89,7 @@ export function CoastalWorld({
       aria-label="Your living coastal vocabulary world"
     >
       {settings.world !== "off" && (
-        <>
+        <div className="coast-visual-layer" aria-hidden="true">
           <img
             className="coast-backdrop"
             src={assetUrl(`assets/coastal/coast-${season}.webp`)}
@@ -121,8 +121,9 @@ export function CoastalWorld({
               <path
                 key={i}
                 className="world-motion motion-ripple"
-                d={`M${605 + i * 46} ${260 + i * 24}h35v2h-35zm12 5h25v1h-25z`}
+                d={`M${605 + i * 46} ${260 + i * 24}h5v.6h-5zm8 1.2h4v.5h-4zm-3 2.2h3v.45h-3z`}
                 fill="#d8f4f2"
+                fillOpacity=".22"
                 opacity=".5"
                 style={{ animationDelay: `-${i * 2.3}s` }}
               />
@@ -373,7 +374,7 @@ export function CoastalWorld({
             />
             <WorldSprite name="sprout" className="world-motion motion-grass" />
           </div>
-        </>
+        </div>
       )}
       {children}
     </section>

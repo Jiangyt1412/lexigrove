@@ -1,0 +1,227 @@
+/* # Fine painted raster art shares one resampling policy; no blur is used to hide a mismatch. */
+.coastal-shell
+  :is(.coast-backdrop, .study-room-art, .pixel-resident, .resident-frames) {
+  image-rendering: auto;
+}
+.coastal-shell .pixel-resident {
+  --resident-aspect: 1;
+  --resident-ground: 90%;
+  isolation: isolate;
+  aspect-ratio: var(--resident-aspect);
+}
+.coastal-shell .pixel-resident .resident-frames {
+  z-index: 1;
+  height: 100%;
+  background-size: 400% var(--resident-bg-height);
+}
+.coastal-shell .pixel-resident::after {
+  display: none;
+}
+.coastal-shell
+  .pixel-resident:is(
+    [data-resident="cat"],
+    [data-resident="gardener"],
+    [data-resident="diver"],
+    [data-resident="bird"]
+  )::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: calc(var(--resident-ground) - 3%);
+  left: 24%;
+  width: 52%;
+  height: 5%;
+  border-radius: 50%;
+  background: #59493442;
+  transform: scaleY(0.65);
+}
+.coastal-shell .pixel-resident[data-resident="duck"]::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: calc(var(--resident-ground) - 3%);
+  left: 13%;
+  width: 74%;
+  height: 9%;
+  border: 1px solid #d3e8e09c;
+  border-radius: 50%;
+  background: #214e6040;
+  transform: scaleY(0.55);
+}
+/* # A single visual layer grades the environment, residents, crops and tank together; live signs stay outside. */
+.coast-visual-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  isolation: isolate;
+  pointer-events: none;
+}
+.coastal-shell .coastal-world[data-night="true"] .coast-backdrop {
+  filter: none;
+}
+.coastal-shell .coastal-world[data-night="true"] .coast-visual-layer {
+  filter: brightness(0.67) saturate(0.85);
+}
+.coastal-shell .coast-evening {
+  z-index: 5;
+}
+.coastal-shell .aquarium-focus .coast-backdrop {
+  transform: none;
+}
+.coastal-shell .aquarium-focus .coast-visual-layer {
+  transform: scale(1.65);
+  transform-origin: right bottom;
+} /* # The aquarium focus zoom moves all decorative residents with the scenery instead of magnifying the backdrop alone. */
+.coastal-shell .coast-creatures .pixel-resident {
+  height: auto;
+  filter: none;
+  transform: translate(-50%, calc(-1 * var(--resident-ground)));
+}
+.coastal-shell .coast-creatures .harbor-cat {
+  animation: none;
+}
+.coastal-shell .harbor-aquarium .aquarium-water {
+  display: none;
+} /* # The painted scene already contains the glass and water; only genuinely earned inhabitants are overlaid. */
+/* # Interior creatures receive the same grade as their room instead of glowing against a darkened backdrop. */
+:root[data-theme="night"] .coastal-shell .study-room {
+  filter: brightness(0.65) saturate(0.83);
+}
+:root[data-theme="night"] .coastal-shell .study-room-art {
+  filter: none;
+}
+.coastal-shell .study-room .pixel-resident {
+  height: auto;
+}
+@media (min-width: 900px) {
+  .coastal-shell .coastal-world {
+    --coast-w: max(100vw, 150svh);
+    --coast-h: max(100svh, 66.666667vw);
+  }
+  .coastal-shell .coast-creatures {
+    inset: auto;
+    left: calc(50% - var(--coast-w) / 2);
+    top: calc(50% - var(--coast-h) / 2);
+    width: var(--coast-w);
+    height: var(--coast-h);
+  }
+  .coastal-shell .coast-creatures .harbor-gardener {
+    left: 41.5%;
+    top: 72.4%;
+    width: 4.4%;
+    animation: coherent-stroll 20s ease-in-out infinite;
+  }
+  .coastal-shell .coast-creatures .harbor-cat {
+    left: 30.2%;
+    top: 77.2%;
+    width: 4.6%;
+  }
+  .coastal-shell .coast-creatures .harbor-bird {
+    left: 76.8%;
+    top: 57.9%;
+    width: 3.4%;
+  }
+  .coastal-shell .coast-creatures .harbor-duck {
+    left: 68.5%;
+    top: 50.5%;
+    width: 2.8%;
+    animation: coherent-swim 24s ease-in-out infinite;
+  }
+  .coastal-shell .coast-creatures .harbor-butterfly {
+    left: 35.5%;
+    top: 64%;
+    width: 1.9%;
+    animation: coherent-flutter 19s ease-in-out infinite;
+  }
+  .coastal-shell .coast-garden {
+    left: calc(50% - var(--coast-w) * 0.1);
+    top: calc(50% + var(--coast-h) * 0.15);
+    width: calc(var(--coast-w) * 0.23);
+  }
+  .coastal-shell .harbor-aquarium {
+    left: calc(50% + var(--coast-w) * 0.29);
+    top: calc(50% + var(--coast-h) * 0.12);
+    width: calc(var(--coast-w) * 0.19);
+    height: calc(var(--coast-h) * 0.12);
+  }
+  .coastal-shell .study-room .room-companion {
+    top: 67.5%;
+    left: 16%;
+    width: 11.5%;
+    height: 0;
+  }
+  .coastal-shell .study-room .study-bird {
+    top: 73.8%;
+    left: 75%;
+    width: 8.8%;
+    height: 0;
+  }
+  .coastal-shell .study-room .study-bird .bird-reward {
+    top: auto;
+    bottom: calc(var(--reference-w) * 0.088 + 12px);
+    left: 12%;
+    z-index: 3;
+  } /* # The feedback bubble clears the actual sprite height even though its parent is a zero-height perch anchor. */
+  .coastal-shell .study-room :is(.room-companion, .study-bird) .pixel-resident {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    transform: translateY(calc(100% - var(--resident-ground)));
+  }
+  .coastal-shell .review-diver.pixel-resident {
+    width: 5.2%;
+    height: auto;
+    left: 61%;
+    top: 92%;
+    bottom: auto;
+    transform: translateY(calc(-1 * var(--resident-ground)));
+  }
+}
+@keyframes coherent-stroll {
+  0%,
+  20%,
+  100% {
+    transform: translate(-50%, calc(-1 * var(--resident-ground)));
+  }
+  48%,
+  70% {
+    transform: translate(calc(-50% + 12px), calc(-1 * var(--resident-ground)));
+  }
+}
+@keyframes coherent-swim {
+  0%,
+  100% {
+    transform: translate(-50%, calc(-1 * var(--resident-ground)));
+  }
+  50% {
+    transform: translate(
+      calc(-50% + 15px),
+      calc(-1 * var(--resident-ground) + 1px)
+    );
+  }
+}
+@keyframes coherent-flutter {
+  0%,
+  100% {
+    transform: translate(-50%, calc(-1 * var(--resident-ground)));
+  }
+  35% {
+    transform: translate(
+      calc(-50% + 18px),
+      calc(-1 * var(--resident-ground) - 8px)
+    );
+  }
+  70% {
+    transform: translate(
+      calc(-50% + 9px),
+      calc(-1 * var(--resident-ground) - 2px)
+    );
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .coastal-shell :is(.world-motion, .resident-frames) {
+    animation: none !important;
+  }
+}

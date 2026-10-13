@@ -5,12 +5,6 @@
 .coast-garden [data-empty="true"] {
   display: none;
 }
-.coastal-shell
-  .pixel-resident:is([data-resident="cat"], [data-resident="bird"])
-  .resident-frames {
-  height: 100%;
-  background-size: 400% 200%;
-}
 .coastal-shell .pixel-resident[data-resident="cat"]::after {
   display: none;
 }

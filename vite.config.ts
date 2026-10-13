@@ -40,6 +40,9 @@ export default defineConfig({
           "assets/coastal/study-room-v3.webp",
           "assets/coastal/review-aquarium-v2.webp",
           "assets/reference/study-room-v1.webp",
+          "assets/coastal/keepers-atlas-v2.webp",
+          "assets/coastal/companions-atlas-v2.webp",
+          "assets/reference/companions-atlas-v1.webp",
         ], // # Historical scene bases remain attributed but are no longer installed; the faithful reference scenes are cached instead.
         runtimeCaching: [
           {
